@@ -87,6 +87,17 @@ export default function AdminDashboard() {
   const [newOptionName, setNewOptionName] = useState('');
   const [newOptionDesc, setNewOptionDesc] = useState('');
 
+  // Cover Image upload states
+  const [coverFile, setCoverFile] = useState<File | null>(null);
+  const [coverPreviewUrl, setCoverPreviewUrl] = useState<string | null>(null);
+  const [coverFileName, setCoverFileName] = useState<string>('');
+  const [coverDimensions, setCoverDimensions] = useState<string>('');
+
+  // Gallery Images upload states
+  const [galleryFiles, setGalleryFiles] = useState<{ id: string; file: File; preview: string; name: string }[]>([]);
+  const [existingGalleryImages, setExistingGalleryImages] = useState<string[]>([]);
+  const [isSaving, setIsSaving] = useState(false);
+
   // Alerts
   const [alert, setAlert] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 
@@ -253,7 +264,19 @@ export default function AdminDashboard() {
     setTimeout(() => setAlert(null), 4000);
   };
 
+  const revokeObjectUrls = () => {
+    if (coverPreviewUrl && coverPreviewUrl.startsWith('blob:')) {
+      URL.revokeObjectURL(coverPreviewUrl);
+    }
+    galleryFiles.forEach((f) => {
+      if (f.preview.startsWith('blob:')) {
+        URL.revokeObjectURL(f.preview);
+      }
+    });
+  };
+
   const handleOpenAddModal = () => {
+    revokeObjectUrls();
     setEditId(null);
     setFormType(activeTab);
     setFormData({
@@ -270,10 +293,22 @@ export default function AdminDashboard() {
       about: '',
       bedrooms: 3,
       duration: activeTab === 'tour' ? '5 Hours' : '',
-      galleryImages: '/images/hotels/hotel-1.jpg, /images/hotels/hotel-2.jpg, /images/hotels/hotel-3.jpg, /images/hotels/hotel-4.jpg',
+      galleryImages: '',
     });
     setSelectedAmenities([...initialAmenityOptions[activeTab]]);
     
+    setCoverFile(null);
+    setCoverPreviewUrl('/images/hotels/hotel-1.jpg');
+    setCoverFileName('');
+    setCoverDimensions('');
+    setGalleryFiles([]);
+    setExistingGalleryImages([
+      '/images/hotels/hotel-1.jpg',
+      '/images/hotels/hotel-2.jpg',
+      '/images/hotels/hotel-3.jpg',
+      '/images/hotels/hotel-4.jpg'
+    ]);
+
     if (activeTab === 'tour') {
       setOptionsList([
         { name: '09:00 AM — Pickup', description: 'Pickup from your hotel in Lonavala.' },
@@ -292,6 +327,7 @@ export default function AdminDashboard() {
   };
 
   const handleOpenEditModal = (item: any, cat: Category) => {
+    revokeObjectUrls();
     setEditId(item.id);
     setFormType(cat);
     setFormData({
@@ -314,6 +350,14 @@ export default function AdminDashboard() {
     setOptionsList(cat === 'tour' ? (item.itinerary || []) : (item.rooms || []));
     setNewOptionName('');
     setNewOptionDesc('');
+
+    setCoverFile(null);
+    setCoverPreviewUrl(item.image);
+    setCoverFileName('');
+    setCoverDimensions('');
+    setGalleryFiles([]);
+    setExistingGalleryImages(item.images || []);
+
     setIsModalOpen(true);
   };
 
@@ -367,19 +411,167 @@ export default function AdminDashboard() {
     setOptionsList(optionsList.filter((_, idx) => idx !== index));
   };
 
-  const handleSaveListing = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.slug || !formData.image) {
-      showAlert('Name, slug and main image are required', 'error');
+  const handleCoverSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      showAlert('Main cover image exceeds 5MB size limit', 'error');
       return;
     }
 
-    const imagesArray = formData.galleryImages
-      .split(',')
-      .map((s) => s.trim())
-      .filter((s) => s.length > 0);
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+      showAlert('Please upload JPG, PNG or WEBP only', 'error');
+      return;
+    }
+
+    if (coverPreviewUrl && coverPreviewUrl.startsWith('blob:')) {
+      URL.revokeObjectURL(coverPreviewUrl);
+    }
+
+    const preview = URL.createObjectURL(file);
+    setCoverFile(file);
+    setCoverPreviewUrl(preview);
+    setCoverFileName(file.name);
+
+    const img = new window.Image();
+    img.onload = () => {
+      setCoverDimensions(`${img.width} × ${img.height} px`);
+    };
+    img.src = preview;
+  };
+
+  const handleCoverRemove = () => {
+    if (coverPreviewUrl && coverPreviewUrl.startsWith('blob:')) {
+      URL.revokeObjectURL(coverPreviewUrl);
+    }
+    setCoverFile(null);
+    setCoverPreviewUrl(null);
+    setCoverFileName('');
+    setCoverDimensions('');
+  };
+
+  const handleGallerySelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    if (files.length === 0) return;
+
+    const newFiles: { id: string; file: File; preview: string; name: string }[] = [];
+
+    files.forEach((file) => {
+      if (file.size > 5 * 1024 * 1024) {
+        showAlert(`Image "${file.name}" exceeds 5MB size limit`, 'error');
+        return;
+      }
+      if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+        showAlert(`Image "${file.name}" is not a valid format (use JPG, PNG or WEBP)`, 'error');
+        return;
+      }
+      const isDupSelected = galleryFiles.some((f) => f.name === file.name && f.file.size === file.size);
+      if (isDupSelected) return;
+
+      const preview = URL.createObjectURL(file);
+      newFiles.push({
+        id: `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+        file,
+        preview,
+        name: file.name,
+      });
+    });
+
+    if (newFiles.length > 0) {
+      setGalleryFiles((prev) => [...prev, ...newFiles]);
+    }
+  };
+
+  const handleGalleryRemove = (id: string, isExisting: boolean, existingPath?: string) => {
+    if (isExisting && existingPath) {
+      setExistingGalleryImages((prev) => prev.filter((img) => img !== existingPath));
+    } else {
+      const match = galleryFiles.find((f) => f.id === id);
+      if (match) {
+        if (match.preview.startsWith('blob:')) {
+          URL.revokeObjectURL(match.preview);
+        }
+        setGalleryFiles((prev) => prev.filter((f) => f.id !== id));
+      }
+    }
+  };
+
+  const uploadSingleFile = async (file: File): Promise<string> => {
+    if (isSupabaseConfigured && supabase) {
+      try {
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
+        const filePath = `listings/${fileName}`;
+
+        const { data, error } = await supabase.storage
+          .from('listings')
+          .upload(filePath, file);
+
+        if (!error && data) {
+          const { data: { publicUrl } } = supabase.storage
+            .from('listings')
+            .getPublicUrl(filePath);
+          return publicUrl;
+        }
+      } catch (err) {
+        console.warn('Supabase storage upload failed, trying local upload:', err);
+      }
+    }
+
+    const formDataUpload = new FormData();
+    formDataUpload.append('file', file);
+
+    const res = await fetch('/api/upload', {
+      method: 'POST',
+      body: formDataUpload,
+    });
+
+    if (!res.ok) {
+      const errData = await res.json();
+      throw new Error(errData.error || `Failed to upload local file "${file.name}"`);
+    }
+
+    const data = await res.json();
+    return data.url;
+  };
+
+  const handleSaveListing = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isSaving) return;
+
+    if (!formData.name || !formData.slug) {
+      showAlert('Name and slug are required', 'error');
+      return;
+    }
+
+    setIsSaving(true);
+    setLoading(true);
 
     try {
+      let finalCoverUrl = formData.image;
+      if (coverFile) {
+        showAlert('Uploading cover image...', 'success');
+        finalCoverUrl = await uploadSingleFile(coverFile);
+      }
+
+      if (!finalCoverUrl) {
+        finalCoverUrl = '/images/hotels/hotel-1.jpg';
+      }
+
+      let finalGalleryUrls = [...existingGalleryImages];
+      if (galleryFiles.length > 0) {
+        showAlert(`Uploading ${galleryFiles.length} gallery images...`, 'success');
+        for (const gf of galleryFiles) {
+          const url = await uploadSingleFile(gf.file);
+          finalGalleryUrls.push(url);
+        }
+      }
+
+      if (finalGalleryUrls.length === 0) {
+        finalGalleryUrls = [finalCoverUrl];
+      }
+
       let ok = false;
       if (formType === 'hotel') {
         const hotel: Hotel = {
@@ -390,11 +582,11 @@ export default function AdminDashboard() {
           reviews: formData.reviews,
           price: Number(formData.price),
           priceLabel: formData.priceLabel,
-          image: formData.image,
+          image: finalCoverUrl,
           slug: formData.slug,
           description: formData.description,
           about: formData.about,
-          images: imagesArray.length > 0 ? imagesArray : [formData.image],
+          images: finalGalleryUrls,
           amenities: selectedAmenities,
           rooms: optionsList,
         };
@@ -406,11 +598,11 @@ export default function AdminDashboard() {
           location: formData.location,
           bedrooms: Number(formData.bedrooms),
           price: formData.priceLabel,
-          image: formData.image,
+          image: finalCoverUrl,
           slug: formData.slug,
           description: formData.description,
           about: formData.about,
-          images: imagesArray.length > 0 ? imagesArray : [formData.image],
+          images: finalGalleryUrls,
           amenities: selectedAmenities,
           rooms: optionsList,
         };
@@ -422,11 +614,11 @@ export default function AdminDashboard() {
           duration: formData.duration,
           price: Number(formData.price),
           priceLabel: formData.priceLabel,
-          image: formData.image,
+          image: finalCoverUrl,
           slug: formData.slug,
           description: formData.description,
           about: formData.about,
-          images: imagesArray.length > 0 ? imagesArray : [formData.image],
+          images: finalGalleryUrls,
           amenities: selectedAmenities,
           itinerary: optionsList,
         };
@@ -434,15 +626,23 @@ export default function AdminDashboard() {
       }
 
       if (ok) {
-        showAlert(editId ? 'Listing updated successfully' : 'Listing created successfully', 'success');
+        showAlert(editId ? 'Listing updated successfully!' : 'Listing created successfully!', 'success');
+        
+        revokeObjectUrls();
+        setCoverFile(null);
+        setGalleryFiles([]);
+
         setIsModalOpen(false);
         loadAllData();
       } else {
-        showAlert('Failed to save listing', 'error');
+        showAlert('Failed to save listing changes', 'error');
       }
-    } catch (e) {
-      console.error(e);
-      showAlert('Error saving listing', 'error');
+    } catch (err: any) {
+      console.error(err);
+      showAlert(err.message || 'Error occurred while saving listing', 'error');
+    } finally {
+      setIsSaving(false);
+      setLoading(false);
     }
   };
 
@@ -1009,32 +1209,162 @@ export default function AdminDashboard() {
                 />
               </div>
 
-              {/* Image Paths */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wide mb-1">Main Cover Image Path</label>
+              {/* Cover Image Selection & Preview */}
+              <div className="border border-gray-200 rounded-xl p-4 bg-gray-50/30">
+                <label className="block text-[11px] font-bold text-[#17211D] uppercase tracking-wide mb-1.5">
+                  Main Cover Image
+                </label>
+                <div className="flex gap-2 mb-3">
                   <input
                     type="text"
                     name="image"
                     required
-                    value={formData.image}
-                    onChange={handleInputChange}
-                    placeholder="/images/hotels/hotel-1.jpg"
-                    className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent"
+                    readOnly
+                    value={coverFile ? coverFile.name : formData.image}
+                    placeholder="Select cover image..."
+                    className="flex-1 border border-[#DCE4DF] bg-gray-50 rounded-xl px-3 py-2 text-xs focus:outline-none cursor-not-allowed text-gray-500 font-mono"
                   />
+                  <label className="bg-[#075B3A] hover:bg-[#06472F] text-white px-4 py-2 rounded-xl text-xs font-bold cursor-pointer shrink-0 transition-colors flex items-center justify-center shadow-sm">
+                    <span>Upload</span>
+                    <input
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp"
+                      multiple={false}
+                      className="hidden"
+                      onChange={handleCoverSelect}
+                    />
+                  </label>
                 </div>
-                <div>
-                  <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wide mb-1">Gallery Images (Comma separated)</label>
-                  <input
-                    type="text"
-                    name="galleryImages"
-                    required
-                    value={formData.galleryImages}
-                    onChange={handleInputChange}
-                    placeholder="url1, url2, url3..."
-                    className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent"
-                  />
+
+                {/* Cover Image Preview Card */}
+                {coverPreviewUrl && (
+                  <div className="bg-white border border-[#DCE4DF] p-3 rounded-xl flex items-center gap-4 max-w-sm shadow-sm relative">
+                    <div className="relative w-20 h-16 rounded-lg overflow-hidden border border-gray-200 shrink-0">
+                      <Image
+                        src={coverPreviewUrl}
+                        alt="Cover Preview"
+                        fill
+                        className="object-cover"
+                        unoptimized={coverPreviewUrl.startsWith('blob:')}
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="font-extrabold text-xs text-[#17211D] truncate">
+                        {coverFileName || (formData.image.startsWith('/') ? formData.image.split('/').pop() : 'Server Image')}
+                      </div>
+                      {coverDimensions && (
+                        <div className="text-[10px] text-gray-400 mt-0.5">{coverDimensions}</div>
+                      )}
+                      <div className="flex items-center gap-3 mt-2">
+                        <label className="text-[10px] font-extrabold text-blue-600 hover:text-blue-800 cursor-pointer">
+                          <span>Change</span>
+                          <input
+                            type="file"
+                            accept="image/jpeg,image/png,image/webp"
+                            multiple={false}
+                            className="hidden"
+                            onChange={handleCoverSelect}
+                          />
+                        </label>
+                        <button
+                          type="button"
+                          onClick={handleCoverRemove}
+                          className="text-[10px] font-extrabold text-red-600 hover:text-red-800 cursor-pointer"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Gallery Images Selection & Previews */}
+              <div className="border border-gray-200 rounded-xl p-4 bg-gray-50/30 space-y-3">
+                <div className="flex items-center justify-between">
+                  <label className="block text-[11px] font-bold text-[#17211D] uppercase tracking-wide">
+                    Gallery Images
+                  </label>
+                  <label className="bg-[#075B3A] hover:bg-[#06472F] text-white px-4 py-2 rounded-xl text-xs font-bold cursor-pointer shrink-0 transition-colors flex items-center justify-center shadow-sm">
+                    <span>Upload</span>
+                    <input
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp"
+                      multiple={true}
+                      className="hidden"
+                      onChange={handleGallerySelect}
+                    />
+                  </label>
                 </div>
+
+                {/* Previews grid */}
+                {(existingGalleryImages.length > 0 || galleryFiles.length > 0) ? (
+                  <div className="space-y-3">
+                    <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                      Selected Images ({existingGalleryImages.length + galleryFiles.length})
+                    </div>
+                    
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                      {/* Pre-existing images */}
+                      {existingGalleryImages.map((img, idx) => (
+                        <div key={`existing-${idx}`} className="relative border border-[#DCE4DF] bg-white rounded-xl p-2 group shadow-sm flex flex-col items-center justify-center text-center">
+                          <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-gray-100 mb-1.5 shrink-0">
+                            <Image src={img} alt="Gallery item" fill className="object-cover" />
+                          </div>
+                          <div className="text-[9px] font-medium text-gray-500 truncate w-full px-1">
+                            {img.split('/').pop()}
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => handleGalleryRemove('', true, img)}
+                            className="absolute -top-1.5 -right-1.5 bg-red-500 hover:bg-red-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs font-black shadow-md border border-white cursor-pointer transition-transform hover:scale-105"
+                            title="Remove image"
+                          >
+                            ×
+                          </button>
+                        </div>
+                      ))}
+
+                      {/* Newly selected images */}
+                      {galleryFiles.map((gf) => (
+                        <div key={gf.id} className="relative border border-blue-200 bg-blue-50/20 rounded-xl p-2 group shadow-sm flex flex-col items-center justify-center text-center">
+                          <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-blue-100 mb-1.5 shrink-0">
+                            <Image src={gf.preview} alt="Gallery item" fill className="object-cover" unoptimized />
+                          </div>
+                          <div className="text-[9px] font-medium text-blue-700 truncate w-full px-1">
+                            {gf.name}
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => handleGalleryRemove(gf.id, false)}
+                            className="absolute -top-1.5 -right-1.5 bg-red-500 hover:bg-red-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs font-black shadow-md border border-white cursor-pointer transition-transform hover:scale-105"
+                            title="Remove image"
+                          >
+                            ×
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Add More Images CTA inside Previews */}
+                    <div className="pt-1.5">
+                      <label className="inline-flex items-center gap-1 text-[11px] font-extrabold text-[#075B3A] hover:text-[#06472F] cursor-pointer bg-[#EAF5EF] px-3 py-1.5 rounded-xl border border-[#C5DDD1] transition-colors shadow-sm">
+                        <span>+ Add More Images</span>
+                        <input
+                          type="file"
+                          accept="image/jpeg,image/png,image/webp"
+                          multiple={true}
+                          className="hidden"
+                          onChange={handleGallerySelect}
+                        />
+                      </label>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-center py-6 border border-dashed border-gray-300 rounded-xl bg-white">
+                    <p className="text-gray-400 text-xs italic">No gallery images selected. Click Upload to add photos.</p>
+                  </div>
+                )}
               </div>
 
               {/* Amenities checkboxes */}

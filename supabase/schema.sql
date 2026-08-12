@@ -1,5 +1,8 @@
 -- ── TABLE CREATION ──
 
+-- Drop existing tables to recreate them with the correct columns
+DROP TABLE IF EXISTS public.hotels, public.villas, public.tours CASCADE;
+
 -- Create Hotels table
 CREATE TABLE IF NOT EXISTS public.hotels (
   id TEXT PRIMARY KEY,
@@ -59,12 +62,22 @@ ALTER TABLE public.hotels ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.villas ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.tours ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Allow public read hotels" ON public.hotels;
 CREATE POLICY "Allow public read hotels" ON public.hotels FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Allow public read villas" ON public.villas;
 CREATE POLICY "Allow public read villas" ON public.villas FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Allow public read tours" ON public.tours;
 CREATE POLICY "Allow public read tours" ON public.tours FOR SELECT USING (true);
 
+DROP POLICY IF EXISTS "Allow all actions for authenticated users on hotels" ON public.hotels;
 CREATE POLICY "Allow all actions for authenticated users on hotels" ON public.hotels FOR ALL USING (true) WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Allow all actions for authenticated users on villas" ON public.villas;
 CREATE POLICY "Allow all actions for authenticated users on villas" ON public.villas FOR ALL USING (true) WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Allow all actions for authenticated users on tours" ON public.tours;
 CREATE POLICY "Allow all actions for authenticated users on tours" ON public.tours FOR ALL USING (true) WITH CHECK (true);
 
 

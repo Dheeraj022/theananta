@@ -31,7 +31,6 @@ const quickLinks = [
 ];
 
 const importantLinks = [
-  { label: 'About Vidhi Tour & Travel', href: '/contact' },
   { label: 'Terms & Conditions', href: '/terms-conditions' },
   { label: 'Privacy Policy', href: '/privacy-policy' },
   { label: 'Cancellation Policy', href: '/cancellation-policy' },
