@@ -1,6 +1,6 @@
 'use client';
 
-import { X, Home, Building2, House, Map, FileText, Phone, MessageCircle, Info } from 'lucide-react';
+import { X, Home, Building2, House, Map, FileText, Phone, MessageCircle, FileWarning, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 import { CALL_URL, WHATSAPP_URL, BRAND_NAME, BRAND_OPERATOR } from '@/lib/constants';
 import { useEffect } from 'react';
@@ -16,7 +16,8 @@ const navItems = [
   { label: 'Villas', href: '/villas', icon: House },
   { label: 'Local Tours', href: '/tours', icon: Map },
   { label: 'Enquiry', href: '/enquiry', icon: FileText },
-  { label: 'Important Information', href: '/important-information', icon: Info },
+  { label: 'Disclaimer', href: '/disclaimer', icon: FileWarning },
+  { label: 'Privacy Policy', href: '/privacy-policy', icon: ShieldCheck },
   { label: 'Contact', href: '/contact', icon: Phone },
 ];
 
