@@ -1,5 +1,14 @@
 import { Tour } from '@/types';
 
+const defaultTourHighlights = [
+  { label: 'Private AC Cab', icon: 'Car' },
+  { label: 'Hotel Pickup/Drop', icon: 'MapPin' },
+  { label: 'Fuel Charges Incl.', icon: 'Fuel' },
+  { label: 'Driver Allowance Incl.', icon: 'UserCheck' },
+  { label: 'Toll & Parking Incl.', icon: 'CheckCircle' },
+  { label: '24*7 Travel Support', icon: 'Headphones' },
+];
+
 export const tours: Tour[] = [
   {
     id: 'tiger-point-sunrise',
@@ -9,6 +18,21 @@ export const tours: Tour[] = [
     priceLabel: 'From ₹1,499 / Car',
     image: '/images/tours/tiger-point.jpg',
     slug: 'tiger-point-sunrise-tour',
+    description: 'Witness a breathtaking sunrise from Lonavala\'s famous Tiger Point, followed by visits to scenic nearby spots.',
+    about: 'Experience the magic of early morning in the Western Ghats. A private vehicle will pick you up from your hotel or station and take you directly to Tiger Point to enjoy the sunrise, misty valley views, and fresh hot tea. This is a private car tour for up to 6 passengers.',
+    images: [
+      '/images/tours/tiger-point.jpg',
+      '/images/tours/sightseeing.jpg',
+      '/images/tours/waterfall.jpg',
+      '/images/tours/caves.jpg',
+    ],
+    amenities: defaultTourHighlights,
+    itinerary: [
+      { name: '05:30 AM — Hotel Pickup', description: 'Pickup in a clean, private air-conditioned vehicle.' },
+      { name: '06:15 AM — Tiger Point Sunrise', description: 'Reach Tiger Point to witness the stunning sunrise above the misty valley.' },
+      { name: '08:00 AM — Lion\'s Point & Shivling Point', description: 'Visit neighbouring scenic viewpoints for photography.' },
+      { name: '09:30 AM — Drop Back to Hotel', description: 'Safe drop back to your hotel or Lonavala station.' },
+    ],
   },
   {
     id: 'lonavala-sightseeing',
@@ -18,6 +42,22 @@ export const tours: Tour[] = [
     priceLabel: 'From ₹1,999 / Car',
     image: '/images/tours/sightseeing.jpg',
     slug: 'lonavala-sightseeing-tour',
+    description: 'Explore the key landmarks and attractions of Lonavala in a comfortable private cab tour.',
+    about: 'This custom sightseeing tour covers the iconic highlights of Lonavala including Lonavala Lake, Sunil\'s Wax Museum, Ryewood Park, and Khandala Sunset Point. Enjoy a flexible itinerary at your own pace with a dedicated driver. Perfect for families and groups.',
+    images: [
+      '/images/tours/sightseeing.jpg',
+      '/images/tours/tiger-point.jpg',
+      '/images/tours/waterfall.jpg',
+      '/images/tours/caves.jpg',
+    ],
+    amenities: defaultTourHighlights,
+    itinerary: [
+      { name: '09:30 AM — Hotel Pickup', description: 'Dedicated cab picks you up from your location.' },
+      { name: '10:15 AM — Wax Museum & Ryewood Park', description: 'Explore the wax museum and walk through the historic garden.' },
+      { name: '12:30 PM — Lonavala Lake & Local Market', description: 'Scenic drive around the lake and stop for local shopping.' },
+      { name: '02:30 PM — Sunset Point Khandala', description: 'Enjoy spectacular sunset views of the valley and expressway.' },
+      { name: '03:30 PM — Drop Back', description: 'Drop off at your preferred location in Lonavala.' },
+    ],
   },
   {
     id: 'nature-waterfall',
@@ -27,6 +67,21 @@ export const tours: Tour[] = [
     priceLabel: 'From ₹2,499 / Car',
     image: '/images/tours/waterfall.jpg',
     slug: 'lonavala-nature-waterfall-tour',
+    description: 'Experience Lonavala\'s gorgeous waterfalls and lush nature viewpoints during the monsoon season.',
+    about: 'The ultimate monsoon travel experience in Lonavala. Visit the spectacular Bhushi Dam, Kune Falls, and the lush green Kataldhar valley viewpoints. Safety is our priority, and our experienced driver will guide you to the safest spots to enjoy the monsoon flows.',
+    images: [
+      '/images/tours/waterfall.jpg',
+      '/images/tours/tiger-point.jpg',
+      '/images/tours/sightseeing.jpg',
+      '/images/tours/caves.jpg',
+    ],
+    amenities: defaultTourHighlights,
+    itinerary: [
+      { name: '10:00 AM — Pickup & Drive to Bhushi Dam', description: 'Start the day with a drive to Lonavala\'s famous steps waterfall.' },
+      { name: '12:00 PM — Kune Waterfalls Viewpoint', description: 'Witness India\'s 14th highest waterfall cascading down the valley.' },
+      { name: '02:00 PM — Monsoon Valley Drive', description: 'Scenic drive through green misty hills with multiple photo stops.' },
+      { name: '04:30 PM — Drop Back to Hotel', description: 'Return safely to your destination.' },
+    ],
   },
   {
     id: 'caves-bhaja',
@@ -36,5 +91,20 @@ export const tours: Tour[] = [
     priceLabel: 'From ₹1,799 / Car',
     image: '/images/tours/caves.jpg',
     slug: 'caves-bhaja-caves-tour',
+    description: 'Explore the ancient Buddhist rock-cut caves and historic architecture near Lonavala.',
+    about: 'Take a journey back in time with a private tour to the Karla and Bhaja Caves. These historic 2nd-century BC rock-cut Buddhist temples feature magnificent wooden architectures, stupas, and grand carvings. Includes a visit to the adjacent Ekvira Devi Temple.',
+    images: [
+      '/images/tours/caves.jpg',
+      '/images/tours/tiger-point.jpg',
+      '/images/tours/sightseeing.jpg',
+      '/images/tours/waterfall.jpg',
+    ],
+    amenities: defaultTourHighlights,
+    itinerary: [
+      { name: '09:00 AM — Pickup & Drive to Karla', description: 'Travel to the base of Karla Caves.' },
+      { name: '09:45 AM — Karla Caves & Temple', description: 'Climb the steps to visit the majestic Grand Chaitya cave.' },
+      { name: '12:00 PM — Bhaja Caves', description: 'Visit the quieter Bhaja Caves featuring ancient rock carvings.' },
+      { name: '02:00 PM — Drop Back to Lonavala', description: 'Return drive to your hotel.' },
+    ],
   },
 ];

@@ -1,3 +1,13 @@
+export interface Amenity {
+  label: string;
+  icon: string;
+}
+
+export interface RoomOption {
+  name: string;
+  description: string;
+}
+
 export interface Hotel {
   id: string;
   name: string;
@@ -8,6 +18,26 @@ export interface Hotel {
   priceLabel: string;
   image: string;
   slug: string;
+  description: string;
+  about: string;
+  images: string[];
+  amenities: Amenity[];
+  rooms: RoomOption[];
+}
+
+export interface Villa {
+  id: string;
+  name: string;
+  location: string;
+  bedrooms: number;
+  price: string;
+  image: string;
+  slug: string;
+  description: string;
+  about: string;
+  images: string[];
+  amenities: Amenity[];
+  rooms: RoomOption[];
 }
 
 export interface Tour {
@@ -18,6 +48,11 @@ export interface Tour {
   priceLabel: string;
   image: string;
   slug: string;
+  description: string;
+  about: string;
+  images: string[];
+  amenities: Amenity[];
+  itinerary: RoomOption[]; // Reusing name/description structure for itinerary points
 }
 
 export interface NavItem {

@@ -1,0 +1,95 @@
+import { Villa } from '@/types';
+
+const defaultAmenities = [
+  { label: 'Private Pool', icon: 'Waves' },
+  { label: 'Free Wi-Fi', icon: 'Wifi' },
+  { label: 'Parking Area', icon: 'CircleParking' },
+  { label: 'Kitchen Access', icon: 'Utensils' },
+  { label: 'Lawn/Garden', icon: 'Trees' },
+  { label: '24*7 Caretaker', icon: 'UserCheck' },
+];
+
+const defaultRooms = [
+  { name: 'Entire Villa Booking', description: 'Access to all bedrooms, private pool, and common spaces.' },
+  { name: 'Caretaker Support', description: 'Available round the clock for housekeeping and basic needs.' },
+  { name: 'Chef on Request', description: 'Professional cook can be arranged for meals (charges extra).' },
+];
+
+export const villas: Villa[] = [
+  {
+    id: 'green-valley-villa',
+    name: 'Green Valley Private Villa',
+    location: 'Lonavala',
+    bedrooms: 4,
+    price: 'From ₹15,000 / Night',
+    image: '/images/hotels/hotel-2.jpg',
+    slug: 'green-valley-private-villa',
+    description: 'A spacious and luxurious 4-BHK private villa located in a serene valley in Lonavala. Ideal for large family gatherings and weekend group stays.',
+    about: 'Featuring a private swimming pool, fully equipped kitchen, landscaped lawn, and round-the-clock caretaker service, Green Valley Private Villa ensures complete privacy and comfort. Submit an enquiry to check availability.',
+    images: [
+      '/images/hotels/hotel-2.jpg',
+      '/images/hotels/hotel-1.jpg',
+      '/images/hotels/hotel-3.jpg',
+      '/images/hotels/hotel-4.jpg',
+    ],
+    amenities: defaultAmenities,
+    rooms: defaultRooms,
+  },
+  {
+    id: 'mountain-view-villa',
+    name: 'Mountain View Villa',
+    location: 'Khandala',
+    bedrooms: 3,
+    price: 'From ₹12,000 / Night',
+    image: '/images/hotels/hotel-3.jpg',
+    slug: 'mountain-view-villa',
+    description: 'A stunning 3-BHK villa offering breathtaking panoramic views of the Khandala valley. Perfect for nature lovers and small groups.',
+    about: 'Perched on a hillside, this villa features spacious bedrooms, a private terrace, BBQ facilities, and high-speed Wi-Fi. Relax and unwind away from the city noise. Submit an enquiry to check current rates.',
+    images: [
+      '/images/hotels/hotel-3.jpg',
+      '/images/hotels/hotel-1.jpg',
+      '/images/hotels/hotel-2.jpg',
+      '/images/hotels/hotel-4.jpg',
+    ],
+    amenities: defaultAmenities,
+    rooms: defaultRooms,
+  },
+  {
+    id: 'lonavala-hillside-retreat',
+    name: 'Lonavala Hillside Retreat',
+    location: 'Lonavala',
+    bedrooms: 5,
+    price: 'From ₹22,000 / Night',
+    image: '/images/hotels/hotel-1.jpg',
+    slug: 'lonavala-hillside-retreat',
+    description: 'An expansive 5-BHK luxury estate designed for premium getaway experiences. Perfect for corporate retreats or large celebrations.',
+    about: 'Equipped with a grand private pool, indoor games area, modern kitchen, and top-tier services, this retreat offers the absolute best in hillside living. Enquire now for booking assistance.',
+    images: [
+      '/images/hotels/hotel-1.jpg',
+      '/images/hotels/hotel-2.jpg',
+      '/images/hotels/hotel-3.jpg',
+      '/images/hotels/hotel-4.jpg',
+    ],
+    amenities: defaultAmenities,
+    rooms: defaultRooms,
+  },
+  {
+    id: 'cozy-forest-villa',
+    name: 'Cozy Forest Villa',
+    location: 'Lonavala',
+    bedrooms: 2,
+    price: 'From ₹8,500 / Night',
+    image: '/images/hotels/hotel-4.jpg',
+    slug: 'cozy-forest-villa',
+    description: 'A peaceful 2-BHK villa surrounded by lush forest greenery in Lonavala. Ideal for couples or small families looking for quiet relaxation.',
+    about: 'This cozy cottage-style villa features a beautiful private garden, bonfire area, kitchen facilities, and comfortable bedrooms. Spend quality time close to nature. Submit your dates to check availability.',
+    images: [
+      '/images/hotels/hotel-4.jpg',
+      '/images/hotels/hotel-1.jpg',
+      '/images/hotels/hotel-2.jpg',
+      '/images/hotels/hotel-3.jpg',
+    ],
+    amenities: defaultAmenities,
+    rooms: defaultRooms,
+  },
+];
