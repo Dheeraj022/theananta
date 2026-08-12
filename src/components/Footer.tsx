@@ -27,19 +27,17 @@ const quickLinks = [
   { label: 'Hotels & Resorts', href: '/hotels' },
   { label: 'Villas in Lonavala', href: '/villas' },
   { label: 'Local Tours', href: '/tours' },
-  { label: 'Destinations', href: '/tours' },
-  { label: 'About Us', href: '/contact' },
   { label: 'Contact Us', href: '/contact' },
 ];
 
 const importantLinks = [
   { label: 'About Vidhi Tour & Travel', href: '/contact' },
-  { label: 'Terms & Conditions', href: '/disclaimer' },
+  { label: 'Terms & Conditions', href: '/terms-conditions' },
   { label: 'Privacy Policy', href: '/privacy-policy' },
   { label: 'Cancellation Policy', href: '/cancellation-policy' },
   { label: 'Refund Policy', href: '/refund-policy' },
   { label: 'Disclaimer', href: '/disclaimer' },
-  { label: 'Hotel Non-Affiliation', href: '/disclaimer' },
+  { label: 'Hotel Non-Affiliation', href: '/hotel-non-affiliation' },
 ];
 
 const services = [

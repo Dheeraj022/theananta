@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  Building2, House, Map, Plus, Pencil, Trash2, X, Check, AlertCircle, RefreshCw, Eye
+  Building2, House, Map, Plus, Pencil, Trash2, X, Check, AlertCircle, RefreshCw, Eye, Lock, Mail, Key, LogOut
 } from 'lucide-react';
 import {
   getHotels, saveHotel, deleteHotel,
@@ -12,6 +12,7 @@ import {
   getTours, saveTour, deleteTour
 } from '@/lib/db';
 import { Hotel, Villa, Tour, Amenity, RoomOption } from '@/types';
+import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 
 type Category = 'hotel' | 'villa' | 'tour';
 
@@ -49,6 +50,16 @@ export default function AdminDashboard() {
   const [tours, setTours] = useState<Tour[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
+
+  // Auth States
+  const [user, setUser] = useState<any>(null);
+  const [checkingAuth, setCheckingAuth] = useState(true);
+  const [authTab, setAuthTab] = useState<'signin' | 'register'>('signin');
+  const [authEmail, setAuthEmail] = useState('');
+  const [authPassword, setAuthPassword] = useState('');
+  const [authKey, setAuthKey] = useState('');
+  const [authError, setAuthError] = useState('');
+  const [authLoading, setAuthLoading] = useState(false);
 
   // Form Modal States
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -99,8 +110,143 @@ export default function AdminDashboard() {
   };
 
   useEffect(() => {
-    loadAllData();
+    const checkUser = async () => {
+      setCheckingAuth(true);
+      if (isSupabaseConfigured && supabase) {
+        const { data: { user } } = await supabase.auth.getUser();
+        setUser(user);
+      } else {
+        const localUser = localStorage.getItem('admin_user');
+        if (localUser) {
+          try {
+            setUser(JSON.parse(localUser));
+          } catch {
+            setUser(null);
+          }
+        }
+      }
+      setCheckingAuth(false);
+    };
+
+    checkUser();
+
+    if (isSupabaseConfigured && supabase) {
+      const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+        setUser(session?.user ?? null);
+      });
+      return () => {
+        subscription.unsubscribe();
+      };
+    }
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      loadAllData();
+    }
+  }, [user]);
+
+  const handleRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAuthError('');
+    if (!authEmail.trim() || !authPassword.trim()) {
+      setAuthError('Email and password are required');
+      return;
+    }
+    if (authPassword.length < 6) {
+      setAuthError('Password must be at least 6 characters');
+      return;
+    }
+    if (authKey.trim() !== 'LONA2026') {
+      setAuthError('Invalid Special Registration Key');
+      return;
+    }
+
+    setAuthLoading(true);
+    try {
+      if (isSupabaseConfigured && supabase) {
+        const { data, error } = await supabase.auth.signUp({
+          email: authEmail,
+          password: authPassword,
+        });
+        if (error) {
+          setAuthError(error.message);
+        } else if (data?.user) {
+          showAlert('Registration successful! Check your email or try signing in.', 'success');
+          setAuthTab('signin');
+          setAuthPassword('');
+          setAuthKey('');
+        }
+      } else {
+        // Local fallback storage user list
+        const localUsers = JSON.parse(localStorage.getItem('admin_users') || '[]');
+        if (localUsers.some((u: any) => u.email === authEmail)) {
+          setAuthError('Email is already registered');
+        } else {
+          localUsers.push({ email: authEmail, password: authPassword });
+          localStorage.setItem('admin_users', JSON.stringify(localUsers));
+          showAlert('Local Registration successful! You can now Sign In.', 'success');
+          setAuthTab('signin');
+          setAuthPassword('');
+          setAuthKey('');
+        }
+      }
+    } catch (err: any) {
+      setAuthError(err.message || 'Error occurred during registration');
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
+  const handleSignIn = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAuthError('');
+    if (!authEmail.trim() || !authPassword.trim()) {
+      setAuthError('Email and password are required');
+      return;
+    }
+
+    setAuthLoading(true);
+    try {
+      if (isSupabaseConfigured && supabase) {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: authEmail,
+          password: authPassword,
+        });
+        if (error) {
+          setAuthError(error.message);
+        } else if (data?.user) {
+          setUser(data.user);
+          showAlert('Signed in successfully', 'success');
+        }
+      } else {
+        const localUsers = JSON.parse(localStorage.getItem('admin_users') || '[]');
+        const matched = localUsers.find((u: any) => u.email === authEmail && u.password === authPassword);
+        if (matched) {
+          const userObj = { email: authEmail };
+          localStorage.setItem('admin_user', JSON.stringify(userObj));
+          setUser(userObj);
+          showAlert('Signed in locally successfully', 'success');
+        } else {
+          setAuthError('Invalid email or password');
+        }
+      }
+    } catch (err: any) {
+      setAuthError(err.message || 'Error occurred during sign in');
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
+  const handleSignOut = async () => {
+    if (isSupabaseConfigured && supabase) {
+      await supabase.auth.signOut();
+    } else {
+      localStorage.removeItem('admin_user');
+    }
+    setUser(null);
+    showAlert('Signed out successfully', 'success');
+  };
 
   const showAlert = (message: string, type: 'success' | 'error') => {
     setAlert({ message, type });
@@ -315,6 +461,151 @@ export default function AdminDashboard() {
     t.description.toLowerCase().includes(search.toLowerCase())
   );
 
+  if (checkingAuth) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+        <div className="text-center">
+          <RefreshCw className="animate-spin text-[#075B3A] mx-auto mb-3" size={32} />
+          <p className="text-gray-600 text-sm font-medium">Verifying administrator credentials...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+        <div className="w-full max-w-[420px] bg-white rounded-2xl border border-gray-200 shadow-xl overflow-hidden">
+          
+          {/* Logo Brand Header */}
+          <div className="bg-[#075B3A] text-white px-6 py-6 text-center">
+            <div className="inline-flex w-12 h-12 bg-white/10 rounded-2xl items-center justify-center mb-3">
+              <Lock size={24} />
+            </div>
+            <h1 className="text-lg font-black tracking-wider uppercase">VALLEY CITY STAY HUB</h1>
+            <p className="text-green-200 text-xs mt-1">Admin Access Console</p>
+          </div>
+
+          {/* Form Content */}
+          <div className="p-6">
+            
+            {/* Tabs */}
+            <div className="flex bg-gray-100 p-1 rounded-xl mb-6">
+              <button
+                type="button"
+                onClick={() => { setAuthTab('signin'); setAuthError(''); }}
+                className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                  authTab === 'signin' ? 'bg-white text-[#17211D] shadow-sm' : 'text-gray-500 hover:text-[#075B3A]'
+                }`}
+              >
+                Sign In
+              </button>
+              <button
+                type="button"
+                onClick={() => { setAuthTab('register'); setAuthError(''); }}
+                className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                  authTab === 'register' ? 'bg-white text-[#17211D] shadow-sm' : 'text-gray-500 hover:text-[#075B3A]'
+                }`}
+              >
+                Register
+              </button>
+            </div>
+
+            {/* Error alerts */}
+            {authError && (
+              <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl flex items-start gap-2.5 text-xs text-red-800">
+                <AlertCircle size={14} className="shrink-0 mt-0.5" />
+                <span className="font-semibold leading-relaxed">{authError}</span>
+              </div>
+            )}
+
+            {/* General alert success message */}
+            {alert && (
+              <div className={`mb-4 p-3 rounded-xl flex items-start gap-2.5 text-xs ${
+                alert.type === 'success' ? 'bg-green-50 border border-green-200 text-green-800' : 'bg-red-50 border border-red-200 text-red-800'
+              }`}>
+                {alert.type === 'success' ? <Check size={14} className="shrink-0 mt-0.5" /> : <AlertCircle size={14} className="shrink-0 mt-0.5" />}
+                <span className="font-semibold leading-relaxed">{alert.message}</span>
+              </div>
+            )}
+
+            {/* Auth Form */}
+            <form onSubmit={authTab === 'signin' ? handleSignIn : handleRegister} className="space-y-4">
+              
+              {/* Email */}
+              <div className="space-y-1">
+                <label className="flex items-center gap-1.5 text-[10px] font-bold text-gray-500 uppercase tracking-wide">
+                  <Mail size={11} />
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={authEmail}
+                  onChange={(e) => setAuthEmail(e.target.value)}
+                  placeholder="admin@example.com"
+                  className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent transition-all"
+                />
+              </div>
+
+              {/* Password */}
+              <div className="space-y-1">
+                <label className="flex items-center gap-1.5 text-[10px] font-bold text-gray-500 uppercase tracking-wide">
+                  <Lock size={11} />
+                  Password
+                </label>
+                <input
+                  type="password"
+                  required
+                  value={authPassword}
+                  onChange={(e) => setAuthPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent transition-all"
+                />
+              </div>
+
+              {/* Special Key (Register only) */}
+              {authTab === 'register' && (
+                <div className="space-y-1">
+                  <label className="flex items-center gap-1.5 text-[10px] font-bold text-gray-500 uppercase tracking-wide">
+                    <Key size={11} />
+                    Special Registration Key
+                  </label>
+                  <input
+                    type="password"
+                    required
+                    value={authKey}
+                    onChange={(e) => setAuthKey(e.target.value)}
+                    placeholder="Enter registration key"
+                    className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent transition-all font-mono"
+                  />
+                  <p className="text-[10px] text-gray-400">Please provide the special key to authorize registration.</p>
+                </div>
+              )}
+
+              {/* Submit button */}
+              <button
+                type="submit"
+                disabled={authLoading}
+                className="w-full py-3 bg-[#075B3A] hover:bg-[#06472F] text-white font-bold rounded-xl text-xs sm:text-sm shadow-md transition-colors cursor-pointer disabled:opacity-50 flex items-center justify-center gap-1.5"
+              >
+                {authLoading ? (
+                  <RefreshCw className="animate-spin" size={14} />
+                ) : authTab === 'signin' ? (
+                  'Sign In to Console'
+                ) : (
+                  'Register Admin Account'
+                )}
+              </button>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-gray-50 min-h-screen pb-16">
       {/* Admin Header */}
@@ -322,15 +613,27 @@ export default function AdminDashboard() {
         <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 py-5 flex items-center justify-between">
           <div>
             <h1 className="text-xl sm:text-2xl font-black tracking-wide">VALLEY CITY STAY HUB</h1>
-            <p className="text-green-200 text-xs sm:text-sm font-medium">Vidhi Tour &amp; Travel · Admin Console</p>
+            <p className="text-green-200 text-xs sm:text-sm font-medium">
+              Vidhi Tour &amp; Travel · Admin Console ({user?.email})
+            </p>
           </div>
-          <button
-            onClick={loadAllData}
-            title="Refresh database"
-            className="p-2 bg-white/10 hover:bg-white/20 rounded-xl transition-colors cursor-pointer"
-          >
-            <RefreshCw size={16} />
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={loadAllData}
+              title="Refresh database"
+              className="p-2 bg-white/10 hover:bg-white/20 rounded-xl transition-colors cursor-pointer"
+            >
+              <RefreshCw size={16} />
+            </button>
+            <button
+              onClick={handleSignOut}
+              title="Sign Out"
+              className="p-2 bg-red-600 hover:bg-red-700 rounded-xl transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-bold"
+            >
+              <LogOut size={14} />
+              <span>Log Out</span>
+            </button>
+          </div>
         </div>
       </header>
 
