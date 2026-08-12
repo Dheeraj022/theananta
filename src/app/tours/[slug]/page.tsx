@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { tours } from '@/data/tours';
+import { getTours } from '@/lib/db';
 import ListingDetailLayout from '@/components/ListingDetailLayout';
 import Footer from '@/components/Footer';
 
@@ -9,12 +9,14 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return tours.map((t) => ({ slug: t.slug }));
+  const list = await getTours();
+  return list.map((t) => ({ slug: t.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const tour = tours.find((t) => t.slug === slug);
+  const list = await getTours();
+  const tour = list.find((t) => t.slug === slug);
   if (!tour) return {};
   return {
     title: `${tour.name} – Lonavala Tour | Valley City Stay Hub`,
@@ -24,7 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function TourDetailPage({ params }: Props) {
   const { slug } = await params;
-  const tour = tours.find((t) => t.slug === slug);
+  const list = await getTours();
+  const tour = list.find((t) => t.slug === slug);
   if (!tour) notFound();
 
   return (

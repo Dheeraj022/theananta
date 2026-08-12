@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
-import { tours } from '@/data/tours';
+import { getTours } from '@/lib/db';
 import TourCard from './TourCard';
 
-export default function TourCarousel() {
+export default async function TourCarousel() {
+  const tours = await getTours();
   return (
     <section className="mx-auto w-full max-w-[1200px] px-3 sm:px-5 lg:px-6 mt-6 sm:mt-8">
       {/* Section Header */}

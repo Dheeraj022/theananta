@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
-import { hotels } from '@/data/hotels';
+import { getHotels } from '@/lib/db';
 import HotelCard from './HotelCard';
 
-export default function HotelCarousel() {
+export default async function HotelCarousel() {
+  const hotels = await getHotels();
   return (
     <section className="mx-auto w-full max-w-[1200px] px-3 sm:px-5 lg:px-6 mt-6 sm:mt-8">
       {/* Section Header */}

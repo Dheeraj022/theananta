@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { hotels } from '@/data/hotels';
+import { getHotels } from '@/lib/db';
 import ListingDetailLayout from '@/components/ListingDetailLayout';
 import Footer from '@/components/Footer';
 
@@ -9,12 +9,14 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return hotels.map((h) => ({ slug: h.slug }));
+  const list = await getHotels();
+  return list.map((h) => ({ slug: h.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const hotel = hotels.find((h) => h.slug === slug);
+  const list = await getHotels();
+  const hotel = list.find((h) => h.slug === slug);
   if (!hotel) return {};
   return {
     title: `${hotel.name} – Lonavala Hotel | Valley City Stay Hub`,
@@ -24,7 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function HotelDetailPage({ params }: Props) {
   const { slug } = await params;
-  const hotel = hotels.find((h) => h.slug === slug);
+  const list = await getHotels();
+  const hotel = list.find((h) => h.slug === slug);
   if (!hotel) notFound();
 
   return (

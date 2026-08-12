@@ -2,14 +2,15 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
-import { villas } from '@/data/villas';
+import { getVillas } from '@/lib/db';
 
 export const metadata: Metadata = {
   title: 'Villas in Lonavala | Valley City Stay Hub',
   description: 'Find private villas in Lonavala for your family or group. Book with Valley City Stay Hub for the best deals and local assistance.',
 };
 
-export default function VillasPage() {
+export default async function VillasPage() {
+  const villas = await getVillas();
   return (
     <>
       <div className="mx-auto w-full max-w-[1200px] px-3 sm:px-5 lg:px-6 py-6 sm:py-8">

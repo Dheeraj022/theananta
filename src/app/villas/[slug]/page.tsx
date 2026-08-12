@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { villas } from '@/data/villas';
+import { getVillas } from '@/lib/db';
 import ListingDetailLayout from '@/components/ListingDetailLayout';
 import Footer from '@/components/Footer';
 
@@ -9,12 +9,14 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return villas.map((v) => ({ slug: v.slug }));
+  const list = await getVillas();
+  return list.map((v) => ({ slug: v.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const villa = villas.find((v) => v.slug === slug);
+  const list = await getVillas();
+  const villa = list.find((v) => v.slug === slug);
   if (!villa) return {};
   return {
     title: `${villa.name} – Lonavala Villa | Valley City Stay Hub`,
@@ -24,7 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function VillaDetailPage({ params }: Props) {
   const { slug } = await params;
-  const villa = villas.find((v) => v.slug === slug);
+  const list = await getVillas();
+  const villa = list.find((v) => v.slug === slug);
   if (!villa) notFound();
 
   return (

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { MapPin, Star } from 'lucide-react';
-import { hotels } from '@/data/hotels';
+import { getHotels } from '@/lib/db';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
@@ -10,7 +10,8 @@ export const metadata: Metadata = {
   description: 'Browse popular hotels and resorts in Lonavala. Get booking assistance from Valley City Stay Hub – your trusted local travel agency.',
 };
 
-export default function HotelsPage() {
+export default async function HotelsPage() {
+  const hotels = await getHotels();
   return (
     <>
       <div className="mx-auto w-full max-w-[1200px] px-3 sm:px-5 lg:px-6 py-6 sm:py-8">

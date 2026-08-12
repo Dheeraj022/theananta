@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Clock3, ChevronRight } from 'lucide-react';
-import { tours } from '@/data/tours';
+import { getTours } from '@/lib/db';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
@@ -10,7 +10,8 @@ export const metadata: Metadata = {
   description: 'Explore Lonavala with curated local tours. Tiger Point, Sightseeing, Waterfall and Caves tours starting from ₹1,499. Book with Valley City Stay Hub.',
 };
 
-export default function ToursPage() {
+export default async function ToursPage() {
+  const tours = await getTours();
   return (
     <>
       <div className="mx-auto w-full max-w-[1200px] px-3 sm:px-5 lg:px-6 py-6 sm:py-8">
