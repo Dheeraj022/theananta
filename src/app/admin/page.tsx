@@ -287,7 +287,7 @@ export default function AdminDashboard() {
       reviews: '100+',
       price: 0,
       priceLabel: activeTab === 'tour' ? 'From ₹1,499 / Car' : 'From ₹10,000 / Night',
-      image: '/images/hotels/hotel-1.jpg',
+      image: '',
       slug: '',
       description: '',
       about: '',
@@ -298,16 +298,11 @@ export default function AdminDashboard() {
     setSelectedAmenities([...initialAmenityOptions[activeTab]]);
     
     setCoverFile(null);
-    setCoverPreviewUrl('/images/hotels/hotel-1.jpg');
+    setCoverPreviewUrl(null);
     setCoverFileName('');
     setCoverDimensions('');
     setGalleryFiles([]);
-    setExistingGalleryImages([
-      '/images/hotels/hotel-1.jpg',
-      '/images/hotels/hotel-2.jpg',
-      '/images/hotels/hotel-3.jpg',
-      '/images/hotels/hotel-4.jpg'
-    ]);
+    setExistingGalleryImages([]);
 
     if (activeTab === 'tour') {
       setOptionsList([
@@ -337,7 +332,7 @@ export default function AdminDashboard() {
       rating: item.rating || 4.5,
       reviews: item.reviews || '100+',
       price: item.price || 0,
-      priceLabel: item.priceLabel,
+      priceLabel: item.priceLabel || item.price || '',
       image: item.image,
       slug: item.slug,
       description: item.description || '',

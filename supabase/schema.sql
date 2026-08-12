@@ -56,29 +56,26 @@ CREATE TABLE IF NOT EXISTS public.tours (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- Enable RLS (Row Level Security) - optional but recommended for security.
--- Here we'll configure simple public read, authenticated write policies.
+-- Enable RLS (Row Level Security)
 ALTER TABLE public.hotels ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.villas ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.tours ENABLE ROW LEVEL SECURITY;
 
+-- Grant ALL actions (SELECT, INSERT, UPDATE, DELETE) to PUBLIC role (anon & authenticated)
 DROP POLICY IF EXISTS "Allow public read hotels" ON public.hotels;
-CREATE POLICY "Allow public read hotels" ON public.hotels FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Allow all actions for authenticated users on hotels" ON public.hotels;
+DROP POLICY IF EXISTS "Allow all actions for public on hotels" ON public.hotels;
+CREATE POLICY "Allow all actions for public on hotels" ON public.hotels FOR ALL TO public USING (true) WITH CHECK (true);
 
 DROP POLICY IF EXISTS "Allow public read villas" ON public.villas;
-CREATE POLICY "Allow public read villas" ON public.villas FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Allow all actions for authenticated users on villas" ON public.villas;
+DROP POLICY IF EXISTS "Allow all actions for public on villas" ON public.villas;
+CREATE POLICY "Allow all actions for public on villas" ON public.villas FOR ALL TO public USING (true) WITH CHECK (true);
 
 DROP POLICY IF EXISTS "Allow public read tours" ON public.tours;
-CREATE POLICY "Allow public read tours" ON public.tours FOR SELECT USING (true);
-
-DROP POLICY IF EXISTS "Allow all actions for authenticated users on hotels" ON public.hotels;
-CREATE POLICY "Allow all actions for authenticated users on hotels" ON public.hotels FOR ALL USING (true) WITH CHECK (true);
-
-DROP POLICY IF EXISTS "Allow all actions for authenticated users on villas" ON public.villas;
-CREATE POLICY "Allow all actions for authenticated users on villas" ON public.villas FOR ALL USING (true) WITH CHECK (true);
-
 DROP POLICY IF EXISTS "Allow all actions for authenticated users on tours" ON public.tours;
-CREATE POLICY "Allow all actions for authenticated users on tours" ON public.tours FOR ALL USING (true) WITH CHECK (true);
+DROP POLICY IF EXISTS "Allow all actions for public on tours" ON public.tours;
+CREATE POLICY "Allow all actions for public on tours" ON public.tours FOR ALL TO public USING (true) WITH CHECK (true);
 
 
 -- ── INITIAL SEED DATA ──

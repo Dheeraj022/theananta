@@ -36,7 +36,7 @@ export async function getHotels(): Promise<Hotel[]> {
       .select('*')
       .order('created_at', { ascending: true });
     if (!error && data) return data as Hotel[];
-    console.error('Supabase getHotels error:', error.message, error.details, error.hint, error.code);
+    console.warn('Supabase getHotels error:', error.message, error.details, error.hint, error.code);
   }
   return getMockData<Hotel>('lonavala_hotels', initialHotels);
 }
@@ -62,7 +62,7 @@ export async function saveHotel(hotel: Hotel): Promise<boolean> {
         rooms: hotel.rooms,
       });
     if (!error) return true;
-    console.error('Supabase saveHotel error:', error.message, error.details, error.hint, error.code);
+    console.warn('Supabase saveHotel error:', error.message, error.details, error.hint, error.code);
     return false;
   }
 
@@ -85,7 +85,7 @@ export async function deleteHotel(id: string): Promise<boolean> {
       .delete()
       .eq('id', id);
     if (!error) return true;
-    console.error('Supabase deleteHotel error:', error.message, error.details, error.hint, error.code);
+    console.warn('Supabase deleteHotel error:', error.message, error.details, error.hint, error.code);
     return false;
   }
 
@@ -105,7 +105,7 @@ export async function getVillas(): Promise<Villa[]> {
       .select('*')
       .order('created_at', { ascending: true });
     if (!error && data) return data as Villa[];
-    console.error('Supabase getVillas error:', error.message, error.details, error.hint, error.code);
+    console.warn('Supabase getVillas error:', error.message, error.details, error.hint, error.code);
   }
   return getMockData<Villa>('lonavala_villas', initialVillas);
 }
@@ -129,7 +129,7 @@ export async function saveVilla(villa: Villa): Promise<boolean> {
         rooms: villa.rooms,
       });
     if (!error) return true;
-    console.error('Supabase saveVilla error:', error.message, error.details, error.hint, error.code);
+    console.warn('Supabase saveVilla error:', error.message, error.details, error.hint, error.code);
     return false;
   }
 
@@ -152,7 +152,7 @@ export async function deleteVilla(id: string): Promise<boolean> {
       .delete()
       .eq('id', id);
     if (!error) return true;
-    console.error('Supabase deleteVilla error:', error.message, error.details, error.hint, error.code);
+    console.warn('Supabase deleteVilla error:', error.message, error.details, error.hint, error.code);
     return false;
   }
 
@@ -172,7 +172,7 @@ export async function getTours(): Promise<Tour[]> {
       .select('*')
       .order('created_at', { ascending: true });
     if (!error && data) return data as Tour[];
-    console.error('Supabase getTours error:', error.message, error.details, error.hint, error.code);
+    console.warn('Supabase getTours error:', error.message, error.details, error.hint, error.code);
   }
   return getMockData<Tour>('lonavala_tours', initialTours);
 }
@@ -196,7 +196,7 @@ export async function saveTour(tour: Tour): Promise<boolean> {
         itinerary: tour.itinerary,
       });
     if (!error) return true;
-    console.error('Supabase saveTour error:', error.message, error.details, error.hint, error.code);
+    console.warn('Supabase saveTour error:', error.message, error.details, error.hint, error.code);
     return false;
   }
 
@@ -219,7 +219,7 @@ export async function deleteTour(id: string): Promise<boolean> {
       .delete()
       .eq('id', id);
     if (!error) return true;
-    console.error('Supabase deleteTour error:', error.message, error.details, error.hint, error.code);
+    console.warn('Supabase deleteTour error:', error.message, error.details, error.hint, error.code);
     return false;
   }
 
