@@ -1,26 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary: #075B3A;
+  --color-primary-dark: #06472F;
+  --color-primary-light: #EAF5EF;
+  --color-primary-border: #C5DDD1;
+  --color-text-primary: #17211D;
+  --color-text-secondary: #66716C;
+  --color-surface: #F7F9F7;
+  --color-border: #DCE4DF;
+  --color-warning: #E2A52A;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  color: #17211D;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hide scrollbar but keep scrolling */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Scroll snap */
+.snap-x-mandatory {
+  scroll-snap-type: x mandatory;
+}
+.snap-start {
+  scroll-snap-align: start;
+}
+
+/* Safe area for mobile bottom nav */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }

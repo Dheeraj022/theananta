@@ -1,0 +1,48 @@
+import { Hotel } from '@/types';
+
+export const hotels: Hotel[] = [
+  {
+    id: 'aamby-valley',
+    name: 'Aamby Valley City',
+    location: 'Lonavala',
+    rating: 4.5,
+    reviews: '1200+',
+    price: 18000,
+    priceLabel: 'From ₹18,000 / Night',
+    image: '/images/hotels/hotel-1.jpg',
+    slug: 'aamby-valley-city',
+  },
+  {
+    id: 'della-resorts',
+    name: 'Della Resorts',
+    location: 'Kunegaon, Lonavala',
+    rating: 4.6,
+    reviews: '950+',
+    price: 14999,
+    priceLabel: 'From ₹14,999 / Night',
+    image: '/images/hotels/hotel-2.jpg',
+    slug: 'della-resorts',
+  },
+  {
+    id: 'fariyas-resort',
+    name: 'Fariyas Resort',
+    location: 'Lonavala',
+    rating: 4.4,
+    reviews: '700+',
+    price: 10500,
+    priceLabel: 'From ₹10,500 / Night',
+    image: '/images/hotels/hotel-3.jpg',
+    slug: 'fariyas-resort',
+  },
+  {
+    id: 'rhythm-lonavala',
+    name: 'Rhythm Lonavala',
+    location: 'Lonavala',
+    rating: 4.3,
+    reviews: '600+',
+    price: 8999,
+    priceLabel: 'From ₹8,999 / Night',
+    image: '/images/hotels/hotel-4.jpg',
+    slug: 'rhythm-lonavala',
+  },
+];
