@@ -1,4 +1,5 @@
 import HeroSection from '@/components/HeroSection';
+import BookingSearch from '@/components/BookingSearch';
 import TrustFeatures from '@/components/TrustFeatures';
 import HotelCarousel from '@/components/HotelCarousel';
 import TourCarousel from '@/components/TourCarousel';
@@ -12,6 +13,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <BookingSearch />
       <TrustFeatures />
       <HotelCarousel />
       <TourCarousel />

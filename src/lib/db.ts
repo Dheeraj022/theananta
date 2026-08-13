@@ -38,7 +38,7 @@ export async function getHotels(): Promise<Hotel[]> {
     if (!error && data) return data as Hotel[];
     console.warn('Supabase getHotels error:', error.message, error.details, error.hint, error.code);
   }
-  return getMockData<Hotel>('lonavala_hotels', initialHotels);
+  return getMockData<Hotel>('lonavala_hotels_v2', initialHotels);
 }
 
 export async function saveHotel(hotel: Hotel): Promise<boolean> {
@@ -67,14 +67,14 @@ export async function saveHotel(hotel: Hotel): Promise<boolean> {
   }
 
   // Local Storage Fallback
-  const list = getMockData<Hotel>('lonavala_hotels', initialHotels);
+  const list = getMockData<Hotel>('lonavala_hotels_v2', initialHotels);
   const idx = list.findIndex((h) => h.id === hotel.id);
   if (idx > -1) {
     list[idx] = hotel;
   } else {
     list.push(hotel);
   }
-  setMockData('lonavala_hotels', list);
+  setMockData('lonavala_hotels_v2', list);
   return true;
 }
 
@@ -90,9 +90,9 @@ export async function deleteHotel(id: string): Promise<boolean> {
   }
 
   // Local Storage Fallback
-  const list = getMockData<Hotel>('lonavala_hotels', initialHotels);
+  const list = getMockData<Hotel>('lonavala_hotels_v2', initialHotels);
   const updated = list.filter((h) => h.id !== id);
-  setMockData('lonavala_hotels', updated);
+  setMockData('lonavala_hotels_v2', updated);
   return true;
 }
 
@@ -107,7 +107,7 @@ export async function getVillas(): Promise<Villa[]> {
     if (!error && data) return data as Villa[];
     console.warn('Supabase getVillas error:', error.message, error.details, error.hint, error.code);
   }
-  return getMockData<Villa>('lonavala_villas', initialVillas);
+  return getMockData<Villa>('lonavala_villas_v2', initialVillas);
 }
 
 export async function saveVilla(villa: Villa): Promise<boolean> {
@@ -134,14 +134,14 @@ export async function saveVilla(villa: Villa): Promise<boolean> {
   }
 
   // Local Storage Fallback
-  const list = getMockData<Villa>('lonavala_villas', initialVillas);
+  const list = getMockData<Villa>('lonavala_villas_v2', initialVillas);
   const idx = list.findIndex((v) => v.id === villa.id);
   if (idx > -1) {
     list[idx] = villa;
   } else {
     list.push(villa);
   }
-  setMockData('lonavala_villas', list);
+  setMockData('lonavala_villas_v2', list);
   return true;
 }
 
@@ -157,9 +157,9 @@ export async function deleteVilla(id: string): Promise<boolean> {
   }
 
   // Local Storage Fallback
-  const list = getMockData<Villa>('lonavala_villas', initialVillas);
+  const list = getMockData<Villa>('lonavala_villas_v2', initialVillas);
   const updated = list.filter((v) => v.id !== id);
-  setMockData('lonavala_villas', updated);
+  setMockData('lonavala_villas_v2', updated);
   return true;
 }
 
@@ -174,7 +174,7 @@ export async function getTours(): Promise<Tour[]> {
     if (!error && data) return data as Tour[];
     console.warn('Supabase getTours error:', error.message, error.details, error.hint, error.code);
   }
-  return getMockData<Tour>('lonavala_tours', initialTours);
+  return getMockData<Tour>('lonavala_tours_v2', initialTours);
 }
 
 export async function saveTour(tour: Tour): Promise<boolean> {
@@ -201,14 +201,14 @@ export async function saveTour(tour: Tour): Promise<boolean> {
   }
 
   // Local Storage Fallback
-  const list = getMockData<Tour>('lonavala_tours', initialTours);
+  const list = getMockData<Tour>('lonavala_tours_v2', initialTours);
   const idx = list.findIndex((t) => t.id === tour.id);
   if (idx > -1) {
     list[idx] = tour;
   } else {
     list.push(tour);
   }
-  setMockData('lonavala_tours', list);
+  setMockData('lonavala_tours_v2', list);
   return true;
 }
 
@@ -224,8 +224,8 @@ export async function deleteTour(id: string): Promise<boolean> {
   }
 
   // Local Storage Fallback
-  const list = getMockData<Tour>('lonavala_tours', initialTours);
+  const list = getMockData<Tour>('lonavala_tours_v2', initialTours);
   const updated = list.filter((t) => t.id !== id);
-  setMockData('lonavala_tours', updated);
+  setMockData('lonavala_tours_v2', updated);
   return true;
 }
