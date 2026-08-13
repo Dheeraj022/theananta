@@ -24,6 +24,8 @@ const initialAmenityOptions: Record<Category, { label: string; icon: string }[]>
     { label: 'Wi-Fi', icon: 'Wifi' },
     { label: 'Room Service', icon: 'ConciergeBell' },
     { label: '24*7 Support', icon: 'Headphones' },
+    { label: 'Gym / Fitness', icon: 'Dumbbell' },
+    { label: 'Spa & Wellness', icon: 'Flower2' },
   ],
   villa: [
     { label: 'Private Pool', icon: 'Waves' },
