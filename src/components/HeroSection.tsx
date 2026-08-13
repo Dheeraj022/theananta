@@ -69,7 +69,7 @@ export default function HeroSection() {
         </div>
 
         {/* Help Card for mobile/tablet — below hero text */}
-        <div className="lg:hidden flex justify-center pb-6">
+        <div className="lg:hidden flex justify-start pb-12">
           <HelpCard />
         </div>
       </div>

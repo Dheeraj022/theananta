@@ -63,7 +63,7 @@ const paymentMethods = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0D2B1F] text-white" aria-label="Site footer">
+    <footer className="bg-[#0D2B1F] text-white mt-8 lg:mt-16" aria-label="Site footer">
 
       {/* ── Section 1: Brand + Social ── */}
       <div className="border-b border-white/10">

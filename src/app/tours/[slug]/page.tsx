@@ -46,7 +46,7 @@ export default async function TourDetailPage({ params }: Props) {
         optionSectionTitle="Tour Itinerary"
         optionSectionSubtitle="Standard schedule for this sightseeing tour. Timings can be customized on request."
         type="tour"
-        priceLabel={tour.priceLabel}
+        priceLabel={tour.priceLabel || `From ₹${tour.price}`}
       />
       <Footer />
       <div className="h-16 lg:hidden" aria-hidden="true" />

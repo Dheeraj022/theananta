@@ -46,7 +46,7 @@ export default async function HotelDetailPage({ params }: Props) {
         optionSectionTitle="Accommodation"
         optionSectionSubtitle="Room types available at this property. Room availability is subject to dates and occupancy."
         type="hotel"
-        priceLabel={hotel.priceLabel}
+        priceLabel={hotel.priceLabel || `From ₹${hotel.price} / Night`}
       />
       <Footer />
       <div className="h-16 lg:hidden" aria-hidden="true" />
