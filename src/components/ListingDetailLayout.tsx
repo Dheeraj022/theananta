@@ -91,6 +91,9 @@ export default function ListingDetailLayout({
   const [modalErrors, setModalErrors] = useState<Record<string, string>>({});
   const [modalSubmitted, setModalSubmitted] = useState(false);
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isModalSubmitting, setIsModalSubmitting] = useState(false);
+
   const today = new Date().toISOString().split('T')[0];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -116,10 +119,28 @@ export default function ListingDetailLayout({
     return Object.keys(errs).length === 0;
   };
 
-  const handleModalSubmit = (e: React.FormEvent) => {
+  const handleModalSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateModal()) return;
-    setModalSubmitted(true);
+    
+    setIsModalSubmitting(true);
+    try {
+      const response = await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...modalForm, listingName: title, type: type, service: selectedOption }),
+      });
+      if (response.ok) {
+        setModalSubmitted(true);
+      } else {
+        alert('Failed to submit. Please try again.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('An error occurred. Please try again.');
+    } finally {
+      setIsModalSubmitting(false);
+    }
   };
 
   const handleCheckAvailability = (optionName: string) => {
@@ -149,10 +170,28 @@ export default function ListingDetailLayout({
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    setSubmitted(true);
+    
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, listingName: title, type: type, service: 'General Enquiry' }),
+      });
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        alert('Failed to submit. Please try again.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('An error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToEnquiry = () => {
@@ -436,10 +475,11 @@ export default function ListingDetailLayout({
                 {/* Submit button */}
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 bg-[#075B3A] hover:bg-[#06472F] text-white font-semibold rounded-xl py-3 text-xs sm:text-sm transition-colors cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full flex items-center justify-center gap-2 bg-[#075B3A] hover:bg-[#06472F] text-white font-semibold rounded-xl py-3 text-xs sm:text-sm transition-colors cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   <Send size={14} />
-                  SUBMIT ENQUIRY
+                  {isSubmitting ? 'SUBMITTING...' : 'SUBMIT ENQUIRY'}
                 </button>
 
                 <p className="text-center text-[10px] text-[#66716C] leading-snug px-1 pt-1.5 border-t border-[#DCE4DF]">
@@ -607,10 +647,11 @@ export default function ListingDetailLayout({
                 {/* Submit button */}
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 bg-[#075B3A] hover:bg-[#06472F] text-white font-semibold rounded-xl py-3 text-xs sm:text-sm transition-colors cursor-pointer"
+                  disabled={isModalSubmitting}
+                  className="w-full flex items-center justify-center gap-2 bg-[#075B3A] hover:bg-[#06472F] text-white font-semibold rounded-xl py-3 text-xs sm:text-sm transition-colors cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   <Send size={14} />
-                  SUBMIT ENQUIRY
+                  {isModalSubmitting ? 'SUBMITTING...' : 'SUBMIT ENQUIRY'}
                 </button>
 
                 <p className="text-center text-[10px] text-[#66716C] leading-snug px-1 pt-1.5 border-t border-[#DCE4DF]">

@@ -22,9 +22,30 @@ export default function EnquiryPage() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        alert('Failed to send enquiry. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -103,11 +124,12 @@ export default function EnquiryPage() {
 
         <button
           type="submit"
+          disabled={isSubmitting}
           id="send-enquiry-button"
-          className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#075B3A] text-white font-semibold rounded-xl hover:bg-[#06472F] transition-colors"
+          className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#075B3A] text-white font-semibold rounded-xl hover:bg-[#06472F] transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
         >
           <Send size={16} strokeWidth={2} />
-          SEND ENQUIRY
+          {isSubmitting ? 'SENDING...' : 'SEND ENQUIRY'}
         </button>
       </form>
       <div className="h-16 lg:hidden" aria-hidden="true" />
