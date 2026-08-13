@@ -261,6 +261,16 @@ export default function AdminDashboard() {
     showAlert('Signed out successfully', 'success');
   };
 
+  const handleClearCache = () => {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('lonavala_hotels_v2');
+      localStorage.removeItem('lonavala_villas_v2');
+      localStorage.removeItem('lonavala_tours_v2');
+      showAlert('Website cache cleared successfully. Refreshing...', 'success');
+      loadAllData();
+    }
+  };
+
   const showAlert = (message: string, type: 'success' | 'error') => {
     setAlert({ message, type });
     setTimeout(() => setAlert(null), 4000);
@@ -823,12 +833,20 @@ export default function AdminDashboard() {
               <RefreshCw size={16} />
             </button>
             <button
+              onClick={handleClearCache}
+              title="Clear Website Cache"
+              className="p-2 bg-yellow-600 hover:bg-yellow-700 rounded-xl transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-bold"
+            >
+              <Trash2 size={14} />
+              <span className="hidden sm:inline">Clear Cache</span>
+            </button>
+            <button
               onClick={handleSignOut}
               title="Sign Out"
               className="p-2 bg-red-600 hover:bg-red-700 rounded-xl transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-bold"
             >
               <LogOut size={14} />
-              <span>Log Out</span>
+              <span className="hidden sm:inline">Log Out</span>
             </button>
           </div>
         </div>
