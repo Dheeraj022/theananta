@@ -13,6 +13,7 @@ const defaultRooms = [
   { name: 'Entire Villa Booking', description: 'Access to all bedrooms, private pool, and common spaces.' },
   { name: 'Caretaker Support', description: 'Available round the clock for housekeeping and basic needs.' },
   { name: 'Chef on Request', description: 'Professional cook can be arranged for meals (charges extra).' },
+  { name: 'Extra Bed on Request', description: 'Extra mattresses or beds can be provided for additional guests.' },
 ];
 
 export const villas: Villa[] = [

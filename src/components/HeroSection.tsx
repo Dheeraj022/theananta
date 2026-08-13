@@ -1,13 +1,5 @@
 import Image from 'next/image';
-import { BadgeCheck, ShieldCheck, Tag, Clock } from 'lucide-react';
 import HelpCard from './HelpCard';
-
-const heroFeatures = [
-  { icon: Tag, label: 'Best Price', sub: 'Guarantee' },
-  { icon: ShieldCheck, label: 'Verified', sub: 'Properties' },
-  { icon: BadgeCheck, label: 'No Hidden', sub: 'Charges' },
-  { icon: Clock, label: '24x7 Travel', sub: 'Support' },
-];
 
 export default function HeroSection() {
   return (
@@ -27,7 +19,7 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto w-full max-w-[1200px] px-3 sm:px-5 lg:px-6">
-        <div className="flex items-start justify-between py-8 sm:py-10 lg:py-14 gap-4">
+        <div className="flex items-center justify-between py-8 sm:py-10 lg:py-14 gap-4">
 
           {/* Left: Hero Copy */}
           <div className="flex-1 min-w-0">
@@ -37,33 +29,17 @@ export default function HeroSection() {
             <h1 className="text-white font-black text-4xl sm:text-5xl lg:text-6xl leading-none tracking-tight mb-2">
               LONAVALA
             </h1>
-            <p className="text-green-100 text-sm sm:text-base font-medium mb-6 leading-snug">
+            <p className="text-green-100 text-sm sm:text-base font-medium leading-snug">
               Hotels, Resorts, Villas &amp; Local Tours
               <br />
-              <span className="text-white/80">At Best Prices</span>
+              <span className="text-white/80">Information &amp; Enquiry Assistance</span>
             </p>
 
-            {/* Hero Features Row */}
-            <div className="flex flex-wrap gap-2 sm:gap-3">
-              {heroFeatures.map((feat) => {
-                const Icon = feat.icon;
-                return (
-                  <div
-                    key={feat.label}
-                    className="flex items-center gap-1.5 bg-white/15 backdrop-blur-sm border border-white/20 rounded-lg px-2.5 py-1.5"
-                  >
-                    <Icon size={12} strokeWidth={2} className="text-green-300 shrink-0" />
-                    <span className="text-white text-[10px] sm:text-[11px] font-medium leading-tight">
-                      {feat.label}<br />{feat.sub}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
+
           </div>
 
           {/* Right: Help Card (desktop) */}
-          <div className="hidden lg:block shrink-0 mt-2">
+          <div className="hidden lg:block shrink-0">
             <HelpCard />
           </div>
         </div>

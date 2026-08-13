@@ -12,6 +12,11 @@ export default function TopBar() {
             <span className="whitespace-nowrap">GST Registered Travel Agency</span>
           </div>
 
+          {/* Center: GST No */}
+          <div className="hidden sm:block text-xs font-medium text-green-100 tracking-wide">
+            GST NO: 27AACPS1497B1ZQ
+          </div>
+
           {/* Right: Contact */}
           <div className="flex items-center gap-3 sm:gap-4">
             <a

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTours } from '@/lib/db';
-import ListingDetailLayout from '@/components/ListingDetailLayout';
+import TourDetailLayout from '@/components/TourDetailLayout';
 import Footer from '@/components/Footer';
 
 interface Props {
@@ -32,22 +32,7 @@ export default async function TourDetailPage({ params }: Props) {
 
   return (
     <>
-      <ListingDetailLayout
-        title={tour.name}
-        categoryLabel="Local Tours"
-        categoryHref="/tours"
-        location="Lonavala, Maharashtra"
-        description={tour.description}
-        about={tour.about}
-        mainImage={tour.image}
-        images={tour.images}
-        amenities={tour.amenities}
-        options={tour.itinerary}
-        optionSectionTitle="Tour Itinerary"
-        optionSectionSubtitle="Standard schedule for this sightseeing tour. Timings can be customized on request."
-        type="tour"
-        priceLabel={tour.priceLabel || `From ₹${tour.price}`}
-      />
+      <TourDetailLayout tour={tour} />
       <Footer />
       <div className="h-16 lg:hidden" aria-hidden="true" />
     </>

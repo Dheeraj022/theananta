@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { MapPin, Star } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { Hotel } from '@/types';
 
 interface HotelCardProps {
@@ -35,13 +35,7 @@ export default function HotelCard({ hotel }: HotelCardProps) {
           <span className="text-[#66716C] text-[10px]">{hotel.location}</span>
         </div>
 
-        <div className="flex items-center gap-1.5 mb-2">
-          <div className="flex items-center gap-0.5 bg-[#075B3A] text-white rounded px-1.5 py-0.5">
-            <Star size={9} fill="white" strokeWidth={0} />
-            <span className="text-[10px] font-bold">{hotel.rating}</span>
-          </div>
-          <span className="text-[#66716C] text-[10px]">({hotel.reviews})</span>
-        </div>
+
 
         <p className="text-[#075B3A] font-bold text-xs mb-2.5">{hotel.priceLabel}</p>
 

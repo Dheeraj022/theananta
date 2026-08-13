@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getVillas } from '@/lib/db';
-import ListingDetailLayout from '@/components/ListingDetailLayout';
+import VillaDetailLayout from '@/components/VillaDetailLayout';
 import Footer from '@/components/Footer';
 
 interface Props {
@@ -32,22 +32,7 @@ export default async function VillaDetailPage({ params }: Props) {
 
   return (
     <>
-      <ListingDetailLayout
-        title={villa.name}
-        categoryLabel="Villas"
-        categoryHref="/villas"
-        location={`${villa.location}, Maharashtra`}
-        description={villa.description}
-        about={villa.about}
-        mainImage={villa.image}
-        images={villa.images}
-        amenities={villa.amenities}
-        options={villa.rooms}
-        optionSectionTitle="Accommodation & Booking Options"
-        optionSectionSubtitle="Booking options and caretaker services available for this private villa."
-        type="villa"
-        priceLabel={villa.price}
-      />
+      <VillaDetailLayout villa={villa} />
       <Footer />
       <div className="h-16 lg:hidden" aria-hidden="true" />
     </>

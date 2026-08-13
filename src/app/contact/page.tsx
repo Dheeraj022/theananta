@@ -1,80 +1,151 @@
-import type { Metadata } from 'next';
-import { Phone, MessageCircle, MapPin, Mountain } from 'lucide-react';
-import Link from 'next/link';
-import { BRAND_NAME, BRAND_OPERATOR, BRAND_TAGLINE, CALL_URL, PHONE_NUMBER, WHATSAPP_URL } from '@/lib/constants';
+'use client';
+
+import { useState } from 'react';
+import { Phone, MapPin, Mail, MessageCircle } from 'lucide-react';
 import Footer from '@/components/Footer';
 
-export const metadata: Metadata = {
-  title: 'Contact Us | Valley City Stay Hub – Lonavala Travel Agency',
-  description: 'Contact Valley City Stay Hub for hotel, villa, and tour booking assistance in Lonavala. Call or WhatsApp us anytime.',
-};
-
 export default function ContactPage() {
+  const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    // Simulate submit
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitted(true);
+      setForm({ name: '', phone: '', email: '', message: '' });
+      setTimeout(() => setSubmitted(false), 3000);
+    }, 1000);
+  };
+
   return (
     <>
-      <div className="mx-auto w-full max-w-[700px] px-3 sm:px-5 py-8 sm:py-12">
-        {/* Brand Header */}
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-[#075B3A] rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <Mountain size={30} strokeWidth={1.8} className="text-white" />
+      <div className="bg-[#F7F9F7] min-h-[calc(100vh-130px)] py-8 sm:py-12">
+        <div className="mx-auto w-full max-w-[1000px] px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-[#DCE4DF] rounded-2xl overflow-hidden bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+            
+            {/* Left Column - Contact Info */}
+            <div className="p-6 sm:p-8 md:p-10 border-b md:border-b-0 md:border-r border-[#DCE4DF] bg-[#FAFCFB]">
+              <h2 className="text-sm sm:text-[15px] font-bold text-[#17211D] mb-1.5">Get In Touch With Us</h2>
+              <p className="text-[#66716C] text-xs leading-relaxed mb-8">
+                We are here to help you with travel information<br className="hidden lg:block"/> and enquiry assistance.
+              </p>
+
+              <div className="space-y-5">
+                <div className="flex items-center gap-4 text-[#17211D] group">
+                  <div className="w-10 h-10 rounded-full bg-[#EAF5EF] flex items-center justify-center shrink-0 group-hover:bg-[#075B3A] transition-colors duration-300">
+                    <Phone size={16} className="text-[#075B3A] group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <span className="font-bold text-xs sm:text-[13px]">+91 98765 43210</span>
+                </div>
+                <div className="flex items-center gap-4 text-[#17211D] group">
+                  <div className="w-10 h-10 rounded-full bg-[#EAF5EF] flex items-center justify-center shrink-0 group-hover:bg-[#075B3A] transition-colors duration-300">
+                    <MessageCircle size={16} className="text-[#075B3A] group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <span className="font-bold text-xs sm:text-[13px]">+91 98765 43210</span>
+                </div>
+                <div className="flex items-center gap-4 text-[#17211D] group">
+                  <div className="w-10 h-10 rounded-full bg-[#EAF5EF] flex items-center justify-center shrink-0 group-hover:bg-[#075B3A] transition-colors duration-300">
+                    <Mail size={16} className="text-[#075B3A] group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <span className="font-bold text-xs sm:text-[13px]">info@valleycitystayhub.com</span>
+                </div>
+                <div className="flex items-start gap-4 text-[#17211D] group pt-1">
+                  <div className="w-10 h-10 rounded-full bg-[#EAF5EF] flex items-center justify-center shrink-0 group-hover:bg-[#075B3A] transition-colors duration-300">
+                    <MapPin size={16} className="text-[#075B3A] group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <span className="font-semibold text-[11px] sm:text-xs leading-snug mt-1 text-[#66716C]">
+                    <span className="font-bold text-[#17211D] text-xs sm:text-[13px] block mb-0.5">Office Address</span>
+                    Shop No. 3, Near Lonavala Bus Stand,<br />
+                    Lonavala, Taluka Maval,<br />
+                    Pune, Maharashtra - 410401
+                  </span>
+                </div>
+              </div>
+
+              <div className="mt-10 p-5 bg-[#EAF5EF] rounded-xl border border-[#DCE4DF]">
+                <h3 className="font-bold text-[#075B3A] text-xs sm:text-[13px] mb-1">Business Hours</h3>
+                <p className="text-[#17211D] font-bold text-xs sm:text-[13px]">Mon - Sun : 8:00 AM - 8:00 PM</p>
+              </div>
+            </div>
+
+            {/* Right Column - Form */}
+            <div className="p-6 sm:p-8 md:p-10">
+              <h2 className="text-sm sm:text-[15px] font-bold text-[#17211D] mb-1.5">Send Us an Enquiry</h2>
+              <p className="text-[#66716C] text-xs leading-relaxed mb-6 sm:mb-8">
+                Fill in the details and our team will<br className="hidden lg:block"/> get back to you.
+              </p>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+                  <label className="sm:w-[130px] shrink-0 text-[11px] font-bold text-[#17211D] uppercase tracking-wide">Your Name</label>
+                  <input 
+                    type="text" 
+                    required
+                    placeholder="Enter your name" 
+                    className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2.5 text-[11px] sm:text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent placeholder:text-gray-400 bg-[#F7F9F7] transition-all"
+                    value={form.name}
+                    onChange={e => setForm({...form, name: e.target.value})}
+                  />
+                </div>
+                
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+                  <label className="sm:w-[130px] shrink-0 text-[11px] font-bold text-[#17211D] uppercase tracking-wide">Mobile Number</label>
+                  <input 
+                    type="tel" 
+                    required
+                    placeholder="Enter mobile number" 
+                    className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2.5 text-[11px] sm:text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent placeholder:text-gray-400 bg-[#F7F9F7] transition-all"
+                    value={form.phone}
+                    onChange={e => setForm({...form, phone: e.target.value})}
+                  />
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+                  <label className="sm:w-[130px] shrink-0 text-[11px] font-bold text-[#17211D] uppercase tracking-wide">Email Address</label>
+                  <input 
+                    type="email"
+                    placeholder="Enter email address" 
+                    className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2.5 text-[11px] sm:text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent placeholder:text-gray-400 bg-[#F7F9F7] transition-all"
+                    value={form.email}
+                    onChange={e => setForm({...form, email: e.target.value})}
+                  />
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-1 sm:gap-4">
+                  <label className="sm:w-[130px] shrink-0 text-[11px] font-bold text-[#17211D] uppercase tracking-wide mt-3">How can we help?</label>
+                  <textarea 
+                    rows={4}
+                    required
+                    placeholder="Write your message..." 
+                    className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2.5 text-[11px] sm:text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent resize-none placeholder:text-gray-400 bg-[#F7F9F7] transition-all"
+                    value={form.message}
+                    onChange={e => setForm({...form, message: e.target.value})}
+                  />
+                </div>
+
+                <div className="pt-4">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-[#075B3A] hover:bg-[#06472F] text-white font-bold tracking-wide py-3.5 rounded-xl text-[11px] sm:text-xs transition-colors shadow-sm disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? 'SUBMITTING...' : submitted ? 'ENQUIRY SENT!' : 'SUBMIT ENQUIRY'}
+                  </button>
+                  <p className="text-center text-[10px] text-[#075B3A] font-medium mt-3 leading-tight opacity-80">
+                    This is an enquiry form.<br/>It does not confirm any booking.
+                  </p>
+                </div>
+              </form>
+            </div>
+
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-[#17211D] mb-1">{BRAND_NAME}</h1>
-          <p className="text-[#075B3A] font-semibold text-sm">{BRAND_OPERATOR}</p>
-          <p className="text-[#66716C] text-sm mt-1">{BRAND_TAGLINE}</p>
-        </div>
-
-        {/* Contact Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-          <a
-            href={CALL_URL}
-            id="contact-call-button"
-            className="flex items-center gap-4 p-4 bg-[#075B3A] text-white rounded-2xl hover:bg-[#06472F] transition-colors"
-          >
-            <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center shrink-0">
-              <Phone size={22} strokeWidth={2} />
-            </div>
-            <div>
-              <div className="font-bold text-base">{PHONE_NUMBER}</div>
-              <div className="text-green-200 text-xs mt-0.5">Call for Best Deals</div>
-            </div>
-          </a>
-
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            id="contact-whatsapp-button"
-            className="flex items-center gap-4 p-4 bg-white border border-[#075B3A] text-[#075B3A] rounded-2xl hover:bg-[#EAF5EF] transition-colors"
-          >
-            <div className="w-12 h-12 bg-[#EAF5EF] rounded-xl flex items-center justify-center shrink-0">
-              <MessageCircle size={22} strokeWidth={2} />
-            </div>
-            <div>
-              <div className="font-bold text-base">Chat on WhatsApp</div>
-              <div className="text-[#66716C] text-xs mt-0.5">Get instant assistance</div>
-            </div>
-          </a>
-        </div>
-
-        {/* Location */}
-        <div className="flex items-center justify-center gap-2 text-[#66716C] text-sm mb-8">
-          <MapPin size={15} strokeWidth={1.8} />
-          Lonavala, Maharashtra, India
-        </div>
-
-        {/* CTA */}
-        <div className="text-center">
-          <p className="text-[#66716C] text-sm mb-4">Have detailed requirements?</p>
-          <Link
-            href="/enquiry"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#075B3A] text-white font-semibold rounded-xl hover:bg-[#06472F] transition-colors"
-          >
-            Send an Enquiry
-          </Link>
         </div>
       </div>
       <Footer />
-      <div className="h-16 lg:hidden" aria-hidden="true" />
     </>
   );
 }

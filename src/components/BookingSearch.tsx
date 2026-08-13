@@ -164,7 +164,7 @@ export default function BookingSearch() {
             className="w-full flex items-center justify-center gap-2 bg-[#075B3A] hover:bg-[#06472F] text-white font-semibold rounded-xl py-3 text-sm transition-colors duration-150"
           >
             <Search size={16} strokeWidth={2} />
-            SEARCH AVAILABILITY
+            SEND ENQUIRY
           </button>
         </div>
       </div>

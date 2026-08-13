@@ -1,9 +1,9 @@
-import { Layers, RotateCcw, Lock, ShieldCheck } from 'lucide-react';
+import { Layers, Clock, Shield, ShieldCheck } from 'lucide-react';
 
 const features = [
-  { icon: Layers, title: 'Wide Selection of Stays', desc: 'Hotels, Resorts & Villas' },
-  { icon: RotateCcw, title: 'Free Cancellation', desc: 'on Select Stays' },
-  { icon: Lock, title: 'Secure & Safe Booking', desc: 'Transparent Process' },
+  { icon: Layers, title: 'Wide Selection', desc: 'of Stays' },
+  { icon: Clock, title: 'Free Cancellation', desc: 'Information' },
+  { icon: Shield, title: 'Clear & Transparent', desc: 'Enquiry Process' },
   { icon: ShieldCheck, title: 'GST Registered', desc: 'Travel Agency' },
 ];
 
