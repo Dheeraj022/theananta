@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   description: 'Find private villas in Lonavala for your family or group. Book with Lonavala Gateway for the best deals and local assistance.',
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function VillasPage() {
   const villas = await getVillas();
   return (

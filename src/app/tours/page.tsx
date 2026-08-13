@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   description: 'Explore Lonavala with curated local tours. Tiger Point, Sightseeing, Waterfall and Caves tours starting from ₹1,499. Book with Lonavala Gateway.',
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function ToursPage() {
   const tours = await getTours();
   return (

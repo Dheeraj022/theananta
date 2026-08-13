@@ -9,6 +9,8 @@ import TrustGrid from '@/components/TrustGrid';
 import InformationCards from '@/components/InformationCards';
 import Footer from '@/components/Footer';
 
+export const dynamic = 'force-dynamic';
+
 export default function HomePage() {
   return (
     <>
