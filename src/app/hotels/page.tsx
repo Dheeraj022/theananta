@@ -43,14 +43,7 @@ export default async function HotelsPage() {
                   <MapPin size={10} strokeWidth={2} className="text-[#66716C]" />
                   <span className="text-[#66716C] text-[10px]">{hotel.location}</span>
                 </div>
-                <div className="flex items-center gap-1.5 mb-2">
-                  <div className="flex items-center gap-0.5 bg-[#075B3A] text-white rounded px-1.5 py-0.5">
-                    <Star size={9} fill="white" strokeWidth={0} />
-                    <span className="text-[10px] font-bold">{hotel.rating}</span>
-                  </div>
-                  <span className="text-[#66716C] text-[10px]">({hotel.reviews})</span>
-                </div>
-                <p className="text-[#075B3A] font-bold text-xs mb-2.5">{hotel.priceLabel}</p>
+                <p className="text-[#075B3A] font-bold text-xs mb-2.5 mt-2">{hotel.priceLabel}</p>
                 <Link
                   href={`/hotels/${hotel.slug}`}
                   className="block w-full text-center py-2 bg-[#075B3A] text-white text-xs font-semibold rounded-xl hover:bg-[#06472F] transition-colors"
