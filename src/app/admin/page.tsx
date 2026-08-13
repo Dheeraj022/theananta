@@ -326,15 +326,15 @@ export default function AdminDashboard() {
     setEditId(item.id);
     setFormType(cat);
     setFormData({
-      id: item.id,
-      name: item.name,
-      location: item.location,
+      id: item.id || '',
+      name: item.name || '',
+      location: item.location || '',
       rating: item.rating || 4.5,
       reviews: item.reviews || '100+',
       price: item.price || 0,
       priceLabel: item.priceLabel || item.price || '',
-      image: item.image,
-      slug: item.slug,
+      image: item.image || '',
+      slug: item.slug || '',
       description: item.description || '',
       about: item.about || '',
       bedrooms: item.bedrooms || 3,

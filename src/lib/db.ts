@@ -63,7 +63,6 @@ export async function saveHotel(hotel: Hotel): Promise<boolean> {
       });
     if (!error) return true;
     console.warn('Supabase saveHotel error:', error.message, error.details, error.hint, error.code);
-    return false;
   }
 
   // Local Storage Fallback
@@ -86,7 +85,6 @@ export async function deleteHotel(id: string): Promise<boolean> {
       .eq('id', id);
     if (!error) return true;
     console.warn('Supabase deleteHotel error:', error.message, error.details, error.hint, error.code);
-    return false;
   }
 
   // Local Storage Fallback
@@ -130,7 +128,6 @@ export async function saveVilla(villa: Villa): Promise<boolean> {
       });
     if (!error) return true;
     console.warn('Supabase saveVilla error:', error.message, error.details, error.hint, error.code);
-    return false;
   }
 
   // Local Storage Fallback
@@ -153,7 +150,6 @@ export async function deleteVilla(id: string): Promise<boolean> {
       .eq('id', id);
     if (!error) return true;
     console.warn('Supabase deleteVilla error:', error.message, error.details, error.hint, error.code);
-    return false;
   }
 
   // Local Storage Fallback
@@ -197,7 +193,6 @@ export async function saveTour(tour: Tour): Promise<boolean> {
       });
     if (!error) return true;
     console.warn('Supabase saveTour error:', error.message, error.details, error.hint, error.code);
-    return false;
   }
 
   // Local Storage Fallback
@@ -220,7 +215,6 @@ export async function deleteTour(id: string): Promise<boolean> {
       .eq('id', id);
     if (!error) return true;
     console.warn('Supabase deleteTour error:', error.message, error.details, error.hint, error.code);
-    return false;
   }
 
   // Local Storage Fallback
