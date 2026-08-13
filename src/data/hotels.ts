@@ -7,6 +7,8 @@ const defaultAmenities = [
   { label: 'Wi-Fi', icon: 'Wifi' },
   { label: 'Room Service', icon: 'ConciergeBell' },
   { label: '24*7 Support', icon: 'Headphones' },
+  { label: 'Gym / Fitness', icon: 'Dumbbell' },
+  { label: 'Spa & Wellness', icon: 'Flower2' },
 ];
 
 const defaultRooms = [

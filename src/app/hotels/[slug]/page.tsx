@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getHotels } from '@/lib/db';
-import ListingDetailLayout from '@/components/ListingDetailLayout';
+import HotelDetailLayout from '@/components/HotelDetailLayout';
 import Footer from '@/components/Footer';
 
 interface Props {
@@ -32,22 +32,7 @@ export default async function HotelDetailPage({ params }: Props) {
 
   return (
     <>
-      <ListingDetailLayout
-        title={hotel.name}
-        categoryLabel="Hotels & Resorts"
-        categoryHref="/hotels"
-        location={`${hotel.location}, Maharashtra`}
-        description={hotel.description}
-        about={hotel.about}
-        mainImage={hotel.image}
-        images={hotel.images}
-        amenities={hotel.amenities}
-        options={hotel.rooms}
-        optionSectionTitle="Accommodation"
-        optionSectionSubtitle="Room types available at this property. Room availability is subject to dates and occupancy."
-        type="hotel"
-        priceLabel={hotel.priceLabel || `From ₹${hotel.price} / Night`}
-      />
+      <HotelDetailLayout hotel={hotel} />
       <Footer />
       <div className="h-16 lg:hidden" aria-hidden="true" />
     </>

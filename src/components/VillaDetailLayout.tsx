@@ -37,6 +37,13 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
     }, 1000);
   };
 
+  const scrollToEnquiry = () => {
+    const card = document.getElementById('enquiry-form-card');
+    if (card) {
+      card.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="mx-auto w-full max-w-[1200px] px-4 py-8 sm:py-12">
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 xl:gap-12">
@@ -140,7 +147,7 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
 
         {/* Right Column - Form */}
         <div>
-          <div className="border border-[#DCE4DF] rounded-2xl p-6 sm:p-8 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] lg:sticky lg:top-24">
+          <div id="enquiry-form-card" className="border border-[#DCE4DF] rounded-2xl p-6 sm:p-8 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] lg:sticky lg:top-24">
             
             {submitted ? (
               <div className="text-center py-10">
@@ -250,6 +257,20 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
             )}
           </div>
         </div>
+      </div>
+
+      {/* Sticky Mobile Bar */}
+      <div className="fixed bottom-[58px] left-0 right-0 z-40 bg-white border-t border-[#DCE4DF] px-4 py-3 flex items-center justify-between shadow-[0_-4px_10px_rgba(0,0,0,0.05)] lg:hidden">
+        <div className="text-left">
+          <div className="text-[#66716C] text-[9px] uppercase font-bold tracking-wider leading-none">Price Est.</div>
+          <div className="text-[#075B3A] font-black text-xs mt-1 leading-none">{villa.price}</div>
+        </div>
+        <button
+          onClick={scrollToEnquiry}
+          className="bg-[#075B3A] hover:bg-[#06472F] text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow-sm transition-colors cursor-pointer uppercase tracking-wide"
+        >
+          GET ENQUIRY
+        </button>
       </div>
     </div>
   );
