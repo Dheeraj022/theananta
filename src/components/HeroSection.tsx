@@ -18,15 +18,29 @@ export default function HeroSection() {
 
   const today = new Date().toISOString().split('T')[0];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    
+    try {
+      const response = await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, type: 'Hero Banner Form' }),
+      });
+      
+      if (response.ok) {
+        setSubmitted(true);
+        setForm({ name: '', phone: '', checkIn: '', checkOut: '', guests: '2 Adults' });
+        setTimeout(() => setSubmitted(false), 3000);
+      } else {
+        alert("Something went wrong. Please try again or contact us directly.");
+      }
+    } catch (error) {
+      alert("Failed to submit enquiry. Please check your connection.");
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-      setForm({ name: '', phone: '', checkIn: '', checkOut: '', guests: '2 Adults' });
-      setTimeout(() => setSubmitted(false), 3000);
-    }, 1000);
+    }
   };
 
   const scrollToForm = () => {

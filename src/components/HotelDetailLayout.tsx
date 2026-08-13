@@ -42,13 +42,24 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate submission
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, listingName: hotel.name, type: 'Hotel Booking' }),
+      });
+      if (response.ok) {
+        setSubmitted(true);
+        setForm({ checkIn: '', checkOut: '', guests: '2 Adults', name: '', phone: '' });
+        setTimeout(() => setSubmitted(false), 3000);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("Failed to submit enquiry. Please check your connection.");
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-      setForm({ checkIn: '', checkOut: '', guests: '2 Adults', name: '', phone: '' });
-      setTimeout(() => setSubmitted(false), 3000);
-    }, 1000);
+    }
   };
 
   const scrollToEnquiry = () => {

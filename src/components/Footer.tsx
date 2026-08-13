@@ -296,7 +296,7 @@ export default function Footer() {
       {/* ── Copyright ── */}
       <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 py-4 text-center">
         <p className="text-gray-500 text-[11px] sm:text-xs">
-          © {currentYear} {BRAND_OPERATOR}. All Rights Reserved.
+          © {currentYear} {BRAND_OPERATOR}. All Rights Reserved. | GST No: 27AACPS1497B1ZQ
         </p>
       </div>
     </footer>
