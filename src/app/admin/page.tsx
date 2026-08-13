@@ -509,15 +509,15 @@ export default function AdminDashboard() {
       try {
         const fileExt = file.name.split('.').pop();
         const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
-        const filePath = `listings/${fileName}`;
+        const filePath = fileName;
 
         const { data, error } = await supabase.storage
-          .from('listings')
+          .from('uploads')
           .upload(filePath, file);
 
         if (!error && data) {
           const { data: { publicUrl } } = supabase.storage
-            .from('listings')
+            .from('uploads')
             .getPublicUrl(filePath);
           return publicUrl;
         }
