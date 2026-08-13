@@ -35,8 +35,13 @@ export async function getHotels(): Promise<Hotel[]> {
       .from('hotels')
       .select('*')
       .order('created_at', { ascending: true });
-    if (!error && data) return data as Hotel[];
-    console.warn('Supabase getHotels error:', error.message, error.details, error.hint, error.code);
+    if (!error && data) {
+      return data.map((item: any) => ({
+        ...item,
+        priceLabel: item.pricelabel || item.priceLabel,
+      })) as Hotel[];
+    }
+    console.warn('Supabase getHotels error:', error?.message);
   }
   return getMockData<Hotel>('lonavala_hotels_v2', initialHotels);
 }
@@ -167,8 +172,13 @@ export async function getTours(): Promise<Tour[]> {
       .from('tours')
       .select('*')
       .order('created_at', { ascending: true });
-    if (!error && data) return data as Tour[];
-    console.warn('Supabase getTours error:', error.message, error.details, error.hint, error.code);
+    if (!error && data) {
+      return data.map((item: any) => ({
+        ...item,
+        priceLabel: item.pricelabel || item.priceLabel,
+      })) as Tour[];
+    }
+    console.warn('Supabase getTours error:', error?.message);
   }
   return getMockData<Tour>('lonavala_tours_v2', initialTours);
 }
