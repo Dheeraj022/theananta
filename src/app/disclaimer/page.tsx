@@ -4,9 +4,9 @@ import Footer from '@/components/Footer';
 import { BRAND_NAME, BRAND_OPERATOR, CALL_URL, PHONE_NUMBER, WHATSAPP_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Disclaimer | Valley City Stay Hub',
+  title: 'Disclaimer | Lonavala Gateway',
   description:
-    'Read the disclaimer for Valley City Stay Hub by Vidhi Tour & Travel. We are an independent travel agency and are not affiliated with any hotel, resort, or service provider.',
+    'Read the disclaimer for Lonavala Gateway by Vidhi Tour & Travel. We are an independent travel agency and are not affiliated with any hotel, resort, or service provider.',
 };
 
 const sections = [
@@ -14,31 +14,31 @@ const sections = [
     icon: Building2,
     title: 'Independent Travel Agency',
     content:
-      'Valley City Stay Hub is operated by Vidhi Tour & Travel, an independent travel agency based in Lonavala, Maharashtra. We are not affiliated with, endorsed by, or sponsored by any hotel, resort, villa, or other service provider mentioned on this website.',
+      'Lonavala Gateway is operated by Vidhi Tour & Travel, an independent travel agency based in Lonavala, Maharashtra. We are not affiliated with, endorsed by, or sponsored by any hotel, resort, villa, or other service provider mentioned on this website.',
   },
   {
     icon: Globe,
     title: 'Third-Party Brands & Trademarks',
     content:
-      'All hotel names, resort names, brand names, logos, and trademarks mentioned on this website are the exclusive property of their respective owners. Their mention on this platform is purely for informational and booking assistance purposes. Valley City Stay Hub makes no claim of ownership or affiliation with any third-party brand.',
+      'All hotel names, resort names, brand names, logos, and trademarks mentioned on this website are the exclusive property of their respective owners. Their mention on this platform is purely for informational and booking assistance purposes. Lonavala Gateway makes no claim of ownership or affiliation with any third-party brand.',
   },
   {
     icon: AlertTriangle,
     title: 'Pricing & Availability',
     content:
-      'All prices, availability, amenities, and inclusions listed on this website are indicative and subject to change without prior notice. Final pricing and availability will be confirmed directly at the time of booking. Valley City Stay Hub is not liable for any discrepancy between displayed prices and actual prices charged by the service provider.',
+      'All prices, availability, amenities, and inclusions listed on this website are indicative and subject to change without prior notice. Final pricing and availability will be confirmed directly at the time of booking. Lonavala Gateway is not liable for any discrepancy between displayed prices and actual prices charged by the service provider.',
   },
   {
     icon: Scale,
     title: 'Limitation of Liability',
     content:
-      'Valley City Stay Hub acts solely as a booking assistance intermediary. We are not responsible for the quality, safety, or performance of any hotel, resort, villa, tour, or service booked through our platform. Any disputes regarding services must be resolved directly with the respective service provider.',
+      'Lonavala Gateway acts solely as a booking assistance intermediary. We are not responsible for the quality, safety, or performance of any hotel, resort, villa, tour, or service booked through our platform. Any disputes regarding services must be resolved directly with the respective service provider.',
   },
   {
     icon: FileWarning,
     title: 'Content Accuracy',
     content:
-      'We make every reasonable effort to ensure the accuracy of information published on this website. However, Valley City Stay Hub does not warrant that all content is complete, accurate, or up to date. We reserve the right to update or correct information at any time without prior notice.',
+      'We make every reasonable effort to ensure the accuracy of information published on this website. However, Lonavala Gateway does not warrant that all content is complete, accurate, or up to date. We reserve the right to update or correct information at any time without prior notice.',
   },
 ];
 
@@ -56,7 +56,7 @@ export default function DisclaimerPage() {
           </div>
           <h1 className="text-2xl sm:text-4xl font-bold mb-2">Disclaimer</h1>
           <p className="text-green-100 text-sm sm:text-base max-w-2xl">
-            Please read this disclaimer carefully before using the Valley City Stay Hub website or services.
+            Please read this disclaimer carefully before using the Lonavala Gateway website or services.
           </p>
           <p className="text-green-300 text-xs mt-3">Last updated: August 2026</p>
           <p className="text-green-300 text-xs font-bold mt-1">GST NO: 27AACPS1497B1ZQ</p>

@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const tour = list.find((t) => t.slug === slug);
   if (!tour) return {};
   return {
-    title: `${tour.name} – Lonavala Tour | Valley City Stay Hub`,
-    description: `Book the ${tour.name} in Lonavala. Duration: ${tour.duration}. ${tour.priceLabel}. Contact Valley City Stay Hub for details.`,
+    title: `${tour.name} – Lonavala Tour | Lonavala Gateway`,
+    description: `Book the ${tour.name} in Lonavala. Duration: ${tour.duration}. ${tour.priceLabel}. Contact Lonavala Gateway for details.`,
   };
 }
 

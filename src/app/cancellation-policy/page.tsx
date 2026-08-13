@@ -4,9 +4,9 @@ import Footer from '@/components/Footer';
 import { CALL_URL, PHONE_NUMBER, WHATSAPP_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Cancellation Policy | Valley City Stay Hub',
+  title: 'Cancellation Policy | Lonavala Gateway',
   description:
-    'Read the cancellation policy of Valley City Stay Hub. Understand our cancellation terms for hotel, villa, and tour bookings in Lonavala.',
+    'Read the cancellation policy of Lonavala Gateway. Understand our cancellation terms for hotel, villa, and tour bookings in Lonavala.',
 };
 
 const policies = [

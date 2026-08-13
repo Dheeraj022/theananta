@@ -5,9 +5,9 @@ import Header from '@/components/Header';
 import BottomNavigation from '@/components/BottomNavigation';
 
 export const metadata: Metadata = {
-  title: 'Lonavala Hotels, Resorts, Villas & Local Tours | Valley City Stay Hub',
+  title: 'Lonavala Hotels, Resorts, Villas & Local Tours | Lonavala Gateway',
   description:
-    'Book hotels, resorts, villas and local tours in Lonavala with Valley City Stay Hub. Get local assistance, transparent pricing and booking support.',
+    'Book hotels, resorts, villas and local tours in Lonavala with Lonavala Gateway. Get local assistance, transparent pricing and booking support.',
   keywords: [
     'Lonavala hotels',
     'hotels in Lonavala',
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     'Lonavala hotel booking',
   ],
   openGraph: {
-    title: 'Lonavala Hotels, Resorts, Villas & Local Tours | Valley City Stay Hub',
-    description: 'Book hotels, resorts, villas and local tours in Lonavala with Valley City Stay Hub.',
+    title: 'Lonavala Hotels, Resorts, Villas & Local Tours | Lonavala Gateway',
+    description: 'Book hotels, resorts, villas and local tours in Lonavala with Lonavala Gateway.',
     type: 'website',
   },
 };

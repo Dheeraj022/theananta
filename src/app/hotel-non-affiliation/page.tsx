@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Hotel Non-Affiliation Disclaimer | Valley City Stay Hub',
+  title: 'Hotel Non-Affiliation Disclaimer | Lonavala Gateway',
   description: 'Learn about our independent travel agency operations. Read our Hotel Non-Affiliation notice for Lonavala properties.',
 };
 
@@ -22,7 +22,7 @@ export default function HotelNonAffiliationPage() {
               1. Independent Operations Notice
             </h2>
             <p>
-              Valley City Stay Hub (operated by Vidhi Tour &amp; Travel) is an independent travel planning, sightseeing booking, and reservation assistance agency. We operate as a third-party intermediary agent facilitating travel packages and bookings.
+              Lonavala Gateway (operated by Vidhi Tour &amp; Travel) is an independent travel planning, sightseeing booking, and reservation assistance agency. We operate as a third-party intermediary agent facilitating travel packages and bookings.
             </p>
           </section>
 

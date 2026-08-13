@@ -5,8 +5,8 @@ import Footer from '@/components/Footer';
 import { getVillas } from '@/lib/db';
 
 export const metadata: Metadata = {
-  title: 'Villas in Lonavala | Valley City Stay Hub',
-  description: 'Find private villas in Lonavala for your family or group. Book with Valley City Stay Hub for the best deals and local assistance.',
+  title: 'Villas in Lonavala | Lonavala Gateway',
+  description: 'Find private villas in Lonavala for your family or group. Book with Lonavala Gateway for the best deals and local assistance.',
 };
 
 export default async function VillasPage() {

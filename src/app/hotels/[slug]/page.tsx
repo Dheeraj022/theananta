@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const hotel = list.find((h) => h.slug === slug);
   if (!hotel) return {};
   return {
-    title: `${hotel.name} – Lonavala Hotel | Valley City Stay Hub`,
-    description: `Book ${hotel.name} in Lonavala. Rated ${hotel.rating}★ by ${hotel.reviews} guests. ${hotel.priceLabel}. Contact Valley City Stay Hub for booking assistance.`,
+    title: `${hotel.name} – Lonavala Hotel | Lonavala Gateway`,
+    description: `Book ${hotel.name} in Lonavala. Rated ${hotel.rating}★ by ${hotel.reviews} guests. ${hotel.priceLabel}. Contact Lonavala Gateway for booking assistance.`,
   };
 }
 

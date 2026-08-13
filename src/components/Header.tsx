@@ -27,7 +27,7 @@ export default function Header() {
               </button>
 
               {/* Logo Icon */}
-              <Link href="/" aria-label="Valley City Stay Hub Home" className="shrink-0">
+              <Link href="/" aria-label="Lonavala Gateway Home" className="shrink-0">
                 <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#075B3A] rounded-xl flex items-center justify-center">
                   <Mountain size={20} strokeWidth={1.8} className="text-white" />
                 </div>

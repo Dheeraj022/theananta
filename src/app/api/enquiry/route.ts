@@ -51,7 +51,7 @@ export async function POST(req: Request) {
     const mailOptions = {
       from: process.env.SMTP_EMAIL || 'dheerajkumar8179@gmail.com',
       to: 'dheerajkumar8179@gmail.com',
-      subject: `New Enquiry from ${name} - Valley City Stay Hub`,
+      subject: `New Enquiry from ${name} - Lonavala Gateway`,
       html: emailHtml,
       replyTo: email || undefined,
     };

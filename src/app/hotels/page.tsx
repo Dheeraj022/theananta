@@ -6,8 +6,8 @@ import { getHotels } from '@/lib/db';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Hotels & Resorts in Lonavala | Valley City Stay Hub',
-  description: 'Browse popular hotels and resorts in Lonavala. Get booking assistance from Valley City Stay Hub – your trusted local travel agency.',
+  title: 'Hotels & Resorts in Lonavala | Lonavala Gateway',
+  description: 'Browse popular hotels and resorts in Lonavala. Get booking assistance from Lonavala Gateway – your trusted local travel agency.',
 };
 
 export default async function HotelsPage() {

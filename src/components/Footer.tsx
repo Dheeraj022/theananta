@@ -284,7 +284,7 @@ export default function Footer() {
             <div>
               <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-1.5">Disclaimer</h4>
               <p className="text-gray-400 text-xs sm:text-[13px] leading-relaxed">
-                Valley City Stay Hub is operated by Vidhi Tour &amp; Travel, an independent travel agency. We are not
+                Lonavala Gateway is operated by Vidhi Tour &amp; Travel, an independent travel agency. We are not
                 affiliated with, endorsed by or sponsored by any hotel, resort, villa or other service provider. All
                 brand names, logos and trademarks belong to their respective owners.
               </p>

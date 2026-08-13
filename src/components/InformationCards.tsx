@@ -43,7 +43,7 @@ export default function InformationCards() {
             <h3 className="text-[#17211D] font-bold text-xs sm:text-sm uppercase tracking-wide">Disclaimer</h3>
           </div>
           <p className={`text-[#66716C] text-xs sm:text-[13px] leading-relaxed ${!disclaimerExpanded ? 'line-clamp-3' : ''}`}>
-            Valley City Stay Hub is operated by Vidhi Tour &amp; Travel, an independent travel agency. We are not
+            Lonavala Gateway is operated by Vidhi Tour &amp; Travel, an independent travel agency. We are not
             affiliated with, endorsed by or sponsored by any hotel, resort, villa or other service provider. All brand
             names and logos are property of their respective owners.
           </p>

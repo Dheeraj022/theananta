@@ -679,7 +679,7 @@ export default function AdminDashboard() {
             <div className="inline-flex w-12 h-12 bg-white/10 rounded-2xl items-center justify-center mb-3">
               <Lock size={24} />
             </div>
-            <h1 className="text-lg font-black tracking-wider uppercase">VALLEY CITY STAY HUB</h1>
+            <h1 className="text-lg font-black tracking-wider uppercase">LONAVALA GATEWAY</h1>
             <p className="text-green-200 text-xs mt-1">Admin Access Console</p>
           </div>
 
@@ -809,7 +809,7 @@ export default function AdminDashboard() {
       <header className="bg-[#075B3A] text-white shadow-md">
         <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 py-5 flex items-center justify-between">
           <div>
-            <h1 className="text-xl sm:text-2xl font-black tracking-wide">VALLEY CITY STAY HUB</h1>
+            <h1 className="text-xl sm:text-2xl font-black tracking-wide">LONAVALA GATEWAY</h1>
             <p className="text-green-200 text-xs sm:text-sm font-medium">
               Vidhi Tour &amp; Travel · Admin Console ({user?.email})
             </p>

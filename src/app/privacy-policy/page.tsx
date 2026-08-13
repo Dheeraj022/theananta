@@ -4,9 +4,9 @@ import Footer from '@/components/Footer';
 import { BRAND_NAME, BRAND_OPERATOR, CALL_URL, PHONE_NUMBER, WHATSAPP_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Valley City Stay Hub',
+  title: 'Privacy Policy | Lonavala Gateway',
   description:
-    'Read the Privacy Policy of Valley City Stay Hub. We are committed to protecting your personal information when you use our travel booking assistance services.',
+    'Read the Privacy Policy of Lonavala Gateway. We are committed to protecting your personal information when you use our travel booking assistance services.',
 };
 
 const sections = [

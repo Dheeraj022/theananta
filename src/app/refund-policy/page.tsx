@@ -4,9 +4,9 @@ import Footer from '@/components/Footer';
 import { CALL_URL, PHONE_NUMBER, WHATSAPP_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Refund Policy | Valley City Stay Hub',
+  title: 'Refund Policy | Lonavala Gateway',
   description:
-    'Read the refund policy of Valley City Stay Hub. Understand how refunds are processed for hotel, villa, and tour bookings in Lonavala.',
+    'Read the refund policy of Lonavala Gateway. Understand how refunds are processed for hotel, villa, and tour bookings in Lonavala.',
 };
 
 const refundSteps = [
@@ -129,7 +129,7 @@ export default function RefundPolicyPage() {
               'No-show (guest fails to arrive without prior cancellation).',
               'Cancellation after the eligible window as defined in the Cancellation Policy.',
               'Partial stays — early check-out by choice will not be eligible for a refund.',
-              'Service fees or booking assistance charges levied by Valley City Stay Hub.',
+              'Service fees or booking assistance charges levied by Lonavala Gateway.',
               'Bookings made on special, discounted or non-refundable promotional rates.',
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-2.5">

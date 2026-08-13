@@ -6,8 +6,8 @@ import { getTours } from '@/lib/db';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Local Tours in Lonavala | Valley City Stay Hub',
-  description: 'Explore Lonavala with curated local tours. Tiger Point, Sightseeing, Waterfall and Caves tours starting from ₹1,499. Book with Valley City Stay Hub.',
+  title: 'Local Tours in Lonavala | Lonavala Gateway',
+  description: 'Explore Lonavala with curated local tours. Tiger Point, Sightseeing, Waterfall and Caves tours starting from ₹1,499. Book with Lonavala Gateway.',
 };
 
 export default async function ToursPage() {

@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions | Valley City Stay Hub',
-  description: 'Read the terms and conditions for bookings, travel services and packages with Valley City Stay Hub (Vidhi Tour & Travel) in Lonavala.',
+  title: 'Terms & Conditions | Lonavala Gateway',
+  description: 'Read the terms and conditions for bookings, travel services and packages with Lonavala Gateway (Vidhi Tour & Travel) in Lonavala.',
 };
 
 export default function TermsConditionsPage() {
@@ -22,7 +22,7 @@ export default function TermsConditionsPage() {
               1. Scope of Agreement
             </h2>
             <p>
-              Welcome to Valley City Stay Hub (operated by Vidhi Tour &amp; Travel). By utilizing our platform or getting booking assistance for hotels, villas, and local tours in Lonavala, you agree to comply with and be bound by the following terms and conditions. If you do not agree, please do not use our services.
+              Welcome to Lonavala Gateway (operated by Vidhi Tour &amp; Travel). By utilizing our platform or getting booking assistance for hotels, villas, and local tours in Lonavala, you agree to comply with and be bound by the following terms and conditions. If you do not agree, please do not use our services.
             </p>
           </section>
 
