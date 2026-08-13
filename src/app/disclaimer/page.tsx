@@ -59,6 +59,7 @@ export default function DisclaimerPage() {
             Please read this disclaimer carefully before using the Valley City Stay Hub website or services.
           </p>
           <p className="text-green-300 text-xs mt-3">Last updated: August 2026</p>
+          <p className="text-green-300 text-xs font-bold mt-1">GST NO: 27AACPS1497B1ZQ</p>
         </div>
       </div>
 

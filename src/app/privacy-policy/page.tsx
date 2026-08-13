@@ -87,6 +87,7 @@ export default function PrivacyPolicyPage() {
             {BRAND_NAME} ({BRAND_OPERATOR}) is committed to protecting your privacy and personal information.
           </p>
           <p className="text-green-300 text-xs mt-3">Last updated: August 2026</p>
+          <p className="text-green-300 text-xs font-bold mt-1">GST NO: 27AACPS1497B1ZQ</p>
         </div>
       </div>
 

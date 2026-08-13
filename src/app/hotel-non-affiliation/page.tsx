@@ -13,7 +13,8 @@ export default function HotelNonAffiliationPage() {
         <h1 className="text-2xl sm:text-3xl font-black text-[#17211D] mb-2 uppercase tracking-wide">
           Hotel Non-Affiliation Disclaimer
         </h1>
-        <p className="text-xs text-[#66716C] mb-8">Last Updated: August 2026</p>
+        <p className="text-xs text-[#66716C] mb-2">Last Updated: August 2026</p>
+        <p className="text-xs font-bold text-[#17211D] mb-8">GST NO: 27AACPS1497B1ZQ</p>
 
         <div className="prose prose-sm max-w-none text-[#17211D] space-y-6 leading-relaxed text-xs sm:text-sm">
           <section className="space-y-2">

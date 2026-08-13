@@ -70,6 +70,7 @@ export default function CancellationPolicyPage() {
             We understand plans change. Please review our cancellation terms for hotels, villas, and local tours before making a booking.
           </p>
           <p className="text-green-300 text-xs mt-3">Last updated: August 2026</p>
+          <p className="text-green-300 text-xs font-bold mt-1">GST NO: 27AACPS1497B1ZQ</p>
         </div>
       </div>
 
