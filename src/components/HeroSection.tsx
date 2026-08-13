@@ -78,7 +78,7 @@ export default function HeroSection() {
                 SEND ENQUIRY
               </button>
               <a 
-                href="https://wa.me/919876543210" 
+                href="https://wa.me/919661660343" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto px-8 py-3.5 bg-white hover:bg-gray-50 text-[#075B3A] font-bold rounded-xl transition-colors border border-transparent shadow-sm flex items-center justify-center gap-2"

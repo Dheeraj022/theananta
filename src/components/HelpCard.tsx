@@ -15,7 +15,7 @@ export default function HelpCard() {
         <div className="w-7 h-7 bg-[#EAF5EF] rounded-lg flex items-center justify-center shrink-0">
           <Phone size={14} strokeWidth={2} className="text-[#075B3A]" />
         </div>
-        <span className="text-[#17211D] font-bold text-xs">+91 98765 43210</span>
+        <span className="text-[#17211D] font-bold text-xs">+91 96616 60343</span>
       </div>
 
       <div className="flex gap-2">
