@@ -3,7 +3,7 @@ import { UserCheck, ShieldCheck, Shield, Headphones } from 'lucide-react';
 const benefits = [
   { icon: UserCheck, title: 'Local Expertise', desc: 'in Lonavala' },
   { icon: ShieldCheck, title: 'Transparent', desc: 'Information' },
-  { icon: Shield, title: 'Trusted by', desc: '1000+ Travellers' },
+  { icon: Shield, title: 'Trusted by', desc: 'Travellers' },
   { icon: Headphones, title: 'Travel', desc: 'Assistance' },
 ];
 

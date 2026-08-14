@@ -30,6 +30,7 @@ const getIcon = (iconName: string) => {
 };
 
 export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
+  const [activeImage, setActiveImage] = useState(hotel.images[0] || hotel.image);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({
@@ -120,36 +121,25 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
         <div className="space-y-6">
           
           {/* Top Gallery Section */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-3 h-auto md:h-[450px]">
+          <div className="flex flex-col gap-3">
             {/* Main Large Image */}
-            <div className="relative col-span-1 md:col-span-3 h-[300px] md:h-full rounded-2xl overflow-hidden shadow-sm group">
+            <div className="relative w-full h-[300px] md:h-[450px] rounded-2xl overflow-hidden shadow-sm group">
               <div className="absolute top-4 left-4 z-10 bg-[#06472F] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-md">
                 Resort
               </div>
               <Image
-                src={hotel.images[0] || hotel.image}
+                src={activeImage}
                 alt={hotel.name}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 priority
               />
             </div>
-            {/* 3 Stacked Thumbnails */}
-            <div className="hidden md:grid grid-rows-3 gap-3 h-full">
-              {hotel.images.slice(1, 4).map((img, idx) => (
-                <div key={idx} className="relative w-full h-full rounded-xl overflow-hidden shadow-sm group">
+            {/* 4 Horizontal Thumbnails */}
+            <div className="hidden md:grid grid-cols-4 gap-3 h-[80px] md:h-[100px]">
+              {hotel.images.slice(0, 4).map((img, idx) => (
+                <div key={idx} onClick={() => setActiveImage(img)} className={`relative w-full h-full rounded-xl overflow-hidden shadow-sm group cursor-pointer border-[3px] transition-colors ${activeImage === img ? 'border-[#075B3A]' : 'border-transparent hover:border-[#075B3A]/50'}`}>
                   <Image src={img} alt={`${hotel.name} thumbnail ${idx + 1}`} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
-                  {idx === 2 && (
-                    <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center cursor-pointer hover:bg-black/40 transition-colors">
-                      <Image src={img} alt="bg" fill className="object-cover -z-10 blur-sm brightness-50" />
-                      <div className="absolute inset-0 bg-[#06472F]/60 flex items-center justify-center flex-col">
-                         <div className="w-10 h-10 border-2 border-white/50 rounded-full flex items-center justify-center mb-1 bg-white/10 backdrop-blur-sm">
-                           <span className="text-white text-xs font-bold">+{Math.max(0, hotel.images.length - 4)}</span>
-                         </div>
-                         <span className="text-white text-xs font-semibold tracking-wide">View All Photos</span>
-                      </div>
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
@@ -352,15 +342,18 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
             <div className="border border-[#DCE4DF] rounded-2xl bg-white shadow-sm p-5">
               <h3 className="font-bold text-[#17211D] text-[14px] mb-2">Location</h3>
               <p className="text-[11px] text-[#66716C] font-semibold mb-3">{hotel.name}, {hotel.location}, Maharashtra</p>
-              <div className="relative w-full h-[100px] rounded-xl bg-gray-100 border border-[#DCE4DF] overflow-hidden flex items-center justify-center">
-                {/* Mock map graphic */}
-                <Image src="/images/tours/tiger-point.jpg" alt="map" fill className="object-cover opacity-30 grayscale" />
-                <div className="absolute flex flex-col items-center justify-center bg-white/90 px-3 py-1.5 rounded-lg shadow-sm border border-gray-200">
-                  <MapPin size={16} className="text-red-500 mb-0.5" />
-                  <span className="text-[10px] font-bold text-[#17211D] leading-none text-center">{hotel.name}<br/>Lonavala</span>
-                </div>
+              <div className="relative w-full h-[150px] rounded-xl bg-gray-100 border border-[#DCE4DF] overflow-hidden flex items-center justify-center">
+                <iframe 
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(hotel.name + ' Lonavala')}&t=&z=14&ie=UTF8&iwloc=&output=embed`} 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0 w-full h-full"
+                ></iframe>
               </div>
-              <p className="text-[9px] text-center text-[#66716C] mt-2">Map and nearby attractions information available on enquiry.</p>
             </div>
           </div>
 

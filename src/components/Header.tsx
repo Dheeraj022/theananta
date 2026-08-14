@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Menu, Phone, Mountain } from 'lucide-react';
 import Link from 'next/link';
 import MobileMenu from './MobileMenu';
-import { BRAND_NAME, BRAND_OPERATOR, BRAND_TAGLINE, CALL_URL, PHONE_NUMBER } from '@/lib/constants';
+import { BRAND_NAME, BRAND_OPERATOR, CALL_URL, PHONE_NUMBER } from '@/lib/constants';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,7 +37,6 @@ export default function Header() {
               <Link href="/" className="min-w-0">
                 <div className="font-bold text-[#17211D] text-sm sm:text-[15px] leading-tight truncate">{BRAND_NAME}</div>
                 <div className="text-[#075B3A] text-[10px] sm:text-[11px] font-medium truncate">{BRAND_OPERATOR}</div>
-                <div className="text-[#66716C] text-[9px] sm:text-[10px] hidden sm:block truncate">{BRAND_TAGLINE}</div>
               </Link>
             </div>
 
