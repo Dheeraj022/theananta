@@ -18,23 +18,23 @@ export default async function HotelsPage() {
         {/* Page Header */}
         <div className="mb-6">
           <h1 className="text-2xl sm:text-3xl font-bold text-[#17211D] mb-1">Hotels &amp; Resorts in Lonavala</h1>
-          <p className="text-[#66716C] text-sm">Curated selection of the best stays — book with local assistance</p>
+          <p className="text-[#66716C] text-sm">Curated selection of the best stays</p>
         </div>
 
         {/* Hotels Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6">
           {hotels.map((hotel) => (
             <div
               key={hotel.id}
               className="bg-white border border-[#DCE4DF] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group"
             >
-              <div className="relative h-[140px] sm:h-[160px]">
+              <div className="relative h-[200px] sm:h-[240px]">
                 <Image
                   src={hotel.image}
                   alt={`${hotel.name} resort in Lonavala`}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  sizes="(max-width: 640px) 100vw, 50vw"
                 />
               </div>
               <div className="p-3">

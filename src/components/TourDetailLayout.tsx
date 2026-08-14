@@ -84,9 +84,8 @@ export default function TourDetailLayout({ tour }: TourDetailLayoutProps) {
                 <button
                   key={idx}
                   onClick={() => setActiveImage(img)}
-                  className={`relative h-[60px] sm:h-[70px] rounded-xl overflow-hidden border-2 transition-all ${
-                    activeImage === img ? 'border-[#075B3A] opacity-100' : 'border-transparent opacity-80 hover:opacity-100'
-                  }`}
+                  className={`relative h-[60px] sm:h-[70px] rounded-xl overflow-hidden border-2 transition-all ${activeImage === img ? 'border-[#075B3A] opacity-100' : 'border-transparent opacity-80 hover:opacity-100'
+                    }`}
                 >
                   <Image src={img} alt={`${tour.name} ${idx + 1}`} fill className="object-cover" />
                 </button>
@@ -169,7 +168,7 @@ export default function TourDetailLayout({ tour }: TourDetailLayoutProps) {
         {/* Right Column - Form */}
         <div>
           <div id="enquiry-form-card" className="border border-[#DCE4DF] rounded-2xl p-6 sm:p-8 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] lg:sticky lg:top-24">
-            
+
             {submitted ? (
               <div className="text-center py-10">
                 <div className="w-16 h-16 bg-[#EAF5EF] rounded-full flex items-center justify-center mx-auto mb-4">
@@ -185,18 +184,18 @@ export default function TourDetailLayout({ tour }: TourDetailLayoutProps) {
                 <div className="text-center mb-6">
                   <h3 className="text-[15px] font-bold text-[#17211D] mb-1">Request Tour Information</h3>
                   <p className="text-xs font-semibold text-[#17211D]">
-                    Get details and assistance<br/>from our team.
+                    Get details and assistance<br />from our team.
                   </p>
                 </div>
 
                 <div className="space-y-1.5">
                   <label className="text-[11px] font-bold text-[#17211D]">Travel Date</label>
-                  <input 
+                  <input
                     type="date"
                     required
                     min={today}
                     value={form.date}
-                    onChange={e => setForm({...form, date: e.target.value})}
+                    onChange={e => setForm({ ...form, date: e.target.value })}
                     className="w-full border border-[#DCE4DF] rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A] placeholder:text-gray-400"
                   />
                 </div>
@@ -205,7 +204,7 @@ export default function TourDetailLayout({ tour }: TourDetailLayoutProps) {
                   <label className="text-[11px] font-bold text-[#17211D]">No. of People</label>
                   <select
                     value={form.guests}
-                    onChange={e => setForm({...form, guests: e.target.value})}
+                    onChange={e => setForm({ ...form, guests: e.target.value })}
                     className="w-full border border-[#DCE4DF] rounded-lg px-3 py-2.5 text-xs bg-white focus:outline-none focus:ring-1 focus:ring-[#075B3A]"
                   >
                     <option>1 Adult</option>
@@ -218,24 +217,24 @@ export default function TourDetailLayout({ tour }: TourDetailLayoutProps) {
 
                 <div className="space-y-1.5">
                   <label className="text-[11px] font-bold text-[#17211D]">Your Name</label>
-                  <input 
+                  <input
                     type="text"
                     required
                     placeholder="Enter your name"
                     value={form.name}
-                    onChange={e => setForm({...form, name: e.target.value})}
+                    onChange={e => setForm({ ...form, name: e.target.value })}
                     className="w-full border border-[#DCE4DF] rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A] placeholder:text-gray-400"
                   />
                 </div>
 
                 <div className="space-y-1.5">
                   <label className="text-[11px] font-bold text-[#17211D]">Mobile Number</label>
-                  <input 
+                  <input
                     type="tel"
                     required
                     placeholder="Enter mobile number"
                     value={form.phone}
-                    onChange={e => setForm({...form, phone: e.target.value})}
+                    onChange={e => setForm({ ...form, phone: e.target.value })}
                     className="w-full border border-[#DCE4DF] rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A] placeholder:text-gray-400"
                   />
                 </div>
@@ -243,11 +242,11 @@ export default function TourDetailLayout({ tour }: TourDetailLayoutProps) {
                 <div className="space-y-1.5">
                   <label className="text-[11px] font-bold text-[#17211D]">Special Requirements</label>
                   <p className="text-[10px] text-[#17211D]">(if any)</p>
-                  <textarea 
+                  <textarea
                     rows={3}
                     placeholder="Write here..."
                     value={form.requirements}
-                    onChange={e => setForm({...form, requirements: e.target.value})}
+                    onChange={e => setForm({ ...form, requirements: e.target.value })}
                     className="w-full border border-[#DCE4DF] rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A] resize-none placeholder:text-gray-400 mt-1"
                   />
                 </div>
@@ -261,7 +260,7 @@ export default function TourDetailLayout({ tour }: TourDetailLayoutProps) {
                     {isSubmitting ? 'SUBMITTING...' : 'SUBMIT ENQUIRY'}
                   </button>
                   <p className="text-center text-[10px] font-medium text-[#17211D] mt-3 leading-snug">
-                    This is an enquiry form.<br/>It does not confirm any booking.
+                    This is an enquiry form.<br />It does not confirm any booking.
                   </p>
                 </div>
               </form>
@@ -273,8 +272,8 @@ export default function TourDetailLayout({ tour }: TourDetailLayoutProps) {
       {/* Sticky Mobile Bar */}
       <div className="fixed bottom-[58px] left-0 right-0 z-40 bg-white border-t border-[#DCE4DF] px-4 py-3 flex items-center justify-between shadow-[0_-4px_10px_rgba(0,0,0,0.05)] lg:hidden">
         <div className="text-left">
-          <div className="text-[#17211D] font-bold text-sm">Need Help Booking?</div>
-          <div className="text-[#66716C] text-[10px] mt-0.5">Contact us for the best deals</div>
+          <div className="text-[#17211D] font-bold text-sm">Need Help?</div>
+          <div className="text-[#66716C] text-[10px] mt-0.5">Contact us for the best assistance</div>
         </div>
         <button
           onClick={scrollToEnquiry}

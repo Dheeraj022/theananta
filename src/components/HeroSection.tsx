@@ -73,7 +73,7 @@ export default function HeroSection() {
             <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-2xl">
               <h3 className="text-2xl font-bold text-[#17211D] mb-3">Need Help? Call Us</h3>
               <p className="text-[#66716C] text-[15px] leading-relaxed mb-6">
-                For Booking Assistance
+                For Assistance
               </p>
 
               <div className="border-t border-b border-[#EAF5EF] py-6 mb-6">

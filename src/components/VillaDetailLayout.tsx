@@ -3,12 +3,12 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { 
-  ChevronRight, MapPin, CheckCircle, Send, 
-  Home, Users, Mountain, Map, Check, 
-  BedDouble, Trees, Wifi, ChefHat, Sofa, Zap, 
+import {
+  ChevronRight, MapPin, CheckCircle, Send,
+  Home, Users, Mountain, Map, Check,
+  BedDouble, Trees, Wifi, ChefHat, Sofa, Zap,
   Broom, Flame, MonitorPlay, Gamepad2, ConciergeBell,
-  UtensilsCrossed, Images, Info, XCircle, Share2, 
+  UtensilsCrossed, Images, Info, XCircle, Share2,
   Navigation, MessageCircle, HeartHandshake
 } from 'lucide-react';
 import { Villa } from '@/types';
@@ -19,7 +19,7 @@ interface VillaDetailLayoutProps {
 
 export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
   const [activeImage, setActiveImage] = useState(villa.images[0] || villa.image);
-  
+
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
@@ -62,7 +62,7 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
 
   return (
     <div className="mx-auto w-full max-w-[1280px] px-4 py-6 sm:py-10">
-      
+
       {/* Breadcrumb */}
       <nav className="flex text-[13px] text-[#66716C] font-semibold mb-6" aria-label="Breadcrumb">
         <ol className="inline-flex items-center gap-2">
@@ -76,10 +76,10 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
 
       {/* Two Column Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 xl:gap-10">
-        
+
         {/* LEFT COLUMN */}
         <div className="space-y-6 md:space-y-8">
-          
+
           {/* Top Gallery Section */}
           <div className="flex flex-col gap-3">
             {/* Main Large Image */}
@@ -228,7 +228,7 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
                 {[
                   { icon: Broom, label: 'Housekeeping' },
                   { icon: Flame, label: 'BBQ Area' },
-                  { icon: Flame, label: 'Bonfire\n(On Request)' }, 
+                  { icon: Flame, label: 'Bonfire\n(On Request)' },
                   { icon: MonitorPlay, label: 'TV' },
                   { icon: Gamepad2, label: 'Indoor Games' },
                   { icon: ConciergeBell, label: 'Room Service' },
@@ -270,19 +270,19 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
             <section className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-sm h-full flex flex-col">
               <h2 className="text-sm font-bold text-[#17211D] mb-1">Location</h2>
               <p className="text-[#66716C] text-[11px] font-medium mb-4">{villa.name}, {villa.location}, Maharashtra</p>
-                  
-                  <div className="relative w-full flex-grow min-h-[200px] sm:min-h-[150px] bg-[#EAF5EF] rounded-xl overflow-hidden shadow-inner">
-                    <iframe 
-                      src={`https://maps.google.com/maps?q=${encodeURIComponent(villa.name + ', ' + villa.location + ', Lonavala')}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-                      width="100%" 
-                      height="100%" 
-                      style={{ border: 0 }} 
-                      allowFullScreen 
-                      loading="lazy" 
-                      referrerPolicy="no-referrer-when-downgrade"
-                      className="absolute inset-0 w-full h-full grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-                    ></iframe>
-                  </div>
+
+              <div className="relative w-full flex-grow min-h-[200px] sm:min-h-[150px] bg-[#EAF5EF] rounded-xl overflow-hidden shadow-inner">
+                <iframe
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(villa.name + ', ' + villa.location + ', Lonavala')}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0 w-full h-full grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                ></iframe>
+              </div>
               <p className="text-center text-[9px] text-[#66716C] mt-2">
                 Map and nearby attractions information available on enquiry.
               </p>
@@ -358,7 +358,7 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
         {/* RIGHT COLUMN (SIDEBAR) */}
         <div className="relative">
           <div className="sticky top-6 space-y-6">
-            
+
             {/* Enquiry Form */}
             <div id="villa-enquiry-form" className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-lg shadow-black/5">
               <div className="text-center mb-6">
@@ -423,7 +423,7 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
                 </button>
 
                 <p className="text-center text-[10px] text-[#66716C] mt-4">
-                  This is an enquiry form.<br/>It does not confirm any booking.
+                  This is an enquiry form.<br />It does not confirm any booking.
                 </p>
               </form>
             </div>
@@ -512,8 +512,8 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
       {/* Sticky Mobile Bar */}
       <div className="fixed bottom-[58px] left-0 right-0 z-40 bg-white border-t border-[#DCE4DF] px-4 py-3 flex items-center justify-between shadow-[0_-4px_10px_rgba(0,0,0,0.05)] lg:hidden">
         <div className="text-left">
-          <div className="text-[#17211D] font-bold text-sm">Need Help Booking?</div>
-          <div className="text-[#66716C] text-[10px] mt-0.5">Contact us for the best deals</div>
+          <div className="text-[#17211D] font-bold text-sm">Need Help?</div>
+          <div className="text-[#66716C] text-[10px] mt-0.5">Contact us for the best assistance</div>
         </div>
         <button
           onClick={() => {

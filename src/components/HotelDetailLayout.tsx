@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { 
-  MapPin, CheckCircle, Waves, Utensils, CircleParking, 
+import {
+  MapPin, CheckCircle, Waves, Utensils, CircleParking,
   Wifi, Trees, Headphones, Compass, UserCheck, Dumbbell, Flower2,
   Home, Users, Mountain, Map, Check, Tv, Bath, Wind, Sofa, CupSoda, MapPinned, X, CalendarDays, Phone, User
 } from 'lucide-react';
@@ -137,10 +137,10 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
       </nav>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 xl:gap-10">
-        
+
         {/* Left Column (Main Content) */}
         <div className="space-y-6">
-          
+
           {/* Top Gallery Section */}
           <div className="flex flex-col gap-3">
             {/* Main Large Image */}
@@ -260,7 +260,7 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
               <h3 className="font-bold text-[#17211D] text-[15px]">Accommodation</h3>
               <span className="text-[11px] text-[#66716C]">Room categories and accommodation options may vary by property and date.</span>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {['Deluxe Room', 'Premium Room', 'Family Room', 'Suite / Villa'].map((roomName, idx) => {
                 const features = [
@@ -281,8 +281,8 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
                         </li>
                       ))}
                     </ul>
-                    <button onClick={() => handleCheckAvailability(roomName)} className="w-full py-1.5 text-[11px] font-bold border border-[#DCE4DF] rounded-lg text-[#17211D] bg-[#F7F9F7] hover:bg-[#EAF5EF] transition-colors">
-                      View Information
+                    <button onClick={() => handleCheckAvailability(roomName)} className="w-full mt-4 py-2 bg-[#F9FAFB] hover:bg-[#EAF5EF] border border-[#DCE4DF] hover:border-[#075B3A] text-[#17211D] hover:text-[#075B3A] text-[11px] font-bold rounded-lg transition-colors">
+                      Get Enquiry
                     </button>
                   </div>
                 );
@@ -292,7 +292,7 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
 
           {/* Side-by-side: Room Features & Property Amenities */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
+
             {/* Room Features */}
             <div className="border border-[#DCE4DF] rounded-2xl bg-white shadow-sm p-5">
               <h3 className="font-bold text-[#17211D] text-[14px] mb-4 flex items-center gap-1.5">
@@ -331,7 +331,7 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
 
           {/* Side-by-side: Dining & Food & Location */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
+
             {/* Dining & Food */}
             <div className="border border-[#DCE4DF] rounded-2xl bg-white shadow-sm p-5">
               <h3 className="font-bold text-[#17211D] text-[14px] mb-4">Dining & Food</h3>
@@ -364,13 +364,13 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
               <h3 className="font-bold text-[#17211D] text-[14px] mb-2">Location</h3>
               <p className="text-[11px] text-[#66716C] font-semibold mb-3">{hotel.name}, {hotel.location}, Maharashtra</p>
               <div className="relative w-full h-[150px] rounded-xl bg-gray-100 border border-[#DCE4DF] overflow-hidden flex items-center justify-center">
-                <iframe 
-                  src={`https://maps.google.com/maps?q=${encodeURIComponent(hotel.name + ' Lonavala')}&t=&z=14&ie=UTF8&iwloc=&output=embed`} 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen 
-                  loading="lazy" 
+                <iframe
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(hotel.name + ' Lonavala')}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="absolute inset-0 w-full h-full"
                 ></iframe>
@@ -380,7 +380,7 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
 
           {/* Side-by-side: Nearby Places & Things To Do */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
+
             {/* Nearby Places */}
             <div className="border border-[#DCE4DF] rounded-2xl bg-white shadow-sm p-5">
               <h3 className="font-bold text-[#17211D] text-[14px] mb-4">Nearby Places</h3>
@@ -460,7 +460,7 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
 
           {/* Side-by-side: Important Information & Cancellation */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
+
             {/* Important Information */}
             <div className="border border-[#DCE4DF] rounded-2xl bg-white shadow-sm p-5">
               <h3 className="font-bold text-[#17211D] text-[14px] mb-4">Important Information</h3>
@@ -520,7 +520,7 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
         {/* Right Column (Sidebar Enquiry Form) */}
         <div>
           <div className="sticky top-24 space-y-4">
-            
+
             {/* Form Card */}
             <div id="enquiry-form-card" className="border border-[#DCE4DF] rounded-2xl p-6 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
               {submitted ? (
@@ -544,36 +544,36 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
 
                   <div className="space-y-1">
                     <label className="text-[10px] font-bold text-[#17211D]">Your Name*</label>
-                    <input 
+                    <input
                       type="text" required placeholder="Enter your name"
-                      value={form.name} onChange={e => setForm({...form, name: e.target.value})}
+                      value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
                       className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent placeholder:text-gray-400"
                     />
                   </div>
 
                   <div className="space-y-1">
                     <label className="text-[10px] font-bold text-[#17211D]">Mobile Number*</label>
-                    <input 
+                    <input
                       type="tel" required placeholder="Enter mobile number"
-                      value={form.phone} onChange={e => setForm({...form, phone: e.target.value})}
+                      value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })}
                       className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent placeholder:text-gray-400"
                     />
                   </div>
 
                   <div className="space-y-1">
                     <label className="text-[10px] font-bold text-[#17211D]">Check-in Date*</label>
-                    <input 
+                    <input
                       type="date" required min={today}
-                      value={form.checkIn} onChange={e => setForm({...form, checkIn: e.target.value})}
+                      value={form.checkIn} onChange={e => setForm({ ...form, checkIn: e.target.value })}
                       className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent"
                     />
                   </div>
 
                   <div className="space-y-1">
                     <label className="text-[10px] font-bold text-[#17211D]">Check-out Date*</label>
-                    <input 
+                    <input
                       type="date" required min={form.checkIn || today}
-                      value={form.checkOut} onChange={e => setForm({...form, checkOut: e.target.value})}
+                      value={form.checkOut} onChange={e => setForm({ ...form, checkOut: e.target.value })}
                       className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent"
                     />
                   </div>
@@ -581,7 +581,7 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
                   <div className="space-y-1">
                     <label className="text-[10px] font-bold text-[#17211D]">Guests*</label>
                     <select
-                      value={form.guests} onChange={e => setForm({...form, guests: e.target.value})}
+                      value={form.guests} onChange={e => setForm({ ...form, guests: e.target.value })}
                       className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent"
                     >
                       <option>1 Adult</option><option>2 Adults</option><option>3 Adults</option><option>4 Adults</option><option>5+ Adults</option>
@@ -590,10 +590,10 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
 
                   <div className="space-y-1">
                     <label className="text-[10px] font-bold text-[#17211D]">Your Requirement</label>
-                    <textarea 
+                    <textarea
                       placeholder="Write your requirement..."
                       rows={3}
-                      value={form.requirement} onChange={e => setForm({...form, requirement: e.target.value})}
+                      value={form.requirement} onChange={e => setForm({ ...form, requirement: e.target.value })}
                       className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent placeholder:text-gray-400 resize-none"
                     ></textarea>
                   </div>
@@ -606,7 +606,7 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
                       {isSubmitting ? 'SUBMITTING...' : 'SUBMIT ENQUIRY'}
                     </button>
                     <p className="text-center text-[9px] font-medium text-[#66716C] mt-3 leading-snug">
-                      This is an enquiry form.<br/>It does not confirm any booking.
+                      This is an enquiry form.<br />It does not confirm any booking.
                     </p>
                   </div>
                 </form>
@@ -674,21 +674,21 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
                   <label className="flex items-center gap-1.5 text-[11px] font-bold text-[#66716C] uppercase tracking-wide">
                     <CalendarDays size={11} /> Check-in Date
                   </label>
-                  <input type="date" required min={today} value={modalForm.checkIn} onChange={e => setModalForm({...modalForm, checkIn: e.target.value})} className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A]" />
+                  <input type="date" required min={today} value={modalForm.checkIn} onChange={e => setModalForm({ ...modalForm, checkIn: e.target.value })} className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A]" />
                 </div>
 
                 <div className="space-y-1">
                   <label className="flex items-center gap-1.5 text-[11px] font-bold text-[#66716C] uppercase tracking-wide">
                     <CalendarDays size={11} /> Check-out Date
                   </label>
-                  <input type="date" required min={modalForm.checkIn || today} value={modalForm.checkOut} onChange={e => setModalForm({...modalForm, checkOut: e.target.value})} className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A]" />
+                  <input type="date" required min={modalForm.checkIn || today} value={modalForm.checkOut} onChange={e => setModalForm({ ...modalForm, checkOut: e.target.value })} className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A]" />
                 </div>
 
                 <div className="space-y-1">
                   <label className="flex items-center gap-1.5 text-[11px] font-bold text-[#66716C] uppercase tracking-wide">
                     <Users size={11} /> Guests
                   </label>
-                  <select value={modalForm.guests} onChange={e => setModalForm({...modalForm, guests: e.target.value})} className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#075B3A]">
+                  <select value={modalForm.guests} onChange={e => setModalForm({ ...modalForm, guests: e.target.value })} className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#075B3A]">
                     <option>1 Adult</option><option>2 Adults</option><option>3 Adults</option><option>4 Adults</option><option>5+ Adults</option>
                   </select>
                 </div>
@@ -697,14 +697,14 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
                   <label className="flex items-center gap-1.5 text-[11px] font-bold text-[#66716C] uppercase tracking-wide">
                     <User size={11} /> Your Name
                   </label>
-                  <input type="text" required placeholder="Enter your name" value={modalForm.name} onChange={e => setModalForm({...modalForm, name: e.target.value})} className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A]" />
+                  <input type="text" required placeholder="Enter your name" value={modalForm.name} onChange={e => setModalForm({ ...modalForm, name: e.target.value })} className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A]" />
                 </div>
 
                 <div className="space-y-1">
                   <label className="flex items-center gap-1.5 text-[11px] font-bold text-[#66716C] uppercase tracking-wide">
                     <Phone size={11} /> Mobile Number
                   </label>
-                  <input type="tel" required placeholder="Enter mobile number" value={modalForm.phone} onChange={e => setModalForm({...modalForm, phone: e.target.value})} className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A]" />
+                  <input type="tel" required placeholder="Enter mobile number" value={modalForm.phone} onChange={e => setModalForm({ ...modalForm, phone: e.target.value })} className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A]" />
                 </div>
 
                 <div className="pt-2">
@@ -724,8 +724,8 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
       {/* Sticky Mobile Bar */}
       <div className="fixed bottom-[58px] left-0 right-0 z-40 bg-white border-t border-[#DCE4DF] px-4 py-3 flex items-center justify-between shadow-[0_-4px_10px_rgba(0,0,0,0.05)] lg:hidden">
         <div className="text-left">
-          <div className="text-[#17211D] font-bold text-sm">Need Help Booking?</div>
-          <div className="text-[#66716C] text-[10px] mt-0.5">Contact us for the best deals</div>
+          <div className="text-[#17211D] font-bold text-sm">Need Help?</div>
+          <div className="text-[#66716C] text-[10px] mt-0.5">Contact us for the best assistance</div>
         </div>
         <button
           onClick={scrollToEnquiry}

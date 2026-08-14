@@ -75,8 +75,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
-              We provide hotel, resort, villa and local tour bookings in Lonavala at the best prices.
-              Your trusted local travel partner.
+              We are your trusted local travel partner in Lonavala, providing the best assistance for hotel, resort, villa, and local tour bookings at the best prices.
             </p>
           </div>
 
@@ -222,9 +221,9 @@ export default function Footer() {
                 </div>
                 <address className="not-italic text-gray-400 text-sm leading-relaxed">
                   <strong className="text-white font-semibold block mb-1">Office Address</strong>
-                  BLUE TULIP CHS LTD, SHOP NO - 17,<br />
-                  BLUE EMPIRE COMPLEX, OFF LINK ROAD,<br />
-                  MAHAVIR NAGAR, KANDIWALI W, MUMBAI,<br />
+                  Blue Tulip CHS Ltd, Shop No - 17,<br />
+                  Blue Empire Complex, Off Link Road,<br />
+                  Mahavir Nagar, Kandiwali W, Mumbai,<br />
                   Mumbai Suburban, Maharashtra, 400067
                 </address>
               </div>
@@ -243,8 +242,7 @@ export default function Footer() {
             <div>
               <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-1.5">Important Information</h4>
               <p className="text-gray-400 text-xs sm:text-[13px] leading-relaxed">
-                Prices, availability, amenities and inclusions may vary based on travel dates, occupancy and service provider
-                policies. Final availability and price will be confirmed at the time of booking.
+                Prices and availability may vary by property, travel dates and occupancy. Lonavala Gateway, operated by Vidhi Tour & Travel, is an independent travel agency. Final property availability with our best assistance.
               </p>
             </div>
           </div>
@@ -271,7 +269,7 @@ export default function Footer() {
       </div>
 
       {/* ── Copyright ── */}
-      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 py-4 text-center">
+      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 pt-4 pb-32 lg:pb-8 text-center">
         <p className="text-gray-500 text-[11px] sm:text-xs">
           © {currentYear} {BRAND_OPERATOR}. All Rights Reserved. | GST No: 27AACPS1497B1ZQ
         </p>

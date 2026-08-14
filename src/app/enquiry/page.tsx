@@ -14,7 +14,6 @@ export default function EnquiryPage() {
     travelDate: '',
     guests: '2',
     service: 'Hotel',
-    budget: '',
     message: '',
   });
 
@@ -100,19 +99,12 @@ export default function EnquiryPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label htmlFor="enq-service" className="block text-xs font-semibold text-[#66716C] uppercase tracking-wide mb-1.5">Service Required *</label>
-            <select id="enq-service" name="service" required value={form.service} onChange={handleChange}
-              className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent">
-              {serviceOptions.map((s) => <option key={s} value={s}>{s}</option>)}
-            </select>
-          </div>
-          <div>
-            <label htmlFor="enq-budget" className="block text-xs font-semibold text-[#66716C] uppercase tracking-wide mb-1.5">Budget (₹)</label>
-            <input id="enq-budget" name="budget" type="text" value={form.budget} onChange={handleChange}
-              className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent" placeholder="e.g. 15,000 per night" />
-          </div>
+        <div>
+          <label htmlFor="enq-service" className="block text-xs font-semibold text-[#66716C] uppercase tracking-wide mb-1.5">Service Required *</label>
+          <select id="enq-service" name="service" required value={form.service} onChange={handleChange}
+            className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent">
+            {serviceOptions.map((s) => <option key={s} value={s}>{s}</option>)}
+          </select>
         </div>
 
         <div>

@@ -38,7 +38,10 @@ export default function Header() {
               <Link href="/" className="shrink-0 flex flex-col justify-center">
                 <div className="font-extrabold text-[#06472F] text-lg lg:text-[22px] tracking-tight leading-none mb-1">{BRAND_NAME}</div>
                 <div className="text-[#075B3A] text-xs lg:text-[14px] font-bold leading-none mb-1.5">{BRAND_OPERATOR}</div>
-                <div className="hidden lg:block text-[#66716C] text-[11px] font-medium">Independent Travel Agency | Travel Information & Enquiry Assistance in Lonavala</div>
+                <div className="text-[#66716C] text-[9.5px] lg:text-[11px] font-medium">
+                  <span className="lg:hidden">Independent Travel Agency</span>
+                  <span className="hidden lg:inline">Independent Travel Agency | Travel Information & Enquiry Assistance in Lonavala</span>
+                </div>
               </Link>
             </div>
 
