@@ -75,7 +75,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
-              We are your trusted local travel partner in Lonavala, providing the best assistance for hotel, resort, villa, and local tour bookings at the best prices.
+              We are an independent travel agency offering assistance with hotel, resort, villa and local tour in Lonavala.
             </p>
           </div>
 
@@ -197,12 +197,7 @@ export default function Footer() {
                     info@vidhitourtravel.com
                   </a>
                 </li>
-                <li className="flex items-center gap-3 text-gray-400 text-sm">
-                  <div className="w-7 h-7 rounded-full border border-green-700 flex items-center justify-center shrink-0">
-                    <MapPin size={13} strokeWidth={2} className="text-green-400" />
-                  </div>
-                  Lonavala, Maharashtra, India
-                </li>
+
                 <li className="flex items-center gap-3 text-gray-400 text-sm">
                   <div className="w-7 h-7 rounded-full border border-green-700 flex items-center justify-center shrink-0">
                     <Clock size={13} strokeWidth={2} className="text-green-400" />
