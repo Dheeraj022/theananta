@@ -53,7 +53,7 @@ export default function BookingSearch() {
   };
 
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-3 sm:px-5 lg:px-6 -mt-6 relative z-20">
+    <section id="booking-search" className="mx-auto w-full max-w-[1200px] px-3 sm:px-5 lg:px-6 -mt-6 relative z-20">
       <div className="bg-white rounded-2xl border border-[#DCE4DF] shadow-lg overflow-hidden">
 
         {/* Tabs */}

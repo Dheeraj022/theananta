@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
-import { 
-  Handshake, Info, Headset, Map, ShieldCheck, 
-  Target, Eye, MessageCircle, MapPin, Bell, 
+import {
+  Handshake, Info, Headset, Map, ShieldCheck,
+  Target, Eye, MessageCircle, MapPin, Bell,
   Users, Gem, XCircle, Building2, Briefcase, ClipboardList, User, Phone, Mail, Globe, FileText, Clock
 } from 'lucide-react';
 
@@ -17,7 +17,7 @@ export default function AboutUsPage() {
   return (
     <main className="min-h-screen bg-[#F7F9F7] pb-16">
       <div className="mx-auto w-full max-w-[1280px] px-4 py-8">
-        
+
         {/* Breadcrumb */}
         <nav className="flex text-[13px] text-[#66716C] font-semibold mb-8" aria-label="Breadcrumb">
           <ol className="inline-flex items-center gap-2">
@@ -39,9 +39,9 @@ export default function AboutUsPage() {
           </div>
           <div className="hidden md:block w-1/2 absolute right-0 top-0 bottom-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
-            <Image 
-              src="/images/hero/lonavala-hero.jpg" 
-              alt="Lonavala Landscape" 
+            <Image
+              src="/images/hero/lonavala-hero.jpg"
+              alt="Lonavala Landscape"
               fill
               className="object-cover object-right"
               priority
@@ -107,7 +107,7 @@ export default function AboutUsPage() {
             <h3 className="text-xl font-bold text-[#17211D] uppercase tracking-wide">WHAT WE DO</h3>
             <div className="h-px bg-[#DCE4DF] w-16" />
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10">
             <div className="flex items-start gap-4">
               <Building2 size={32} className="text-[#075B3A] shrink-0" />
@@ -226,7 +226,7 @@ export default function AboutUsPage() {
         <div className="max-w-2xl mx-auto mt-12 bg-white rounded-3xl border border-[#DCE4DF] shadow-sm overflow-hidden flex flex-col">
           <div className="p-8 md:p-10">
             <h3 className="text-lg font-bold text-[#17211D] mb-8 uppercase tracking-wide text-center">BUSINESS INFORMATION</h3>
-            
+
             <div className="space-y-6">
               <div className="flex items-start gap-5">
                 <div className="w-12 h-12 bg-[#EAF5EF] rounded-xl flex items-center justify-center shrink-0 border border-[#DCE4DF]">
@@ -268,15 +268,7 @@ export default function AboutUsPage() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-5">
-                <div className="w-12 h-12 bg-[#EAF5EF] rounded-xl flex items-center justify-center shrink-0 border border-[#DCE4DF]">
-                  <User size={24} className="text-[#06472F]" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Owner</h4>
-                  <p className="text-[14px] text-[#66716C]">Mr. Vijaybhai Khengarbhai Boricha</p>
-                </div>
-              </div>
+
 
               <div className="flex items-start gap-5">
                 <div className="w-12 h-12 bg-[#EAF5EF] rounded-xl flex items-center justify-center shrink-0 border border-[#DCE4DF]">
@@ -330,7 +322,7 @@ export default function AboutUsPage() {
 
             </div>
           </div>
-          
+
           {/* Business Hours Bottom Bar */}
           <div className="bg-[#06472F] p-8 flex flex-col sm:flex-row items-center justify-center gap-5 text-center mt-auto">
             <Clock size={36} strokeWidth={1.5} className="text-white shrink-0 mb-2 sm:mb-0" />

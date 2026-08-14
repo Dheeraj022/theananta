@@ -6,7 +6,7 @@ import { Phone } from 'lucide-react';
 export default function HeroSection() {
 
   const scrollToForm = () => {
-    const formElement = document.getElementById('hero-enquiry-form');
+    const formElement = document.getElementById('booking-search');
     if (formElement) {
       formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
