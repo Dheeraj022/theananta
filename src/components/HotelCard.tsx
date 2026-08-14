@@ -35,6 +35,10 @@ export default function HotelCard({ hotel }: HotelCardProps) {
           <span className="text-[#66716C] text-[10px]">{hotel.location}</span>
         </div>
 
+        <p className="text-[#66716C] text-[10px] line-clamp-1 mb-2.5 leading-snug">
+          {hotel.description}
+        </p>
+
 
 
 

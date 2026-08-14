@@ -9,7 +9,7 @@ import {
   BedDouble, Trees, Wifi, ChefHat, Sofa, Zap,
   Broom, Flame, MonitorPlay, Gamepad2, ConciergeBell,
   UtensilsCrossed, Images, Info, XCircle, Share2,
-  Navigation, MessageCircle, HeartHandshake
+  Navigation, MessageCircle, HeartHandshake, CalendarDays, User, Phone, X
 } from 'lucide-react';
 import { Villa } from '@/types';
 
@@ -23,6 +23,47 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+
+  // Modal States
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedRoom, setSelectedRoom] = useState('');
+  const [modalForm, setModalForm] = useState({
+    name: '', phone: '', checkIn: '', checkOut: '', guests: '2 Adults', requirement: ''
+  });
+  const [modalSubmitted, setModalSubmitted] = useState(false);
+  const [isModalSubmitting, setIsModalSubmitting] = useState(false);
+
+  const today = new Date().toISOString().split('T')[0];
+
+  const handleModalSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsModalSubmitting(true);
+    try {
+      const response = await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...modalForm, listingName: villa.name, type: 'Villa Booking', service: selectedRoom }),
+      });
+      if (response.ok) {
+        setModalSubmitted(true);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("Failed to submit enquiry. Please check your connection.");
+    } finally {
+      setIsModalSubmitting(false);
+    }
+  };
+
+  const handleCheckAvailability = (roomName: string) => {
+    setSelectedRoom(roomName);
+    setIsModalOpen(true);
+    setModalSubmitted(false);
+    setModalForm({
+      name: '', phone: '', checkIn: '', checkOut: '', guests: '2 Adults', requirement: ''
+    });
+  };
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -190,8 +231,8 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
                       </li>
                     ))}
                   </ul>
-                  <button className="w-full bg-[#F7F9F7] text-[#17211D] font-bold text-xs border border-[#DCE4DF] py-2 rounded-lg hover:bg-[#EAF5EF] transition-colors">
-                    View Information
+                  <button onClick={() => handleCheckAvailability(room.title)} className="w-full mt-4 py-2 bg-[#F9FAFB] hover:bg-[#EAF5EF] border border-[#DCE4DF] hover:border-[#075B3A] text-[#17211D] hover:text-[#075B3A] text-[11px] font-bold rounded-lg transition-colors">
+                    Get Enquiry
                   </button>
                 </div>
               ))}
@@ -525,6 +566,93 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
         </button>
       </div>
 
+      {/* Enquiry Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div 
+            className="absolute inset-0" 
+            onClick={() => setIsModalOpen(false)}
+          ></div>
+          
+          <div className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            {/* Header */}
+            <div className="px-6 py-5 border-b border-[#EAF5EF] flex justify-between items-center bg-[#F9FAFB] shrink-0">
+              <div>
+                <h3 className="font-bold text-[#17211D] text-lg">Get Enquiry</h3>
+                <p className="text-[#075B3A] text-xs font-semibold mt-0.5">{selectedRoom}</p>
+              </div>
+              <button onClick={() => setIsModalOpen(false)} className="text-gray-400 hover:text-gray-600 hover:bg-gray-100 p-1.5 rounded-lg transition-colors">
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Body */}
+            <div className="p-6 overflow-y-auto">
+              {modalSubmitted ? (
+                <div className="text-center py-8">
+                  <div className="w-16 h-16 bg-[#EAF5EF] rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle size={32} className="text-[#075B3A]" />
+                  </div>
+                  <h4 className="text-[#17211D] font-bold text-lg mb-2">Enquiry Sent Successfully!</h4>
+                  <p className="text-[#66716C] text-sm mb-6">We will get back to you with the availability and best prices shortly.</p>
+                  <button onClick={() => setIsModalOpen(false)} className="mt-6 px-5 py-2.5 bg-[#075B3A] hover:bg-[#06472F] text-white text-xs sm:text-sm font-semibold rounded-xl transition-colors">
+                    Close Window
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleModalSubmit} className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label className="flex items-center gap-1.5 text-[11px] font-bold text-[#66716C] uppercase tracking-wide">
+                        <CalendarDays size={11} /> Check-in Date
+                      </label>
+                      <input type="date" required min={today} value={modalForm.checkIn} onChange={e => setModalForm({ ...modalForm, checkIn: e.target.value })} className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A]" />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="flex items-center gap-1.5 text-[11px] font-bold text-[#66716C] uppercase tracking-wide">
+                        <CalendarDays size={11} /> Check-out Date
+                      </label>
+                      <input type="date" required min={modalForm.checkIn || today} value={modalForm.checkOut} onChange={e => setModalForm({ ...modalForm, checkOut: e.target.value })} className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A]" />
+                    </div>
+
+                    <div className="space-y-1 col-span-2 sm:col-span-1">
+                      <label className="flex items-center gap-1.5 text-[11px] font-bold text-[#66716C] uppercase tracking-wide">
+                        <Users size={11} /> Guests
+                      </label>
+                      <select value={modalForm.guests} onChange={e => setModalForm({ ...modalForm, guests: e.target.value })} className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#075B3A]">
+                        <option>1 Adult</option><option>2 Adults</option><option>3 Adults</option><option>4 Adults</option><option>5+ Adults</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="flex items-center gap-1.5 text-[11px] font-bold text-[#66716C] uppercase tracking-wide">
+                      <User size={11} /> Your Name
+                    </label>
+                    <input type="text" required placeholder="Enter your name" value={modalForm.name} onChange={e => setModalForm({ ...modalForm, name: e.target.value })} className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A]" />
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="flex items-center gap-1.5 text-[11px] font-bold text-[#66716C] uppercase tracking-wide">
+                      <Phone size={11} /> Mobile Number
+                    </label>
+                    <input type="tel" required placeholder="Enter mobile number" value={modalForm.phone} onChange={e => setModalForm({ ...modalForm, phone: e.target.value })} className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A]" />
+                  </div>
+
+                  <div className="pt-2">
+                    <button type="submit" disabled={isModalSubmitting} className="w-full flex justify-center items-center gap-2 bg-[#075B3A] text-white py-3 px-4 rounded-xl font-bold text-sm hover:bg-[#06472F] transition-colors disabled:opacity-70 disabled:cursor-not-allowed">
+                      {isModalSubmitting ? 'Submitting...' : 'Send Enquiry'}
+                      <Send size={16} />
+                    </button>
+                    <p className="text-center text-[10px] text-[#66716C] mt-3">This is an enquiry form. It does not confirm booking.</p>
+                  </div>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -32,8 +32,12 @@ export default function TourCard({ tour }: TourCardProps) {
       {/* Info */}
       <div className="p-2.5 sm:p-3">
         <Link href={`/tours/${tour.slug}`} className="hover:text-[#075B3A] transition-colors">
-          <h3 className="text-[#17211D] font-bold text-xs sm:text-[13px] leading-tight mb-2 line-clamp-2">{tour.name}</h3>
+          <h3 className="text-[#17211D] font-bold text-xs sm:text-[13px] leading-tight mb-1 line-clamp-2">{tour.name}</h3>
         </Link>
+
+        <p className="text-[#66716C] text-[10px] line-clamp-1 mb-2.5 leading-snug">
+          {tour.description}
+        </p>
 
 
 

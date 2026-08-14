@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 import { 
   Handshake, Info, Headset, Map, ShieldCheck, 
   Target, Eye, MessageCircle, MapPin, Bell, 
-  Users, Gem, XCircle, Building2
+  Users, Gem, XCircle, Building2, Briefcase, ClipboardList, User, Phone, Mail, Globe, FileText, Clock
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -218,6 +218,127 @@ export default function AboutUsPage() {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Business Information */}
+        <div className="max-w-2xl mx-auto mt-12 bg-white rounded-3xl border border-[#DCE4DF] shadow-sm overflow-hidden flex flex-col">
+          <div className="p-8 md:p-10">
+            <h3 className="text-lg font-bold text-[#17211D] mb-8 uppercase tracking-wide text-center">BUSINESS INFORMATION</h3>
+            
+            <div className="space-y-6">
+              <div className="flex items-start gap-5">
+                <div className="w-12 h-12 bg-[#EAF5EF] rounded-xl flex items-center justify-center shrink-0 border border-[#DCE4DF]">
+                  <Building2 size={24} className="text-[#06472F]" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Business Name</h4>
+                  <p className="text-[14px] text-[#66716C]">Vidhi Tour & Travel</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-5">
+                <div className="w-12 h-12 bg-[#EAF5EF] rounded-xl flex items-center justify-center shrink-0 border border-[#DCE4DF]">
+                  <MapPin size={24} className="text-[#06472F]" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Brand / Website</h4>
+                  <p className="text-[14px] text-[#66716C]">Lonavala Gateway</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-5">
+                <div className="w-12 h-12 bg-[#EAF5EF] rounded-xl flex items-center justify-center shrink-0 border border-[#DCE4DF]">
+                  <Briefcase size={24} className="text-[#06472F]" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Business Type</h4>
+                  <p className="text-[14px] text-[#66716C]">Proprietorship (Individual Business)</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-5">
+                <div className="w-12 h-12 bg-[#EAF5EF] rounded-xl flex items-center justify-center shrink-0 border border-[#DCE4DF]">
+                  <ClipboardList size={24} className="text-[#06472F]" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Nature of Business</h4>
+                  <p className="text-[14px] text-[#66716C]">Travel Information, Enquiry Assistance<br className="hidden sm:block" /> & Travel Related Services</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-5">
+                <div className="w-12 h-12 bg-[#EAF5EF] rounded-xl flex items-center justify-center shrink-0 border border-[#DCE4DF]">
+                  <User size={24} className="text-[#06472F]" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Owner</h4>
+                  <p className="text-[14px] text-[#66716C]">Mr. Vijaybhai Khengarbhai Boricha</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-5">
+                <div className="w-12 h-12 bg-[#EAF5EF] rounded-xl flex items-center justify-center shrink-0 border border-[#DCE4DF]">
+                  <MapPin size={24} className="text-[#06472F]" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Address</h4>
+                  <p className="text-[14px] text-[#66716C]">Shop No. 3, Near Lonavala Bus Stand,<br />Lonavala, Taluka Maval,<br />Pune, Maharashtra - 410401, India</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-5">
+                <div className="w-12 h-12 bg-[#EAF5EF] rounded-xl flex items-center justify-center shrink-0 border border-[#DCE4DF]">
+                  <Phone size={24} className="text-[#06472F]" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Contact Numbers</h4>
+                  <p className="text-[14px] text-[#66716C]">+91 96616 60343<br />+91 96616 60343</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-5">
+                <div className="w-12 h-12 bg-[#EAF5EF] rounded-xl flex items-center justify-center shrink-0 border border-[#DCE4DF]">
+                  <Mail size={24} className="text-[#06472F]" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Email</h4>
+                  <p className="text-[14px] text-[#66716C]">info@lonavalagateway.com</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-5">
+                <div className="w-12 h-12 bg-[#EAF5EF] rounded-xl flex items-center justify-center shrink-0 border border-[#DCE4DF]">
+                  <Globe size={24} className="text-[#06472F]" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Website</h4>
+                  <p className="text-[14px] text-[#66716C]">www.lonavalagateway.com</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-5">
+                <div className="w-12 h-12 bg-[#EAF5EF] rounded-xl flex items-center justify-center shrink-0 border border-[#DCE4DF]">
+                  <FileText size={24} className="text-[#06472F]" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-[#17211D] text-[15px] mb-1">GSTIN</h4>
+                  <p className="text-[14px] text-[#66716C]">27AACPS1497B1ZQ</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          
+          {/* Business Hours Bottom Bar */}
+          <div className="bg-[#06472F] p-8 flex flex-col sm:flex-row items-center justify-center gap-5 text-center mt-auto">
+            <Clock size={36} strokeWidth={1.5} className="text-white shrink-0 mb-2 sm:mb-0" />
+            <div>
+              <h3 className="text-[15px] font-bold text-white mb-2 uppercase tracking-wider">BUSINESS HOURS</h3>
+              <p className="text-[15px] font-medium text-white mb-0.5">Monday - Sunday</p>
+              <p className="text-[15px] font-bold text-white mb-2">8:00 AM - 8:00 PM</p>
+              <p className="text-[12px] text-emerald-200">(We are available all days)</p>
             </div>
           </div>
         </div>
