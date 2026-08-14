@@ -114,7 +114,28 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
   };
 
   return (
-    <div className="mx-auto w-full max-w-[1280px] px-4 py-8 sm:py-12">
+    <div className="mx-auto w-full max-w-[1280px] px-4 py-6 sm:py-10">
+      {/* Breadcrumb */}
+      <nav className="flex text-[13px] text-[#66716C] font-medium mb-6" aria-label="Breadcrumb">
+        <ol className="inline-flex items-center space-x-1 md:space-x-2">
+          <li className="inline-flex items-center">
+            <Link href="/" className="hover:text-[#075B3A] transition-colors">Home</Link>
+          </li>
+          <li>
+            <div className="flex items-center">
+              <span className="mx-2 text-[#DCE4DF]">/</span>
+              <Link href="/hotels" className="hover:text-[#075B3A] transition-colors">Hotels & Resorts</Link>
+            </div>
+          </li>
+          <li aria-current="page">
+            <div className="flex items-center">
+              <span className="mx-2 text-[#DCE4DF]">/</span>
+              <span className="text-[#17211D] truncate max-w-[150px] sm:max-w-[300px]">{hotel.name}</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 xl:gap-10">
         
         {/* Left Column (Main Content) */}
