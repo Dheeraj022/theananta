@@ -21,7 +21,7 @@ export default function ThingsToDoPage() {
       <main className="min-h-screen bg-[#F7F9F7]">
         
         {/* Hero Section */}
-        <section className="relative w-full h-[65vh] min-h-[500px] flex flex-col justify-end bg-[#17211D] overflow-hidden">
+        <section className="relative w-full h-[65vh] min-h-[600px] md:min-h-[500px] flex flex-col justify-end bg-[#17211D] overflow-hidden">
           <Image
             src="https://images.unsplash.com/photo-1625505826533-5c80aca7d157?auto=format&fit=crop&q=80&w=1920"
             alt="Things To Do in Lonavala"
@@ -31,7 +31,7 @@ export default function ThingsToDoPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#17211D] via-[#17211D]/60 to-transparent"></div>
           
-          <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 lg:px-8 pb-32">
+          <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 lg:px-8 pb-56 md:pb-32">
             <h1 className="text-white font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight mb-4 tracking-tight drop-shadow-lg">
               Things To Do<br />in Lonavala
             </h1>

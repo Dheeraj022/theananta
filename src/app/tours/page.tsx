@@ -54,9 +54,8 @@ export default async function ToursPage() {
                   {/* Hero Gallery */}
                   <div className="relative w-full h-[300px] lg:h-full flex flex-col gap-2">
                     <div className="relative w-full flex-grow rounded-2xl overflow-hidden cursor-pointer group shadow-sm">
-                      <Image src="https://images.unsplash.com/photo-1625505826533-5c80aca7d157?auto=format&fit=crop&q=80&w=800" alt="Lonavala Tour" fill className="object-cover transition-transform duration-700 group-hover:scale-105" priority />
+                      <Image src="/images/tours/tiger-point.jpg" alt="Lonavala Tour" fill className="object-cover transition-transform duration-700 group-hover:scale-105" priority />
                     </div>
-
                   </div>
                 </div>
               </section>
