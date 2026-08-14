@@ -37,12 +37,12 @@ export default function ContactPage() {
       <div className="bg-[#F7F9F7] min-h-[calc(100vh-130px)] py-8 sm:py-12">
         <div className="mx-auto w-full max-w-[1000px] px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-[#DCE4DF] rounded-2xl overflow-hidden bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-            
+
             {/* Left Column - Contact Info */}
             <div className="p-6 sm:p-8 md:p-10 border-b md:border-b-0 md:border-r border-[#DCE4DF] bg-[#FAFCFB]">
               <h2 className="text-sm sm:text-[15px] font-bold text-[#17211D] mb-1.5">Get In Touch With Us</h2>
               <p className="text-[#66716C] text-xs leading-relaxed mb-8">
-                We are here to help you with travel information<br className="hidden lg:block"/> and enquiry assistance.
+                We are here to help you with travel information<br className="hidden lg:block" /> and enquiry assistance.
               </p>
 
               <div className="space-y-5">
@@ -62,7 +62,7 @@ export default function ContactPage() {
                   <div className="w-10 h-10 rounded-full bg-[#EAF5EF] flex items-center justify-center shrink-0 group-hover:bg-[#075B3A] transition-colors duration-300">
                     <Mail size={16} className="text-[#075B3A] group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <span className="font-bold text-xs sm:text-[13px]">info@valleycitystayhub.com</span>
+                  <span className="font-bold text-xs sm:text-[13px]">info@lonavalagateway.com</span>
                 </div>
                 <div className="flex items-start gap-4 text-[#17211D] group pt-1">
                   <div className="w-10 h-10 rounded-full bg-[#EAF5EF] flex items-center justify-center shrink-0 group-hover:bg-[#075B3A] transition-colors duration-300">
@@ -88,54 +88,54 @@ export default function ContactPage() {
             <div className="p-6 sm:p-8 md:p-10">
               <h2 className="text-sm sm:text-[15px] font-bold text-[#17211D] mb-1.5">Send Us an Enquiry</h2>
               <p className="text-[#66716C] text-xs leading-relaxed mb-6 sm:mb-8">
-                Fill in the details and our team will<br className="hidden lg:block"/> get back to you.
+                Fill in the details and our team will<br className="hidden lg:block" /> get back to you.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
                   <label className="sm:w-[130px] shrink-0 text-[11px] font-bold text-[#17211D] uppercase tracking-wide">Your Name</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     required
-                    placeholder="Enter your name" 
+                    placeholder="Enter your name"
                     className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2.5 text-[11px] sm:text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent placeholder:text-gray-400 bg-[#F7F9F7] transition-all"
                     value={form.name}
-                    onChange={e => setForm({...form, name: e.target.value})}
+                    onChange={e => setForm({ ...form, name: e.target.value })}
                   />
                 </div>
-                
+
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
                   <label className="sm:w-[130px] shrink-0 text-[11px] font-bold text-[#17211D] uppercase tracking-wide">Mobile Number</label>
-                  <input 
-                    type="tel" 
+                  <input
+                    type="tel"
                     required
-                    placeholder="Enter mobile number" 
+                    placeholder="Enter mobile number"
                     className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2.5 text-[11px] sm:text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent placeholder:text-gray-400 bg-[#F7F9F7] transition-all"
                     value={form.phone}
-                    onChange={e => setForm({...form, phone: e.target.value})}
+                    onChange={e => setForm({ ...form, phone: e.target.value })}
                   />
                 </div>
 
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
                   <label className="sm:w-[130px] shrink-0 text-[11px] font-bold text-[#17211D] uppercase tracking-wide">Email Address</label>
-                  <input 
+                  <input
                     type="email"
-                    placeholder="Enter email address" 
+                    placeholder="Enter email address"
                     className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2.5 text-[11px] sm:text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent placeholder:text-gray-400 bg-[#F7F9F7] transition-all"
                     value={form.email}
-                    onChange={e => setForm({...form, email: e.target.value})}
+                    onChange={e => setForm({ ...form, email: e.target.value })}
                   />
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-1 sm:gap-4">
                   <label className="sm:w-[130px] shrink-0 text-[11px] font-bold text-[#17211D] uppercase tracking-wide mt-3">How can we help?</label>
-                  <textarea 
+                  <textarea
                     rows={4}
                     required
-                    placeholder="Write your message..." 
+                    placeholder="Write your message..."
                     className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2.5 text-[11px] sm:text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent resize-none placeholder:text-gray-400 bg-[#F7F9F7] transition-all"
                     value={form.message}
-                    onChange={e => setForm({...form, message: e.target.value})}
+                    onChange={e => setForm({ ...form, message: e.target.value })}
                   />
                 </div>
 
@@ -148,7 +148,7 @@ export default function ContactPage() {
                     {isSubmitting ? 'SUBMITTING...' : submitted ? 'ENQUIRY SENT!' : 'SUBMIT ENQUIRY'}
                   </button>
                   <p className="text-center text-[10px] text-[#075B3A] font-medium mt-3 leading-tight opacity-80">
-                    This is an enquiry form.<br/>It does not confirm any booking.
+                    This is an enquiry form.<br />It does not confirm any booking.
                   </p>
                 </div>
               </form>
