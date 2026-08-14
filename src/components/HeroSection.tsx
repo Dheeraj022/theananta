@@ -79,7 +79,8 @@ export default function HeroSection() {
               <div className="border-t border-b border-[#EAF5EF] py-6 mb-6">
                 <div className="flex items-center gap-4 bg-[#EAF5EF] p-4 rounded-xl">
                   <Phone className="w-5 h-5 text-[#075B3A]" />
-                  <span className="text-[17px] font-bold text-[#17211D] tracking-wide">+91 98765 43210</span>
+                  <span className="text-[17px] font-bold text-[#17211D] tracking-wide">+91 96616 60343
+                  </span>
                 </div>
               </div>
 
