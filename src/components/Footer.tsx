@@ -24,6 +24,7 @@ const InstagramIcon = () => (
 
 const quickLinks = [
   { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about-us' },
   { label: 'Hotels & Resorts', href: '/hotels' },
   { label: 'Villas in Lonavala', href: '/villas' },
   { label: 'Local Tours', href: '/tours' },

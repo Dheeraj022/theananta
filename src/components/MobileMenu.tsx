@@ -1,6 +1,6 @@
 'use client';
 
-import { X, Home, Building2, House, Map, FileText, Phone, MessageCircle, FileWarning, ShieldCheck, Tent, CarFront, Compass } from 'lucide-react';
+import { X, Home, Building2, House, Map, FileText, Phone, MessageCircle, FileWarning, ShieldCheck, Tent, CarFront, Compass, Info } from 'lucide-react';
 import Link from 'next/link';
 import { CALL_URL, WHATSAPP_URL, BRAND_NAME, BRAND_OPERATOR } from '@/lib/constants';
 import { useEffect } from 'react';
@@ -18,6 +18,7 @@ const navItems = [
   { label: 'Camping', href: '/camping', icon: Tent },
   { label: 'Cabs', href: '/cabs', icon: CarFront },
   { label: 'Activities', href: '/things-to-do', icon: Compass },
+  { label: 'About Us', href: '/about-us', icon: Info },
   { label: 'Disclaimer', href: '/disclaimer', icon: FileWarning },
   { label: 'Privacy Policy', href: '/privacy-policy', icon: ShieldCheck },
   { label: 'Contact', href: '/contact', icon: Phone },

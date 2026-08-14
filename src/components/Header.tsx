@@ -50,6 +50,7 @@ export default function Header() {
                 { label: 'Camping', href: '/camping' },
                 { label: 'Cabs', href: '/cabs' },
                 { label: 'Activities', href: '/things-to-do' },
+                { label: 'About Us', href: '/about-us' },
                 { label: 'Contact', href: '/contact' },
               ].map((item) => (
                 <Link
