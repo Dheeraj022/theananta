@@ -19,9 +19,41 @@ interface VillaDetailLayoutProps {
 
 export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
   const [activeImage, setActiveImage] = useState(villa.images[0] || villa.image);
-  const [form, setForm] = useState({
-    name: '', mobile: '', email: '', date: '', guests: '2 Adults', pref: 'Select villa type', req: ''
-  });
+  
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formElement = e.currentTarget;
+    setLoading(true);
+    setSuccess(false);
+    setError(false);
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+    data.type = "Villa Enquiry";
+    data.listingName = villa.name;
+
+    try {
+      const res = await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        setSuccess(true);
+        formElement.reset();
+      } else {
+        setError(true);
+      }
+    } catch (err) {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   // Fallback map pin handler
   const handleMapClick = () => {
@@ -334,29 +366,39 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
                 <p className="text-[#66716C] text-xs px-4">Get details, availability and assistance from our team.</p>
               </div>
 
-              <form className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {success && (
+                  <div className="bg-[#EAF5EF] text-[#075B3A] p-3 rounded-lg text-sm font-bold text-center">
+                    Enquiry sent successfully! We will contact you soon.
+                  </div>
+                )}
+                {error && (
+                  <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm font-bold text-center">
+                    Failed to send. Please try again.
+                  </div>
+                )}
+
                 <div>
                   <label className="block text-xs font-bold text-[#17211D] mb-1.5">Your Name*</label>
-                  <input type="text" placeholder="Enter your name" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
+                  <input name="name" type="text" required placeholder="Enter your name" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-[#17211D] mb-1.5">Mobile Number*</label>
-                  <input type="tel" placeholder="Enter mobile number" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
+                  <input name="phone" type="tel" required placeholder="Enter mobile number" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-[#17211D] mb-1.5">Email Address</label>
-                  <input type="email" placeholder="Enter email address" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
+                  <input name="email" type="email" placeholder="Enter email address" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-[#17211D] mb-1.5">Preferred Date</label>
                   <div className="relative">
-                    <input type="text" placeholder="dd-mm-yyyy" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
-                    <CheckCircle size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#66716C]" />
+                    <input name="travelDate" type="date" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
                   </div>
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-[#17211D] mb-1.5">Number of Guests*</label>
-                  <select className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
+                  <select name="guests" required className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
                     <option>2 Adults</option>
                     <option>3 Adults</option>
                     <option>4 Adults</option>
@@ -364,7 +406,7 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-[#17211D] mb-1.5">Accommodation Preference</label>
-                  <select className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
+                  <select name="accommodationPreference" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
                     <option>Select villa type</option>
                     <option>3 BHK Villa</option>
                     <option>4 BHK Villa</option>
@@ -372,12 +414,12 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-[#17211D] mb-1.5">Your Requirement</label>
-                  <textarea placeholder="Write your requirement..." rows={3} className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors resize-none"></textarea>
+                  <textarea name="message" placeholder="Write your requirement..." rows={3} className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors resize-none"></textarea>
                 </div>
 
-                <button type="submit" className="w-full bg-[#06472F] hover:bg-[#053d28] text-white font-bold text-sm py-3 rounded-lg transition-colors flex items-center justify-center gap-2 mt-2">
+                <button type="submit" disabled={loading} className="w-full bg-[#06472F] hover:bg-[#053d28] disabled:opacity-50 text-white font-bold text-sm py-3 rounded-lg transition-colors flex items-center justify-center gap-2 mt-2">
                   <Send size={16} />
-                  SEND ENQUIRY
+                  {loading ? 'SENDING...' : 'SEND ENQUIRY'}
                 </button>
 
                 <p className="text-center text-[10px] text-[#66716C] mt-4">

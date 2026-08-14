@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import ThingsToDoEnquiryForm from '@/components/forms/ThingsToDoEnquiryForm';
 import { 
   Compass, HeartHandshake, Mountain, Sun,
   Trees, Landmark, Users, Coffee,
@@ -245,89 +246,7 @@ export default function ThingsToDoPage() {
                     <p className="text-[#66716C] text-xs leading-relaxed">Tell us what you're looking for and we'll help you plan the perfect trip.</p>
                   </div>
 
-                  <form className="space-y-4">
-                    <div>
-                      <label className="block text-xs font-bold text-[#17211D] mb-1.5 flex items-center gap-1.5">
-                        <ClipboardList size={14} className="text-[#17211D]" /> What are you interested in?
-                      </label>
-                      <select className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
-                        <option value="">Select activities / interests</option>
-                        <option value="adventure">Adventure Activities</option>
-                        <option value="nature">Nature & Scenic Spots</option>
-                        <option value="heritage">Heritage & Culture</option>
-                        <option value="leisure">Relaxation & Leisure</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-[#17211D] mb-1.5 flex items-center gap-1.5">
-                        <MapPin size={14} className="text-[#17211D]" /> Preferred Location
-                      </label>
-                      <select className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
-                        <option value="">Select location / area</option>
-                        <option value="lonavala">Lonavala</option>
-                        <option value="khandala">Khandala</option>
-                        <option value="pawnalake">Pawna Lake</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-[#17211D] mb-1.5 flex items-center gap-1.5">
-                        <MapPin size={14} className="text-[#17211D]" /> Preferred Date
-                      </label>
-                      <div className="relative">
-                        <input type="text" placeholder="Select date" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
-                        <Calendar size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#66716C]" />
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-[#17211D] mb-1.5 flex items-center gap-1.5">
-                        <Users size={14} className="text-[#17211D]" /> Number of People
-                      </label>
-                      <select className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
-                        <option value="">Select number of people</option>
-                        <option value="1-2">1-2</option>
-                        <option value="3-4">3-4</option>
-                        <option value="5-7">5-7</option>
-                        <option value="8-12">8-12</option>
-                        <option value="12+">12+</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-[#17211D] mb-2 flex items-center gap-1.5">
-                        <Footprints size={14} className="text-[#17211D]" /> Travel Type
-                      </label>
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <label className="flex items-center text-[11px] font-bold text-[#17211D] border border-[#DCE4DF] rounded-full px-3 py-1 cursor-pointer hover:border-[#075B3A] transition-colors">
-                          <input type="radio" name="travel_type" className="hidden" /> Family
-                        </label>
-                        <label className="flex items-center text-[11px] font-bold text-[#17211D] border border-[#DCE4DF] rounded-full px-3 py-1 cursor-pointer hover:border-[#075B3A] transition-colors">
-                          <input type="radio" name="travel_type" className="hidden" /> Couple
-                        </label>
-                        <label className="flex items-center text-[11px] font-bold text-[#17211D] border border-[#DCE4DF] rounded-full px-3 py-1 cursor-pointer hover:border-[#075B3A] transition-colors">
-                          <input type="radio" name="travel_type" className="hidden" /> Friends
-                        </label>
-                        <label className="flex items-center text-[11px] font-bold text-[#17211D] border border-[#DCE4DF] rounded-full px-3 py-1 cursor-pointer hover:border-[#075B3A] transition-colors">
-                          <input type="radio" name="travel_type" className="hidden" /> Group
-                        </label>
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Any Special Request?</label>
-                      <textarea placeholder="Tell us anything (optional)" rows={3} className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors resize-none"></textarea>
-                    </div>
-
-                    <button type="submit" className="w-full bg-[#06472F] hover:bg-[#053d28] text-white font-bold text-sm py-3 rounded-lg transition-colors flex items-center justify-center gap-2 mt-2">
-                      <Send size={16} />
-                      SEND ENQUIRY
-                    </button>
-
-                    <div className="flex flex-col items-center justify-center gap-1 mt-4">
-                      <div className="flex items-center gap-1.5 text-[#075B3A]">
-                        <Lock size={12} strokeWidth={2.5} />
-                        <span className="text-[10px] font-bold">Your information is safe with us.</span>
-                      </div>
-                      <span className="text-[10px] text-[#66716C]">We never share your details.</span>
-                    </div>
-                  </form>
+                  <ThingsToDoEnquiryForm />
                 </div>
 
                 {/* Why Explore Lonavala? */}

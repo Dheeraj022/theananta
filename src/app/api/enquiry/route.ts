@@ -4,38 +4,36 @@ import nodemailer from 'nodemailer';
 export async function POST(req: Request) {
   try {
     const data = await req.json();
-    const { name, phone, email, travelDate, checkIn, checkOut, guests, service, budget, message, listingName, type } = data;
-
-    // We allow either the fields from the general enquiry form, or the listing detail forms
+    // Extract core fields that need specific ordering or are guaranteed
+    const { name, phone, email, type, ...otherFields } = data;
     
     // Construct email content
     let emailHtml = `
       <h2>New Enquiry Received</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Phone:</strong> ${phone}</p>
     `;
-
+    
+    if (type) {
+      emailHtml += `<p><strong>Enquiry Type:</strong> <span style="color: #075B3A; font-weight: bold;">${type}</span></p>`;
+    }
+    
+    if (name) emailHtml += `<p><strong>Name:</strong> ${name}</p>`;
+    if (phone) emailHtml += `<p><strong>Phone:</strong> ${phone}</p>`;
     if (email) emailHtml += `<p><strong>Email:</strong> ${email}</p>`;
     
-    // Detailed forms
-    if (listingName) {
-      emailHtml += `<p><strong>Listing:</strong> ${listingName}</p>`;
+    // Dynamically append any other fields that were submitted
+    if (Object.keys(otherFields).length > 0) {
+      emailHtml += `<hr style="border: 1px solid #eee; margin: 20px 0;" /><h3>Details</h3>`;
+      for (const [key, value] of Object.entries(otherFields)) {
+        if (value !== undefined && value !== null && value !== '') {
+          // Format key: "travelDate" -> "Travel Date"
+          const formattedKey = key
+            .replace(/([A-Z])/g, ' $1') // insert a space before all caps
+            .replace(/^./, (str) => str.toUpperCase()); // uppercase the first character
+            
+          emailHtml += `<p><strong>${formattedKey}:</strong><br/>${String(value).replace(/\n/g, '<br/>')}</p>`;
+        }
+      }
     }
-    if (type) {
-      emailHtml += `<p><strong>Enquiry Type:</strong> ${type}</p>`;
-    }
-    if (service) {
-      emailHtml += `<p><strong>Service Requested:</strong> ${service}</p>`;
-    }
-
-    // Dates
-    if (travelDate) emailHtml += `<p><strong>Travel Date:</strong> ${travelDate}</p>`;
-    if (checkIn) emailHtml += `<p><strong>Check-in:</strong> ${checkIn}</p>`;
-    if (checkOut) emailHtml += `<p><strong>Check-out:</strong> ${checkOut}</p>`;
-
-    if (guests) emailHtml += `<p><strong>Guests:</strong> ${guests}</p>`;
-    if (budget) emailHtml += `<p><strong>Budget:</strong> ${budget}</p>`;
-    if (message) emailHtml += `<p><strong>Message:</strong><br/>${message}</p>`;
 
     // Set up Nodemailer transporter for Hostinger
     const transporter = nodemailer.createTransport({

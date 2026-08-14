@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import TourEnquiryForm from '@/components/forms/TourEnquiryForm';
 import { 
   ChevronRight, MapPin, CheckCircle, Send, 
   Car, Trees, Castle, Navigation, 
@@ -283,69 +284,7 @@ export default async function ToursPage() {
                     <p className="text-[#66716C] text-xs leading-relaxed">Tell us what you would like to explore and we'll assist you with relevant local tour information.</p>
                   </div>
 
-                  <form className="space-y-4">
-                    <div>
-                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Full Name*</label>
-                      <input type="text" placeholder="Enter your full name" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Mobile Number*</label>
-                      <input type="tel" placeholder="Enter mobile number" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Email Address</label>
-                      <input type="email" placeholder="Enter email address" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Preferred Travel Date</label>
-                      <div className="relative">
-                        <input type="text" placeholder="dd-mm-yyyy" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
-                        <CheckCircle size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#66716C]" />
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Number of People</label>
-                      <select className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
-                        <option value="">Select number of people</option>
-                        <option value="1">1 Person</option>
-                        <option value="2">2 People</option>
-                        <option value="3">3 People</option>
-                        <option value="4">4 People</option>
-                        <option value="5">5 People</option>
-                        <option value="6-10">6 to 10 People</option>
-                        <option value="10+">More than 10 People</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Tour Preference</label>
-                      <select className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
-                        <option value="">Select tour preference</option>
-                        {tours.map((tour) => (
-                          <option key={tour.id} value={tour.name}>
-                            {tour.name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Pickup / Starting Location</label>
-                      <input type="text" placeholder="Enter location" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Your Requirement</label>
-                      <textarea placeholder="Tell us what you are looking for..." rows={3} className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors resize-none"></textarea>
-                    </div>
-
-                    <button type="submit" className="w-full bg-[#06472F] hover:bg-[#053d28] text-white font-bold text-sm py-3 rounded-lg transition-colors flex items-center justify-center gap-2 mt-2">
-                      <Send size={16} />
-                      SEND ENQUIRY
-                    </button>
-
-                    <p className="text-center text-[10px] text-[#66716C] mt-4 flex items-center justify-center gap-1.5">
-                      <Info size={12} />
-                      This is an enquiry form. <br className="hidden sm:block md:hidden"/>It does not confirm any booking.
-                    </p>
-                  </form>
+                  <TourEnquiryForm tours={tours} />
                 </div>
 
                 {/* Our Role & Independence */}
