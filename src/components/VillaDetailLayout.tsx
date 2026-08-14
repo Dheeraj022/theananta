@@ -360,7 +360,7 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
           <div className="sticky top-6 space-y-6">
             
             {/* Enquiry Form */}
-            <div className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-lg shadow-black/5">
+            <div id="villa-enquiry-form" className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-lg shadow-black/5">
               <div className="text-center mb-6">
                 <h2 className="text-lg font-bold text-[#17211D] mb-2">Request Information / Enquiry</h2>
                 <p className="text-[#66716C] text-xs px-4">Get details, availability and assistance from our team.</p>
@@ -508,6 +508,23 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
         </div>
 
       </div>
+
+      {/* Sticky Mobile Bar */}
+      <div className="fixed bottom-[58px] left-0 right-0 z-40 bg-white border-t border-[#DCE4DF] px-4 py-3 flex items-center justify-between shadow-[0_-4px_10px_rgba(0,0,0,0.05)] lg:hidden">
+        <div className="text-left">
+          <div className="text-[#17211D] font-bold text-sm">Need Help Booking?</div>
+          <div className="text-[#66716C] text-[10px] mt-0.5">Contact us for the best deals</div>
+        </div>
+        <button
+          onClick={() => {
+            document.getElementById('villa-enquiry-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }}
+          className="bg-[#06472F] text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-md hover:bg-[#053d28] transition-colors"
+        >
+          SEND ENQUIRY
+        </button>
+      </div>
+
     </div>
   );
 }
