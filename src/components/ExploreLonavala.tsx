@@ -28,7 +28,7 @@ const categories = [
     title: 'Camping & Outdoor Experiences',
     desc: 'Camping, nature stays and outdoor activities.',
     icon: Tent,
-    image: 'https://images.unsplash.com/photo-1504280327395-56497257e1b5?auto=format&fit=crop&q=80&w=400',
+    image: 'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&q=80&w=400',
     link: '/camping',
   },
   {
