@@ -48,7 +48,6 @@ export default async function VillasPage() {
                       </span>
                     ))}
                   </div>
-                  <p className="text-[#075B3A] font-extrabold text-sm mb-1">{villa.price}</p>
                 </div>
               </div>
               <div className="p-4 pt-0">

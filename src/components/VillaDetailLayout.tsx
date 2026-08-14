@@ -273,8 +273,8 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
       {/* Sticky Mobile Bar */}
       <div className="fixed bottom-[58px] left-0 right-0 z-40 bg-white border-t border-[#DCE4DF] px-4 py-3 flex items-center justify-between shadow-[0_-4px_10px_rgba(0,0,0,0.05)] lg:hidden">
         <div className="text-left">
-          <div className="text-[#66716C] text-[9px] uppercase font-bold tracking-wider leading-none">Price Est.</div>
-          <div className="text-[#075B3A] font-black text-xs mt-1 leading-none">{villa.price}</div>
+          <div className="text-[#17211D] font-bold text-sm">Need Help Booking?</div>
+          <div className="text-[#66716C] text-[10px] mt-0.5">Contact us for the best deals</div>
         </div>
         <button
           onClick={scrollToEnquiry}

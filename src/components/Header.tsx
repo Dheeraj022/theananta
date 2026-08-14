@@ -73,7 +73,7 @@ export default function Header() {
               </div>
               <div className="hidden sm:block text-left">
                 <div className="text-[#17211D] font-bold text-[11px] sm:text-xs leading-tight">{PHONE_NUMBER}</div>
-                <div className="text-[#66716C] text-[9px] sm:text-[10px] leading-tight">Call for Best Deals</div>
+                <div className="text-[#66716C] text-[9px] sm:text-[10px] leading-tight">Need Travel Assistance</div>
               </div>
             </a>
           </div>

@@ -54,12 +54,6 @@ const socialLinks = [
   { label: 'YouTube', icon: PlayCircle, href: 'https://youtube.com', bg: 'bg-red-600' },
 ];
 
-const paymentMethods = [
-  { label: 'VISA', src: '/images/payments/visa.png', alt: 'Visa' },
-  { label: 'Mastercard', src: '/images/payments/mastercard.png', alt: 'Mastercard' },
-  { label: 'UPI', src: '/images/payments/upi.png', alt: 'UPI' },
-  { label: 'Net Banking', src: '/images/payments/netbanking.png', alt: 'Net Banking' },
-];
 
 export default function Footer() {
   return (
@@ -112,7 +106,7 @@ export default function Footer() {
       {/* ── Section 2: Links Grid ── */}
       <div className="border-b border-white/10">
         <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 py-7 sm:py-8">
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
             {/* Quick Links */}
             <div>
@@ -165,26 +159,7 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* We Accept */}
-            <div>
-              <h3 className="text-[11px] font-extrabold uppercase tracking-widest text-white mb-4">We Accept</h3>
-              <div className="grid grid-cols-2 gap-2 max-w-[150px]">
-                {paymentMethods.map((p) => (
-                  <div
-                    key={p.label}
-                    className="bg-white rounded-lg p-1.5 flex items-center justify-center h-10 w-full"
-                  >
-                    <Image
-                      src={p.src}
-                      alt={p.alt}
-                      width={60}
-                      height={20}
-                      className="object-contain max-h-6"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
+
           </div>
         </div>
       </div>

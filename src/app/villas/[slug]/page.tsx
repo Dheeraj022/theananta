@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!villa) return {};
   return {
     title: `${villa.name} – Lonavala Villa | Lonavala Gateway`,
-    description: `Book the ${villa.name} in Lonavala. Features ${villa.bedrooms} bedrooms, private pool and more. ${villa.price}. Contact Lonavala Gateway.`,
+    description: `Book the ${villa.name} in Lonavala. Features ${villa.bedrooms} bedrooms, private pool and more. Contact Lonavala Gateway.`,
   };
 }
 

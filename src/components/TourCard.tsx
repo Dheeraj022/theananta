@@ -35,7 +35,7 @@ export default function TourCard({ tour }: TourCardProps) {
           <h3 className="text-[#17211D] font-bold text-xs sm:text-[13px] leading-tight mb-2 line-clamp-2">{tour.name}</h3>
         </Link>
 
-        <p className="text-[#075B3A] font-bold text-xs mb-2.5">{tour.priceLabel}</p>
+
 
         <Link
           href={`/tours/${tour.slug}`}

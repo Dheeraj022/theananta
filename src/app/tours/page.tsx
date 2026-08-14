@@ -43,7 +43,6 @@ export default async function ToursPage() {
               </div>
               <div className="p-3">
                 <h2 className="font-bold text-sm text-[#17211D] mb-2 line-clamp-2">{tour.name}</h2>
-                <p className="text-[#075B3A] font-bold text-xs mb-2.5">{tour.priceLabel}</p>
                 <Link
                   href={`/tours/${tour.slug}`}
                   className="block w-full text-center py-2 bg-[#075B3A] text-white text-xs font-semibold rounded-xl hover:bg-[#06472F] transition-colors"

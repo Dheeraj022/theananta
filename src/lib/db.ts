@@ -36,10 +36,7 @@ export async function getHotels(): Promise<Hotel[]> {
       .select('*')
       .order('created_at', { ascending: true });
     if (!error && data) {
-      return data.map((item: any) => ({
-        ...item,
-        priceLabel: item.pricelabel || item.priceLabel,
-      })) as Hotel[];
+      return data as Hotel[];
     }
     console.warn('Supabase getHotels error:', error?.message);
   }
@@ -56,8 +53,6 @@ export async function saveHotel(hotel: Hotel): Promise<boolean> {
         location: hotel.location,
         rating: Number(hotel.rating),
         reviews: hotel.reviews,
-        price: Number(hotel.price),
-        pricelabel: hotel.priceLabel,
         image: hotel.image,
         slug: hotel.slug,
         description: hotel.description,
@@ -122,7 +117,6 @@ export async function saveVilla(villa: Villa): Promise<boolean> {
         name: villa.name,
         location: villa.location,
         bedrooms: Number(villa.bedrooms),
-        price: villa.price,
         image: villa.image,
         slug: villa.slug,
         description: villa.description,
@@ -173,10 +167,7 @@ export async function getTours(): Promise<Tour[]> {
       .select('*')
       .order('created_at', { ascending: true });
     if (!error && data) {
-      return data.map((item: any) => ({
-        ...item,
-        priceLabel: item.pricelabel || item.priceLabel,
-      })) as Tour[];
+      return data as Tour[];
     }
     console.warn('Supabase getTours error:', error?.message);
   }
@@ -191,8 +182,6 @@ export async function saveTour(tour: Tour): Promise<boolean> {
         id: tour.id,
         name: tour.name,
         duration: tour.duration,
-        price: Number(tour.price),
-        pricelabel: tour.priceLabel,
         image: tour.image,
         slug: tour.slug,
         description: tour.description,

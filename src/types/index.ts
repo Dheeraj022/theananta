@@ -14,8 +14,6 @@ export interface Hotel {
   location: string;
   rating: number;
   reviews: string;
-  price: number;
-  priceLabel: string;
   image: string;
   slug: string;
   description: string;
@@ -30,7 +28,6 @@ export interface Villa {
   name: string;
   location: string;
   bedrooms: number;
-  price: string;
   image: string;
   slug: string;
   description: string;
@@ -44,8 +41,6 @@ export interface Tour {
   id: string;
   name: string;
   duration: string;
-  price: number;
-  priceLabel: string;
   image: string;
   slug: string;
   description: string;

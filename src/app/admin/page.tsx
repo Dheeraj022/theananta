@@ -73,8 +73,6 @@ export default function AdminDashboard() {
     location: '',
     rating: 4.5,
     reviews: '100+',
-    price: 0,
-    priceLabel: '',
     image: '',
     slug: '',
     description: '',
@@ -297,8 +295,6 @@ export default function AdminDashboard() {
       location: activeTab === 'tour' ? 'Lonavala' : '',
       rating: 4.5,
       reviews: '100+',
-      price: 0,
-      priceLabel: activeTab === 'tour' ? 'From ₹1,499 / Car' : 'From ₹10,000 / Night',
       image: '',
       slug: '',
       description: '',
@@ -343,8 +339,6 @@ export default function AdminDashboard() {
       location: item.location || '',
       rating: item.rating || 4.5,
       reviews: item.reviews || '100+',
-      price: item.price || 0,
-      priceLabel: item.priceLabel || item.price || '',
       image: item.image || '',
       slug: item.slug || '',
       description: item.description || '',
@@ -587,8 +581,6 @@ export default function AdminDashboard() {
           location: formData.location,
           rating: Number(formData.rating),
           reviews: formData.reviews,
-          price: Number(formData.price),
-          priceLabel: formData.priceLabel,
           image: finalCoverUrl,
           slug: formData.slug,
           description: formData.description,
@@ -604,7 +596,6 @@ export default function AdminDashboard() {
           name: formData.name,
           location: formData.location,
           bedrooms: Number(formData.bedrooms),
-          price: formData.priceLabel,
           image: finalCoverUrl,
           slug: formData.slug,
           description: formData.description,
@@ -619,8 +610,6 @@ export default function AdminDashboard() {
           id: formData.id,
           name: formData.name,
           duration: formData.duration,
-          price: Number(formData.price),
-          priceLabel: formData.priceLabel,
           image: finalCoverUrl,
           slug: formData.slug,
           description: formData.description,
@@ -935,7 +924,6 @@ export default function AdminDashboard() {
                     <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider">
                       {activeTab === 'hotel' ? 'Rating' : activeTab === 'villa' ? 'Bedrooms' : 'Duration'}
                     </th>
-                    <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider">Price Label</th>
                     <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider text-right">Actions</th>
                   </tr>
                 </thead>
@@ -955,7 +943,6 @@ export default function AdminDashboard() {
                       <td className="px-4 py-3">
                         <span className="font-bold text-[#075B3A]">{h.rating}★</span> ({h.reviews})
                       </td>
-                      <td className="px-4 py-3 text-[#075B3A] font-bold">{h.priceLabel}</td>
                       <td className="px-4 py-3 text-right space-x-1.5">
                         <Link href={`/hotels/${h.slug}`} target="_blank" className="inline-flex p-1.5 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-600 transition-colors" title="View details page">
                           <Eye size={13} />
@@ -983,7 +970,6 @@ export default function AdminDashboard() {
                       </td>
                       <td className="px-4 py-3 text-gray-600">{v.location}</td>
                       <td className="px-4 py-3 font-semibold text-gray-700">{v.bedrooms} BHK</td>
-                      <td className="px-4 py-3 text-[#075B3A] font-bold">{v.price}</td>
                       <td className="px-4 py-3 text-right space-x-1.5">
                         <Link href={`/villas/${v.slug}`} target="_blank" className="inline-flex p-1.5 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-600 transition-colors" title="View details page">
                           <Eye size={13} />
@@ -1011,7 +997,6 @@ export default function AdminDashboard() {
                       </td>
                       <td className="px-4 py-3 text-gray-600">Lonavala</td>
                       <td className="px-4 py-3 font-semibold text-gray-700">{t.duration}</td>
-                      <td className="px-4 py-3 text-[#075B3A] font-bold">{t.priceLabel}</td>
                       <td className="px-4 py-3 text-right space-x-1.5">
                         <Link href={`/tours/${t.slug}`} target="_blank" className="inline-flex p-1.5 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-600 transition-colors" title="View details page">
                           <Eye size={13} />
@@ -1127,32 +1112,6 @@ export default function AdminDashboard() {
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {/* Numeric Price */}
-                <div>
-                  <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wide mb-1">Price (Number)</label>
-                  <input
-                    type="number"
-                    name="price"
-                    value={formData.price}
-                    onChange={handleInputChange}
-                    className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent"
-                  />
-                </div>
-
-                {/* Price Label */}
-                <div className="col-span-1 sm:col-span-2">
-                  <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wide mb-1">Price Label (String)</label>
-                  <input
-                    type="text"
-                    name="priceLabel"
-                    required
-                    value={formData.priceLabel}
-                    onChange={handleInputChange}
-                    placeholder="e.g. From ₹15,000 / Night"
-                    className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent"
-                  />
-                </div>
-
                 {/* Conditional Fields */}
                 {formType === 'villa' ? (
                   <div>

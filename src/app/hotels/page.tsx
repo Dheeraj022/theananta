@@ -43,7 +43,6 @@ export default async function HotelsPage() {
                   <MapPin size={10} strokeWidth={2} className="text-[#66716C]" />
                   <span className="text-[#66716C] text-[10px]">{hotel.location}</span>
                 </div>
-                <p className="text-[#075B3A] font-bold text-xs mb-2.5 mt-2">{hotel.priceLabel}</p>
                 <Link
                   href={`/hotels/${hotel.slug}`}
                   className="block w-full text-center py-2 bg-[#075B3A] text-white text-xs font-semibold rounded-xl hover:bg-[#06472F] transition-colors"

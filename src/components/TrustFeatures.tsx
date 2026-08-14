@@ -1,16 +1,17 @@
-import { Layers, Clock, Shield, ShieldCheck } from 'lucide-react';
+import { Layers, Clock, FileSearch, ShieldCheck, HeartHandshake } from 'lucide-react';
 
 const features = [
   { icon: Layers, title: 'Wide Selection', desc: 'of Stays' },
   { icon: Clock, title: 'Free Cancellation', desc: 'Information' },
-  { icon: Shield, title: 'Clear & Transparent', desc: 'Enquiry Process' },
+  { icon: FileSearch, title: 'Transparent', desc: 'Information' },
   { icon: ShieldCheck, title: 'GST Registered', desc: 'Travel Agency' },
+  { icon: HeartHandshake, title: 'Travel Assistance', desc: 'for All Needs' },
 ];
 
 export default function TrustFeatures() {
   return (
     <section className="mx-auto w-full max-w-[1200px] px-3 sm:px-5 lg:px-6 mt-4 sm:mt-6">
-      <div className="flex gap-3 overflow-x-auto no-scrollbar pb-1 lg:grid lg:grid-cols-4">
+      <div className="flex gap-3 overflow-x-auto no-scrollbar pb-1 lg:grid lg:grid-cols-5">
         {features.map((feat) => {
           const Icon = feat.icon;
           return (

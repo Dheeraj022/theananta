@@ -37,7 +37,7 @@ export default function HotelCard({ hotel }: HotelCardProps) {
 
 
 
-        <p className="text-[#075B3A] font-bold text-xs mb-2.5">{hotel.priceLabel}</p>
+
 
         <Link
           href={`/hotels/${hotel.slug}`}
