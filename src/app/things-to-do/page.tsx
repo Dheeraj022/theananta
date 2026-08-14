@@ -6,7 +6,7 @@ import {
   Trees, Landmark, Users, Coffee,
   Eye, Droplets, Tent, Map, Waves, Ticket,
   Footprints, Flame, Bird, Camera, Bike, Utensils,
-  Info, Check
+  Info, Check, ClipboardList, MapPin, Calendar, Send, Lock, CheckCircle, CloudRain
 } from 'lucide-react';
 import Footer from '@/components/Footer';
 
@@ -62,7 +62,10 @@ export default function ThingsToDoPage() {
           </div>
         </section>
 
-        <div className="mx-auto w-full max-w-[1200px] px-4 py-12 sm:py-16 space-y-16">
+        <div className="mx-auto w-full max-w-[1280px] px-4 py-12 sm:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 xl:gap-10">
+            {/* LEFT COLUMN */}
+            <div className="space-y-16">
           
           {/* Top Things To Do by Categories */}
           <section>
@@ -97,49 +100,49 @@ export default function ThingsToDoPage() {
                 { 
                   title: 'Tiger Point', 
                   desc: 'Famous for stunning sunrise views and peaceful ambience.', 
-                  img: 'https://images.unsplash.com/photo-1542302325-1e35dd7135e9?auto=format&fit=crop&q=80&w=800', 
+                  img: '/images/tours/tiger-point.jpg', 
                   tag: 'Viewpoint', tagColor: 'bg-[#EAF5EF] text-[#075B3A]' 
                 },
                 { 
                   title: 'Bhushi Dam', 
                   desc: 'Enjoy the gushing water and cool natural vibes.', 
-                  img: 'https://images.unsplash.com/photo-1545642055-6b801a61f2f8?auto=format&fit=crop&q=80&w=800', 
+                  img: '/images/tours/waterfall.jpg', 
                   tag: 'Waterfall Spot', tagColor: 'bg-blue-50 text-blue-700' 
                 },
                 { 
                   title: 'Pawna Lake', 
                   desc: 'Perfect for camping, boating and lakeside relaxation.', 
-                  img: 'https://images.unsplash.com/photo-1504280327395-56497257e1b5?auto=format&fit=crop&q=80&w=800', 
+                  img: '/images/camping/lakeside_camping.jpg', 
                   tag: 'Lake & Camping', tagColor: 'bg-indigo-50 text-indigo-700' 
                 },
                 { 
                   title: 'Karla Caves', 
                   desc: 'Ancient Buddhist caves with amazing architecture.', 
-                  img: 'https://images.unsplash.com/photo-1610017124971-e73cd63ec185?auto=format&fit=crop&q=80&w=800', 
+                  img: '/images/tours/caves.jpg', 
                   tag: 'Historical Place', tagColor: 'bg-purple-50 text-purple-700' 
                 },
                 { 
                   title: 'Rajmachi Fort', 
                   desc: 'Historic fort with trekking trails and scenic views.', 
-                  img: 'https://images.unsplash.com/photo-1588661601662-7901ce0144d0?auto=format&fit=crop&q=80&w=800', 
+                  img: '/images/tours/sightseeing.jpg', 
                   tag: 'Trekking & Heritage', tagColor: 'bg-orange-50 text-orange-700' 
                 },
                 { 
                   title: 'Trek to Tikona Fort', 
                   desc: 'Popular trek for adventure lovers and nature.', 
-                  img: 'https://images.unsplash.com/photo-1533555246282-359f81fcab37?auto=format&fit=crop&q=80&w=800', 
+                  img: '/images/camping/valley_view_camping.jpg', 
                   tag: 'Adventure', tagColor: 'bg-green-50 text-green-700' 
                 },
                 { 
                   title: 'Lonavala Lake', 
                   desc: 'Peaceful spot for evening walks and relaxation.', 
-                  img: 'https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&q=80&w=800', 
+                  img: '/images/hero/lonavala-hero.jpg', 
                   tag: 'Lake & Leisure', tagColor: 'bg-blue-50 text-blue-700' 
                 },
                 { 
                   title: 'Della Adventure Park', 
                   desc: 'Fun-filled adventure activities for all age groups.', 
-                  img: 'https://images.unsplash.com/photo-1533618037346-608b23a07802?auto=format&fit=crop&q=80&w=800', 
+                  img: '/images/camping/adventure_camping.jpg', 
                   tag: 'Adventure Park', tagColor: 'bg-pink-50 text-pink-700' 
                 },
               ].map((item, idx) => (
@@ -230,7 +233,177 @@ export default function ThingsToDoPage() {
               <div className="absolute bottom-0 -right-10 w-0 h-0 border-l-[100px] border-l-transparent border-b-[150px] border-b-[#075B3A] border-r-[100px] border-r-transparent"></div>
             </div>
           </section>
+        </div>
+            {/* RIGHT COLUMN (SIDEBAR) */}
+            <div className="relative">
+              <div className="sticky top-6 space-y-6">
+                
+                {/* Enquiry Form */}
+                <div id="things-to-do-enquiry-form" className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-lg shadow-black/5 scroll-mt-24">
+                  <div className="mb-6 text-left">
+                    <h2 className="text-lg font-bold text-[#17211D] mb-2">Plan Your Lonavala Experience</h2>
+                    <p className="text-[#66716C] text-xs leading-relaxed">Tell us what you're looking for and we'll help you plan the perfect trip.</p>
+                  </div>
 
+                  <form className="space-y-4">
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5 flex items-center gap-1.5">
+                        <ClipboardList size={14} className="text-[#17211D]" /> What are you interested in?
+                      </label>
+                      <select className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
+                        <option value="">Select activities / interests</option>
+                        <option value="adventure">Adventure Activities</option>
+                        <option value="nature">Nature & Scenic Spots</option>
+                        <option value="heritage">Heritage & Culture</option>
+                        <option value="leisure">Relaxation & Leisure</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5 flex items-center gap-1.5">
+                        <MapPin size={14} className="text-[#17211D]" /> Preferred Location
+                      </label>
+                      <select className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
+                        <option value="">Select location / area</option>
+                        <option value="lonavala">Lonavala</option>
+                        <option value="khandala">Khandala</option>
+                        <option value="pawnalake">Pawna Lake</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5 flex items-center gap-1.5">
+                        <MapPin size={14} className="text-[#17211D]" /> Preferred Date
+                      </label>
+                      <div className="relative">
+                        <input type="text" placeholder="Select date" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
+                        <Calendar size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#66716C]" />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5 flex items-center gap-1.5">
+                        <Users size={14} className="text-[#17211D]" /> Number of People
+                      </label>
+                      <select className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
+                        <option value="">Select number of people</option>
+                        <option value="1-2">1-2</option>
+                        <option value="3-4">3-4</option>
+                        <option value="5-7">5-7</option>
+                        <option value="8-12">8-12</option>
+                        <option value="12+">12+</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-2 flex items-center gap-1.5">
+                        <Footprints size={14} className="text-[#17211D]" /> Travel Type
+                      </label>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <label className="flex items-center text-[11px] font-bold text-[#17211D] border border-[#DCE4DF] rounded-full px-3 py-1 cursor-pointer hover:border-[#075B3A] transition-colors">
+                          <input type="radio" name="travel_type" className="hidden" /> Family
+                        </label>
+                        <label className="flex items-center text-[11px] font-bold text-[#17211D] border border-[#DCE4DF] rounded-full px-3 py-1 cursor-pointer hover:border-[#075B3A] transition-colors">
+                          <input type="radio" name="travel_type" className="hidden" /> Couple
+                        </label>
+                        <label className="flex items-center text-[11px] font-bold text-[#17211D] border border-[#DCE4DF] rounded-full px-3 py-1 cursor-pointer hover:border-[#075B3A] transition-colors">
+                          <input type="radio" name="travel_type" className="hidden" /> Friends
+                        </label>
+                        <label className="flex items-center text-[11px] font-bold text-[#17211D] border border-[#DCE4DF] rounded-full px-3 py-1 cursor-pointer hover:border-[#075B3A] transition-colors">
+                          <input type="radio" name="travel_type" className="hidden" /> Group
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Any Special Request?</label>
+                      <textarea placeholder="Tell us anything (optional)" rows={3} className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" className="w-full bg-[#06472F] hover:bg-[#053d28] text-white font-bold text-sm py-3 rounded-lg transition-colors flex items-center justify-center gap-2 mt-2">
+                      <Send size={16} />
+                      SEND ENQUIRY
+                    </button>
+
+                    <div className="flex flex-col items-center justify-center gap-1 mt-4">
+                      <div className="flex items-center gap-1.5 text-[#075B3A]">
+                        <Lock size={12} strokeWidth={2.5} />
+                        <span className="text-[10px] font-bold">Your information is safe with us.</span>
+                      </div>
+                      <span className="text-[10px] text-[#66716C]">We never share your details.</span>
+                    </div>
+                  </form>
+                </div>
+
+                {/* Why Explore Lonavala? */}
+                <div className="bg-[#F7F9F7] border border-[#DCE4DF] rounded-2xl p-6">
+                  <h3 className="text-sm font-bold text-[#17211D] mb-4">Why Explore Lonavala?</h3>
+                  <ul className="space-y-3">
+                    {[
+                      'Wide range of activities for all ages',
+                      'Nature, adventure & cultural experiences',
+                      'Perfect for short trips & weekends',
+                      'Safe, clean & tourist-friendly destination',
+                      'Memorable experiences guaranteed'
+                    ].map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <CheckCircle size={14} className="text-[#075B3A] shrink-0 mt-0.5" strokeWidth={2.5} />
+                        <span className="text-[11px] font-medium text-[#17211D] leading-tight">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Best Time To Visit */}
+                <div className="bg-[#F7F9F7] border border-[#DCE4DF] rounded-2xl p-6">
+                  <h3 className="text-sm font-bold text-[#17211D] mb-2">Best Time To Visit</h3>
+                  <p className="text-[11px] text-[#66716C] leading-relaxed mb-4">Lonavala is pleasant throughout the year. Monsoon and winter are the most popular seasons.</p>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3 bg-white p-3 rounded-xl border border-[#DCE4DF]">
+                      <div className="w-8 h-8 rounded-full bg-[#EAF5EF] flex items-center justify-center shrink-0">
+                        <CloudRain size={16} className="text-[#075B3A]" />
+                      </div>
+                      <div>
+                        <span className="text-[11px] font-bold text-[#17211D] block">Monsoon (Jun - Sep)</span>
+                        <span className="text-[10px] text-[#66716C] block mb-1">Sightseeing</span>
+                        <span className="text-[9px] text-[#17211D] font-medium">Lush green landscapes & waterfalls</span>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3 bg-white p-3 rounded-xl border border-[#DCE4DF]">
+                      <div className="w-8 h-8 rounded-full bg-[#FFF4E5] flex items-center justify-center shrink-0">
+                        <Sun size={16} className="text-[#E67E22]" />
+                      </div>
+                      <div>
+                        <span className="text-[11px] font-bold text-[#17211D] block">Winter (Oct - Feb)</span>
+                        <span className="text-[10px] text-[#66716C] block mb-1">Sightseeing</span>
+                        <span className="text-[9px] text-[#17211D] font-medium">Great for indoor & water activities</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Popular Locations */}
+                <div className="bg-[#F7F9F7] border border-[#DCE4DF] rounded-2xl p-6">
+                  <h3 className="text-sm font-bold text-[#17211D] mb-4">Popular Locations</h3>
+                  <ul className="space-y-3">
+                    {[
+                      'Pawna Lake',
+                      'Khandala',
+                      'Tiger Point',
+                      'Bhushi Dam',
+                      'Lonavala Lake',
+                      'Rajmachi',
+                      'Tikona Fort',
+                      'Karla Caves',
+                      'And Many More'
+                    ].map((item, idx) => (
+                      <li key={idx} className="flex items-center gap-2">
+                        <MapPin size={14} className="text-[#66716C] shrink-0" strokeWidth={2} />
+                        <span className="text-[11px] font-medium text-[#17211D] leading-tight">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
       </main>
       <Footer />

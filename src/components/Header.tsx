@@ -47,7 +47,9 @@ export default function Header() {
                 { label: 'Hotels & Resorts', href: '/hotels' },
                 { label: 'Villas', href: '/villas' },
                 { label: 'Local Tours', href: '/tours' },
-                { label: 'Enquiry', href: '/enquiry' },
+                { label: 'Camping', href: '/camping' },
+                { label: 'Cabs', href: '/cabs' },
+                { label: 'Activities', href: '/things-to-do' },
                 { label: 'Contact', href: '/contact' },
               ].map((item) => (
                 <Link

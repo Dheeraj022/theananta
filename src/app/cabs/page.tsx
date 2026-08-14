@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { 
   ShieldCheck, Clock, Sparkles, Headset, 
   Car, UserCheck, ShieldPlus, BadgeCheck, Clock4,
-  Info, MapPin, Timer, ThumbsUp, CheckSquare, Map
+  Info, MapPin, Timer, ThumbsUp, CheckSquare, Map,
+  Calendar, Users, Send, Lock, CheckCircle
 } from 'lucide-react';
 import Footer from '@/components/Footer';
 
@@ -62,7 +63,10 @@ export default function CabsPage() {
           </div>
         </section>
 
-        <div className="mx-auto w-full max-w-[1200px] px-4 py-12 sm:py-16 space-y-16">
+        <div className="mx-auto w-full max-w-[1280px] px-4 py-12 sm:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 xl:gap-10">
+            {/* LEFT COLUMN */}
+            <div className="space-y-16">
           
           {/* About Cab & Transfer Services */}
           <section className="bg-white rounded-2xl p-6 sm:p-10 border border-[#DCE4DF] shadow-sm">
@@ -195,7 +199,161 @@ export default function CabsPage() {
               />
             </div>
           </section>
+            </div>
 
+            {/* RIGHT COLUMN (SIDEBAR) */}
+            <div className="relative">
+              <div className="sticky top-6 space-y-6">
+                
+                {/* Enquiry Form */}
+                <div id="cab-enquiry-form" className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-lg shadow-black/5 scroll-mt-24">
+                  <div className="mb-6 text-center">
+                    <h2 className="text-lg font-bold text-[#17211D] mb-2">Book Your Cab / Transfer</h2>
+                    <p className="text-[#66716C] text-xs leading-relaxed">Share your trip details and we'll assist you with the best options.</p>
+                  </div>
+
+                  <form className="space-y-4">
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5 flex items-center gap-1.5">
+                        <MapPin size={14} className="text-[#075B3A]" /> Pick-up Location
+                      </label>
+                      <input type="text" placeholder="Enter pick-up location" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5 flex items-center gap-1.5">
+                        <MapPin size={14} className="text-[#075B3A]" /> Drop Location
+                      </label>
+                      <input type="text" placeholder="Enter drop location" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5 flex items-center gap-1.5">
+                        <Calendar size={14} className="text-[#075B3A]" /> Travel Date
+                      </label>
+                      <div className="relative">
+                        <input type="text" placeholder="Select travel date" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
+                        <Calendar size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#66716C]" />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5 flex items-center gap-1.5">
+                        <Clock size={14} className="text-[#075B3A]" /> Travel Time
+                      </label>
+                      <div className="relative">
+                        <input type="text" placeholder="Select time" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
+                        <Clock size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#66716C]" />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5 flex items-center gap-1.5">
+                        <Car size={14} className="text-[#075B3A]" /> Vehicle Type
+                      </label>
+                      <select className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
+                        <option value="">Select vehicle type</option>
+                        <option value="hatchback">Hatchback</option>
+                        <option value="sedan">Sedan</option>
+                        <option value="suv">SUV</option>
+                        <option value="innova">Innova</option>
+                        <option value="tempo">Tempo Traveller</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5 flex items-center gap-1.5">
+                        <Users size={14} className="text-[#075B3A]" /> Number of Passengers
+                      </label>
+                      <select className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
+                        <option value="">Select number of passengers</option>
+                        <option value="1-2">1-2</option>
+                        <option value="3-4">3-4</option>
+                        <option value="5-7">5-7</option>
+                        <option value="8-12">8-12</option>
+                        <option value="12+">12+</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-2">Trip Type</label>
+                      <div className="flex items-center gap-4">
+                        <label className="flex items-center gap-2 text-xs text-[#17211D]">
+                          <input type="radio" name="trip_type" className="accent-[#075B3A]" /> One Way
+                        </label>
+                        <label className="flex items-center gap-2 text-xs text-[#17211D]">
+                          <input type="radio" name="trip_type" className="accent-[#075B3A]" /> Round Trip
+                        </label>
+                        <label className="flex items-center gap-2 text-xs text-[#17211D]">
+                          <input type="radio" name="trip_type" className="accent-[#075B3A]" /> Local / Sightseeing
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Your Name</label>
+                      <input type="text" placeholder="Enter your name" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Phone Number</label>
+                      <input type="tel" placeholder="Enter 10 digit mobile number" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
+                    </div>
+
+                    <button type="submit" className="w-full bg-[#06472F] hover:bg-[#053d28] text-white font-bold text-sm py-3 rounded-lg transition-colors flex items-center justify-center gap-2 mt-2">
+                      <Send size={16} />
+                      SEND REQUEST
+                    </button>
+
+                    <div className="flex flex-col items-center justify-center gap-1 mt-4">
+                      <div className="flex items-center gap-1.5 text-[#075B3A]">
+                        <Lock size={12} strokeWidth={2.5} />
+                        <span className="text-[10px] font-bold">Your information is safe with us.</span>
+                      </div>
+                      <span className="text-[10px] text-[#66716C]">We never share your details.</span>
+                    </div>
+                  </form>
+                </div>
+
+                {/* Our Services Include */}
+                <div className="bg-[#F7F9F7] border border-[#DCE4DF] rounded-2xl p-6">
+                  <h3 className="text-sm font-bold text-[#17211D] mb-4">Our Services Include</h3>
+                  <ul className="space-y-3">
+                    {[
+                      'Local Sightseeing Tours',
+                      'Airport Pick-up & Drop',
+                      'One Way & Round Trips',
+                      'Outstation Travel',
+                      'Corporate Travel',
+                      'Event & Group Transfers'
+                    ].map((item, idx) => (
+                      <li key={idx} className="flex items-center gap-2">
+                        <CheckCircle size={14} className="text-[#075B3A] shrink-0" strokeWidth={2.5} />
+                        <span className="text-xs font-medium text-[#17211D]">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Popular Destinations */}
+                <div className="bg-[#F7F9F7] border border-[#DCE4DF] rounded-2xl p-6">
+                  <h3 className="text-sm font-bold text-[#17211D] mb-4">Popular Destinations</h3>
+                  <ul className="space-y-3">
+                    {[
+                      'Pawna Lake',
+                      'Khandala',
+                      'Tikona Fort',
+                      'Bhira Dam',
+                      'Lohagad Fort',
+                      'Karlo Caves',
+                      'Mumbai',
+                      'Pune',
+                      'Mahabaleshwar',
+                      'And Many More'
+                    ].map((item, idx) => (
+                      <li key={idx} className="flex items-center gap-2">
+                        <MapPin size={14} className="text-[#66716C] shrink-0" strokeWidth={2} />
+                        <span className="text-xs font-medium text-[#17211D]">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
       </main>
       <Footer />

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { 
   Trees, Flame, Tent, ShieldCheck, Users, 
   Mountain, Music, Sparkles, Footprints, Dumbbell, Camera,
-  ShieldAlert, Check
+  ShieldAlert, Check, Send, Lock, CheckCircle, MapPin
 } from 'lucide-react';
 import Footer from '@/components/Footer';
 
@@ -38,9 +38,13 @@ export default function CampingPage() {
           </div>
         </section>
 
-        <div className="mx-auto w-full max-w-[1200px] px-4 py-12 sm:py-16 space-y-16">
-          
-          {/* About Camping Section */}
+        <div className="mx-auto w-full max-w-[1280px] px-4 py-12 sm:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 xl:gap-10">
+            
+            {/* LEFT COLUMN */}
+            <div className="space-y-16">
+              
+              {/* About Camping Section */}
           <section>
             <div className="flex items-center gap-2 mb-4">
               <Tent size={24} className="text-[#075B3A]" />
@@ -196,7 +200,137 @@ export default function CampingPage() {
               </div>
             </div>
           </section>
+        </div>
 
+        {/* RIGHT COLUMN (SIDEBAR) */}
+            <div className="relative">
+              <div className="sticky top-6 space-y-6">
+                
+                {/* Enquiry Form */}
+                <div id="camping-enquiry-form" className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-lg shadow-black/5 scroll-mt-24">
+                  <div className="mb-6 text-center">
+                    <h2 className="text-lg font-bold text-[#17211D] mb-2">Plan Your Camping Experience</h2>
+                    <p className="text-[#66716C] text-xs leading-relaxed">Share your requirements and we'll get back to you with the best options.</p>
+                  </div>
+
+                  <form className="space-y-4">
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Full Name</label>
+                      <input type="text" placeholder="Enter your full name" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Phone Number</label>
+                      <input type="tel" placeholder="Enter 10 digit mobile number" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Email Address</label>
+                      <input type="email" placeholder="Enter your email address" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Preferred Date</label>
+                      <div className="relative">
+                        <input type="text" placeholder="dd-mm-yyyy" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors" />
+                        <CheckCircle size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#66716C]" />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Number of People</label>
+                      <select className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
+                        <option value="">Select number of people</option>
+                        <option value="1">1 Person</option>
+                        <option value="2">2 People</option>
+                        <option value="3">3 People</option>
+                        <option value="4">4 People</option>
+                        <option value="5">5 People</option>
+                        <option value="6-10">6 to 10 People</option>
+                        <option value="10+">More than 10 People</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Trip Type</label>
+                      <select className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
+                        <option value="">Select trip type</option>
+                        <option value="family">Family Trip</option>
+                        <option value="couple">Couple</option>
+                        <option value="friends">Friends Group</option>
+                        <option value="corporate">Corporate Outing</option>
+                        <option value="solo">Solo Trip</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Interests / Activities</label>
+                      <select className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
+                        <option value="">Select your interests</option>
+                        <option value="lakeside">Lakeside Camping</option>
+                        <option value="forest">Forest Camping</option>
+                        <option value="adventure">Adventure & Trekking</option>
+                        <option value="stargazing">Star Gazing & Music</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#17211D] mb-1.5">Any Special Requirement?</label>
+                      <textarea placeholder="Tell us about your preferences..." rows={3} className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" className="w-full bg-[#06472F] hover:bg-[#053d28] text-white font-bold text-sm py-3 rounded-lg transition-colors flex items-center justify-center gap-2 mt-2">
+                      <Send size={16} />
+                      SEND ENQUIRY
+                    </button>
+
+                    <div className="flex flex-col items-center justify-center gap-1 mt-4">
+                      <div className="flex items-center gap-1.5 text-[#075B3A]">
+                        <Lock size={12} strokeWidth={2.5} />
+                        <span className="text-[10px] font-bold">Your information is safe with us.</span>
+                      </div>
+                      <span className="text-[10px] text-[#66716C]">We never share your details.</span>
+                    </div>
+                  </form>
+                </div>
+
+                {/* Why Choose Us? */}
+                <div className="bg-[#F7F9F7] border border-[#DCE4DF] rounded-2xl p-6">
+                  <h3 className="text-sm font-bold text-[#17211D] mb-4">Why Choose Us?</h3>
+                  <ul className="space-y-3">
+                    {[
+                      'Verified & Trusted Campsites',
+                      'Best Recommendations',
+                      '24/7 Enquiry Assistance',
+                      'Transparent Information',
+                      'Local Expertise',
+                      'Hassle-free Assistance'
+                    ].map((item, idx) => (
+                      <li key={idx} className="flex items-center gap-2">
+                        <CheckCircle size={14} className="text-[#075B3A] shrink-0" strokeWidth={2.5} />
+                        <span className="text-xs font-medium text-[#17211D]">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Popular Camping Spots */}
+                <div className="bg-[#F7F9F7] border border-[#DCE4DF] rounded-2xl p-6">
+                  <h3 className="text-sm font-bold text-[#17211D] mb-4">Popular Camping Spots</h3>
+                  <ul className="space-y-3">
+                    {[
+                      'Pawna Lake',
+                      'Wadivale',
+                      'Khadakwasla (Near Lonavala)',
+                      'Tikona Fort Area',
+                      'Bihra',
+                      'Kataldhar',
+                      'And Many More'
+                    ].map((item, idx) => (
+                      <li key={idx} className="flex items-center gap-2">
+                        <MapPin size={14} className="text-[#66716C] shrink-0" strokeWidth={2} />
+                        <span className="text-xs font-medium text-[#17211D]">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
       </main>
       <Footer />
