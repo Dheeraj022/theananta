@@ -70,9 +70,9 @@ export default function ContactPage() {
                   </div>
                   <span className="font-semibold text-[11px] sm:text-xs leading-snug mt-1 text-[#66716C]">
                     <span className="font-bold text-[#17211D] text-xs sm:text-[13px] block mb-0.5">Office Address</span>
-                    Shop No. 3, Near Lonavala Bus Stand,<br />
-                    Lonavala, Taluka Maval,<br />
-                    Pune, Maharashtra - 410401
+                    Shop No. 17, Blue Tulip CHS Ltd,<br />
+                    Blue Empire Complex, Off Link Road,<br />
+                    Mahavir Nagar, Kandivali (W), Mumbai - 400067
                   </span>
                 </div>
               </div>

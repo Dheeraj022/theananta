@@ -220,10 +220,11 @@ export default function Footer() {
                   <MapPin size={13} strokeWidth={2} className="text-green-400" />
                 </div>
                 <address className="not-italic text-gray-400 text-sm leading-relaxed">
-                  <strong className="text-white font-semibold block mb-1">Vidhi Tour &amp; Travel</strong>
-                  Shop No. 3, Near Lonavala Bus Stand,<br />
-                  Lonavala, Taluka Maval,<br />
-                  Dist. Pune – 410401, Maharashtra, India
+                  <strong className="text-white font-semibold block mb-1">Office Address</strong>
+                  BLUE TULIP CHS LTD, SHOP NO - 17,<br />
+                  BLUE EMPIRE COMPLEX, OFF LINK ROAD,<br />
+                  MAHAVIR NAGAR, KANDIWALI W, MUMBAI,<br />
+                  Mumbai Suburban, Maharashtra, 400067
                 </address>
               </div>
             </div>

@@ -307,7 +307,14 @@ export default async function ToursPage() {
                     <div>
                       <label className="block text-xs font-bold text-[#17211D] mb-1.5">Number of People</label>
                       <select className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
-                        <option>Select number of people</option>
+                        <option value="">Select number of people</option>
+                        <option value="1">1 Person</option>
+                        <option value="2">2 People</option>
+                        <option value="3">3 People</option>
+                        <option value="4">4 People</option>
+                        <option value="5">5 People</option>
+                        <option value="6-10">6 to 10 People</option>
+                        <option value="10+">More than 10 People</option>
                       </select>
                     </div>
                     <div>
