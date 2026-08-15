@@ -119,8 +119,7 @@ export async function saveVilla(villa: Villa): Promise<boolean> {
       .upsert({
         id: villa.id,
         name: villa.name,
-        price: 0,
-        priceLabel: '',
+        price: '0',
         location: villa.location,
         bedrooms: Number(villa.bedrooms),
         image: villa.image,
