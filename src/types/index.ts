@@ -14,6 +14,8 @@ export interface FrontendLayout {
     suitableFor: string;
     accommodationType: string;
     setting: string;
+    locationText?: string;
+    areaText?: string;
   };
   accommodationRooms?: {
     name: string;
