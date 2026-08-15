@@ -263,7 +263,7 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
               <h2 className="text-lg font-bold text-[#17211D]">Accommodation</h2>
               <span className="text-[#66716C] text-xs">Room categories and accommodation options may vary by property and date.</span>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
               {accommodationRooms.map((room, idx) => (
                 <div key={idx} className="bg-white border border-[#DCE4DF] rounded-2xl p-5 flex flex-col shadow-sm">
                   <div className="text-center mb-5">

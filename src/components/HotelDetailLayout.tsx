@@ -295,7 +295,7 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
               <span className="text-[11px] text-[#66716C]">Room categories and accommodation options may vary by property and date.</span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {accommodationRooms.map((room, idx) => {
                 return (
                   <div key={idx} className="border border-[#DCE4DF] rounded-xl p-4 flex flex-col bg-white">
