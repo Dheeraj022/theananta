@@ -11,6 +11,8 @@ import {
 import Footer from '@/components/Footer';
 import { getTours } from '@/lib/db';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Local Tours in Lonavala | Lonavala Gateway',
   description: 'Explore Lonavala with curated local tours. Tiger Point, Sightseeing, Waterfall and Caves tours.',
