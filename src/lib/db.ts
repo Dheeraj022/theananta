@@ -50,6 +50,8 @@ export async function saveHotel(hotel: Hotel): Promise<boolean> {
       .upsert({
         id: hotel.id,
         name: hotel.name,
+        price: 0,
+        priceLabel: '',
         location: hotel.location,
         rating: Number(hotel.rating),
         reviews: hotel.reviews,
@@ -64,6 +66,7 @@ export async function saveHotel(hotel: Hotel): Promise<boolean> {
       });
     if (!error) return true;
     console.warn('Supabase saveHotel error:', error.message, error.details, error.hint, error.code);
+    throw new Error(error.message || 'Supabase saveHotel failed');
   }
 
   // Local Storage Fallback
@@ -116,6 +119,8 @@ export async function saveVilla(villa: Villa): Promise<boolean> {
       .upsert({
         id: villa.id,
         name: villa.name,
+        price: 0,
+        priceLabel: '',
         location: villa.location,
         bedrooms: Number(villa.bedrooms),
         image: villa.image,
@@ -129,6 +134,7 @@ export async function saveVilla(villa: Villa): Promise<boolean> {
       });
     if (!error) return true;
     console.warn('Supabase saveVilla error:', error.message, error.details, error.hint, error.code);
+    throw new Error(error.message || 'Supabase saveVilla failed');
   }
 
   // Local Storage Fallback
@@ -183,6 +189,8 @@ export async function saveTour(tour: Tour): Promise<boolean> {
       .upsert({
         id: tour.id,
         name: tour.name,
+        price: 0,
+        priceLabel: '',
         duration: tour.duration,
         image: tour.image,
         slug: tour.slug,
