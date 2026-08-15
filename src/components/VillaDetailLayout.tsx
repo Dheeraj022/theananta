@@ -9,7 +9,8 @@ import {
   BedDouble, Trees, Wifi, ChefHat, Sofa, Zap,
   Broom, Flame, MonitorPlay, Gamepad2, ConciergeBell,
   UtensilsCrossed, Images, Info, XCircle, Share2,
-  Navigation, MessageCircle, HeartHandshake, CalendarDays, User, Phone, X
+  Navigation, MessageCircle, HeartHandshake, CalendarDays, User, Phone, X,
+  Car, Droplets, Wind
 } from 'lucide-react';
 import { Villa } from '@/types';
 
@@ -19,6 +20,60 @@ interface VillaDetailLayoutProps {
 
 export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
   const [activeImage, setActiveImage] = useState(villa.images[0] || villa.image);
+
+  const getIcon = (iconName: string) => {
+    switch (iconName.toLowerCase()) {
+      case 'wifi': return <Wifi size={20} className="text-[#075B3A]" />;
+      case 'car': return <Car size={20} className="text-[#075B3A]" />;
+      case 'pool': return <Droplets size={20} className="text-[#075B3A]" />;
+      case 'tv': return <MonitorPlay size={20} className="text-[#075B3A]" />;
+      case 'ac': return <Wind size={20} className="text-[#075B3A]" />;
+      case 'restaurant': return <UtensilsCrossed size={20} className="text-[#075B3A]" />;
+      case 'kitchen': return <ChefHat size={20} className="text-[#075B3A]" />;
+      case 'gamepad2': return <Gamepad2 size={20} className="text-[#075B3A]" />;
+      case 'flame': return <Flame size={20} className="text-[#075B3A]" />;
+      case 'broom': return <Broom size={20} className="text-[#075B3A]" />;
+      case 'conciergebell': return <ConciergeBell size={20} className="text-[#075B3A]" />;
+      case 'sofa': return <Sofa size={20} className="text-[#075B3A]" />;
+      case 'trees': return <Trees size={20} className="text-[#075B3A]" />;
+      case 'zap': return <Zap size={20} className="text-[#075B3A]" />;
+      case 'home': return <Home size={20} className="text-[#075B3A]" />;
+      default: return <Check size={20} className="text-[#075B3A]" />;
+    }
+  };
+
+  const layout = villa.frontend_layout || {};
+  const quickInfo = layout.quickInfo || {
+    propertyType: 'Private Villa',
+    suitableFor: 'Families, Couples, Groups',
+    accommodationType: 'Multiple Bedrooms',
+    setting: 'Hill / Nature Surroundings',
+    locationText: '',
+    areaText: 'Lonavala'
+  };
+
+  const accommodationRooms = layout.accommodationRooms || (villa.rooms && villa.rooms.length > 0 ? villa.rooms.map((r: any) => ({ name: r.name, features: [r.description] })) : [
+    { name: '3 BHK Villa', features: ['3 Bedrooms', 'Spacious Living Area', 'Attached Bathrooms', 'Private Balcony'] },
+    { name: '4 BHK Villa', features: ['4 Bedrooms', 'Large Living Area', 'Garden Facing', 'Private Pool Access'] },
+    { name: '5 BHK Villa', features: ['5 Bedrooms', 'Premium Interiors', 'Private Pool', 'Outdoor Lounge'] },
+    { name: 'Entire Villa', features: ['Full Villa Access', 'Maximum Privacy', 'Perfect for Groups', 'Multiple Amenities'] }
+  ]);
+
+  const villaFeatures = layout.villaFeatures || [
+    { label: 'Private', icon: 'Home' },
+    { label: 'Garden/Lawn', icon: 'Trees' },
+    { label: 'Wi-Fi', icon: 'Wifi' },
+    { label: 'Kitchen', icon: 'ChefHat' },
+    { label: 'Living Area', icon: 'Sofa' },
+    { label: 'Power Backup', icon: 'Zap' }
+  ];
+
+  const diningAndFood = layout.diningAndFood || [
+    { title: 'In-house Dining', description: 'Home-style food available', icon: 'UtensilsCrossed' },
+    { title: 'Kitchen', description: 'Fully equipped kitchen', icon: 'ChefHat' },
+    { title: 'BBQ Facility', description: 'Enjoy BBQ with family & friends', icon: 'Flame' }
+  ];
+
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -173,12 +228,12 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
             <h2 className="text-lg font-bold text-[#17211D] mb-6">Quick Property Information</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4">
               {[
-                { icon: Home, label: 'Property Type', val: 'Private Villa' },
-                { icon: MapPin, label: 'Location', val: `${villa.location}, Maharashtra` },
-                { icon: Users, label: 'Suitable For', val: 'Families, Couples, Groups' },
-                { icon: BedDouble, label: 'Accommodation', val: 'Multiple Bedrooms' },
-                { icon: Mountain, label: 'Setting', val: 'Hill / Nature Surroundings' },
-                { icon: Map, label: 'Area', val: 'Lonavala' },
+                { icon: Home, label: 'Property Type', val: quickInfo.propertyType },
+                { icon: MapPin, label: 'Location', val: quickInfo.locationText || `${villa.location}, Maharashtra` },
+                { icon: Users, label: 'Suitable For', val: quickInfo.suitableFor },
+                { icon: BedDouble, label: 'Accommodation', val: quickInfo.accommodationType },
+                { icon: Mountain, label: 'Setting', val: quickInfo.setting },
+                { icon: Map, label: 'Area', val: quickInfo.areaText || 'Lonavala' },
               ].map((item, idx) => {
                 const Icon = item.icon;
                 return (
@@ -197,11 +252,8 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
           {/* About The Villa */}
           <section className="border border-[#DCE4DF] rounded-2xl p-6 sm:p-8">
             <h2 className="text-lg font-bold text-[#17211D] mb-4">About The Villa</h2>
-            <p className="text-[#66716C] text-sm leading-relaxed mb-4">
-              {villa.name} offers a perfect blend of luxury, comfort and nature. The villa features spacious rooms, elegant interiors, a private pool and beautiful outdoor spaces.
-            </p>
-            <p className="text-[#66716C] text-sm leading-relaxed">
-              It is an ideal choice for those looking for a peaceful stay in Lonavala with complete privacy and modern amenities.
+            <p className="text-[#66716C] text-sm leading-relaxed mb-4 whitespace-pre-line">
+              {villa.about || `${villa.name} offers a perfect blend of luxury, comfort and nature. The villa features spacious rooms, elegant interiors, a private pool and beautiful outdoor spaces.\n\nIt is an ideal choice for those looking for a peaceful stay in Lonavala with complete privacy and modern amenities.`}
             </p>
           </section>
 
@@ -212,26 +264,21 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
               <span className="text-[#66716C] text-xs">Room categories and accommodation options may vary by property and date.</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { title: '3 BHK Villa', feats: ['3 Bedrooms', 'Spacious Living Area', 'Attached Bathrooms', 'Private Balcony'] },
-                { title: '4 BHK Villa', feats: ['4 Bedrooms', 'Large Living Area', 'Garden Facing', 'Private Pool Access'] },
-                { title: '5 BHK Villa', feats: ['5 Bedrooms', 'Premium Interiors', 'Private Pool', 'Outdoor Lounge'] },
-                { title: 'Entire Villa', feats: ['Full Villa Access', 'Maximum Privacy', 'Perfect for Groups', 'Multiple Amenities'] },
-              ].map((room, idx) => (
+              {accommodationRooms.map((room, idx) => (
                 <div key={idx} className="bg-white border border-[#DCE4DF] rounded-2xl p-5 flex flex-col shadow-sm">
                   <div className="text-center mb-5">
-                    <h3 className="font-bold text-[#17211D] text-[15px]">{room.title}</h3>
+                    <h3 className="font-bold text-[#17211D] text-[15px]">{room.name}</h3>
                     <p className="text-[#66716C] text-[11px] mt-0.5">(Information Only)</p>
                   </div>
                   <ul className="space-y-2 mb-6 flex-grow">
-                    {room.feats.map((feat, fidx) => (
+                    {room.features.map((feat, fidx) => (
                       <li key={fidx} className="flex items-start gap-2 text-xs text-[#17211D] font-medium">
                         <Check size={14} className="text-[#075B3A] shrink-0 mt-0.5" strokeWidth={3} />
                         <span>{feat}</span>
                       </li>
                     ))}
                   </ul>
-                  <button onClick={() => handleCheckAvailability(room.title)} className="w-full mt-4 py-2 bg-[#F9FAFB] hover:bg-[#EAF5EF] border border-[#DCE4DF] hover:border-[#075B3A] text-[#17211D] hover:text-[#075B3A] text-[11px] font-bold rounded-lg transition-colors">
+                  <button onClick={() => handleCheckAvailability(room.name)} className="w-full mt-4 py-2 bg-[#F9FAFB] hover:bg-[#EAF5EF] border border-[#DCE4DF] hover:border-[#075B3A] text-[#17211D] hover:text-[#075B3A] text-[11px] font-bold rounded-lg transition-colors">
                     Get Enquiry
                   </button>
                 </div>
@@ -244,44 +291,31 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
             <section className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-sm">
               <h2 className="text-sm font-bold text-[#17211D] mb-6">Villa Features <span className="font-normal text-[#66716C]">(May Vary)</span></h2>
               <div className="grid grid-cols-3 sm:grid-cols-6 gap-y-6 gap-x-2">
-                {[
-                  { icon: Home, label: 'Private' },
-                  { icon: Trees, label: 'Garden/Lawn' },
-                  { icon: Wifi, label: 'Wi-Fi' },
-                  { icon: ChefHat, label: 'Kitchen' },
-                  { icon: Sofa, label: 'Living Area' },
-                  { icon: Zap, label: 'Power Backup' },
-                ].map((item, idx) => {
-                  const Icon = item.icon;
-                  return (
-                    <div key={idx} className="flex flex-col items-center text-center">
-                      <Icon size={20} className="text-[#075B3A] mb-2" strokeWidth={1.5} />
-                      <span className="text-[10px] font-semibold text-[#17211D] leading-tight">{item.label}</span>
-                    </div>
-                  );
-                })}
+                {villaFeatures.map((item, idx) => (
+                  <div key={idx} className="flex flex-col items-center text-center">
+                    {getIcon(item.icon)}
+                    <span className="text-[10px] font-semibold text-[#17211D] leading-tight mt-2">{item.label}</span>
+                  </div>
+                ))}
               </div>
             </section>
 
             <section className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-sm">
               <h2 className="text-sm font-bold text-[#17211D] mb-6">Property Amenities</h2>
               <div className="grid grid-cols-3 sm:grid-cols-5 gap-y-6 gap-x-2">
-                {[
-                  { icon: Broom, label: 'Housekeeping' },
-                  { icon: Flame, label: 'BBQ Area' },
-                  { icon: Flame, label: 'Bonfire\n(On Request)' },
-                  { icon: MonitorPlay, label: 'TV' },
-                  { icon: Gamepad2, label: 'Indoor Games' },
-                  { icon: ConciergeBell, label: 'Room Service' },
-                ].map((item, idx) => {
-                  const Icon = item.icon;
-                  return (
-                    <div key={idx} className="flex flex-col items-center text-center">
-                      <Icon size={20} className="text-[#075B3A] mb-2" strokeWidth={1.5} />
-                      <span className="text-[10px] font-semibold text-[#17211D] leading-tight whitespace-pre-line">{item.label}</span>
-                    </div>
-                  );
-                })}
+                {(villa.amenities?.length > 0 ? villa.amenities : [
+                  { icon: 'Broom', label: 'Housekeeping' },
+                  { icon: 'Flame', label: 'BBQ Area' },
+                  { icon: 'Flame', label: 'Bonfire\n(On Request)' },
+                  { icon: 'MonitorPlay', label: 'TV' },
+                  { icon: 'Gamepad2', label: 'Indoor Games' },
+                  { icon: 'ConciergeBell', label: 'Room Service' },
+                ]).map((item, idx) => (
+                  <div key={idx} className="flex flex-col items-center text-center">
+                    {getIcon(item.icon)}
+                    <span className="text-[10px] font-semibold text-[#17211D] leading-tight whitespace-pre-line mt-2">{item.label}</span>
+                  </div>
+                ))}
               </div>
             </section>
           </div>
@@ -290,22 +324,15 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
           <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6">
             <section className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-sm h-full flex flex-col gap-6">
               <h2 className="text-sm font-bold text-[#17211D]">Dining & Food</h2>
-              {[
-                { icon: UtensilsCrossed, title: 'In-house Dining', desc: 'Home-style food available' },
-                { icon: ChefHat, title: 'Kitchen', desc: 'Fully equipped kitchen' },
-                { icon: Flame, title: 'BBQ Facility', desc: 'Enjoy BBQ with family & friends' },
-              ].map((item, idx) => {
-                const Icon = item.icon;
-                return (
-                  <div key={idx} className="flex items-start gap-3">
-                    <Icon size={20} className="text-[#075B3A] shrink-0 mt-1" strokeWidth={1.5} />
-                    <div>
-                      <div className="text-[#17211D] font-bold text-xs sm:text-sm mb-0.5">{item.title}</div>
-                      <div className="text-[#66716C] text-[11px] leading-tight max-w-[120px]">{item.desc}</div>
-                    </div>
+              {diningAndFood.map((item, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <div className="mt-1">{getIcon(item.icon)}</div>
+                  <div>
+                    <div className="text-[#17211D] font-bold text-xs sm:text-sm mb-0.5">{item.title}</div>
+                    <div className="text-[#66716C] text-[11px] leading-tight max-w-[120px]">{item.description}</div>
                   </div>
-                );
-              })}
+                </div>
+              ))}
             </section>
 
             <section className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-sm h-full flex flex-col">

@@ -60,6 +60,7 @@ export async function saveHotel(hotel: Hotel): Promise<boolean> {
         images: hotel.images,
         amenities: hotel.amenities,
         rooms: hotel.rooms,
+        frontend_layout: hotel.frontend_layout || {},
       });
     if (!error) return true;
     console.warn('Supabase saveHotel error:', error.message, error.details, error.hint, error.code);
@@ -124,6 +125,7 @@ export async function saveVilla(villa: Villa): Promise<boolean> {
         images: villa.images,
         amenities: villa.amenities,
         rooms: villa.rooms,
+        frontend_layout: villa.frontend_layout || {},
       });
     if (!error) return true;
     console.warn('Supabase saveVilla error:', error.message, error.details, error.hint, error.code);

@@ -31,6 +31,40 @@ const getIcon = (iconName: string) => {
 
 export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
   const [activeImage, setActiveImage] = useState(hotel.images[0] || hotel.image);
+
+  const layout = hotel.frontend_layout || {};
+  const quickInfo = layout.quickInfo || {
+    propertyType: 'Resort',
+    suitableFor: 'Couples, Families, Groups',
+    accommodationType: 'Multiple Room Categories',
+    setting: 'Hill / Nature Surroundings',
+    locationText: '',
+    areaText: 'Lonavala'
+  };
+
+  const accommodationRooms = layout.accommodationRooms || (hotel.rooms && hotel.rooms.length > 0 ? hotel.rooms.map((r: any) => ({ name: r.name, features: [r.description] })) : [
+    { name: 'Deluxe Room', features: ['Comfortable stay', 'Modern amenities', 'Ideal for couples'] },
+    { name: 'Premium Room', features: ['Spacious rooms', 'Added comfort', 'Scenic views'] },
+    { name: 'Family Room', features: ['Extra space', 'Suitable for families', 'Multiple bedding'] },
+    { name: 'Suite / Villa', features: ['Luxury accommodation', 'Private areas', 'Premium facilities'] }
+  ]);
+
+  const roomFeatures = layout.roomFeatures || [
+    { label: 'Double / Twin Bed', icon: 'Sofa' },
+    { label: 'Air Conditioning', icon: 'Wind' },
+    { label: 'TV', icon: 'Tv' },
+    { label: 'Attached Bathroom', icon: 'Bath' },
+    { label: 'Balcony / View', icon: 'Trees' },
+    { label: 'Seating Area', icon: 'Sofa' }
+  ];
+
+  const diningAndFood = layout.diningAndFood || [
+    { title: 'Restaurant', description: 'Multi-cuisine dining options available.', icon: 'Utensils' },
+    { title: 'Breakfast', description: 'Breakfast option may be available.', icon: 'CupSoda' },
+    { title: 'Room Dining', description: 'In-room dining services (may vary).', icon: 'Sofa' },
+    { title: 'Nearby Options', description: 'Various food outlets available nearby.', icon: 'MapPinned' }
+  ];
+
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({
@@ -197,42 +231,42 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
                 <Home size={18} className="text-[#075B3A] shrink-0 mt-0.5" />
                 <div>
                   <div className="text-[10px] font-bold text-[#17211D] mb-0.5">Property Type</div>
-                  <div className="text-[11px] text-[#66716C]">Resort</div>
+                  <div className="text-[11px] text-[#66716C]">{quickInfo.propertyType}</div>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3">
                 <MapPin size={18} className="text-[#075B3A] shrink-0 mt-0.5" />
                 <div>
                   <div className="text-[10px] font-bold text-[#17211D] mb-0.5">Location</div>
-                  <div className="text-[11px] text-[#66716C]">{hotel.location}, Maharashtra</div>
+                  <div className="text-[11px] text-[#66716C]">{quickInfo.locationText || `${hotel.location}, Maharashtra`}</div>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3">
                 <Users size={18} className="text-[#075B3A] shrink-0 mt-0.5" />
                 <div>
                   <div className="text-[10px] font-bold text-[#17211D] mb-0.5">Suitable For</div>
-                  <div className="text-[11px] text-[#66716C]">Couples, Families, Groups</div>
+                  <div className="text-[11px] text-[#66716C]">{quickInfo.suitableFor}</div>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3 border-t md:border-t border-[#DCE4DF]">
                 <Home size={18} className="text-[#075B3A] shrink-0 mt-0.5" />
                 <div>
                   <div className="text-[10px] font-bold text-[#17211D] mb-0.5">Accommodation</div>
-                  <div className="text-[11px] text-[#66716C]">Multiple Room Categories</div>
+                  <div className="text-[11px] text-[#66716C]">{quickInfo.accommodationType}</div>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3 border-t md:border-t border-[#DCE4DF]">
                 <Mountain size={18} className="text-[#075B3A] shrink-0 mt-0.5" />
                 <div>
                   <div className="text-[10px] font-bold text-[#17211D] mb-0.5">Setting</div>
-                  <div className="text-[11px] text-[#66716C]">Hill / Nature Surroundings</div>
+                  <div className="text-[11px] text-[#66716C]">{quickInfo.setting}</div>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3 border-t md:border-t border-[#DCE4DF]">
                 <Map size={18} className="text-[#075B3A] shrink-0 mt-0.5" />
                 <div>
                   <div className="text-[10px] font-bold text-[#17211D] mb-0.5">Area</div>
-                  <div className="text-[11px] text-[#66716C]">Lonavala</div>
+                  <div className="text-[11px] text-[#66716C]">{quickInfo.areaText || 'Lonavala'}</div>
                 </div>
               </div>
             </div>
@@ -262,26 +296,20 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {['Deluxe Room', 'Premium Room', 'Family Room', 'Suite / Villa'].map((roomName, idx) => {
-                const features = [
-                  ['Comfortable stay', 'Modern amenities', 'Ideal for couples'],
-                  ['Spacious rooms', 'Added comfort', 'Scenic views'],
-                  ['Extra space', 'Suitable for families', 'Multiple bedding'],
-                  ['Luxury accommodation', 'Private areas', 'Premium facilities']
-                ];
+              {accommodationRooms.map((room, idx) => {
                 return (
-                  <div key={roomName} className="border border-[#DCE4DF] rounded-xl p-4 flex flex-col bg-white">
-                    <h4 className="font-extrabold text-[#17211D] text-[13px] mb-0.5">{roomName}</h4>
+                  <div key={idx} className="border border-[#DCE4DF] rounded-xl p-4 flex flex-col bg-white">
+                    <h4 className="font-extrabold text-[#17211D] text-[13px] mb-0.5">{room.name}</h4>
                     <span className="text-[10px] text-[#66716C] mb-3">(Information Only)</span>
                     <ul className="space-y-2 mb-5 flex-grow">
-                      {features[idx].map((f, i) => (
+                      {room.features.map((f, i) => (
                         <li key={i} className="flex items-start gap-1.5 text-[11px] text-[#17211D]">
                           <Check size={12} className="text-[#075B3A] shrink-0 mt-0.5" />
                           <span>{f}</span>
                         </li>
                       ))}
                     </ul>
-                    <button onClick={() => handleCheckAvailability(roomName)} className="w-full mt-4 py-2 bg-[#F9FAFB] hover:bg-[#EAF5EF] border border-[#DCE4DF] hover:border-[#075B3A] text-[#17211D] hover:text-[#075B3A] text-[11px] font-bold rounded-lg transition-colors">
+                    <button onClick={() => handleCheckAvailability(room.name)} className="w-full mt-4 py-2 bg-[#F9FAFB] hover:bg-[#EAF5EF] border border-[#DCE4DF] hover:border-[#075B3A] text-[#17211D] hover:text-[#075B3A] text-[11px] font-bold rounded-lg transition-colors">
                       Get Enquiry
                     </button>
                   </div>
@@ -299,16 +327,9 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
                 Room Features <span className="text-[10px] font-normal text-[#66716C]">(May Vary)</span>
               </h3>
               <div className="grid grid-cols-3 gap-y-5 gap-x-2">
-                {[
-                  { label: 'Double / Twin Bed', icon: <Sofa size={20} className="text-[#075B3A]" /> },
-                  { label: 'Air Conditioning', icon: <Wind size={20} className="text-[#075B3A]" /> },
-                  { label: 'TV', icon: <Tv size={20} className="text-[#075B3A]" /> },
-                  { label: 'Attached Bathroom', icon: <Bath size={20} className="text-[#075B3A]" /> },
-                  { label: 'Balcony / View', icon: <Trees size={20} className="text-[#075B3A]" /> },
-                  { label: 'Seating Area', icon: <Sofa size={20} className="text-[#075B3A]" /> },
-                ].map((item, i) => (
+                {roomFeatures.map((item, i) => (
                   <div key={i} className="flex flex-col items-center text-center gap-2">
-                    {item.icon}
+                    {getIcon(item.icon)}
                     <span className="text-[10px] font-bold text-[#17211D] leading-tight max-w-[60px]">{item.label}</span>
                   </div>
                 ))}
@@ -336,26 +357,13 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
             <div className="border border-[#DCE4DF] rounded-2xl bg-white shadow-sm p-5">
               <h3 className="font-bold text-[#17211D] text-[14px] mb-4">Dining & Food</h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <div className="flex flex-col items-center text-center gap-2">
-                  <Utensils size={20} className="text-[#66716C]" />
-                  <span className="text-[11px] font-bold text-[#17211D]">Restaurant</span>
-                  <span className="text-[9px] text-[#66716C] leading-tight">Multi-cuisine dining options available.</span>
-                </div>
-                <div className="flex flex-col items-center text-center gap-2">
-                  <CupSoda size={20} className="text-[#66716C]" />
-                  <span className="text-[11px] font-bold text-[#17211D]">Breakfast</span>
-                  <span className="text-[9px] text-[#66716C] leading-tight">Breakfast option may be available.</span>
-                </div>
-                <div className="flex flex-col items-center text-center gap-2">
-                  <Sofa size={20} className="text-[#66716C]" />
-                  <span className="text-[11px] font-bold text-[#17211D]">Room Dining</span>
-                  <span className="text-[9px] text-[#66716C] leading-tight">In-room dining services (may vary).</span>
-                </div>
-                <div className="flex flex-col items-center text-center gap-2">
-                  <MapPinned size={20} className="text-[#66716C]" />
-                  <span className="text-[11px] font-bold text-[#17211D]">Nearby Options</span>
-                  <span className="text-[9px] text-[#66716C] leading-tight">Various food outlets available nearby.</span>
-                </div>
+                {diningAndFood.map((dining, idx) => (
+                  <div key={idx} className="flex flex-col items-center text-center gap-2">
+                    {getIcon(dining.icon)}
+                    <span className="text-[11px] font-bold text-[#17211D]">{dining.title}</span>
+                    <span className="text-[9px] text-[#66716C] leading-tight">{dining.description}</span>
+                  </div>
+                ))}
               </div>
             </div>
 

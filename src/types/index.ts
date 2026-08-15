@@ -8,6 +8,22 @@ export interface RoomOption {
   description: string;
 }
 
+export interface FrontendLayout {
+  quickInfo?: {
+    propertyType: string;
+    suitableFor: string;
+    accommodationType: string;
+    setting: string;
+  };
+  accommodationRooms?: {
+    name: string;
+    features: string[];
+  }[];
+  roomFeatures?: { label: string; icon: string }[];
+  villaFeatures?: { label: string; icon: string }[];
+  diningAndFood?: { title: string; description: string; icon: string }[];
+}
+
 export interface Hotel {
   id: string;
   name: string;
@@ -21,6 +37,7 @@ export interface Hotel {
   images: string[];
   amenities: Amenity[];
   rooms: RoomOption[];
+  frontend_layout?: FrontendLayout;
 }
 
 export interface Villa {
@@ -35,6 +52,7 @@ export interface Villa {
   images: string[];
   amenities: Amenity[];
   rooms: RoomOption[];
+  frontend_layout?: FrontendLayout;
 }
 
 export interface Tour {

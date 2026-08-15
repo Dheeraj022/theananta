@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS public.hotels (
   images JSONB NOT NULL DEFAULT '[]'::jsonb,
   amenities JSONB NOT NULL DEFAULT '[]'::jsonb,
   rooms JSONB NOT NULL DEFAULT '[]'::jsonb,
+  frontend_layout JSONB NOT NULL DEFAULT '{}'::jsonb,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
@@ -36,6 +37,7 @@ CREATE TABLE IF NOT EXISTS public.villas (
   images JSONB NOT NULL DEFAULT '[]'::jsonb,
   amenities JSONB NOT NULL DEFAULT '[]'::jsonb,
   rooms JSONB NOT NULL DEFAULT '[]'::jsonb,
+  frontend_layout JSONB NOT NULL DEFAULT '{}'::jsonb,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 

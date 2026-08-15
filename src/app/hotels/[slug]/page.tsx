@@ -4,6 +4,8 @@ import { getHotels } from '@/lib/db';
 import HotelDetailLayout from '@/components/HotelDetailLayout';
 import Footer from '@/components/Footer';
 
+export const revalidate = 0;
+
 interface Props {
   params: Promise<{ slug: string }>;
 }

@@ -34,6 +34,28 @@ export const villas: Villa[] = [
     ],
     amenities: defaultAmenities,
     rooms: defaultRooms,
+    frontend_layout: {
+      quickInfo: {
+        propertyType: 'Premium Villa',
+        suitableFor: 'Large Groups, Parties',
+        accommodationType: 'Entire Property',
+        setting: 'Secluded Forest'
+      },
+      accommodationRooms: [
+        { name: 'Master Bedroom', features: ['King Bed', 'Attached Bath', 'Balcony'] },
+        { name: 'Guest Room 1', features: ['Queen Bed', 'Pool View'] },
+        { name: 'Guest Room 2', features: ['Twin Beds', 'Garden View'] }
+      ],
+      villaFeatures: [
+        { label: 'Private Pool', icon: 'Droplets' },
+        { label: 'BBQ Pit', icon: 'Flame' },
+        { label: 'High Speed Wifi', icon: 'Wifi' }
+      ],
+      diningAndFood: [
+        { title: 'Personal Chef', description: 'Available on request', icon: 'ChefHat' },
+        { title: 'Outdoor Dining', description: '10 seater table near pool', icon: 'UtensilsCrossed' }
+      ]
+    },
   },
   {
     id: 'mountain-view-villa',

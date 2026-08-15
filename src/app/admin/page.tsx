@@ -87,6 +87,25 @@ export default function AdminDashboard() {
   const [newOptionName, setNewOptionName] = useState('');
   const [newOptionDesc, setNewOptionDesc] = useState('');
 
+  // New Frontend Layout States
+  const [quickInfo, setQuickInfo] = useState({ propertyType: '', suitableFor: '', accommodationType: '', setting: '', locationText: '', areaText: '' });
+  const [accommodationRooms, setAccommodationRooms] = useState<{name: string, features: string[]}[]>([]);
+  const [roomFeatures, setRoomFeatures] = useState<{label: string, icon: string}[]>([]);
+  const [villaFeatures, setVillaFeatures] = useState<{label: string, icon: string}[]>([]);
+  const [diningAndFood, setDiningAndFood] = useState<{title: string, description: string, icon: string}[]>([]);
+
+  // Temp states for new array inputs
+  const [newAccRoomName, setNewAccRoomName] = useState('');
+  const [newAccRoomFeatures, setNewAccRoomFeatures] = useState('');
+  
+  const [newFeatureLabel, setNewFeatureLabel] = useState('');
+  const [newFeatureIcon, setNewFeatureIcon] = useState('CheckCircle');
+  
+  const [newDiningTitle, setNewDiningTitle] = useState('');
+  const [newDiningDesc, setNewDiningDesc] = useState('');
+  const [newDiningIcon, setNewDiningIcon] = useState('UtensilsCrossed');
+
+
   // Cover Image upload states
   const [coverFile, setCoverFile] = useState<File | null>(null);
   const [coverPreviewUrl, setCoverPreviewUrl] = useState<string | null>(null);
@@ -312,6 +331,52 @@ export default function AdminDashboard() {
     setGalleryFiles([]);
     setExistingGalleryImages([]);
 
+    setQuickInfo({ 
+      propertyType: activeTab === 'hotel' ? 'Resort' : 'Private Villa', 
+      suitableFor: 'Families, Couples, Groups', 
+      accommodationType: activeTab === 'hotel' ? 'Multiple Room Categories' : 'Multiple Bedrooms', 
+      setting: 'Hill / Nature Surroundings',
+      locationText: '',
+      areaText: 'Lonavala'
+    });
+    setAccommodationRooms(
+      activeTab === 'hotel' 
+        ? [
+            { name: 'Deluxe Room', features: ['Comfortable stay', 'Modern amenities', 'Ideal for couples'] },
+            { name: 'Premium Room', features: ['Spacious rooms', 'Added comfort', 'Scenic views'] },
+            { name: 'Family Room', features: ['Extra space', 'Suitable for families', 'Multiple bedding'] },
+            { name: 'Suite / Villa', features: ['Luxury accommodation', 'Private areas', 'Premium facilities'] }
+          ]
+        : [
+            { name: '3 BHK Villa', features: ['3 Bedrooms', 'Spacious Living Area', 'Attached Bathrooms', 'Private Balcony'] },
+            { name: '4 BHK Villa', features: ['4 Bedrooms', 'Large Living Area', 'Garden Facing', 'Private Pool Access'] },
+            { name: '5 BHK Villa', features: ['5 Bedrooms', 'Premium Interiors', 'Private Pool', 'Outdoor Lounge'] },
+            { name: 'Entire Villa', features: ['Full Villa Access', 'Maximum Privacy', 'Perfect for Groups', 'Multiple Amenities'] }
+          ]
+    );
+    setRoomFeatures([
+      { label: 'Double / Twin Bed', icon: 'Sofa' },
+      { label: 'Air Conditioning', icon: 'Wind' },
+      { label: 'TV', icon: 'Tv' },
+      { label: 'Attached Bathroom', icon: 'Bath' },
+      { label: 'Balcony / View', icon: 'Trees' },
+      { label: 'Seating Area', icon: 'Sofa' }
+    ]);
+    setVillaFeatures([
+      { label: 'Private', icon: 'Home' },
+      { label: 'Garden/Lawn', icon: 'Trees' },
+      { label: 'Wi-Fi', icon: 'Wifi' },
+      { label: 'Kitchen', icon: 'ChefHat' },
+      { label: 'Living Area', icon: 'Sofa' },
+      { label: 'Power Backup', icon: 'Zap' }
+    ]);
+    setDiningAndFood([
+      { title: 'Restaurant', description: 'Multi-cuisine dining options available.', icon: 'Utensils' },
+      { title: 'Breakfast', description: 'Breakfast option may be available.', icon: 'CupSoda' },
+      { title: 'Room Dining', description: 'In-room dining services (may vary).', icon: 'Sofa' },
+      { title: 'Nearby Options', description: 'Various food outlets available nearby.', icon: 'MapPinned' }
+    ]);
+
     if (activeTab === 'tour') {
       setOptionsList([
         { name: '09:00 AM — Pickup', description: 'Pickup from your hotel in Lonavala.' },
@@ -359,6 +424,63 @@ export default function AdminDashboard() {
     setGalleryFiles([]);
     setExistingGalleryImages(item.images || []);
 
+    const fl = item.frontend_layout || {};
+    setQuickInfo(fl.quickInfo || { 
+      propertyType: cat === 'hotel' ? 'Resort' : 'Private Villa', 
+      suitableFor: 'Families, Couples, Groups', 
+      accommodationType: cat === 'hotel' ? 'Multiple Room Categories' : 'Multiple Bedrooms', 
+      setting: 'Hill / Nature Surroundings',
+      locationText: '',
+      areaText: 'Lonavala'
+    });
+    setAccommodationRooms(fl.accommodationRooms || (item.rooms && item.rooms.length > 0 ? item.rooms.map((r: any) => ({ name: r.name, features: [r.description] })) : (
+      cat === 'hotel' 
+        ? [
+            { name: 'Deluxe Room', features: ['Comfortable stay', 'Modern amenities', 'Ideal for couples'] },
+            { name: 'Premium Room', features: ['Spacious rooms', 'Added comfort', 'Scenic views'] },
+            { name: 'Family Room', features: ['Extra space', 'Suitable for families', 'Multiple bedding'] },
+            { name: 'Suite / Villa', features: ['Luxury accommodation', 'Private areas', 'Premium facilities'] }
+          ]
+        : [
+            { name: '3 BHK Villa', features: ['3 Bedrooms', 'Spacious Living Area', 'Attached Bathrooms', 'Private Balcony'] },
+            { name: '4 BHK Villa', features: ['4 Bedrooms', 'Large Living Area', 'Garden Facing', 'Private Pool Access'] },
+            { name: '5 BHK Villa', features: ['5 Bedrooms', 'Premium Interiors', 'Private Pool', 'Outdoor Lounge'] },
+            { name: 'Entire Villa', features: ['Full Villa Access', 'Maximum Privacy', 'Perfect for Groups', 'Multiple Amenities'] }
+          ]
+    )));
+    setRoomFeatures(fl.roomFeatures || [
+      { label: 'Double / Twin Bed', icon: 'Sofa' },
+      { label: 'Air Conditioning', icon: 'Wind' },
+      { label: 'TV', icon: 'Tv' },
+      { label: 'Attached Bathroom', icon: 'Bath' },
+      { label: 'Balcony / View', icon: 'Trees' },
+      { label: 'Seating Area', icon: 'Sofa' }
+    ]);
+    setVillaFeatures(fl.villaFeatures || [
+      { label: 'Private', icon: 'Home' },
+      { label: 'Garden/Lawn', icon: 'Trees' },
+      { label: 'Wi-Fi', icon: 'Wifi' },
+      { label: 'Kitchen', icon: 'ChefHat' },
+      { label: 'Living Area', icon: 'Sofa' },
+      { label: 'Power Backup', icon: 'Zap' }
+    ]);
+    
+    // Dining fallback depends slightly on category but let's keep it close to what hotel had for general fallback
+    setDiningAndFood(fl.diningAndFood || (
+      cat === 'hotel'
+      ? [
+          { title: 'Restaurant', description: 'Multi-cuisine dining options available.', icon: 'Utensils' },
+          { title: 'Breakfast', description: 'Breakfast option may be available.', icon: 'CupSoda' },
+          { title: 'Room Dining', description: 'In-room dining services (may vary).', icon: 'Sofa' },
+          { title: 'Nearby Options', description: 'Various food outlets available nearby.', icon: 'MapPinned' }
+        ]
+      : [
+          { title: 'In-house Dining', description: 'Home-style food available', icon: 'UtensilsCrossed' },
+          { title: 'Kitchen', description: 'Fully equipped kitchen', icon: 'ChefHat' },
+          { title: 'BBQ Facility', description: 'Enjoy BBQ with family & friends', icon: 'Flame' }
+        ]
+    ));
+
     setIsModalOpen(true);
   };
 
@@ -399,6 +521,32 @@ export default function AdminDashboard() {
     } else {
       setSelectedAmenities([...selectedAmenities, amenity]);
     }
+  };
+
+  
+  const handleAddAccRoom = () => {
+    if (!newAccRoomName.trim()) return;
+    const features = newAccRoomFeatures.split(',').map(f => f.trim()).filter(f => f);
+    setAccommodationRooms([...accommodationRooms, { name: newAccRoomName.trim(), features }]);
+    setNewAccRoomName('');
+    setNewAccRoomFeatures('');
+  };
+
+  const handleAddFeature = (type: 'room' | 'villa') => {
+    if (!newFeatureLabel.trim()) return;
+    if (type === 'room') {
+      setRoomFeatures([...roomFeatures, { label: newFeatureLabel.trim(), icon: newFeatureIcon }]);
+    } else {
+      setVillaFeatures([...villaFeatures, { label: newFeatureLabel.trim(), icon: newFeatureIcon }]);
+    }
+    setNewFeatureLabel('');
+  };
+
+  const handleAddDining = () => {
+    if (!newDiningTitle.trim()) return;
+    setDiningAndFood([...diningAndFood, { title: newDiningTitle.trim(), description: newDiningDesc.trim(), icon: newDiningIcon }]);
+    setNewDiningTitle('');
+    setNewDiningDesc('');
   };
 
   const handleAddOption = () => {
@@ -588,6 +736,13 @@ export default function AdminDashboard() {
           images: finalGalleryUrls,
           amenities: selectedAmenities,
           rooms: optionsList,
+          frontend_layout: {
+            quickInfo,
+            accommodationRooms,
+            roomFeatures,
+            villaFeatures,
+            diningAndFood,
+          },
         };
         ok = await saveHotel(hotel);
       } else if (formType === 'villa') {
@@ -603,6 +758,13 @@ export default function AdminDashboard() {
           images: finalGalleryUrls,
           amenities: selectedAmenities,
           rooms: optionsList,
+          frontend_layout: {
+            quickInfo,
+            accommodationRooms,
+            roomFeatures,
+            villaFeatures,
+            diningAndFood,
+          },
         };
         ok = await saveVilla(villa);
       } else {
@@ -1183,6 +1345,41 @@ export default function AdminDashboard() {
                 />
               </div>
 
+              {/* Quick Property Information (New) */}
+              {formType !== 'tour' && (
+                <div className="border border-gray-200 rounded-xl p-4 bg-gray-50/30">
+                  <h4 className="block text-[11px] font-bold text-[#17211D] uppercase tracking-wide mb-3">
+                    Quick Property Information (Displayed on Frontend)
+                  </h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Property Type</label>
+                      <input type="text" value={quickInfo.propertyType} onChange={e => setQuickInfo({...quickInfo, propertyType: e.target.value})} placeholder="e.g. Resort, Private Villa" className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A]" />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Location Text</label>
+                      <input type="text" value={quickInfo.locationText || ''} onChange={e => setQuickInfo({...quickInfo, locationText: e.target.value})} placeholder="e.g. Khandala, Maharashtra (leave blank for default)" className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A]" />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Suitable For</label>
+                      <input type="text" value={quickInfo.suitableFor} onChange={e => setQuickInfo({...quickInfo, suitableFor: e.target.value})} placeholder="e.g. Families, Couples" className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A]" />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Accommodation</label>
+                      <input type="text" value={quickInfo.accommodationType} onChange={e => setQuickInfo({...quickInfo, accommodationType: e.target.value})} placeholder="e.g. Multiple Room Categories" className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A]" />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Setting</label>
+                      <input type="text" value={quickInfo.setting} onChange={e => setQuickInfo({...quickInfo, setting: e.target.value})} placeholder="e.g. Hill / Nature Surroundings" className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A]" />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Area Text</label>
+                      <input type="text" value={quickInfo.areaText || ''} onChange={e => setQuickInfo({...quickInfo, areaText: e.target.value})} placeholder="e.g. Lonavala" className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A]" />
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Cover Image Selection & Preview */}
               <div className="border border-gray-200 rounded-xl p-4 bg-gray-50/30">
                 <label className="block text-[11px] font-bold text-[#17211D] uppercase tracking-wide mb-1.5">
@@ -1366,10 +1563,11 @@ export default function AdminDashboard() {
                 </div>
               </div>
 
-              {/* Room Options / Itinerary List */}
+              {/* Tour Itinerary List */}
+              {formType === 'tour' && (
               <div className="border border-gray-150 rounded-xl p-4 bg-gray-50/50">
                 <h4 className="font-bold text-xs sm:text-sm text-[#17211D] mb-1.5">
-                  {formType === 'tour' ? 'Tour Itinerary Timeline' : 'Accommodation Room Options'}
+                  Tour Itinerary Timeline
                 </h4>
                 
                 {/* List items */}
@@ -1423,6 +1621,81 @@ export default function AdminDashboard() {
                   </button>
                 </div>
               </div>
+              )}
+
+              {/* NEW FRONTEND SECTIONS */}
+              {formType !== 'tour' && (
+                <>
+                  {/* Accommodation Rooms (Replaces old options) */}
+                  <div className="border border-[#DCE4DF] rounded-xl p-4 bg-gray-50/50 mt-4">
+                    <h4 className="font-bold text-xs sm:text-sm text-[#17211D] mb-1.5">Accommodation / Rooms</h4>
+                    {accommodationRooms.length > 0 ? (
+                      <div className="space-y-2 mb-3 max-h-[140px] overflow-y-auto pr-1">
+                        {accommodationRooms.map((room, idx) => (
+                          <div key={idx} className="flex items-start justify-between gap-3 bg-white border border-[#DCE4DF] p-2.5 rounded-xl text-xs shadow-sm">
+                            <div>
+                              <div className="font-extrabold text-[#17211D]">{room.name}</div>
+                              <div className="text-[#66716C] mt-0.5">{room.features.join(', ')}</div>
+                            </div>
+                            <button type="button" onClick={() => setAccommodationRooms(accommodationRooms.filter((_, i) => i !== idx))} className="text-red-500 hover:bg-red-50 p-1 rounded-lg">
+                              <Trash2 size={13} />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    ) : <p className="text-gray-500 text-xs italic mb-3">No accommodation added yet.</p>}
+                    
+                    <div className="bg-white border border-[#DCE4DF] p-3 rounded-xl space-y-2.5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <input type="text" placeholder="e.g. Deluxe Room or 3 BHK Villa" value={newAccRoomName} onChange={(e) => setNewAccRoomName(e.target.value)} className="border border-[#DCE4DF] rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A]" />
+                        <input type="text" placeholder="Features (comma separated)" value={newAccRoomFeatures} onChange={(e) => setNewAccRoomFeatures(e.target.value)} className="border border-[#DCE4DF] rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A]" />
+                      </div>
+                      <button type="button" onClick={handleAddAccRoom} className="bg-[#EAF5EF] text-[#075B3A] px-3 py-1.5 rounded-lg text-xs font-bold w-full border border-[#075B3A]">Add Accommodation</button>
+                    </div>
+                  </div>
+
+                  {/* Room / Villa Features */}
+                  <div className="border border-[#DCE4DF] rounded-xl p-4 bg-gray-50/50 mt-4">
+                    <h4 className="font-bold text-xs sm:text-sm text-[#17211D] mb-1.5">{formType === 'hotel' ? 'Room Features' : 'Villa Features'}</h4>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {(formType === 'hotel' ? roomFeatures : villaFeatures).map((feat, idx) => (
+                        <div key={idx} className="flex items-center gap-1.5 bg-white border border-[#DCE4DF] px-2 py-1 rounded-lg text-xs">
+                          <span className="font-bold">{feat.label}</span>
+                          <span className="text-gray-400">({feat.icon})</span>
+                          <button type="button" onClick={() => formType === 'hotel' ? setRoomFeatures(roomFeatures.filter((_, i) => i !== idx)) : setVillaFeatures(villaFeatures.filter((_, i) => i !== idx))} className="text-red-500 ml-1"><X size={12}/></button>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex gap-2">
+                      <input type="text" placeholder="Feature name" value={newFeatureLabel} onChange={(e) => setNewFeatureLabel(e.target.value)} className="border border-[#DCE4DF] rounded-lg px-2.5 py-1.5 text-xs flex-1" />
+                      <input type="text" placeholder="Icon (e.g. Wifi, Tv)" value={newFeatureIcon} onChange={(e) => setNewFeatureIcon(e.target.value)} className="border border-[#DCE4DF] rounded-lg px-2.5 py-1.5 text-xs w-24" />
+                      <button type="button" onClick={() => handleAddFeature(formType as any)} className="bg-[#EAF5EF] text-[#075B3A] px-3 py-1.5 rounded-lg text-xs font-bold border border-[#075B3A]">Add</button>
+                    </div>
+                  </div>
+
+                  {/* Dining & Food */}
+                  <div className="border border-[#DCE4DF] rounded-xl p-4 bg-gray-50/50 mt-4 mb-4">
+                    <h4 className="font-bold text-xs sm:text-sm text-[#17211D] mb-1.5">Dining & Food</h4>
+                    {diningAndFood.map((dining, idx) => (
+                      <div key={idx} className="flex items-start justify-between gap-3 bg-white border border-[#DCE4DF] p-2.5 rounded-xl text-xs shadow-sm mb-2">
+                        <div>
+                          <div className="font-extrabold text-[#17211D]">{dining.title} <span className="text-gray-400 font-normal">({dining.icon})</span></div>
+                          <div className="text-[#66716C] mt-0.5">{dining.description}</div>
+                        </div>
+                        <button type="button" onClick={() => setDiningAndFood(diningAndFood.filter((_, i) => i !== idx))} className="text-red-500 hover:bg-red-50 p-1 rounded-lg"><Trash2 size={13} /></button>
+                      </div>
+                    ))}
+                    <div className="bg-white border border-[#DCE4DF] p-3 rounded-xl space-y-2.5">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <input type="text" placeholder="Title" value={newDiningTitle} onChange={(e) => setNewDiningTitle(e.target.value)} className="border border-[#DCE4DF] rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A]" />
+                        <input type="text" placeholder="Description" value={newDiningDesc} onChange={(e) => setNewDiningDesc(e.target.value)} className="border border-[#DCE4DF] rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A]" />
+                        <input type="text" placeholder="Icon" value={newDiningIcon} onChange={(e) => setNewDiningIcon(e.target.value)} className="border border-[#DCE4DF] rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A]" />
+                      </div>
+                      <button type="button" onClick={handleAddDining} className="bg-[#EAF5EF] text-[#075B3A] px-3 py-1.5 rounded-lg text-xs font-bold w-full border border-[#075B3A]">Add Dining Option</button>
+                    </div>
+                  </div>
+                </>
+              )}
 
               {/* Submit Buttons */}
               <div className="flex justify-end gap-3.5 border-t border-[#DCE4DF] pt-4 mt-6">

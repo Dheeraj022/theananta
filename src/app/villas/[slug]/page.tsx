@@ -4,6 +4,8 @@ import { getVillas } from '@/lib/db';
 import VillaDetailLayout from '@/components/VillaDetailLayout';
 import Footer from '@/components/Footer';
 
+export const revalidate = 0;
+
 interface Props {
   params: Promise<{ slug: string }>;
 }

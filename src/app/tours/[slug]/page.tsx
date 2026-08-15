@@ -4,6 +4,8 @@ import { getTours } from '@/lib/db';
 import TourDetailLayout from '@/components/TourDetailLayout';
 import Footer from '@/components/Footer';
 
+export const revalidate = 0;
+
 interface Props {
   params: Promise<{ slug: string }>;
 }

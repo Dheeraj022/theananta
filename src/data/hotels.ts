@@ -36,6 +36,27 @@ export const hotels: Hotel[] = [
     ],
     amenities: defaultAmenities,
     rooms: defaultRooms,
+    frontend_layout: {
+      quickInfo: {
+        propertyType: 'Luxury Hotel',
+        suitableFor: 'Couples, Families, Business',
+        accommodationType: 'Suites & Rooms',
+        setting: 'City Center'
+      },
+      accommodationRooms: [
+        { name: 'Presidential Suite', features: ['King Bed', 'Jacuzzi', 'City View', 'Free Breakfast'] },
+        { name: 'Executive Room', features: ['Queen Bed', 'Work Desk', 'Fast Wifi'] }
+      ],
+      roomFeatures: [
+        { label: 'Air Con', icon: 'Wind' },
+        { label: 'Smart TV', icon: 'Tv' },
+        { label: 'Minibar', icon: 'CupSoda' }
+      ],
+      diningAndFood: [
+        { title: 'Sky Lounge', description: 'Rooftop bar and grill', icon: 'UtensilsCrossed' },
+        { title: 'Cafe Mocha', description: '24/7 Coffee shop', icon: 'CupSoda' }
+      ]
+    },
   },
   {
     id: 'della-resorts',
