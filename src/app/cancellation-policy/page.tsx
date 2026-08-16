@@ -81,7 +81,7 @@ export default function CancellationPolicyPage() {
           <AlertTriangle size={20} strokeWidth={1.8} className="text-amber-600 shrink-0 mt-0.5" />
           <p className="text-amber-900 text-sm leading-relaxed">
             <strong>Please note:</strong> All cancellation requests must be made in writing via WhatsApp or email to{' '}
-            <a href="mailto:info@vidhitourtravel.com" className="underline">info@vidhitourtravel.com</a>. Verbal
+            <a href="mailto:info@lonavalagateway.com" className="underline">info@lonavalagateway.com</a>. Verbal
             cancellation requests will not be accepted. Cancellation timings are calculated from the date &amp; time we
             receive your written request.
           </p>

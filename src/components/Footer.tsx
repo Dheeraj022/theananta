@@ -190,11 +190,12 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:info@vidhitourtravel.com" className="flex items-center gap-3 text-gray-400 text-sm hover:text-green-400 transition-colors">
+                  <a href="mailto:info@lonavalagateway.com" className="flex items-center gap-3 text-gray-400 text-sm hover:text-green-400 transition-colors">
                     <div className="w-7 h-7 rounded-full border border-green-700 flex items-center justify-center shrink-0">
                       <Mail size={13} strokeWidth={2} className="text-green-400" />
                     </div>
-                    info@vidhitourtravel.com
+                    info@lonavalagateway.com
+
                   </a>
                 </li>
 
