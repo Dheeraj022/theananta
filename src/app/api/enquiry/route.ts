@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { saveEnquiry } from './storage';
+import { Enquiry } from '@/types';
 
 export async function POST(req: Request) {
   try {
@@ -56,13 +58,35 @@ export async function POST(req: Request) {
       replyTo: email || undefined,
     };
 
-    // Only attempt to send if a password is provided (to avoid crashing if user hasn't configured it yet)
-    if (process.env.SMTP_PASSWORD) {
-      await transporter.sendMail(mailOptions);
-    } else {
-      console.warn("SMTP_PASSWORD is not set in environment variables. Email was not sent.");
-      console.log("Email content would have been:", emailHtml);
-    }
+    const enquiry: Enquiry = {
+      id: `enq-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+      name: name || 'Unknown',
+      phone: phone || '',
+      email: email || '',
+      type: type || 'General Enquiry',
+      details: otherFields,
+      created_at: new Date().toISOString(),
+    };
+
+    // Run slow operations (Database Save + Email Sending) in the background 
+    // so the user doesn't have to wait 5-10 seconds for SMTP.
+    Promise.resolve().then(async () => {
+      try {
+        await saveEnquiry(enquiry);
+      } catch (err) {
+        console.error("Background saveEnquiry failed:", err);
+      }
+      
+      if (process.env.SMTP_PASSWORD) {
+        try {
+          await transporter.sendMail(mailOptions);
+        } catch (err) {
+          console.error("Background email sending failed:", err);
+        }
+      } else {
+        console.warn("SMTP_PASSWORD is not set in environment variables. Email was not sent.");
+      }
+    });
 
     return NextResponse.json({ success: true, message: "Enquiry submitted successfully." });
 

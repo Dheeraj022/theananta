@@ -9,9 +9,10 @@ import {
 import {
   getHotels, saveHotel, deleteHotel,
   getVillas, saveVilla, deleteVilla,
-  getTours, saveTour, deleteTour
+  getTours, saveTour, deleteTour,
+  getAdminEnquiries
 } from '@/lib/db';
-import { Hotel, Villa, Tour, Amenity, RoomOption } from '@/types';
+import { Hotel, Villa, Tour, Amenity, RoomOption, Enquiry } from '@/types';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 
 type Category = 'hotel' | 'villa' | 'tour';
@@ -46,10 +47,11 @@ const initialAmenityOptions: Record<Category, { label: string; icon: string }[]>
 };
 
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState<Category>('hotel');
+  const [activeTab, setActiveTab] = useState<Category | 'enquiries'>('hotel');
   const [hotels, setHotels] = useState<Hotel[]>([]);
   const [villas, setVillas] = useState<Villa[]>([]);
   const [tours, setTours] = useState<Tour[]>([]);
+  const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
 
@@ -123,14 +125,16 @@ export default function AdminDashboard() {
   const loadAllData = async () => {
     setLoading(true);
     try {
-      const [hData, vData, tData] = await Promise.all([
+      const [hData, vData, tData, eData] = await Promise.all([
         getHotels(),
         getVillas(),
         getTours(),
+        getAdminEnquiries()
       ]);
       setHotels(hData);
       setVillas(vData);
       setTours(tData);
+      setEnquiries(eData);
     } catch (e) {
       console.error(e);
       showAlert('Failed to load listings', 'error');
@@ -305,6 +309,8 @@ export default function AdminDashboard() {
   };
 
   const handleOpenAddModal = () => {
+    if (activeTab === 'enquiries') return;
+
     revokeObjectUrls();
     setEditId(null);
     setFormType(activeTab);
@@ -1017,23 +1023,24 @@ export default function AdminDashboard() {
         )}
 
         {/* Action Controls */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 mb-6">
           {/* Tabs */}
-          <div className="flex items-center gap-1.5 bg-gray-200/60 p-1.5 rounded-2xl w-full sm:w-auto">
+          <div className="flex flex-wrap items-center gap-1.5 bg-gray-200/60 p-1.5 rounded-2xl w-full lg:w-auto">
             {[
               { id: 'hotel', label: 'Hotels & Resorts', count: hotels.length, icon: Building2 },
               { id: 'villa', label: 'Villas', count: villas.length, icon: House },
               { id: 'tour', label: 'Local Tours', count: tours.length, icon: Map },
+              { id: 'enquiries', label: 'Enquiries', count: enquiries.length, icon: Mail },
             ].map((tab) => {
               const TabIcon = tab.icon;
               return (
                 <button
                   key={tab.id}
                   onClick={() => {
-                    setActiveTab(tab.id as Category);
+                    setActiveTab(tab.id as Category | 'enquiries');
                     setSearch('');
                   }}
-                  className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                     activeTab === tab.id
                       ? 'bg-[#075B3A] text-white shadow-sm'
                       : 'text-gray-600 hover:text-[#075B3A] hover:bg-white/60'
@@ -1050,21 +1057,23 @@ export default function AdminDashboard() {
           </div>
 
           {/* Search + Add */}
-          <div className="flex items-center gap-2 w-full sm:w-auto">
+          <div className="flex items-center gap-2 w-full lg:w-auto">
             <input
               type="text"
-              placeholder={`Search ${activeTab}s...`}
+              placeholder={activeTab === 'enquiries' ? 'Search enquiries...' : `Search ${activeTab}s...`}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="flex-1 sm:flex-initial border border-[#DCE4DF] bg-white rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent min-w-[200px]"
             />
-            <button
-              onClick={handleOpenAddModal}
-              className="flex items-center justify-center gap-1.5 bg-[#075B3A] hover:bg-[#06472F] text-white px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-sm transition-colors cursor-pointer shrink-0"
-            >
-              <Plus size={15} />
-              <span>Add New</span>
-            </button>
+            {activeTab !== 'enquiries' && (
+              <button
+                onClick={handleOpenAddModal}
+                className="flex items-center justify-center gap-1.5 bg-[#075B3A] hover:bg-[#06472F] text-white px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-sm transition-colors cursor-pointer shrink-0"
+              >
+                <Plus size={15} />
+                <span>Add New</span>
+              </button>
+            )}
           </div>
         </div>
 
@@ -1075,115 +1084,168 @@ export default function AdminDashboard() {
             <p className="text-[#66716C] text-sm">Loading database listings...</p>
           </div>
         ) : (
-          <div className="bg-white border border-[#DCE4DF] rounded-2xl overflow-hidden shadow-sm">
+          <div className="bg-white rounded-3xl p-2 sm:p-4 shadow-sm border border-[#DCE4DF] overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs sm:text-sm">
-                <thead>
-                  <tr className="bg-gray-100/80 border-b border-[#DCE4DF]">
-                    <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider">Preview</th>
-                    <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider">Name &amp; Slug</th>
-                    <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider">Location</th>
-                    <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider">
-                      {activeTab === 'hotel' ? 'Rating' : activeTab === 'villa' ? 'Bedrooms' : 'Duration'}
-                    </th>
-                    <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider text-right">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {activeTab === 'hotel' && filteredHotels.map((h) => (
-                    <tr key={h.id} className="border-b border-[#DCE4DF] hover:bg-gray-50/50">
-                      <td className="px-4 py-3">
-                        <div className="relative w-12 h-9 rounded-lg overflow-hidden border border-gray-200">
-                          <Image src={h.image} alt="" fill className="object-cover" sizes="50px" />
-                        </div>
-                      </td>
-                      <td className="px-4 py-3">
-                        <div className="font-bold text-[#17211D]">{h.name}</div>
-                        <div className="text-[#66716C] text-[10px] mt-0.5">{h.slug}</div>
-                      </td>
-                      <td className="px-4 py-3 text-gray-600">{h.location}</td>
-                      <td className="px-4 py-3">
-                        <span className="font-bold text-[#075B3A]">{h.rating}★</span> ({h.reviews})
-                      </td>
-                      <td className="px-4 py-3 text-right space-x-1.5">
-                        <Link href={`/hotels/${h.slug}`} target="_blank" className="inline-flex p-1.5 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-600 transition-colors" title="View details page">
-                          <Eye size={13} />
-                        </Link>
-                        <button onClick={() => handleOpenEditModal(h, 'hotel')} className="inline-flex p-1.5 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-600 transition-colors cursor-pointer" title="Edit">
-                          <Pencil size={13} />
-                        </button>
-                        <button onClick={() => handleDeleteListing(h.id, 'hotel')} className="inline-flex p-1.5 bg-red-50 hover:bg-red-100 rounded-lg text-red-600 transition-colors cursor-pointer" title="Delete">
-                          <Trash2 size={13} />
-                        </button>
-                      </td>
+              {activeTab === 'enquiries' ? (
+                <table className="w-full text-left text-xs sm:text-sm">
+                  <thead>
+                    <tr className="bg-gray-100/80 border-b border-[#DCE4DF]">
+                      <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider">Name &amp; Contact</th>
+                      <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider">Enquiry Type</th>
+                      <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider">Details</th>
+                      <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider text-right">Date</th>
                     </tr>
-                  ))}
+                  </thead>
+                  <tbody>
+                    {enquiries.map((e) => (
+                      <tr key={e.id} className="border-b border-[#DCE4DF] hover:bg-gray-50/50">
+                        <td className="px-4 py-3">
+                          <div className="font-bold text-[#17211D]">{e.name}</div>
+                          <div className="text-[#66716C] text-[10px] mt-0.5">{e.phone} {e.email ? `• ${e.email}` : ''}</div>
+                        </td>
+                        <td className="px-4 py-3 text-gray-600">
+                          <span className="px-2.5 py-1 bg-[#075B3A]/10 text-[#075B3A] rounded-md font-semibold text-xs whitespace-nowrap">{e.type}</span>
+                        </td>
+                        <td className="px-4 py-3">
+                          <div className="flex flex-wrap gap-1.5 max-w-sm">
+                            {Object.entries(e.details || {}).map(([k,v]) => {
+                              if (!v) return null;
+                              const formattedKey = k.replace(/([A-Z])/g, ' $1').replace(/^./, (str) => str.toUpperCase());
+                              return (
+                                <div key={k} className="inline-flex items-center bg-gray-50 border border-gray-200 rounded px-2 py-0.5 text-[10px] text-gray-700">
+                                  <span className="font-bold text-gray-500 mr-1 whitespace-nowrap">{formattedKey}:</span> 
+                                  <span className="truncate max-w-[150px]" title={String(v)}>{String(v)}</span>
+                                </div>
+                              )
+                            })}
+                            {(!e.details || Object.keys(e.details).length === 0) && (
+                              <span className="text-gray-400 text-xs">-</span>
+                            )}
+                          </div>
+                        </td>
+                        <td className="px-4 py-3 text-right text-gray-500 whitespace-nowrap text-xs">
+                          {new Date(e.created_at).toLocaleString()}
+                        </td>
+                      </tr>
+                    ))}
+                    {enquiries.length === 0 && (
+                      <tr>
+                        <td colSpan={4} className="text-center py-12 text-[#66716C]">
+                          No enquiries received yet.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              ) : (
+                <table className="w-full text-left text-xs sm:text-sm">
+                  <thead>
+                    <tr className="bg-gray-100/80 border-b border-[#DCE4DF]">
+                      <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider">Preview</th>
+                      <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider">Name &amp; Slug</th>
+                      <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider">Location</th>
+                      <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider">
+                        {activeTab === 'hotel' ? 'Rating' : activeTab === 'villa' ? 'Bedrooms' : 'Duration'}
+                      </th>
+                      <th className="px-4 py-3.5 text-[#66716C] font-bold text-[11px] uppercase tracking-wider text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {activeTab === 'hotel' && filteredHotels.map((h) => (
+                      <tr key={h.id} className="border-b border-[#DCE4DF] hover:bg-gray-50/50">
+                        <td className="px-4 py-3">
+                          <div className="relative w-12 h-9 rounded-lg overflow-hidden border border-gray-200">
+                            <Image src={h.image} alt="" fill className="object-cover" sizes="50px" />
+                          </div>
+                        </td>
+                        <td className="px-4 py-3">
+                          <div className="font-bold text-[#17211D]">{h.name}</div>
+                          <div className="text-[#66716C] text-[10px] mt-0.5">{h.slug}</div>
+                        </td>
+                        <td className="px-4 py-3 text-gray-600">{h.location}</td>
+                        <td className="px-4 py-3">
+                          <span className="font-bold text-[#075B3A]">{h.rating}★</span> ({h.reviews})
+                        </td>
+                        <td className="px-4 py-3 text-right space-x-1.5">
+                          <Link href={`/hotels/${h.slug}`} target="_blank" className="inline-flex p-1.5 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-600 transition-colors" title="View details page">
+                            <Eye size={13} />
+                          </Link>
+                          <button onClick={() => handleOpenEditModal(h, 'hotel')} className="inline-flex p-1.5 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-600 transition-colors cursor-pointer" title="Edit">
+                            <Pencil size={13} />
+                          </button>
+                          <button onClick={() => handleDeleteListing(h.id, 'hotel')} className="inline-flex p-1.5 bg-red-50 hover:bg-red-100 rounded-lg text-red-600 transition-colors cursor-pointer" title="Delete">
+                            <Trash2 size={13} />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
 
-                  {activeTab === 'villa' && filteredVillas.map((v) => (
-                    <tr key={v.id} className="border-b border-[#DCE4DF] hover:bg-gray-50/50">
-                      <td className="px-4 py-3">
-                        <div className="relative w-12 h-9 rounded-lg overflow-hidden border border-gray-200">
-                          <Image src={v.image} alt="" fill className="object-cover" sizes="50px" />
-                        </div>
-                      </td>
-                      <td className="px-4 py-3">
-                        <div className="font-bold text-[#17211D]">{v.name}</div>
-                        <div className="text-[#66716C] text-[10px] mt-0.5">{v.slug}</div>
-                      </td>
-                      <td className="px-4 py-3 text-gray-600">{v.location}</td>
-                      <td className="px-4 py-3 font-semibold text-gray-700">{v.bedrooms} BHK</td>
-                      <td className="px-4 py-3 text-right space-x-1.5">
-                        <Link href={`/villas/${v.slug}`} target="_blank" className="inline-flex p-1.5 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-600 transition-colors" title="View details page">
-                          <Eye size={13} />
-                        </Link>
-                        <button onClick={() => handleOpenEditModal(v, 'villa')} className="inline-flex p-1.5 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-600 transition-colors cursor-pointer" title="Edit">
-                          <Pencil size={13} />
-                        </button>
-                        <button onClick={() => handleDeleteListing(v.id, 'villa')} className="inline-flex p-1.5 bg-red-50 hover:bg-red-100 rounded-lg text-red-600 transition-colors cursor-pointer" title="Delete">
-                          <Trash2 size={13} />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
+                    {activeTab === 'villa' && filteredVillas.map((v) => (
+                      <tr key={v.id} className="border-b border-[#DCE4DF] hover:bg-gray-50/50">
+                        <td className="px-4 py-3">
+                          <div className="relative w-12 h-9 rounded-lg overflow-hidden border border-gray-200">
+                            <Image src={v.image} alt="" fill className="object-cover" sizes="50px" />
+                          </div>
+                        </td>
+                        <td className="px-4 py-3">
+                          <div className="font-bold text-[#17211D]">{v.name}</div>
+                          <div className="text-[#66716C] text-[10px] mt-0.5">{v.slug}</div>
+                        </td>
+                        <td className="px-4 py-3 text-gray-600">{v.location}</td>
+                        <td className="px-4 py-3 font-semibold text-gray-700">{v.bedrooms} BHK</td>
+                        <td className="px-4 py-3 text-right space-x-1.5">
+                          <Link href={`/villas/${v.slug}`} target="_blank" className="inline-flex p-1.5 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-600 transition-colors" title="View details page">
+                            <Eye size={13} />
+                          </Link>
+                          <button onClick={() => handleOpenEditModal(v, 'villa')} className="inline-flex p-1.5 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-600 transition-colors cursor-pointer" title="Edit">
+                            <Pencil size={13} />
+                          </button>
+                          <button onClick={() => handleDeleteListing(v.id, 'villa')} className="inline-flex p-1.5 bg-red-50 hover:bg-red-100 rounded-lg text-red-600 transition-colors cursor-pointer" title="Delete">
+                            <Trash2 size={13} />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
 
-                  {activeTab === 'tour' && filteredTours.map((t) => (
-                    <tr key={t.id} className="border-b border-[#DCE4DF] hover:bg-gray-50/50">
-                      <td className="px-4 py-3">
-                        <div className="relative w-12 h-9 rounded-lg overflow-hidden border border-gray-200">
-                          <Image src={t.image} alt="" fill className="object-cover" sizes="50px" />
-                        </div>
-                      </td>
-                      <td className="px-4 py-3">
-                        <div className="font-bold text-[#17211D]">{t.name}</div>
-                        <div className="text-[#66716C] text-[10px] mt-0.5">{t.slug}</div>
-                      </td>
-                      <td className="px-4 py-3 text-gray-600">Lonavala</td>
-                      <td className="px-4 py-3 font-semibold text-gray-700">{t.duration}</td>
-                      <td className="px-4 py-3 text-right space-x-1.5">
-                        <Link href={`/tours/${t.slug}`} target="_blank" className="inline-flex p-1.5 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-600 transition-colors" title="View details page">
-                          <Eye size={13} />
-                        </Link>
-                        <button onClick={() => handleOpenEditModal(t, 'tour')} className="inline-flex p-1.5 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-600 transition-colors cursor-pointer" title="Edit">
-                          <Pencil size={13} />
-                        </button>
-                        <button onClick={() => handleDeleteListing(t.id, 'tour')} className="inline-flex p-1.5 bg-red-50 hover:bg-red-100 rounded-lg text-red-600 transition-colors cursor-pointer" title="Delete">
-                          <Trash2 size={13} />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
+                    {activeTab === 'tour' && filteredTours.map((t) => (
+                      <tr key={t.id} className="border-b border-[#DCE4DF] hover:bg-gray-50/50">
+                        <td className="px-4 py-3">
+                          <div className="relative w-12 h-9 rounded-lg overflow-hidden border border-gray-200">
+                            <Image src={t.image} alt="" fill className="object-cover" sizes="50px" />
+                          </div>
+                        </td>
+                        <td className="px-4 py-3">
+                          <div className="font-bold text-[#17211D]">{t.name}</div>
+                          <div className="text-[#66716C] text-[10px] mt-0.5">{t.slug}</div>
+                        </td>
+                        <td className="px-4 py-3 text-gray-600">Lonavala</td>
+                        <td className="px-4 py-3 font-semibold text-gray-700">{t.duration}</td>
+                        <td className="px-4 py-3 text-right space-x-1.5">
+                          <Link href={`/tours/${t.slug}`} target="_blank" className="inline-flex p-1.5 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-600 transition-colors" title="View details page">
+                            <Eye size={13} />
+                          </Link>
+                          <button onClick={() => handleOpenEditModal(t, 'tour')} className="inline-flex p-1.5 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-600 transition-colors cursor-pointer" title="Edit">
+                            <Pencil size={13} />
+                          </button>
+                          <button onClick={() => handleDeleteListing(t.id, 'tour')} className="inline-flex p-1.5 bg-red-50 hover:bg-red-100 rounded-lg text-red-600 transition-colors cursor-pointer" title="Delete">
+                            <Trash2 size={13} />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
 
-                  {((activeTab === 'hotel' && filteredHotels.length === 0) ||
-                    (activeTab === 'villa' && filteredVillas.length === 0) ||
-                    (activeTab === 'tour' && filteredTours.length === 0)) && (
-                    <tr>
-                      <td colSpan={6} className="text-center py-12 text-[#66716C]">
-                        No {activeTab} listings found matching filters.
-                      </td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
+                    {((activeTab === 'hotel' && filteredHotels.length === 0) ||
+                      (activeTab === 'villa' && filteredVillas.length === 0) ||
+                      (activeTab === 'tour' && filteredTours.length === 0)) && (
+                      <tr>
+                        <td colSpan={6} className="text-center py-12 text-[#66716C]">
+                          No {activeTab} listings found matching filters.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              )}
             </div>
           </div>
         )}

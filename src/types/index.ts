@@ -75,3 +75,13 @@ export interface NavItem {
   href: string;
   icon?: string;
 }
+
+export interface Enquiry {
+  id: string;
+  name: string;
+  phone: string;
+  email?: string;
+  type: string;
+  details: any;
+  created_at: string;
+}

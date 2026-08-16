@@ -1,5 +1,5 @@
 import { supabase, isSupabaseConfigured } from './supabase';
-import { Hotel, Villa, Tour } from '@/types';
+import { Hotel, Villa, Tour, Enquiry } from '@/types';
 import { hotels as initialHotels } from '@/data/hotels';
 import { villas as initialVillas } from '@/data/villas';
 import { tours as initialTours } from '@/data/tours';
@@ -26,6 +26,33 @@ const setMockData = <T>(key: string, data: T[]) => {
     localStorage.setItem(key, JSON.stringify(data));
   }
 };
+
+// ── ENQUIRIES SERVICE ──
+
+export async function getAdminEnquiries(): Promise<Enquiry[]> {
+  if (isSupabaseConfigured && supabase) {
+    const { data, error } = await supabase
+      .from('enquiries')
+      .select('*')
+      .order('created_at', { ascending: false });
+    if (!error && data && data.length > 0) {
+      return data as Enquiry[];
+    }
+    if (error) {
+      console.warn('Supabase getAdminEnquiries error:', error.message);
+    }
+  }
+  
+  // Fallback to API route for local JSON data
+  try {
+    const res = await fetch('/api/enquiries');
+    const json = await res.json();
+    if (json.success && Array.isArray(json.data)) return json.data;
+  } catch (e) {
+    console.error("Fallback getAdminEnquiries failed", e);
+  }
+  return [];
+}
 
 // ── HOTELS SERVICE ──
 

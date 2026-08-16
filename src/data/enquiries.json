@@ -1,0 +1,65 @@
+[
+  {
+    "id": "enq-1786903259400-tknkbyp",
+    "name": "Dheeraj",
+    "phone": "9876543210",
+    "email": "dheeraj@gmail.com",
+    "type": "Contact Us Form",
+    "details": {
+      "message": "ok"
+    },
+    "created_at": "2026-08-16T18:00:59.400Z"
+  },
+  {
+    "id": "enq-1786903281075-9x9znwl",
+    "name": "Admin Test",
+    "phone": "1234567890",
+    "email": "admin@test.com",
+    "type": "Hotel Enquiry",
+    "details": {
+      "otherFields": {
+        "hotelName": "Test Hotel"
+      }
+    },
+    "created_at": "2026-08-16T18:01:21.075Z"
+  },
+  {
+    "id": "enq-1786903312156-34bjew1",
+    "name": "Dheeraj Kumar",
+    "phone": "09999192396",
+    "email": "dheerajkumar8179@gmail.com",
+    "type": "Villa Enquiry",
+    "details": {
+      "travelDate": "2026-08-17",
+      "guests": "2 Adults",
+      "accommodationPreference": "3 BHK Villa",
+      "message": "",
+      "listingName": "Lonavala Hillside Retreat"
+    },
+    "created_at": "2026-08-16T18:01:52.156Z"
+  },
+  {
+    "id": "enq-1786903348370-dmwnz9i",
+    "name": "Dheeraj Kumar",
+    "phone": "09999192396",
+    "email": "dheerajkumar8179@gmail.com",
+    "type": "Villa Enquiry",
+    "details": {
+      "travelDate": "2026-08-18",
+      "guests": "2 Adults",
+      "accommodationPreference": "3 BHK Villa",
+      "message": "",
+      "listingName": "Lonavala Hillside Retreat"
+    },
+    "created_at": "2026-08-16T18:02:28.370Z"
+  },
+  {
+    "id": "enq-1786903487829-1eks5cy",
+    "name": "Speed Test",
+    "phone": "9999999999",
+    "email": "speed@test.com",
+    "type": "Speed Test Form",
+    "details": {},
+    "created_at": "2026-08-16T18:04:47.829Z"
+  }
+]

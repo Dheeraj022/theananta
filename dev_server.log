@@ -61,3 +61,218 @@ Error sending email: Error: Invalid login: 535 5.7.8 Error: authentication faile
  GET /about-us 200 in 58ms (next.js: 31ms, application-code: 28ms)
  GET /contact 200 in 34ms (next.js: 20ms, application-code: 13ms)
  POST /api/enquiry 200 in 6.4s (next.js: 3ms, application-code: 6.4s)
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /admin 200 in 83ms (next.js: 21ms, application-code: 62ms)
+ GET /admin 200 in 9ms (next.js: 2ms, application-code: 7ms)
+ GET /admin 200 in 148ms (next.js: 121ms, application-code: 27ms)
+ GET /admin 200 in 8ms (next.js: 1.4ms, application-code: 6ms)
+ GET /admin 200 in 6ms (next.js: 0.7ms, application-code: 5ms)
+ GET /admin 200 in 13ms (next.js: 0.7ms, application-code: 12ms)
+ GET /admin 200 in 6ms (next.js: 0.8ms, application-code: 5ms)
+ GET /admin 200 in 13ms (next.js: 0.8ms, application-code: 12ms)
+ GET /admin 200 in 6ms (next.js: 0.7ms, application-code: 6ms)
+ GET /admin 200 in 6ms (next.js: 0.9ms, application-code: 5ms)
+ GET /admin 200 in 8ms (next.js: 0.7ms, application-code: 7ms)
+ GET /admin 200 in 6ms (next.js: 0.6ms, application-code: 5ms)
+ GET /admin 200 in 6ms (next.js: 0.8ms, application-code: 5ms)
+ GET /admin 200 in 28ms (next.js: 0.7ms, application-code: 27ms)
+ GET /admin 200 in 27ms (next.js: 2ms, application-code: 25ms)
+ GET /admin 200 in 23ms (next.js: 1.1ms, application-code: 22ms)
+ GET /admin 200 in 21ms (next.js: 0.9ms, application-code: 20ms)
+ GET /admin 200 in 22ms (next.js: 1.1ms, application-code: 21ms)
+ GET /admin 200 in 15ms (next.js: 0.9ms, application-code: 14ms)
+ GET /admin 200 in 21ms (next.js: 1.5ms, application-code: 20ms)
+ GET /admin 200 in 14ms (next.js: 1.0ms, application-code: 13ms)
+ GET /admin 200 in 12ms (next.js: 0.8ms, application-code: 12ms)
+ GET /admin 200 in 15ms (next.js: 0.7ms, application-code: 14ms)
+ GET /admin 200 in 16ms (next.js: 1.7ms, application-code: 14ms)
+ GET /admin 200 in 16ms (next.js: 1.0ms, application-code: 15ms)
+ GET /admin 200 in 22ms (next.js: 0.9ms, application-code: 21ms)
+ GET /admin 200 in 15ms (next.js: 1.2ms, application-code: 13ms)
+ GET /admin 200 in 14ms (next.js: 1.0ms, application-code: 13ms)
+ GET /admin 200 in 14ms (next.js: 1.3ms, application-code: 13ms)
+ GET /admin 200 in 15ms (next.js: 1.1ms, application-code: 14ms)
+ GET /admin 200 in 15ms (next.js: 1.0ms, application-code: 14ms)
+ GET /admin 200 in 13ms (next.js: 1.0ms, application-code: 12ms)
+ GET /admin 200 in 7ms (next.js: 0.9ms, application-code: 6ms)
+ GET /admin 200 in 11ms (next.js: 0.9ms, application-code: 10ms)
+ GET /admin 200 in 6ms (next.js: 0.7ms, application-code: 5ms)
+ GET /admin 200 in 12ms (next.js: 0.7ms, application-code: 12ms)
+ GET /admin 200 in 6ms (next.js: 0.8ms, application-code: 5ms)
+ GET /admin 200 in 6ms (next.js: 0.7ms, application-code: 5ms)
+ GET /admin 200 in 13ms (next.js: 0.8ms, application-code: 12ms)
+ GET /admin 200 in 26ms (next.js: 0.8ms, application-code: 25ms)
+ GET /admin 200 in 34ms (next.js: 1.1ms, application-code: 33ms)
+ GET /admin 200 in 33ms (next.js: 1.4ms, application-code: 31ms)
+ GET /admin 200 in 27ms (next.js: 1.3ms, application-code: 26ms)
+ GET /admin 200 in 13ms (next.js: 0.9ms, application-code: 12ms)
+ GET /admin 200 in 7ms (next.js: 0.9ms, application-code: 6ms)
+ GET /admin 200 in 7ms (next.js: 0.9ms, application-code: 6ms)
+ GET /admin 200 in 6ms (next.js: 0.7ms, application-code: 5ms)
+ GET /admin 200 in 12ms (next.js: 0.6ms, application-code: 11ms)
+ GET /admin 200 in 12ms (next.js: 0.6ms, application-code: 11ms)
+ GET /admin 200 in 6ms (next.js: 0.7ms, application-code: 5ms)
+ GET /admin 200 in 12ms (next.js: 0.6ms, application-code: 11ms)
+ GET /admin 200 in 6ms (next.js: 1.0ms, application-code: 5ms)
+ GET /admin 200 in 13ms (next.js: 0.7ms, application-code: 12ms)
+ GET /admin 200 in 13ms (next.js: 2ms, application-code: 10ms)
+ GET /admin 200 in 6ms (next.js: 0.8ms, application-code: 5ms)
+ GET /admin 200 in 5ms (next.js: 0.6ms, application-code: 5ms)
+✓ Compiled in 5ms
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /admin 200 in 111ms (next.js: 2ms, application-code: 109ms)
+ GET /admin 200 in 51ms (next.js: 14ms, application-code: 38ms)
+ GET /admin 200 in 45ms (next.js: 3ms, application-code: 42ms)
+ GET /admin 200 in 11ms (next.js: 2ms, application-code: 9ms)
+✓ Compiled in 106ms
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+Supabase getEnquiries error, falling back to local storage: Could not find the table 'public.enquiries' in the schema cache
+ GET /api/enquiries 200 in 3.5s (next.js: 112ms, application-code: 3.4s)
+Supabase getEnquiries error, falling back to local storage: Could not find the table 'public.enquiries' in the schema cache
+ GET /api/enquiries 200 in 180ms (next.js: 1.8ms, application-code: 178ms)
+Supabase getEnquiries error, falling back to local storage: Could not find the table 'public.enquiries' in the schema cache
+ GET /api/enquiries 200 in 191ms (next.js: 1.9ms, application-code: 189ms)
+Supabase getEnquiries error, falling back to local storage: Could not find the table 'public.enquiries' in the schema cache
+ GET /api/enquiries 200 in 657ms (next.js: 5ms, application-code: 651ms)
+ GET /contact 200 in 60ms (next.js: 10ms, application-code: 50ms)
+ GET /admin 200 in 19ms (next.js: 3ms, application-code: 16ms)
+ GET /contact 200 in 19ms (next.js: 12ms, application-code: 7ms)
+✓ Compiled in 42ms
+Supabase getEnquiries error, falling back to local storage: Could not find the table 'public.enquiries' in the schema cache
+ GET /api/enquiries 200 in 238ms (next.js: 5ms, application-code: 233ms)
+ GET /contact 200 in 52ms (next.js: 4ms, application-code: 47ms)
+ POST /api/enquiry 200 in 34.4s (next.js: 39ms, application-code: 34.4s)
+ GET /cabs 200 in 57ms (next.js: 28ms, application-code: 29ms)
+[browser] Image with src "/images/cabs/cab_hero.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/cabs/car_sedan.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/cabs/car_hatchback.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/cabs/car_suv.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/cabs/car_innova.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/cabs/car_tempo.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+ GET /camping 200 in 61ms (next.js: 26ms, application-code: 36ms)
+[browser] Image with src "/images/camping/lakeside_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/camping/group_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/camping/forest_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/camping/valley_view_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/camping/family_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/camping/adventure_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /tours 200 in 333ms (next.js: 37ms, application-code: 295ms)
+[browser] Image with src "/images/tours/tiger-point.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/tours/sightseeing.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/tours/waterfall.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/tours/caves.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+ GET /villas 200 in 307ms (next.js: 43ms, application-code: 263ms)
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+⨯ upstream image response failed for https://images.unsplash.com/photo-1504280327395-56497257e1b5?auto=format&fit=crop&q=80&w=400 404
+ GET /villas/lonavala-hillside-retreat 200 in 1109ms (next.js: 35ms, generate-params: 852ms, application-code: 222ms)
+[browser] Image with src "/images/hotels/hotel-1.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/hotels/hotel-2.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/hotels/hotel-3.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/hotels/hotel-4.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+Supabase saveEnquiry error, falling back to local storage: Could not find the table 'public.enquiries' in the schema cache
+Supabase saveEnquiry error, falling back to local storage: Could not find the table 'public.enquiries' in the schema cache
+ POST /api/enquiry 200 in 8.1s (next.js: 3ms, application-code: 8.1s)
+Supabase saveEnquiry error, falling back to local storage: Could not find the table 'public.enquiries' in the schema cache
+ POST /api/enquiry 200 in 68s (next.js: 5ms, application-code: 68s)
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /villas/lonavala-hillside-retreat 200 in 645ms (next.js: 5ms, generate-params: 3ms, application-code: 637ms)
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /villas/lonavala-hillside-retreat 200 in 263ms (next.js: 1.9ms, generate-params: 2ms, application-code: 259ms)
+[browser] Image with src "/images/tours/sightseeing.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/hotels/hotel-1.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[browser] Image with src "/images/camping/forest_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/tours/waterfall.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/camping/adventure_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/tours/caves.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/camping/lakeside_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/hotels/hotel-1.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+Supabase saveEnquiry error, falling back to local storage: Could not find the table 'public.enquiries' in the schema cache
+ POST /api/enquiry 200 in 7.5s (next.js: 5ms, application-code: 7.5s)
+Supabase getEnquiries error, falling back to local storage: Could not find the table 'public.enquiries' in the schema cache
+ GET /api/enquiries 200 in 241ms (next.js: 5ms, application-code: 236ms)
+ GET /admin 200 in 36ms (next.js: 6ms, application-code: 30ms)
+ GET /villas/lonavala-hillside-retreat 200 in 19ms (next.js: 1.6ms, generate-params: 1.3ms, application-code: 17ms)
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ POST /api/enquiry 200 in 8ms (next.js: 3ms, application-code: 5ms)
+Supabase saveEnquiry error, falling back to local storage: Could not find the table 'public.enquiries' in the schema cache
+ GET /api/enquiries 200 in 3.4s (next.js: 22ms, application-code: 3.4s)
+ GET /api/enquiries 200 in 271ms (next.js: 3ms, application-code: 269ms)
+ POST /api/enquiry 200 in 13ms (next.js: 5ms, application-code: 8ms)
+ GET /api/enquiries 200 in 504ms (next.js: 5ms, application-code: 499ms)
+ GET /api/enquiries 200 in 204ms (next.js: 3ms, application-code: 201ms)
+ GET /api/enquiries 200 in 205ms (next.js: 4ms, application-code: 201ms)
+ GET /api/enquiries 200 in 197ms (next.js: 3ms, application-code: 194ms)
+ GET /api/enquiries 200 in 192ms (next.js: 3ms, application-code: 188ms)
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /villas/lonavala-hillside-retreat 200 in 360ms (next.js: 6ms, generate-params: 5ms, application-code: 349ms)
+[browser] Image with src "/images/hotels/hotel-1.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[browser] Image with src "/images/hotels/hotel-1.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/hotels/hotel-2.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/hotels/hotel-3.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/hotels/hotel-4.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/tours/sightseeing.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/camping/forest_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/tours/waterfall.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/camping/adventure_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/tours/caves.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/camping/lakeside_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+ GET /hotels 200 in 239ms (next.js: 31ms, application-code: 208ms)
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /hotels/della-resorts 200 in 714ms (next.js: 27ms, generate-params: 439ms, application-code: 248ms)
+[browser] Image with src "/images/tours/tiger-point.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+ POST /api/enquiry 200 in 13ms (next.js: 5ms, application-code: 8ms)
+ GET /api/enquiries 200 in 633ms (next.js: 2ms, application-code: 630ms)
+ GET /admin 200 in 53ms (next.js: 4ms, application-code: 48ms)
+ GET /api/enquiries 200 in 491ms (next.js: 1.5ms, application-code: 489ms)
+ GET /api/enquiries 200 in 189ms (next.js: 3ms, application-code: 186ms)
+ GET /api/enquiries 200 in 206ms (next.js: 1.8ms, application-code: 204ms)
+ GET /admin 200 in 51ms (next.js: 8ms, application-code: 43ms)
+ GET /api/enquiries 200 in 280ms (next.js: 1.3ms, application-code: 278ms)
+ GET /api/enquiries 200 in 211ms (next.js: 1.9ms, application-code: 209ms)
+ GET /api/enquiries 200 in 208ms (next.js: 2ms, application-code: 206ms)
+ GET /api/enquiries 200 in 249ms (next.js: 4ms, application-code: 246ms)
+ GET /api/enquiries 200 in 220ms (next.js: 2ms, application-code: 218ms)
+ GET /admin 200 in 23ms (next.js: 7ms, application-code: 16ms)
+ GET /hotels/della-resorts 200 in 39ms (next.js: 3ms, generate-params: 1.7ms, application-code: 35ms)
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /admin 200 in 26ms (next.js: 2ms, application-code: 24ms)
+ GET /hotels/della-resorts 200 in 18ms (next.js: 0.8ms, generate-params: 0.9ms, application-code: 16ms)
+✓ Compiled in 57ms
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /admin 200 in 30ms (next.js: 1.4ms, application-code: 29ms)
+ GET /hotels/della-resorts 200 in 19ms (next.js: 1.0ms, generate-params: 1.1ms, application-code: 16ms)
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /admin 200 in 52ms (next.js: 2ms, application-code: 50ms)
+ GET /hotels/della-resorts 200 in 31ms (next.js: 4ms, generate-params: 2ms, application-code: 25ms)
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /admin 200 in 50ms (next.js: 4ms, application-code: 46ms)
+ GET /admin 200 in 31ms (next.js: 3ms, application-code: 28ms)
+ GET /hotels/della-resorts 200 in 20ms (next.js: 1.9ms, generate-params: 2ms, application-code: 16ms)
+✓ Compiled in 51ms
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /admin 200 in 49ms (next.js: 3ms, application-code: 46ms)
+ GET /admin 200 in 37ms (next.js: 1.5ms, application-code: 36ms)
+ GET /admin 200 in 32ms (next.js: 3ms, application-code: 29ms)
+✓ Compiled in 38ms
+ GET /hotels/della-resorts 200 in 33ms (next.js: 9ms, generate-params: 1.3ms, application-code: 23ms)
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /admin 200 in 28ms (next.js: 4ms, application-code: 25ms)
+ GET /hotels/della-resorts 200 in 29ms (next.js: 12ms, generate-params: 1.3ms, application-code: 16ms)
+✓ Compiled in 81ms
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /admin 200 in 50ms (next.js: 5ms, application-code: 45ms)
+ GET /admin 200 in 45ms (next.js: 3ms, application-code: 42ms)
+ GET /admin 200 in 44ms (next.js: 4ms, application-code: 40ms)
+ GET /api/enquiries 200 in 13ms (next.js: 6ms, application-code: 7ms)
+ GET /api/enquiries 200 in 10ms (next.js: 3ms, application-code: 7ms)
+ GET /api/enquiries 200 in 6ms (next.js: 2ms, application-code: 4ms)
+ GET /tours 200 in 303ms (next.js: 10ms, application-code: 292ms)
+[browser] Image with src "/images/camping/group_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/camping/valley_view_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+ GET /villas 200 in 240ms (next.js: 8ms, application-code: 232ms)
+ GET /villas/green-valley-private-villa 200 in 223ms (next.js: 8ms, generate-params: 3ms, application-code: 211ms)
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ POST /api/enquiry 200 in 13ms (next.js: 5ms, application-code: 8ms)
