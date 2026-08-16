@@ -1,0 +1,63 @@
+
+> valley-city-stay-hub@0.1.0 dev
+> next dev
+
+▲ Next.js 16.3.0 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.20:3000
+- Environments: .env.local
+✓ Ready in 208ms
+✓ Running next.config.ts took 14ms
+
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ GET /tours/lonavala-nature-waterfall-tour 200 in 4.3s (next.js: 150ms, generate-params: 3.8s, application-code: 401ms)
+[browser] Image with src "/images/tours/tiger-point.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/tours/waterfall.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/tours/sightseeing.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/tours/caves.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+ GET /tours/lonavala-nature-waterfall-tour 200 in 21ms (next.js: 2ms, generate-params: 1.1ms, application-code: 18ms)
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+Error sending email: Error: Invalid login: 535 5.7.8 Error: authentication failed: (reason unavailable)
+    at ignore-listed frames {
+  code: 'EAUTH',
+  response: '535 5.7.8 Error: authentication failed: (reason unavailable)',
+  responseCode: 535,
+  command: 'AUTH PLAIN'
+}
+ POST /api/enquiry 500 in 64s (next.js: 41ms, application-code: 64s)
+Error sending email: Error: Invalid login: 535 5.7.8 Error: authentication failed: (reason unavailable)
+    at ignore-listed frames {
+  code: 'EAUTH',
+  response: '535 5.7.8 Error: authentication failed: (reason unavailable)',
+  responseCode: 535,
+  command: 'AUTH PLAIN'
+}
+ POST /api/enquiry 500 in 3.0s (next.js: 3ms, application-code: 3.0s)
+Error sending email: Error: Invalid login: 535 5.7.8 Error: authentication failed: (reason unavailable)
+    at ignore-listed frames {
+  code: 'EAUTH',
+  response: '535 5.7.8 Error: authentication failed: (reason unavailable)',
+  responseCode: 535,
+  command: 'AUTH PLAIN'
+}
+ POST /api/enquiry 500 in 63s (next.js: 1.3ms, application-code: 63s)
+ GET /tours/lonavala-nature-waterfall-tour 200 in 29ms (next.js: 6ms, generate-params: 1.5ms, application-code: 22ms)
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+ POST /api/enquiry 200 in 67s (next.js: 3ms, application-code: 67s)
+ POST /api/enquiry 200 in 42s (next.js: 6ms, application-code: 42s)
+[browser] Image with src "/images/tours/waterfall.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/tours/tiger-point.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/tours/sightseeing.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/tours/caves.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+ GET /tours/lonavala-nature-waterfall-tour 200 in 3.9s (next.js: 3ms, generate-params: 2ms, application-code: 3.9s)
+ POST /api/enquiry 200 in 7.3s (next.js: 6ms, application-code: 7.3s)
+ GET /things-to-do 200 in 72ms (next.js: 41ms, application-code: 31ms)
+[browser] Image with src "/images/camping/lakeside_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/camping/valley_view_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/hero/lonavala-hero.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/images/camping/adventure_camping.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+ GET /about-us 200 in 58ms (next.js: 31ms, application-code: 28ms)
+ GET /contact 200 in 34ms (next.js: 20ms, application-code: 13ms)
+ POST /api/enquiry 200 in 6.4s (next.js: 3ms, application-code: 6.4s)

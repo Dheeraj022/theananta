@@ -35,15 +35,17 @@ export async function POST(req: Request) {
       }
     }
 
-    // Set up Nodemailer transporter for Hostinger
+    // Set up Nodemailer transporter for GoDaddy (or use env variables)
     const transporter = nodemailer.createTransport({
-      host: 'smtp.hostinger.com',
-      port: 465,
-      secure: true, // Use SSL
+      host: process.env.SMTP_HOST || 'smtpout.secureserver.net',
+      port: Number(process.env.SMTP_PORT) || 465,
+      secure: true, // Use SSL (true for 465, false for 587)
       auth: {
         user: process.env.SMTP_EMAIL || 'info@lonavalagateway.com',
         pass: process.env.SMTP_PASSWORD,
       },
+      connectionTimeout: 5000,
+      greetingTimeout: 5000,
     });
 
     const mailOptions = {
