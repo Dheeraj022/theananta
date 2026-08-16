@@ -41,14 +41,14 @@ export async function POST(req: Request) {
       port: 465,
       secure: true, // Use SSL
       auth: {
-        user: process.env.SMTP_EMAIL || 'dheerajkumar8179@gmail.com',
+        user: process.env.SMTP_EMAIL || 'info@lonavalagateway.com',
         pass: process.env.SMTP_PASSWORD,
       },
     });
 
     const mailOptions = {
-      from: process.env.SMTP_EMAIL || 'dheerajkumar8179@gmail.com',
-      to: 'dheerajkumar8179@gmail.com',
+      from: process.env.SMTP_EMAIL || 'info@lonavalagateway.com',
+      to: 'info@lonavalagateway.com',
       subject: `New Enquiry from ${name} - Lonavala Gateway`,
       html: emailHtml,
       replyTo: email || undefined,
