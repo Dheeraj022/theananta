@@ -286,7 +286,7 @@ export default function AboutUsPage() {
                 </div>
                 <div>
                   <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Contact Numbers</h4>
-                  <p className="text-[14px] text-[#66716C]">+91 96616 60343<br />+91 96616 60343</p>
+                  <p className="text-[14px] text-[#66716C]">+91 92880 85331<br />+91 92880 85331</p>
                 </div>
               </div>
 

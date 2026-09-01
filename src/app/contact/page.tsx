@@ -50,13 +50,13 @@ export default function ContactPage() {
                   <div className="w-10 h-10 rounded-full bg-[#EAF5EF] flex items-center justify-center shrink-0 group-hover:bg-[#075B3A] transition-colors duration-300">
                     <Phone size={16} className="text-[#075B3A] group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <span className="font-bold text-xs sm:text-[13px]">+91 96616 60343</span>
+                  <span className="font-bold text-xs sm:text-[13px]">+91 92880 85331</span>
                 </div>
                 <div className="flex items-center gap-4 text-[#17211D] group">
                   <div className="w-10 h-10 rounded-full bg-[#EAF5EF] flex items-center justify-center shrink-0 group-hover:bg-[#075B3A] transition-colors duration-300">
                     <MessageCircle size={16} className="text-[#075B3A] group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <span className="font-bold text-xs sm:text-[13px]">+91 96616 60343</span>
+                  <span className="font-bold text-xs sm:text-[13px]">+91 92880 85331</span>
                 </div>
                 <div className="flex items-center gap-4 text-[#17211D] group">
                   <div className="w-10 h-10 rounded-full bg-[#EAF5EF] flex items-center justify-center shrink-0 group-hover:bg-[#075B3A] transition-colors duration-300">

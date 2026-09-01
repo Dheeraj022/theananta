@@ -276,3 +276,9 @@ Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
  GET /villas/green-valley-private-villa 200 in 223ms (next.js: 8ms, generate-params: 3ms, application-code: 211ms)
 ⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
  POST /api/enquiry 200 in 13ms (next.js: 5ms, application-code: 8ms)
+ GET / 200 in 448ms (next.js: 57ms, application-code: 390ms)
+ GET /admin 200 in 42ms (next.js: 4ms, application-code: 38ms)
+ GET / 200 in 3.9s (next.js: 4ms, application-code: 3.8s)
+[browser] Image with src "/images/hero/lonavala-hero.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[?25h
