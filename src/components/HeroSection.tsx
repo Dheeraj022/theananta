@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { Phone } from 'lucide-react';
+import { WHATSAPP_URL } from '@/lib/constants';
 
 export default function HeroSection() {
 
@@ -54,7 +55,7 @@ export default function HeroSection() {
                 SEND ENQUIRY
               </button>
               <a
-                href="https://wa.me/919288085331"
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto px-8 py-3.5 bg-white hover:bg-gray-50 text-[#075B3A] font-bold rounded-xl transition-colors border border-transparent shadow-sm flex items-center justify-center gap-2"

@@ -1,5 +1,5 @@
 import { Phone, MessageCircle } from 'lucide-react';
-import { CALL_URL, WHATSAPP_URL } from '@/lib/constants';
+import { CALL_URL, WHATSAPP_URL, PHONE_NUMBER } from '@/lib/constants';
 
 export default function HelpCard() {
   return (
@@ -15,7 +15,7 @@ export default function HelpCard() {
         <div className="w-7 h-7 bg-[#EAF5EF] rounded-lg flex items-center justify-center shrink-0">
           <Phone size={14} strokeWidth={2} className="text-[#075B3A]" />
         </div>
-        <span className="text-[#17211D] font-bold text-xs">+91 92880 85331</span>
+        <span className="text-[#17211D] font-bold text-xs">{PHONE_NUMBER}</span>
       </div>
 
       <div className="flex gap-2">
