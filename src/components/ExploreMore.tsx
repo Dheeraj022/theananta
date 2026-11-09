@@ -3,10 +3,10 @@ import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 
 const EXPLORE_ITEMS = [
-  { title: 'Hotels &\nResorts', image: '/images/hotels/hotel-1.jpg', href: '/hotels' },
-  { title: 'Villas &\nHavelis', image: '/images/hotels/hotel-2.jpg', href: '/villas' },
-  { title: 'Local Tours &\nSightseeing', image: '/images/tours/sightseeing.jpg', href: '/tours' },
-  { title: 'Desert Camping &\nOutdoor Experiences', image: '/images/hero/rajasthan-hero.jpg', href: '/camping' },
+  { title: 'Hotels &\nResorts', image: '/images/hotels/the-ananta-udaipur.jpg', href: '/hotels' },
+  { title: 'Villas &\nHavelis', image: '/images/villas/royal-rajputana-haveli-jaipur.jpg', href: '/villas' },
+  { title: 'Local Tours &\nSightseeing', image: '/images/tours/jaipur-heritage-tour.jpg', href: '/tours' },
+  { title: 'Desert Camping &\nOutdoor Experiences', image: '/images/camping/royal-swiss-tents.jpg', href: '/camping' },
 ];
 
 export default function ExploreMore() {

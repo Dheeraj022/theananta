@@ -57,7 +57,7 @@ export default async function ToursPage() {
                   {/* Hero Gallery */}
                   <div className="relative w-full h-[300px] lg:h-full flex flex-col gap-2">
                     <div className="relative w-full flex-grow rounded-2xl overflow-hidden cursor-pointer group shadow-sm">
-                      <Image src="/images/tours/sightseeing.jpg" alt="Rajasthan Tour" fill className="object-cover transition-transform duration-700 group-hover:scale-105" priority />
+                      <Image src="/images/tours/jaipur-heritage-tour.jpg" alt="Rajasthan Heritage Tour" fill className="object-cover transition-transform duration-700 group-hover:scale-105" priority />
                     </div>
                   </div>
                 </div>
@@ -156,15 +156,15 @@ export default async function ToursPage() {
                 <h2 className="text-lg font-bold text-[#17211D] mb-6">Popular Places Covered</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-[repeat(9,minmax(0,1fr))] gap-3 mb-6">
                   {[
-                    { name: 'Amber Palace', img: '/images/tours/sightseeing.jpg' },
-                    { name: 'Hawa Mahal', img: '/images/tours/caves.jpg' },
-                    { name: 'City Palace Jaipur', img: '/images/hotels/hotel-4.jpg' },
-                    { name: 'Jal Mahal', img: '/images/tours/waterfall.jpg' },
-                    { name: 'Lake Pichola', img: '/images/hotels/hotel-1.jpg' },
-                    { name: 'Mehrangarh Fort', img: '/images/tours/tiger-point.jpg' },
-                    { name: 'Jaisalmer Fort', img: '/images/hotels/hotel-2.jpg' },
-                    { name: 'Pushkar Lake', img: '/images/hotels/hotel-3.jpg' },
-                    { name: 'Bhangarh Fort', img: '/images/camping/adventure_camping.jpg' },
+                    { name: 'Amber Palace', img: '/images/attractions/amber-fort.jpg' },
+                    { name: 'Hawa Mahal', img: '/images/attractions/hawa-mahal.jpg' },
+                    { name: 'City Palace Jaipur', img: '/images/attractions/city-palace-jaipur.jpg' },
+                    { name: 'Jal Mahal', img: '/images/attractions/nahargarh-fort.jpg' },
+                    { name: 'Lake Pichola', img: '/images/attractions/lake-pichola.jpg' },
+                    { name: 'Mehrangarh Fort', img: '/images/attractions/mehrangarh-fort.jpg' },
+                    { name: 'Jaisalmer Fort', img: '/images/attractions/jaisalmer-fort.jpg' },
+                    { name: 'Pushkar Lake', img: '/images/attractions/pushkar-lake.jpg' },
+                    { name: 'Bhangarh Fort', img: '/images/attractions/kumbhalgarh-fort.jpg' },
                   ].map((place, idx) => (
                     <div key={idx} className="flex flex-col items-center group cursor-pointer">
                       <div className="relative w-full aspect-square rounded-xl overflow-hidden mb-2 shadow-sm">

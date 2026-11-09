@@ -363,12 +363,12 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
             <h2 className="text-lg font-bold text-[#17211D] mb-4">Things To Do Around {city}</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
               {[
-                { title: 'Sightseeing', sub: 'Explore royal landmarks & viewpoints', img: '/images/tours/sightseeing.jpg' },
-                { title: 'Heritage Havelis', sub: 'Historic courtyards & architecture', img: '/images/tours/caves.jpg' },
-                { title: 'Lakes & Ghats', sub: 'Waterfront sunset viewpoints', img: '/images/tours/waterfall.jpg' },
-                { title: 'Desert Experiences', sub: 'Camel safaris & dunes', img: '/images/tours/tiger-point.jpg' },
-                { title: 'Local Bazaars', sub: 'Handicrafts, textiles & arts', img: '/images/camping/adventure_camping.jpg' },
-                { title: 'Fort Trails', sub: 'Majestic forts & panoramic views', img: '/images/camping/lakeside_camping.jpg' },
+                { title: 'Sightseeing', sub: 'Explore royal landmarks & viewpoints', img: '/images/tours/jaipur-heritage-tour.jpg' },
+                { title: 'Heritage Havelis', sub: 'Historic courtyards & architecture', img: '/images/villas/royal-rajputana-haveli-jaipur.jpg' },
+                { title: 'Lakes & Ghats', sub: 'Waterfront sunset viewpoints', img: '/images/tours/udaipur-lakes-tour.jpg' },
+                { title: 'Desert Experiences', sub: 'Camel safaris & dunes', img: '/images/camping/camel-safari.jpg' },
+                { title: 'Local Bazaars', sub: 'Handicrafts, textiles & arts', img: '/images/villas/marwar-heritage-haveli-bikaner.jpg' },
+                { title: 'Fort Trails', sub: 'Majestic forts & panoramic views', img: '/images/tours/kumbhalgarh-ranakpur-tour.jpg' },
               ].map((item, idx) => (
                 <div key={idx} className="bg-white border border-[#DCE4DF] rounded-xl overflow-hidden shadow-sm flex flex-col">
                   <div className="relative w-full h-24">

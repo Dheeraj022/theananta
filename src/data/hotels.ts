@@ -16,7 +16,7 @@ export const hotels: Hotel[] = [
     id: 'the-ananta-udaipur',
     name: 'The Ananta Udaipur',
     location: 'Kodiyat Road, Udaipur',
-    image: '/images/hotels/hotel-1.jpg',
+    image: '/images/hotels/the-ananta-udaipur.jpg',
     slug: 'the-ananta-udaipur',
     description: 'A 40-acre hillside resort in the Aravallis with more than 230 villas, open-to-sky bathrooms and wide mountain views.',
     about: `The Ananta Udaipur is a sprawling 40-acre hillside retreat situated along Kodiyat Road against the backdrop of the Aravalli range. Set amidst lush greenery, the property features over 230 contemporary villas and luxury cottages designed with open-to-sky bathrooms, wide balconies, and expansive valley views.
@@ -25,10 +25,10 @@ The property is situated within convenient driving distance of Udaipur's prime a
 
 Property features include a large infinity swimming pool, the signature Mudra Spa offering Ayurvedic wellness therapies, multiple dining venues, fitness facilities, and banquet lawns. Accommodation options, facilities, policies and other property details may vary. Visitors are advised to verify the applicable information for their selected travel dates before proceeding.`,
     images: [
-      '/images/hotels/hotel-1.jpg',
-      '/images/hotels/hotel-2.jpg',
-      '/images/hotels/hotel-3.jpg',
-      '/images/hotels/hotel-4.jpg',
+      '/images/hotels/the-ananta-udaipur.jpg',
+      '/images/hotels/hotel-gallery-1.jpg',
+      '/images/hotels/hotel-gallery-2.jpg',
+      '/images/hotels/hotel-gallery-3.jpg',
     ],
     address: 'Village Bujhda, Tehsil Girwa, Kodiyat Road, Udaipur, Rajasthan 313031',
     gettingThere: 'About 30 km from Maharana Pratap Airport (UDR), about 11 km from Udaipur Railway Station',
@@ -93,7 +93,7 @@ Property features include a large infinity swimming pool, the signature Mudra Sp
     id: 'ananta-spa-resort-pushkar',
     name: 'Ananta Spa & Resort Pushkar',
     location: 'Leela Sevri, Pushkar',
-    image: '/images/hotels/hotel-2.jpg',
+    image: '/images/hotels/the-ananta-pushkar.jpg',
     slug: 'ananta-spa-resort-pushkar',
     description: 'A 9-acre resort just outside Pushkar with standalone cottages and canopied tented suites set around palm courtyards.',
     about: `Ananta Spa & Resort Pushkar is laid out across 9 peaceful acres in Leela Sevri, situated approximately 4 km before entering the town of Pushkar. The resort blends desert-inspired architecture with contemporary comforts, featuring 72 keys divided between independent cottages and canopied tented suites.
@@ -102,10 +102,10 @@ The resort provides convenient access to Pushkar's sacred sites and cultural hig
 
 Guests can enjoy an expansive central swimming pool flanked by palm gazebos, wellness therapies at the Mudra Ayurvedic Spa, landscaped courtyards, and regional Rajasthani dining. Accommodation options, facilities, policies and other property details may vary. Visitors are advised to verify the applicable information for their selected travel dates before proceeding.`,
     images: [
-      '/images/hotels/hotel-2.jpg',
-      '/images/hotels/hotel-1.jpg',
-      '/images/hotels/hotel-3.jpg',
-      '/images/hotels/hotel-4.jpg',
+      '/images/hotels/the-ananta-pushkar.jpg',
+      '/images/hotels/hotel-gallery-1.jpg',
+      '/images/hotels/hotel-gallery-2.jpg',
+      '/images/hotels/hotel-gallery-4.jpg',
     ],
     address: 'Village Leela Sevri, 4 km before Pushkar, Rajasthan 305022',
     gettingThere: 'About 140 km from Jaipur International Airport (JAI), about 13 km from Ajmer Junction',
@@ -162,7 +162,7 @@ Guests can enjoy an expansive central swimming pool flanked by palm gazebos, wel
     id: 'ananta-spa-resort-ajabgarh',
     name: 'Ananta Spa & Resort Ajabgarh',
     location: 'Ajabgarh, Alwar',
-    image: '/images/hotels/hotel-3.jpg',
+    image: '/images/hotels/the-ananta-ajabgarh.jpg',
     slug: 'ananta-spa-resort-ajabgarh',
     description: 'A quiet boutique resort in the Aravalli valley near Sariska, known for stone villas with private plunge pools.',
     about: `Ananta Spa & Resort Ajabgarh is a serene boutique property situated in the tranquil Aravalli valley of Alwar district near Sariska. The resort is designed with local stone architecture, featuring private courtyard villas, dedicated plunge pools, and uninterrupted views of the rugged mountain ridges.
@@ -171,10 +171,10 @@ The surrounding region is rich in nature and historical interest. Guests can arr
 
 Amenities include a central outdoor swimming pool, the Mudra Spa offering holistic wellness therapies, courtyard dining serving farm-fresh regional fare, and an open-air stargazing terrace. Accommodation options, facilities, policies and other property details may vary. Visitors are advised to verify the applicable information for their selected travel dates before proceeding.`,
     images: [
-      '/images/hotels/hotel-3.jpg',
-      '/images/hotels/hotel-1.jpg',
-      '/images/hotels/hotel-2.jpg',
-      '/images/hotels/hotel-4.jpg',
+      '/images/hotels/the-ananta-ajabgarh.jpg',
+      '/images/hotels/hotel-gallery-2.jpg',
+      '/images/hotels/hotel-gallery-3.jpg',
+      '/images/hotels/hotel-gallery-4.jpg',
     ],
     address: 'Tehsil Thanagazi, District Alwar, Rajasthan 301027',
     gettingThere: 'About 95 km from Jaipur International Airport (JAI), about 60 km from Dausa Railway Station',
@@ -228,7 +228,7 @@ Amenities include a central outdoor swimming pool, the Mudra Spa offering holist
     id: 'ananta-spa-resort-jaipur',
     name: 'Ananta Spa & Resort Jaipur',
     location: 'Kukas, Jaipur',
-    image: '/images/hotels/hotel-4.jpg',
+    image: '/images/hotels/ananta-spa-resort-jaipur.jpg',
     slug: 'ananta-spa-resort-jaipur',
     description: 'A palace-style resort on the Delhi–Jaipur highway at Kukas, with large banquet spaces and easy access to Amer Fort.',
     about: `Ananta Spa & Resort Jaipur is a grand palace-style property situated in Kukas along the Delhi–Jaipur highway. Featuring classic Rajputana architecture with intricate jharokhas, carved stone arches, and expansive courtyards, the resort provides an elegant base on the northern approach to Jaipur.
@@ -237,10 +237,10 @@ Its position offers convenient connectivity to Jaipur's iconic northern heritage
 
 The property is equipped with a large outdoor swimming pool with arched pavilions, the Mudra Spa and salon, multiple dining outlets, a fitness pavilion, and spacious indoor ballrooms and outdoor lawns. Accommodation options, facilities, policies and other property details may vary. Visitors are advised to verify the applicable information for their selected travel dates before proceeding.`,
     images: [
-      '/images/hotels/hotel-4.jpg',
-      '/images/hotels/hotel-1.jpg',
-      '/images/hotels/hotel-2.jpg',
-      '/images/hotels/hotel-3.jpg',
+      '/images/hotels/ananta-spa-resort-jaipur.jpg',
+      '/images/hotels/hotel-gallery-1.jpg',
+      '/images/hotels/hotel-gallery-3.jpg',
+      '/images/hotels/hotel-gallery-4.jpg',
     ],
     address: 'Delhi-Jaipur Highway, Kukas, Jaipur, Rajasthan',
     gettingThere: 'About 32 km from Jaipur International Airport (JAI), about 22 km from Jaipur Junction',
@@ -297,7 +297,7 @@ The property is equipped with a large outdoor swimming pool with arched pavilion
     id: 'taj-lake-palace-udaipur',
     name: 'Taj Lake Palace',
     location: 'Lake Pichola, Udaipur',
-    image: '/images/hotels/hotel-1.jpg',
+    image: '/images/hotels/taj-lake-palace-udaipur.jpg',
     slug: 'taj-lake-palace-udaipur',
     description: 'An iconic 18th-century white marble palace floating in the middle of Lake Pichola with historic royal architecture.',
     about: `Taj Lake Palace is a world-renowned heritage property constructed of white marble that appears to float on the waters of Lake Pichola in Udaipur. Originally built in the 1740s as a royal summer palace, it features intricate stone filigree work, ornate inner courtyards, and open-air pavilions.
@@ -306,10 +306,10 @@ Set on an island in Lake Pichola, the property is reached via a short boat ride 
 
 Facilities include fine dining heritage restaurants, a tranquil courtyard pool, a dedicated wellness spa, and traditional cultural performances in the evening courtyards. Accommodation options, facilities, policies and other property details may vary. Visitors are advised to verify the applicable information for their selected travel dates before proceeding.`,
     images: [
-      '/images/hotels/hotel-1.jpg',
-      '/images/hotels/hotel-2.jpg',
-      '/images/hotels/hotel-3.jpg',
-      '/images/hotels/hotel-4.jpg',
+      '/images/hotels/taj-lake-palace-udaipur.jpg',
+      '/images/hotels/the-leela-palace-udaipur.jpg',
+      '/images/hotels/hotel-gallery-1.jpg',
+      '/images/hotels/hotel-gallery-2.jpg',
     ],
     address: 'Lake Pichola, Udaipur, Rajasthan 313001',
     gettingThere: 'About 25 km from Maharana Pratap Airport (UDR), about 4 km from Udaipur Railway Station',
@@ -322,7 +322,7 @@ Facilities include fine dining heritage restaurants, a tranquil courtyard pool, 
     id: 'the-leela-palace-udaipur',
     name: 'The Leela Palace Udaipur',
     location: 'Lake Pichola, Udaipur',
-    image: '/images/hotels/hotel-2.jpg',
+    image: '/images/hotels/the-leela-palace-udaipur.jpg',
     slug: 'the-leela-palace-udaipur',
     description: 'A palatial lakeside hotel on the banks of Lake Pichola offering views of the City Palace and Aravalli hills.',
     about: `The Leela Palace Udaipur is situated on the tranquil western banks of Lake Pichola. Designed in the majestic grand style of Mewar palaces, the property showcases domed pavilions, hand-painted murals, courtyard fountains, and panoramic waterfront vistas.
@@ -331,10 +331,10 @@ The hotel provides easy access by boat and road to Udaipur's primary cultural si
 
 On-site facilities include lake-facing dining venues, a heated outdoor swimming pool, the Spa by ESPA, private dining gazebos, and heritage boat excursions across Pichola. Accommodation options, facilities, policies and other property details may vary. Visitors are advised to verify the applicable information for their selected travel dates before proceeding.`,
     images: [
-      '/images/hotels/hotel-2.jpg',
-      '/images/hotels/hotel-1.jpg',
-      '/images/hotels/hotel-3.jpg',
-      '/images/hotels/hotel-4.jpg',
+      '/images/hotels/the-leela-palace-udaipur.jpg',
+      '/images/hotels/taj-lake-palace-udaipur.jpg',
+      '/images/hotels/hotel-gallery-3.jpg',
+      '/images/hotels/hotel-gallery-4.jpg',
     ],
     address: 'Lake Pichola, Udaipur, Rajasthan 313001',
     gettingThere: 'About 26 km from Maharana Pratap Airport (UDR), about 5 km from Udaipur Railway Station',
@@ -347,7 +347,7 @@ On-site facilities include lake-facing dining venues, a heated outdoor swimming 
     id: 'radisson-blu-palace-resort-udaipur',
     name: 'Radisson Blu Palace Resort & Spa',
     location: 'Malla Talai, Udaipur',
-    image: '/images/hotels/hotel-3.jpg',
+    image: '/images/hotels/radisson-blu-udaipur-palace.jpg',
     slug: 'radisson-blu-palace-resort-udaipur',
     description: 'A contemporary palace-style resort situated near Fateh Sagar Lake with spacious rooms and expansive banquet venues.',
     about: `Radisson Blu Palace Resort & Spa is situated in the Malla Talai area of Udaipur, overlooking the tranquil shores of Fateh Sagar Lake. The resort combines modern hospitality amenities with palatial regional touches, catering to both vacationers and event travellers.
@@ -356,10 +356,10 @@ The location is well-positioned for exploring the city's scenic northern lake ci
 
 Resort amenities encompass multi-tier outdoor swimming pools, a luxury spa, multiple specialty restaurants, a two-level lounge, and comprehensive event venues. Accommodation options, facilities, policies and other property details may vary. Visitors are advised to verify the applicable information for their selected travel dates before proceeding.`,
     images: [
-      '/images/hotels/hotel-3.jpg',
-      '/images/hotels/hotel-1.jpg',
-      '/images/hotels/hotel-2.jpg',
-      '/images/hotels/hotel-4.jpg',
+      '/images/hotels/radisson-blu-udaipur-palace.jpg',
+      '/images/hotels/the-ananta-udaipur.jpg',
+      '/images/hotels/hotel-gallery-1.jpg',
+      '/images/hotels/hotel-gallery-4.jpg',
     ],
     address: 'B-1, Ambamata Scheme-A Road, Malla Talai, Udaipur, Rajasthan 313001',
     gettingThere: 'About 26 km from Maharana Pratap Airport (UDR), about 6 km from Udaipur Railway Station',
@@ -372,7 +372,7 @@ Resort amenities encompass multi-tier outdoor swimming pools, a luxury spa, mult
     id: 'welcomheritage-traditional-haveli-jaipur',
     name: 'WelcomHeritage Traditional Haveli',
     location: 'Bani Park, Jaipur',
-    image: '/images/hotels/hotel-4.jpg',
+    image: '/images/hotels/welcomheritage-traditional-haveli-jaipur.jpg',
     slug: 'welcomheritage-traditional-haveli-jaipur',
     description: 'A restored heritage mansion in the quiet residential neighbourhood of Bani Park featuring authentic Rajasthani craft.',
     about: `WelcomHeritage Traditional Haveli is a heritage mansion property located in the pleasant residential quarter of Bani Park in Jaipur. Constructed with classical arches, painted frescoes, and internal courtyard spaces, it offers travellers an authentic glimpse into aristocratic Rajasthani architecture.
@@ -381,10 +381,10 @@ Bani Park provides convenient connectivity to both old and new Jaipur. The walle
 
 The hotel features a rooftop dining area, an indoor swimming pool, traditional courtyard sitting areas, and heritage hospitality services. Accommodation options, facilities, policies and other property details may vary. Visitors are advised to verify the applicable information for their selected travel dates before proceeding.`,
     images: [
-      '/images/hotels/hotel-4.jpg',
-      '/images/hotels/hotel-1.jpg',
-      '/images/hotels/hotel-2.jpg',
-      '/images/hotels/hotel-3.jpg',
+      '/images/hotels/welcomheritage-traditional-haveli-jaipur.jpg',
+      '/images/hotels/ananta-spa-resort-jaipur.jpg',
+      '/images/hotels/hotel-gallery-2.jpg',
+      '/images/hotels/hotel-gallery-3.jpg',
     ],
     address: 'AC-4C, Gayatri Marg, Sawai Jai Singh Highway, Bani Park, Jaipur, Rajasthan 302016',
     gettingThere: 'About 14 km from Jaipur International Airport (JAI), about 2 km from Jaipur Junction',
@@ -397,7 +397,7 @@ The hotel features a rooftop dining area, an indoor swimming pool, traditional c
     id: 'taj-hari-mahal-jodhpur',
     name: 'Taj Hari Mahal',
     location: 'Jodhpur',
-    image: '/images/hotels/hotel-1.jpg',
+    image: '/images/hotels/taj-hari-mahal-jodhpur.jpg',
     slug: 'taj-hari-mahal-jodhpur',
     description: 'A 6-acre palatial retreat in Jodhpur blending 14th-century Marwar architecture with contemporary comforts.',
     about: `Taj Hari Mahal is an expansive 6-acre hotel situated in the Sun City of Jodhpur. The architecture draws inspiration from 14th-century royal Marwar design, showcasing grand domes, carved arches, jharokhas, and landscaped garden courtyards.
@@ -406,10 +406,10 @@ From this centrally situated property, travellers can easily organize visits acr
 
 Highlights include an outdoor swimming pool set in landscaped gardens, signature Marwari and Chinese dining venues, a wellness centre, and banquet spaces. Accommodation options, facilities, policies and other property details may vary. Visitors are advised to verify the applicable information for their selected travel dates before proceeding.`,
     images: [
-      '/images/hotels/hotel-1.jpg',
-      '/images/hotels/hotel-2.jpg',
-      '/images/hotels/hotel-3.jpg',
-      '/images/hotels/hotel-4.jpg',
+      '/images/hotels/taj-hari-mahal-jodhpur.jpg',
+      '/images/hotels/fort-rajwada-jaisalmer.jpg',
+      '/images/hotels/hotel-gallery-1.jpg',
+      '/images/hotels/hotel-gallery-4.jpg',
     ],
     address: '5, Residency Road, Jodhpur, Rajasthan 342001',
     gettingThere: 'About 4 km from Jodhpur Airport (JDH), about 3.5 km from Jodhpur Railway Station',
@@ -422,7 +422,7 @@ Highlights include an outdoor swimming pool set in landscaped gardens, signature
     id: 'fort-rajwada-jaisalmer',
     name: 'Fort Rajwada',
     location: 'Jaisalmer',
-    image: '/images/hotels/hotel-2.jpg',
+    image: '/images/hotels/fort-rajwada-jaisalmer.jpg',
     slug: 'fort-rajwada-jaisalmer',
     description: 'A grand yellow-sandstone hotel in Jaisalmer showcasing traditional jali stone-carving and Thar desert heritage.',
     about: `Fort Rajwada is a grand property constructed in the indigenous golden-yellow sandstone of Jaisalmer, located in 6 acres of tranquil grounds. The hotel showcases the master craftsmanship of local stone-carvers with ornate jali screens, grand balconies, and traditional courtyards.
@@ -431,10 +431,10 @@ Situated on the outskirts of Jaisalmer city, the hotel is conveniently placed fo
 
 Features include an open-air swimming pool surrounded by stone colonnades, multi-cuisine dining serving Rajasthani specialties, a health club, and a desert excursion desk. Accommodation options, facilities, policies and other property details may vary. Visitors are advised to verify the applicable information for their selected travel dates before proceeding.`,
     images: [
-      '/images/hotels/hotel-2.jpg',
-      '/images/hotels/hotel-1.jpg',
-      '/images/hotels/hotel-3.jpg',
-      '/images/hotels/hotel-4.jpg',
+      '/images/hotels/fort-rajwada-jaisalmer.jpg',
+      '/images/hotels/taj-hari-mahal-jodhpur.jpg',
+      '/images/hotels/hotel-gallery-2.jpg',
+      '/images/hotels/hotel-gallery-3.jpg',
     ],
     address: '1, Hotel Complex, Jodhpur-Barmer Link Road, Jaisalmer, Rajasthan 345001',
     gettingThere: 'About 12 km from Jaisalmer Airport (JSA), about 3 km from Jaisalmer Railway Station',
@@ -447,7 +447,7 @@ Features include an open-air swimming pool surrounded by stone colonnades, multi
     id: 'hummingbird-resorts-mount-abu',
     name: 'Hummingbird Resorts Mount Abu',
     location: 'Achalgarh Road, Mount Abu',
-    image: '/images/hotels/hotel-3.jpg',
+    image: '/images/hotels/hummingbird-resort-mount-abu.jpg',
     slug: 'hummingbird-resorts-mount-abu',
     description: 'A peaceful nature resort nestled along Achalgarh Road in Mount Abu, Rajasthan\'s only hill station.',
     about: `Hummingbird Resorts is situated along Achalgarh Road amidst the lush wooded slopes of Mount Abu, the only hill station in Rajasthan. Surrounded by green valleys and rocky hilltops, the resort offers cooler climates and quiet natural scenery.
@@ -456,10 +456,10 @@ The property provides a suitable jumping-off point to explore the higher reaches
 
 Amenities include garden view accommodations, on-site multi-cuisine dining, outdoor walking spaces, and bonfire gatherings in the evenings. Accommodation options, facilities, policies and other property details may vary. Visitors are advised to verify the applicable information for their selected travel dates before proceeding.`,
     images: [
-      '/images/hotels/hotel-3.jpg',
-      '/images/hotels/hotel-1.jpg',
-      '/images/hotels/hotel-2.jpg',
-      '/images/hotels/hotel-4.jpg',
+      '/images/hotels/hummingbird-resort-mount-abu.jpg',
+      '/images/hotels/the-ananta-udaipur.jpg',
+      '/images/hotels/hotel-gallery-1.jpg',
+      '/images/hotels/hotel-gallery-2.jpg',
     ],
     address: 'Near Achalgarh, Mount Abu, Rajasthan 307501',
     gettingThere: 'About 180 km from Maharana Pratap Airport Udaipur (UDR), about 28 km from Abu Road Railway Station',
@@ -472,7 +472,7 @@ Amenities include garden view accommodations, on-site multi-cuisine dining, outd
     id: 'heritage-resort-bikaner',
     name: 'Heritage Resort Bikaner',
     location: 'Jaipur Road, Bikaner',
-    image: '/images/hotels/hotel-4.jpg',
+    image: '/images/hotels/heritage-resort-bikaner.jpg',
     slug: 'heritage-resort-bikaner',
     description: 'A tranquil desert resort on Jaipur Road in Bikaner featuring cottage accommodations amidst expansive grounds.',
     about: `Heritage Resort Bikaner is located on the Jaipur Road on the peaceful outskirts of Bikaner. Spread over extensive grounds, the resort is designed with traditional brick and stone cottage units, manicured garden patches, and open desert skies.
@@ -481,10 +481,10 @@ The resort offers an easy base for discovering the rich heritage of northern Raj
 
 Amenities include cottage-style rooms with private verandahs, a multi-cuisine restaurant specializing in regional Marwari cooking, open-air seating areas, and cultural evening programs on request. Accommodation options, facilities, policies and other property details may vary. Visitors are advised to verify the applicable information for their selected travel dates before proceeding.`,
     images: [
-      '/images/hotels/hotel-4.jpg',
-      '/images/hotels/hotel-1.jpg',
-      '/images/hotels/hotel-2.jpg',
-      '/images/hotels/hotel-3.jpg',
+      '/images/hotels/heritage-resort-bikaner.jpg',
+      '/images/hotels/welcomheritage-traditional-haveli-jaipur.jpg',
+      '/images/hotels/hotel-gallery-3.jpg',
+      '/images/hotels/hotel-gallery-4.jpg',
     ],
     address: 'Jaipur Road, 9 Km Milestone, Bikaner, Rajasthan 334001',
     gettingThere: 'About 25 km from Nal Airport Bikaner (BKB), about 9 km from Bikaner Junction Railway Station',

@@ -711,7 +711,7 @@ export default function AdminDashboard() {
       }
 
       if (!finalCoverUrl) {
-        finalCoverUrl = '/images/hotels/hotel-1.jpg';
+        finalCoverUrl = '/images/hotels/the-ananta-udaipur.jpg';
       }
 
       let finalGalleryUrls = [...existingGalleryImages];

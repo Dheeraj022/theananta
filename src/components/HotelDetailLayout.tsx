@@ -420,10 +420,10 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
               <h3 className="font-bold text-[#17211D] text-[14px] mb-4">Things To Do Around {city || 'Rajasthan'}</h3>
               <div className="grid grid-cols-4 gap-2 mb-4">
                 {[
-                  { name: 'Sightseeing', desc: 'Forts & palace circuits', img: '/images/tours/sightseeing.jpg' },
-                  { name: 'Lakes & Ghats', desc: 'Waterfront viewpoints', img: '/images/tours/waterfall.jpg' },
-                  { name: 'Heritage Walks', desc: 'Old-city lanes & havelis', img: '/images/tours/caves.jpg' },
-                  { name: 'Desert & Nature', desc: 'Dunes & wildlife safaris', img: '/images/tours/tiger-point.jpg' },
+                  { name: 'Sightseeing', desc: 'Forts & palace circuits', img: '/images/tours/jaipur-heritage-tour.jpg' },
+                  { name: 'Lakes & Ghats', desc: 'Waterfront viewpoints', img: '/images/tours/udaipur-lakes-tour.jpg' },
+                  { name: 'Heritage Walks', desc: 'Old-city lanes & havelis', img: '/images/villas/royal-rajputana-haveli-jaipur.jpg' },
+                  { name: 'Desert & Nature', desc: 'Dunes & wildlife safaris', img: '/images/camping/sunset-dunes.jpg' },
                 ].map((item, i) => (
                   <div key={i} className="flex flex-col items-center border border-[#DCE4DF] rounded-xl overflow-hidden pb-1 bg-white">
                     <div className="relative w-full h-[50px] mb-1">

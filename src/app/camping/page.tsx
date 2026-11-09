@@ -23,7 +23,7 @@ export default function CampingPage() {
         {/* Hero Section */}
         <section className="relative w-full h-[60vh] min-h-[400px] flex flex-col justify-end pb-12 px-6 sm:px-12 lg:px-24 bg-[#17211D] overflow-hidden">
           <Image
-            src="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&q=80&w=2000"
+            src="/images/camping/hero.png"
             alt="Camping in Rajasthan"
             fill
             className="object-cover opacity-60"
@@ -88,37 +88,37 @@ export default function CampingPage() {
                     { 
                       title: 'Desert Dune Camps', 
                       desc: 'Camp among rolling sand dunes in Sam and Khuri, Jaisalmer with sunset camel treks and starry nights.',
-                      img: '/images/camping/lakeside_camping.jpg',
+                      img: '/images/camping/sunset-dunes.jpg',
                       icon: Mountain
                     },
                     { 
                       title: 'Luxury Tented Stays', 
                       desc: 'Spacious canopied Swiss tents and royal tented pavilions outside Pushkar with attached modern baths.',
-                      img: '/images/camping/forest_camping.jpg',
+                      img: '/images/camping/royal-swiss-tents.jpg',
                       icon: Tent
                     },
                     { 
                       title: 'Jungle Camps', 
                       desc: 'Nature and wilderness camp stays near the perimeter of Ranthambore Tiger Reserve in Sawai Madhopur.',
-                      img: '/images/camping/valley_view_camping.jpg',
+                      img: '/images/camping/jawai-leopard-camp.jpg',
                       icon: Trees
                     },
                     { 
                       title: 'Hill & Lake Camps', 
                       desc: 'Picturesque elevated camping sites in the Aravalli valleys and around scenic lakes near Mount Abu.',
-                      img: '/images/camping/group_camping.jpg',
+                      img: '/images/camping/pushkar-glamping.jpg',
                       icon: Mountain
                     },
                     { 
                       title: 'Desert Stays & Swiss Tents', 
                       desc: 'Comfortable family dune tents with folk performances, campfire dinners and morning sunrise views.',
-                      img: '/images/camping/family_camping.jpg',
+                      img: '/images/camping/thar-traditional-camp.jpg',
                       icon: Users
                     },
                     { 
                       title: 'Wilderness Nature Camps', 
                       desc: 'Quiet valley camps in Sariska and Alwar ideal for bird watching, star gazing and rustic countryside trails.',
-                      img: '/images/camping/adventure_camping.jpg',
+                      img: '/images/camping/wilderness-expedition.jpg',
                       icon: Footprints
                     },
                   ].map((item, idx) => {
