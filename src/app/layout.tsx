@@ -6,6 +6,7 @@ import BottomNavigation from '@/components/BottomNavigation';
 import { BRAND_NAME, PHONE_RAW, EMAIL, OFFICE_ADDRESS } from '@/lib/constants';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://lonavalagateway.com'),
   title: `Rajasthan Hotels, Resorts, Villas & Local Tours | ${BRAND_NAME}`,
   description: `${BRAND_NAME} is an independent travel agency offering information and enquiry assistance for hotels, resorts, villas, desert camps and local tours across Rajasthan.`,
   keywords: [
