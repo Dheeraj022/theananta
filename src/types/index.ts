@@ -93,6 +93,6 @@ export interface Enquiry {
   phone: string;
   email?: string;
   type: string;
-  details: any;
+  details: Record<string, unknown>;
   created_at: string;
 }

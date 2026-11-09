@@ -122,6 +122,11 @@ export default function AdminDashboard() {
   // Alerts
   const [alert, setAlert] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 
+  const showAlert = (message: string, type: 'success' | 'error') => {
+    setAlert({ message, type });
+    setTimeout(() => setAlert(null), 4000);
+  };
+
   const loadAllData = async () => {
     setLoading(true);
     try {
@@ -290,11 +295,6 @@ export default function AdminDashboard() {
       showAlert('Website cache cleared successfully. Refreshing...', 'success');
       loadAllData();
     }
-  };
-
-  const showAlert = (message: string, type: 'success' | 'error') => {
-    setAlert({ message, type });
-    setTimeout(() => setAlert(null), 4000);
   };
 
   const revokeObjectUrls = () => {
