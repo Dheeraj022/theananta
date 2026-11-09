@@ -13,15 +13,15 @@ interface MobileMenuProps {
 const navItems = [
   { label: 'Home', href: '/', icon: Home },
   { label: 'Hotels & Resorts', href: '/hotels', icon: Building2 },
-  { label: 'Villas', href: '/villas', icon: House },
+  { label: 'Villas & Havelis', href: '/villas', icon: House },
   { label: 'Local Tours', href: '/tours', icon: Map },
-  { label: 'Camping', href: '/camping', icon: Tent },
-  { label: 'Cabs', href: '/cabs', icon: CarFront },
-  { label: 'Activities', href: '/things-to-do', icon: Compass },
+  { label: 'Desert Camping', href: '/camping', icon: Tent },
+  { label: 'Cabs & Transfers', href: '/cabs', icon: CarFront },
+  { label: 'Things To Do', href: '/things-to-do', icon: Compass },
   { label: 'About Us', href: '/about-us', icon: Info },
   { label: 'Disclaimer', href: '/disclaimer', icon: FileWarning },
   { label: 'Privacy Policy', href: '/privacy-policy', icon: ShieldCheck },
-  { label: 'Contact', href: '/contact', icon: Phone },
+  { label: 'Contact Us', href: '/contact', icon: Phone },
 ];
 
 export default function MobileMenu({ open, onClose }: MobileMenuProps) {

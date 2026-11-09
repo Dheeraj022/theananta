@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
 import { ShieldCheck, Eye, Database, Cookie, Share2, Lock, UserCheck, Phone, Mail } from 'lucide-react';
 import Footer from '@/components/Footer';
-import { BRAND_NAME, BRAND_OPERATOR, CALL_URL, PHONE_NUMBER, WHATSAPP_URL } from '@/lib/constants';
+import { BRAND_NAME, BRAND_OPERATOR, CALL_URL, PHONE_NUMBER, WHATSAPP_URL, GST_NO } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Lonavala Gateway',
-  description:
-    'Read the Privacy Policy of Lonavala Gateway. We are committed to protecting your personal information when you use our travel booking assistance services.',
+  title: `Privacy Policy | ${BRAND_NAME}`,
+  description: `Read the Privacy Policy of ${BRAND_NAME}. We are committed to protecting your personal information when you use our travel enquiry and planning assistance services in Rajasthan.`,
 };
 
 const sections = [
@@ -14,20 +13,20 @@ const sections = [
     icon: Database,
     title: 'Information We Collect',
     items: [
-      'Name, phone number, and email address when you submit an enquiry or contact us.',
-      'Travel preferences such as check-in/check-out dates, number of guests, and budget.',
+      'Name, phone number, and email address when you submit an enquiry or contact our travel specialists.',
+      'Travel preferences such as travel dates, destination in Rajasthan, number of guests, and service category.',
       'Device and browser information collected automatically when you visit our website (e.g. IP address, browser type).',
-      'Any messages or notes you provide through our enquiry forms or WhatsApp.',
+      'Any messages, notes, or specific requirements you provide through our enquiry forms or WhatsApp.',
     ],
   },
   {
     icon: Eye,
     title: 'How We Use Your Information',
     items: [
-      'To respond to your booking enquiries and provide travel assistance.',
-      'To confirm availability and pricing with hotels, resorts, and tour providers on your behalf.',
-      'To send you updates related to your travel booking (via phone, WhatsApp, or email).',
-      'To improve our website and services based on usage patterns.',
+      'To respond to your travel enquiries and provide customized itinerary planning across Rajasthan.',
+      'To verify rate estimates and availability with hotels, resorts, desert camps, and transport operators on your behalf.',
+      'To communicate travel recommendations and trip updates (via phone, WhatsApp, or email).',
+      'To improve our website content and user experience.',
       'We do NOT sell, rent, or share your personal data with third parties for marketing purposes.',
     ],
   },
@@ -35,37 +34,36 @@ const sections = [
     icon: Share2,
     title: 'Sharing of Information',
     items: [
-      'Your information may be shared with hotels, resorts, villas, or tour providers solely to facilitate your booking.',
-      'We may share data if required by law, court order, or government authority.',
-      'We do not share your data with advertisers or unrelated third parties.',
+      'Your travel requirements may be shared with destination hotels, resorts, or local tour providers strictly to facilitate quotes and booking coordination.',
+      'We may share data if required by law, court order, or governmental authority.',
+      'We do not share your contact details with unauthorized third parties or marketing brokers.',
     ],
   },
   {
     icon: Cookie,
-    title: 'Cookies & Tracking',
+    title: 'Cookies & Analytics',
     items: [
-      'Our website may use basic cookies to improve your browsing experience (e.g. remembering your session).',
-      'We do not use cookies for advertising targeting.',
-      'You can disable cookies in your browser settings, though this may affect website functionality.',
+      'Our website may use basic cookies and analytics to evaluate traffic patterns and improve usability.',
+      'We do not sell advertising cookies to external tracking networks.',
+      'You can disable cookies in your browser settings at any time.',
     ],
   },
   {
     icon: Lock,
     title: 'Data Security',
     items: [
-      'We take reasonable measures to protect your personal data from unauthorized access or disclosure.',
-      'All communications via WhatsApp and phone are end-to-end or operator-secured.',
-      'However, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security.',
+      'We implement industry-standard organizational and technical measures to protect your personal details against unauthorized access.',
+      'Direct communications through WhatsApp and telecommunications are secured through standard protocols.',
+      'While we prioritize security, no digital transmission is entirely immune to risk; we continuously monitor our systems.',
     ],
   },
   {
     icon: UserCheck,
-    title: 'Your Rights',
+    title: 'Your Privacy Rights',
     items: [
-      'You may request access to the personal data we hold about you.',
-      'You may request correction or deletion of your personal data at any time.',
-      'You may opt out of any future communications by contacting us directly.',
-      'To exercise these rights, please reach out via phone or WhatsApp.',
+      'You may request access to any personal contact details we hold regarding your enquiry.',
+      'You may request the correction or removal of your details from our records at any point.',
+      'You may opt out of future follow-up communications by contacting us directly.',
     ],
   },
 ];
@@ -84,22 +82,20 @@ export default function PrivacyPolicyPage() {
           </div>
           <h1 className="text-2xl sm:text-4xl font-bold mb-2">Privacy Policy</h1>
           <p className="text-green-100 text-sm sm:text-base max-w-2xl">
-            {BRAND_NAME} ({BRAND_OPERATOR}) is committed to protecting your privacy and personal information.
+            {BRAND_NAME} ({BRAND_OPERATOR}) is committed to protecting your privacy and personal data.
           </p>
           <p className="text-green-300 text-xs mt-3">Last updated: August 2026</p>
-          <p className="text-green-300 text-xs font-bold mt-1">GST NO: 27AACPS1497B1ZQ</p>
+          <p className="text-green-300 text-xs font-bold mt-1">GST NO: {GST_NO}</p>
         </div>
       </div>
 
       {/* Content */}
       <div className="mx-auto w-full max-w-[900px] px-3 sm:px-5 lg:px-6 py-8 sm:py-12">
-
         {/* Intro */}
         <div className="bg-[#EAF5EF] border border-[#C5DDD1] rounded-2xl p-4 sm:p-5 mb-8">
           <p className="text-[#17211D] text-sm leading-relaxed">
-            This Privacy Policy describes how <strong>{BRAND_NAME}</strong> collects, uses, and protects your personal
-            information when you visit our website or use our booking assistance services. By using our website, you
-            agree to the practices described in this policy.
+            This Privacy Policy describes how <strong>{BRAND_NAME}</strong> (operated by {BRAND_OPERATOR}) collects, uses, and safeguards your personal
+            information when you visit our website or submit enquiries for travel planning in Rajasthan.
           </p>
         </div>
 
@@ -134,7 +130,7 @@ export default function PrivacyPolicyPage() {
         <div className="mt-6 bg-[#F7F9F7] border border-[#DCE4DF] rounded-2xl p-5 sm:p-6">
           <h2 className="text-[#17211D] font-bold text-sm sm:text-base mb-2">7. Data Retention</h2>
           <p className="text-[#66716C] text-sm leading-relaxed">
-            We retain your personal information only for as long as necessary to fulfil the purpose for which it was collected, including for the purposes of satisfying any legal or reporting requirements. Enquiry data is typically retained for up to 12 months.
+            We retain your travel inquiry information only as long as necessary to process your travel itinerary and fulfill relevant tax, reporting, and legal obligations.
           </p>
         </div>
 
@@ -142,7 +138,7 @@ export default function PrivacyPolicyPage() {
         <div className="mt-5 bg-[#F7F9F7] border border-[#DCE4DF] rounded-2xl p-5 sm:p-6">
           <h2 className="text-[#17211D] font-bold text-sm sm:text-base mb-2">8. Children&apos;s Privacy</h2>
           <p className="text-[#66716C] text-sm leading-relaxed">
-            Our services are not directed at children under the age of 18. We do not knowingly collect personal information from minors. If you believe a minor has provided us with their information, please contact us immediately.
+            Our travel assistance services are directed to adults aged 18 and older. We do not knowingly collect personal information from unaccompanied minors.
           </p>
         </div>
 
@@ -150,7 +146,7 @@ export default function PrivacyPolicyPage() {
         <div className="mt-5 bg-[#F7F9F7] border border-[#DCE4DF] rounded-2xl p-5 sm:p-6">
           <h2 className="text-[#17211D] font-bold text-sm sm:text-base mb-2">9. Changes to This Policy</h2>
           <p className="text-[#66716C] text-sm leading-relaxed">
-            We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated revision date. We encourage you to review this policy periodically.
+            We reserve the right to revise this Privacy Policy periodically. Continued use of our site reflects acceptance of updated guidelines.
           </p>
         </div>
 

@@ -103,7 +103,7 @@ export default function TourDetailLayout({ tour }: TourDetailLayoutProps) {
               </div>
               <div className="flex items-center gap-1.5">
                 <MapPin size={16} />
-                <span>Lonavala</span>
+                <span>Rajasthan</span>
               </div>
             </div>
             <p className="text-[#17211D] text-sm leading-relaxed mb-3">
@@ -151,14 +151,12 @@ export default function TourDetailLayout({ tour }: TourDetailLayoutProps) {
               <h3 className="text-[15px] font-bold text-[#075B3A] uppercase tracking-wide mb-1">EXCLUSIONS</h3>
               <p className="text-xs text-[#17211D] mb-4">(General)</p>
               <div className="space-y-2.5">
-                <div className="flex items-start gap-3">
-                  <Check size={18} strokeWidth={3} className="text-[#075B3A] shrink-0 mt-0.5" />
-                  <span className="text-sm font-semibold text-[#17211D]">Personal Expenses</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Check size={18} strokeWidth={3} className="text-[#075B3A] shrink-0 mt-0.5" />
-                  <span className="text-sm font-semibold text-[#17211D]">Meals</span>
-                </div>
+                {(tour.exclusions && tour.exclusions.length > 0 ? tour.exclusions : ['Personal Expenses', 'Meals and snacks']).map((excl, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <Check size={18} strokeWidth={3} className="text-[#075B3A] shrink-0 mt-0.5" />
+                    <span className="text-sm font-semibold text-[#17211D]">{excl}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

@@ -62,12 +62,12 @@ export async function getHotels(): Promise<Hotel[]> {
       .from('hotels')
       .select('*')
       .order('created_at', { ascending: true });
-    if (!error && data) {
+    if (!error && data && data.length > 0) {
       return data as Hotel[];
     }
     console.warn('Supabase getHotels error:', error?.message);
   }
-  return getMockData<Hotel>('lonavala_hotels_v2', initialHotels);
+  return getMockData<Hotel>('rajasthan_hotels_v1', initialHotels);
 }
 
 export async function saveHotel(hotel: Hotel): Promise<boolean> {
@@ -77,11 +77,7 @@ export async function saveHotel(hotel: Hotel): Promise<boolean> {
       .upsert({
         id: hotel.id,
         name: hotel.name,
-        price: 0,
-        priceLabel: '',
         location: hotel.location,
-        rating: Number(hotel.rating),
-        reviews: hotel.reviews,
         image: hotel.image,
         slug: hotel.slug,
         description: hotel.description,
@@ -97,14 +93,14 @@ export async function saveHotel(hotel: Hotel): Promise<boolean> {
   }
 
   // Local Storage Fallback
-  const list = getMockData<Hotel>('lonavala_hotels_v2', initialHotels);
+  const list = getMockData<Hotel>('rajasthan_hotels_v1', initialHotels);
   const idx = list.findIndex((h) => h.id === hotel.id);
   if (idx > -1) {
     list[idx] = hotel;
   } else {
     list.push(hotel);
   }
-  setMockData('lonavala_hotels_v2', list);
+  setMockData('rajasthan_hotels_v1', list);
   return true;
 }
 
@@ -119,9 +115,9 @@ export async function deleteHotel(id: string): Promise<boolean> {
   }
 
   // Local Storage Fallback
-  const list = getMockData<Hotel>('lonavala_hotels_v2', initialHotels);
+  const list = getMockData<Hotel>('rajasthan_hotels_v1', initialHotels);
   const updated = list.filter((h) => h.id !== id);
-  setMockData('lonavala_hotels_v2', updated);
+  setMockData('rajasthan_hotels_v1', updated);
   return true;
 }
 
@@ -133,10 +129,10 @@ export async function getVillas(): Promise<Villa[]> {
       .from('villas')
       .select('*')
       .order('created_at', { ascending: true });
-    if (!error && data) return data as Villa[];
-    console.warn('Supabase getVillas error:', error.message, error.details, error.hint, error.code);
+    if (!error && data && data.length > 0) return data as Villa[];
+    console.warn('Supabase getVillas error:', error?.message);
   }
-  return getMockData<Villa>('lonavala_villas_v2', initialVillas);
+  return getMockData<Villa>('rajasthan_villas_v1', initialVillas);
 }
 
 export async function saveVilla(villa: Villa): Promise<boolean> {
@@ -146,9 +142,8 @@ export async function saveVilla(villa: Villa): Promise<boolean> {
       .upsert({
         id: villa.id,
         name: villa.name,
-        price: '0',
         location: villa.location,
-        bedrooms: Number(villa.bedrooms),
+        bedrooms: villa.bedrooms || 'Multiple Bedrooms',
         image: villa.image,
         slug: villa.slug,
         description: villa.description,
@@ -164,14 +159,14 @@ export async function saveVilla(villa: Villa): Promise<boolean> {
   }
 
   // Local Storage Fallback
-  const list = getMockData<Villa>('lonavala_villas_v2', initialVillas);
+  const list = getMockData<Villa>('rajasthan_villas_v1', initialVillas);
   const idx = list.findIndex((v) => v.id === villa.id);
   if (idx > -1) {
     list[idx] = villa;
   } else {
     list.push(villa);
   }
-  setMockData('lonavala_villas_v2', list);
+  setMockData('rajasthan_villas_v1', list);
   return true;
 }
 
@@ -186,9 +181,9 @@ export async function deleteVilla(id: string): Promise<boolean> {
   }
 
   // Local Storage Fallback
-  const list = getMockData<Villa>('lonavala_villas_v2', initialVillas);
+  const list = getMockData<Villa>('rajasthan_villas_v1', initialVillas);
   const updated = list.filter((v) => v.id !== id);
-  setMockData('lonavala_villas_v2', updated);
+  setMockData('rajasthan_villas_v1', updated);
   return true;
 }
 
@@ -200,12 +195,12 @@ export async function getTours(): Promise<Tour[]> {
       .from('tours')
       .select('*')
       .order('created_at', { ascending: true });
-    if (!error && data) {
+    if (!error && data && data.length > 0) {
       return data as Tour[];
     }
     console.warn('Supabase getTours error:', error?.message);
   }
-  return getMockData<Tour>('lonavala_tours_v2', initialTours);
+  return getMockData<Tour>('rajasthan_tours_v1', initialTours);
 }
 
 export async function saveTour(tour: Tour): Promise<boolean> {
@@ -215,8 +210,6 @@ export async function saveTour(tour: Tour): Promise<boolean> {
       .upsert({
         id: tour.id,
         name: tour.name,
-        price: 0,
-        priceLabel: '',
         duration: tour.duration,
         image: tour.image,
         slug: tour.slug,
@@ -231,14 +224,14 @@ export async function saveTour(tour: Tour): Promise<boolean> {
   }
 
   // Local Storage Fallback
-  const list = getMockData<Tour>('lonavala_tours_v2', initialTours);
+  const list = getMockData<Tour>('rajasthan_tours_v1', initialTours);
   const idx = list.findIndex((t) => t.id === tour.id);
   if (idx > -1) {
     list[idx] = tour;
   } else {
     list.push(tour);
   }
-  setMockData('lonavala_tours_v2', list);
+  setMockData('rajasthan_tours_v1', list);
   return true;
 }
 
@@ -253,8 +246,8 @@ export async function deleteTour(id: string): Promise<boolean> {
   }
 
   // Local Storage Fallback
-  const list = getMockData<Tour>('lonavala_tours_v2', initialTours);
+  const list = getMockData<Tour>('rajasthan_tours_v1', initialTours);
   const updated = list.filter((t) => t.id !== id);
-  setMockData('lonavala_tours_v2', updated);
+  setMockData('rajasthan_tours_v1', updated);
   return true;
 }

@@ -4,14 +4,15 @@ import Link from 'next/link';
 import CampingEnquiryForm from '@/components/forms/CampingEnquiryForm';
 import { 
   Trees, Flame, Tent, ShieldCheck, Users, 
-  Mountain, Music, Sparkles, Footprints, Dumbbell, Camera,
-  ShieldAlert, Check, Send, Lock, CheckCircle, MapPin, Guitar
+  Mountain, Sparkles, Footprints, Camera,
+  ShieldAlert, Check, CheckCircle, MapPin, Compass
 } from 'lucide-react';
 import Footer from '@/components/Footer';
+import { BRAND_NAME } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Camping & Outdoor Experiences in Lonavala',
-  description: 'Reconnect with nature and create unforgettable memories with the best camping and outdoor experiences in Lonavala.',
+  title: 'Desert Camping & Outdoor Experiences in Rajasthan',
+  description: 'Sleep under the stars in the Thar. Information on desert camps, luxury tents and jungle camps in Jaisalmer, Pushkar and Ranthambore.',
 };
 
 export default function CampingPage() {
@@ -23,7 +24,7 @@ export default function CampingPage() {
         <section className="relative w-full h-[60vh] min-h-[400px] flex flex-col justify-end pb-12 px-6 sm:px-12 lg:px-24 bg-[#17211D] overflow-hidden">
           <Image
             src="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&q=80&w=2000"
-            alt="Camping in Lonavala"
+            alt="Camping in Rajasthan"
             fill
             className="object-cover opacity-60"
             priority
@@ -32,10 +33,10 @@ export default function CampingPage() {
           
           <div className="relative z-10 max-w-[800px]">
             <h1 className="text-white font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight mb-4 tracking-tight shadow-sm">
-              Camping &<br />Outdoor Experiences<br />in Lonavala
+              Camping &amp;<br />Outdoor Experiences<br />in Rajasthan
             </h1>
             <p className="text-white/90 text-sm sm:text-base lg:text-lg max-w-[500px] font-medium leading-relaxed drop-shadow-md">
-              Reconnect with nature and create unforgettable memories with the best camping and outdoor experiences in Lonavala.
+              Sleep under the stars in the Thar. Information on desert camps, luxury tents and jungle camps across Rajasthan.
             </p>
           </div>
         </section>
@@ -47,164 +48,182 @@ export default function CampingPage() {
             <div className="space-y-16">
               
               {/* About Camping Section */}
-          <section>
-            <div className="flex items-center gap-2 mb-4">
-              <Tent size={24} className="text-[#075B3A]" />
-              <h2 className="text-xl sm:text-2xl font-bold text-[#17211D]">About Camping in Lonavala</h2>
-            </div>
-            <p className="text-[#66716C] text-sm leading-relaxed mb-8 max-w-[800px]">
-              Lonavala is a perfect getaway for nature lovers and adventure seekers. From lakeside camps to forest retreats, camping in Lonavala offers a refreshing break from city life. Enjoy starry nights, bonfires, trekking, and a peaceful environment surrounded by lush greenery.
-            </p>
-
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-              {[
-                { icon: Trees, title: 'Scenic Locations', desc: 'Beautiful campsites near lakes, hills & valleys' },
-                { icon: Flame, title: 'Bonfire & Activities', desc: 'Enjoy bonfire nights, music, games & more' },
-                { icon: Tent, title: 'Adventure & Trekking', desc: 'Trekking, hiking and exploring nature trails' },
-                { icon: ShieldCheck, title: 'Safe & Secure', desc: 'Verified campsites with safety & hygiene' },
-                { icon: Users, title: 'Perfect for Everyone', desc: 'Ideal for families, friends, couples & groups' },
-              ].map((item, idx) => {
-                const Icon = item.icon;
-                return (
-                  <div key={idx} className="flex flex-col items-center text-center p-4 bg-white rounded-2xl border border-[#DCE4DF] shadow-sm">
-                    <div className="w-12 h-12 rounded-full bg-[#F7F9F7] flex items-center justify-center mb-3">
-                      <Icon size={24} strokeWidth={1.5} className="text-[#075B3A]" />
-                    </div>
-                    <h3 className="font-bold text-[#17211D] text-xs sm:text-sm mb-1">{item.title}</h3>
-                    <p className="text-[10px] sm:text-xs text-[#66716C] leading-tight px-1">{item.desc}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-
-          {/* Types of Camping Experiences Section */}
-          <section>
-            <h2 className="text-xl sm:text-2xl font-bold text-[#17211D] mb-6">Types of Camping Experiences</h2>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { 
-                  title: 'Lakeside Camping', 
-                  desc: 'Camp by the serene lakes and enjoy breathtaking views and peaceful vibes.',
-                  img: '/images/camping/lakeside_camping.jpg',
-                  icon: Mountain
-                },
-                { 
-                  title: 'Forest Camping', 
-                  desc: 'Stay close to nature in lush green forests and experience true wilderness.',
-                  img: '/images/camping/forest_camping.jpg',
-                  icon: Trees
-                },
-                { 
-                  title: 'Valley View Camping', 
-                  desc: 'Wake up to stunning valley views and enjoy the beauty of Lonavala landscapes.',
-                  img: '/images/camping/valley_view_camping.jpg',
-                  icon: Mountain
-                },
-                { 
-                  title: 'Group Camping', 
-                  desc: 'Perfect for friends, college groups and corporate outings with fun activities.',
-                  img: '/images/camping/group_camping.jpg',
-                  icon: Users
-                },
-                { 
-                  title: 'Family & Couples Camping', 
-                  desc: 'Safe and comfortable campsites ideal for families and couples seeking peace.',
-                  img: '/images/camping/family_camping.jpg',
-                  icon: Users
-                },
-                { 
-                  title: 'Adventure Camping', 
-                  desc: 'Combine camping with adventure activities like trekking, rappelling, zipline and more.',
-                  img: '/images/camping/adventure_camping.jpg',
-                  icon: Footprints
-                },
-              ].map((item, idx) => {
-                const Icon = item.icon;
-                return (
-                  <div key={idx} className="bg-white border border-[#DCE4DF] rounded-2xl overflow-hidden shadow-sm flex flex-col group">
-                    <div className="relative w-full h-[180px]">
-                      <Image src={item.img} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                      <div className="absolute -bottom-5 left-5 w-12 h-12 bg-[#075B3A] rounded-full flex items-center justify-center border-[3px] border-white shadow-md z-10">
-                        <Icon className="text-white w-5 h-5" />
-                      </div>
-                    </div>
-                    <div className="pt-8 px-5 pb-6 flex-grow flex flex-col">
-                      <h3 className="font-bold text-[#17211D] text-base mb-2">{item.title}</h3>
-                      <p className="text-[#66716C] text-xs leading-relaxed flex-grow">{item.desc}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-
-          {/* Activities You Can Enjoy Section */}
-          <section>
-            <h2 className="text-xl sm:text-2xl font-bold text-[#17211D] mb-6">Activities You Can Enjoy</h2>
-            <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
-              {[
-                { label: 'Trekking & Hiking', icon: Footprints },
-                { label: 'Bonfire & Music', icon: Flame },
-                { label: 'Star Gazing', icon: Sparkles },
-                { label: 'Nature Walks', icon: Trees },
-                { label: 'Outdoor Games', icon: Dumbbell },
-                { label: 'Photography', icon: Camera },
-              ].map((item, idx) => {
-                const Icon = item.icon;
-                return (
-                  <div key={idx} className="flex flex-col items-center justify-center py-4 bg-white border border-[#DCE4DF] rounded-xl shadow-sm">
-                    <Icon size={24} className="text-[#075B3A] mb-2" strokeWidth={1.5} />
-                    <span className="text-[10px] font-bold text-[#17211D] text-center px-1">{item.label}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-
-          {/* Important Information Section */}
-          <section>
-            <div className="relative bg-[#EAF5EF] border border-[#DCE4DF] rounded-2xl p-6 sm:p-8 overflow-hidden shadow-sm">
-              <div className="relative z-10 max-w-[600px]">
+              <section>
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="w-8 h-8 bg-[#075B3A] rounded-lg flex items-center justify-center">
-                    <ShieldAlert size={16} className="text-white" />
-                  </div>
-                  <h3 className="font-bold text-[#17211D] text-base">Important Information</h3>
+                  <Tent size={24} className="text-[#075B3A]" />
+                  <h2 className="text-xl sm:text-2xl font-bold text-[#17211D]">About Camping in Rajasthan</h2>
                 </div>
-                <ul className="space-y-2">
-                  {[
-                    'Campsite location and amenities may vary.',
-                    'Carry valid ID proof for verification.',
-                    'Advance enquiry recommended for group bookings.',
-                    'Weather conditions may impact outdoor activities.',
-                    'We are an independent travel agency providing information & assistance in Lonavala.',
-                    'We are not affiliated with any campsite or service provider.',
-                  ].map((text, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-[#17211D] font-medium">
-                      <Check size={16} className="text-[#075B3A] shrink-0 mt-0.5" />
-                      <span>{text}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              {/* Landscape Illustration Placeholder */}
-              <div className="absolute right-0 bottom-0 opacity-40 md:opacity-100 pointer-events-none w-[200px] md:w-[350px] h-[150px] md:h-[200px]">
-                <Image 
-                  src="https://images.unsplash.com/photo-1504280327395-56497257e1b5?auto=format&fit=crop&q=80&w=400" 
-                  alt="landscape" 
-                  fill 
-                  className="object-cover rounded-tl-[100px] rounded-br-2xl drop-shadow-md mask-image-gradient" 
-                  style={{ maskImage: 'linear-gradient(to right, transparent, black)' }}
-                />
-              </div>
-            </div>
-          </section>
-        </div>
+                <p className="text-[#66716C] text-sm leading-relaxed mb-8 max-w-[800px]">
+                  Rajasthan is one of India&apos;s best places to camp. From dune camps at Sam near Jaisalmer to tented stays outside Pushkar and jungle camps around Ranthambore, camping here means camel rides, folk music by the fire, wide desert skies and quiet mornings.
+                </p>
 
-        {/* RIGHT COLUMN (SIDEBAR) */}
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                  {[
+                    { icon: Trees, title: 'Scenic Locations', desc: 'Campsites near dunes, hills and forest edges' },
+                    { icon: Flame, title: 'Bonfire & Folk Music', desc: 'Evenings with Rajasthani music and dance' },
+                    { icon: Compass, title: 'Camel & Jeep Safaris', desc: 'Dune rides at sunrise and sunset' },
+                    { icon: ShieldCheck, title: 'Safe & Secure', desc: 'Verified campsites with safety & hygiene' },
+                    { icon: Users, title: 'Perfect for Everyone', desc: 'Ideal for families, friends, couples & groups' },
+                  ].map((item, idx) => {
+                    const Icon = item.icon;
+                    return (
+                      <div key={idx} className="flex flex-col items-center text-center p-4 bg-white rounded-2xl border border-[#DCE4DF] shadow-sm">
+                        <div className="w-12 h-12 rounded-full bg-[#F7F9F7] flex items-center justify-center mb-3">
+                          <Icon size={24} strokeWidth={1.5} className="text-[#075B3A]" />
+                        </div>
+                        <h3 className="font-bold text-[#17211D] text-xs sm:text-sm mb-1">{item.title}</h3>
+                        <p className="text-[10px] sm:text-xs text-[#66716C] leading-tight px-1">{item.desc}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </section>
+
+              {/* Types of Camping Experiences Section */}
+              <section>
+                <h2 className="text-xl sm:text-2xl font-bold text-[#17211D] mb-6">Types of Camping Experiences</h2>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[
+                    { 
+                      title: 'Desert Dune Camps', 
+                      desc: 'Camp among rolling sand dunes in Sam and Khuri, Jaisalmer with sunset camel treks and starry nights.',
+                      img: '/images/camping/lakeside_camping.jpg',
+                      icon: Mountain
+                    },
+                    { 
+                      title: 'Luxury Tented Stays', 
+                      desc: 'Spacious canopied Swiss tents and royal tented pavilions outside Pushkar with attached modern baths.',
+                      img: '/images/camping/forest_camping.jpg',
+                      icon: Tent
+                    },
+                    { 
+                      title: 'Jungle Camps', 
+                      desc: 'Nature and wilderness camp stays near the perimeter of Ranthambore Tiger Reserve in Sawai Madhopur.',
+                      img: '/images/camping/valley_view_camping.jpg',
+                      icon: Trees
+                    },
+                    { 
+                      title: 'Hill & Lake Camps', 
+                      desc: 'Picturesque elevated camping sites in the Aravalli valleys and around scenic lakes near Mount Abu.',
+                      img: '/images/camping/group_camping.jpg',
+                      icon: Mountain
+                    },
+                    { 
+                      title: 'Desert Stays & Swiss Tents', 
+                      desc: 'Comfortable family dune tents with folk performances, campfire dinners and morning sunrise views.',
+                      img: '/images/camping/family_camping.jpg',
+                      icon: Users
+                    },
+                    { 
+                      title: 'Wilderness Nature Camps', 
+                      desc: 'Quiet valley camps in Sariska and Alwar ideal for bird watching, star gazing and rustic countryside trails.',
+                      img: '/images/camping/adventure_camping.jpg',
+                      icon: Footprints
+                    },
+                  ].map((item, idx) => {
+                    const Icon = item.icon;
+                    return (
+                      <div key={idx} className="bg-white border border-[#DCE4DF] rounded-2xl overflow-hidden shadow-sm flex flex-col group">
+                        <div className="relative w-full h-[180px]">
+                          <Image src={item.img} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                          <div className="absolute -bottom-5 left-5 w-12 h-12 bg-[#075B3A] rounded-full flex items-center justify-center border-[3px] border-white shadow-md z-10">
+                            <Icon className="text-white w-5 h-5" />
+                          </div>
+                        </div>
+                        <div className="pt-8 px-5 pb-6 flex-grow flex flex-col">
+                          <h3 className="font-bold text-[#17211D] text-base mb-2">{item.title}</h3>
+                          <p className="text-[#66716C] text-xs leading-relaxed flex-grow">{item.desc}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </section>
+
+              {/* Activities You Can Enjoy Section */}
+              <section>
+                <h2 className="text-xl sm:text-2xl font-bold text-[#17211D] mb-6">Activities You Can Enjoy</h2>
+                <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
+                  {[
+                    { label: 'Camel Safari', icon: Footprints },
+                    { label: 'Jeep Safari', icon: Compass },
+                    { label: 'Bonfire & Folk Music', icon: Flame },
+                    { label: 'Star Gazing', icon: Sparkles },
+                    { label: 'Village Walks', icon: Trees },
+                    { label: 'Photography', icon: Camera },
+                  ].map((item, idx) => {
+                    const Icon = item.icon;
+                    return (
+                      <div key={idx} className="flex flex-col items-center justify-center py-4 bg-white border border-[#DCE4DF] rounded-xl shadow-sm">
+                        <Icon size={24} className="text-[#075B3A] mb-2" strokeWidth={1.5} />
+                        <span className="text-[10px] font-bold text-[#17211D] text-center px-1">{item.label}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </section>
+
+              {/* Named Camps Section */}
+              <section>
+                <h2 className="text-xl sm:text-2xl font-bold text-[#17211D] mb-6">Featured Camps &amp; Resorts</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[
+                    { name: 'Sam Sand Dunes Camps Jaisalmer', area: 'Sam, Jaisalmer' },
+                    { name: 'Desert Stay Camping', area: 'Sam, Jaisalmer' },
+                    { name: 'Rawai Luxury Tents Resort & Spa', area: 'Pushkar' },
+                    { name: 'Pushkar Desert Karni Camp', area: 'Pushkar' },
+                    { name: 'Royal Pushkar Camps', area: 'Pushkar' },
+                    { name: 'Ranthambore Nature Camp Resort', area: 'Sawai Madhopur' },
+                    { name: 'Jungle Cave Resort', area: 'Ranthambore' },
+                    { name: 'Jungle Retreat Ranthambore', area: 'Sawai Madhopur' },
+                  ].map((camp, idx) => (
+                    <div key={idx} className="bg-white border border-[#DCE4DF] rounded-xl p-4 flex items-center justify-between shadow-sm">
+                      <div>
+                        <h3 className="font-bold text-[#17211D] text-sm">{camp.name}</h3>
+                        <p className="text-[#66716C] text-xs flex items-center gap-1 mt-1">
+                          <MapPin size={12} className="text-[#075B3A]" /> {camp.area}
+                        </p>
+                      </div>
+                      <span className="text-[10px] font-semibold text-[#075B3A] bg-[#EAF5EF] px-2.5 py-1 rounded-full">
+                        Enquiry
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* Important Information Section */}
+              <section>
+                <div className="relative bg-[#EAF5EF] border border-[#DCE4DF] rounded-2xl p-6 sm:p-8 overflow-hidden shadow-sm">
+                  <div className="relative z-10 max-w-[600px]">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-8 h-8 bg-[#075B3A] rounded-lg flex items-center justify-center">
+                        <ShieldAlert size={16} className="text-white" />
+                      </div>
+                      <h3 className="font-bold text-[#17211D] text-base">Important Information</h3>
+                    </div>
+                    <ul className="space-y-2">
+                      {[
+                        'Campsite location and amenities may vary.',
+                        'Carry valid ID proof for verification.',
+                        'Advance enquiry recommended for group bookings.',
+                        'Weather conditions may impact outdoor activities.',
+                        `We are an independent travel agency providing information & assistance in Rajasthan.`,
+                        'We are not affiliated with any campsite or service provider.',
+                      ].map((text, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-[#17211D] font-medium">
+                          <Check size={16} className="text-[#075B3A] shrink-0 mt-0.5" />
+                          <span>{text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            {/* RIGHT COLUMN (SIDEBAR) */}
             <div className="relative">
               <div className="sticky top-6 space-y-6">
                 
@@ -212,7 +231,7 @@ export default function CampingPage() {
                 <div id="camping-enquiry-form" className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-lg shadow-black/5 scroll-mt-24">
                   <div className="mb-6 text-center">
                     <h2 className="text-lg font-bold text-[#17211D] mb-2">Plan Your Camping Experience</h2>
-                    <p className="text-[#66716C] text-xs leading-relaxed">Share your requirements and we'll get back to you with the best options.</p>
+                    <p className="text-[#66716C] text-xs leading-relaxed">Share your requirements and we&apos;ll get back to you with the best options.</p>
                   </div>
 
                   <CampingEnquiryForm />
@@ -243,12 +262,12 @@ export default function CampingPage() {
                   <h3 className="text-sm font-bold text-[#17211D] mb-4">Popular Camping Spots</h3>
                   <ul className="space-y-3">
                     {[
-                      'Pawna Lake',
-                      'Wadivale',
-                      'Khadakwasla (Near Lonavala)',
-                      'Tikona Fort Area',
-                      'Bihra',
-                      'Kataldhar',
+                      'Sam Sand Dunes',
+                      'Khuri Dunes',
+                      'Pushkar',
+                      'Ranthambore',
+                      'Osian',
+                      'Mount Abu',
                       'And Many More'
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-center gap-2">

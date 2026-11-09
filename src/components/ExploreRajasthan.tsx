@@ -5,55 +5,55 @@ import { Building, Home, MapPin, Tent, Car, ClipboardList } from 'lucide-react';
 const categories = [
   {
     title: 'Hotels & Resorts',
-    desc: 'Explore resorts and hotels in Lonavala.',
+    desc: 'Explore palace hotels and resorts across Rajasthan.',
     icon: Building,
     image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=400',
     link: '/hotels',
   },
   {
-    title: 'Villas & Homestays',
-    desc: 'Private villas and homestays for your stay.',
+    title: 'Villas & Havelis',
+    desc: 'Private villas, havelis and homestays for your stay.',
     icon: Home,
     image: 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&q=80&w=400',
     link: '/villas',
   },
   {
     title: 'Local Tours & Sightseeing',
-    desc: 'Discover popular places and attractions.',
+    desc: 'Discover forts, palaces, lakes and old cities.',
     icon: MapPin,
     image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=400',
     link: '/tours',
   },
   {
-    title: 'Camping & Outdoor Experiences',
-    desc: 'Camping, nature stays and outdoor activities.',
+    title: 'Desert Camping & Outdoor Experiences',
+    desc: 'Dune camps, jungle camps and nature stays.',
     icon: Tent,
     image: 'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&q=80&w=400',
     link: '/camping',
   },
   {
     title: 'Cabs & Transfers',
-    desc: 'Local cabs, airport transfers and more.',
+    desc: 'Local cabs, airport transfers and intercity routes.',
     icon: Car,
     image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=400',
     link: '/cabs',
   },
   {
     title: 'Things To Do',
-    desc: 'Explore activities and experiences in Lonavala.',
+    desc: 'Explore activities and experiences in Rajasthan.',
     icon: ClipboardList,
     image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&q=80&w=400',
     link: '/things-to-do',
   },
 ];
 
-export default function ExploreLonavala() {
+export default function ExploreRajasthan() {
   return (
     <section className="mx-auto w-full max-w-[1200px] px-3 sm:px-5 lg:px-6 mt-12 sm:mt-16">
       <div className="text-center mb-8">
         <div className="flex items-center justify-center gap-4 mb-2">
           <div className="w-12 h-[1px] bg-[#075B3A] opacity-50"></div>
-          <h2 className="text-[#075B3A] font-bold text-xl sm:text-2xl tracking-wide uppercase">Explore Lonavala</h2>
+          <h2 className="text-[#075B3A] font-bold text-xl sm:text-2xl tracking-wide uppercase">Explore Rajasthan</h2>
           <div className="w-12 h-[1px] bg-[#075B3A] opacity-50"></div>
         </div>
         <p className="text-[#66716C] text-sm sm:text-[15px] font-medium">

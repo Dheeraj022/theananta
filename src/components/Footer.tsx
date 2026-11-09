@@ -1,10 +1,9 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   Phone, MessageCircle, Mail, MapPin, Clock, ChevronRight,
   Mountain, Building2, House, Map, Car, Package, ShieldCheck, PlayCircle,
 } from 'lucide-react';
-import { BRAND_NAME, BRAND_OPERATOR, CALL_URL, PHONE_NUMBER, WHATSAPP_URL } from '@/lib/constants';
+import { BRAND_NAME, BRAND_OPERATOR, CALL_URL, PHONE_NUMBER, WHATSAPP_URL, EMAIL, GST_NO, HOURS } from '@/lib/constants';
 
 const currentYear = new Date().getFullYear();
 
@@ -26,7 +25,7 @@ const quickLinks = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about-us' },
   { label: 'Hotels & Resorts', href: '/hotels' },
-  { label: 'Villas in Lonavala', href: '/villas' },
+  { label: 'Villas in Rajasthan', href: '/villas' },
   { label: 'Local Tours', href: '/tours' },
   { label: 'Contact Us', href: '/contact' },
 ];
@@ -41,8 +40,8 @@ const importantLinks = [
 ];
 
 const services = [
-  { label: 'Hotel Booking', icon: Building2 },
-  { label: 'Villa Booking', icon: House },
+  { label: 'Hotel Enquiries', icon: Building2 },
+  { label: 'Villa & Haveli Stays', icon: House },
   { label: 'Local Tours', icon: Map },
   { label: 'Car Rental', icon: Car },
   { label: 'Holiday Packages', icon: Package },
@@ -54,7 +53,6 @@ const socialLinks = [
   { label: 'WhatsApp', icon: MessageCircle, href: WHATSAPP_URL, bg: 'bg-green-500' },
   { label: 'YouTube', icon: PlayCircle, href: 'https://youtube.com', bg: 'bg-red-600' },
 ];
-
 
 export default function Footer() {
   return (
@@ -75,7 +73,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
-              We are an independent travel agency offering assistance with hotel, resort, villa and local tour in Lonavala.
+              We are an independent travel agency offering assistance with hotels, resorts, villas, havelis and local tours across Rajasthan.
             </p>
           </div>
 
@@ -159,7 +157,6 @@ export default function Footer() {
               </ul>
             </div>
 
-
           </div>
         </div>
       </div>
@@ -190,12 +187,11 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:info@lonavalagateway.com" className="flex items-center gap-3 text-gray-400 text-sm hover:text-green-400 transition-colors">
+                  <a href={`mailto:${EMAIL}`} className="flex items-center gap-3 text-gray-400 text-sm hover:text-green-400 transition-colors">
                     <div className="w-7 h-7 rounded-full border border-green-700 flex items-center justify-center shrink-0">
                       <Mail size={13} strokeWidth={2} className="text-green-400" />
                     </div>
-                    info@lonavalagateway.com
-
+                    {EMAIL}
                   </a>
                 </li>
 
@@ -203,7 +199,7 @@ export default function Footer() {
                   <div className="w-7 h-7 rounded-full border border-green-700 flex items-center justify-center shrink-0">
                     <Clock size={13} strokeWidth={2} className="text-green-400" />
                   </div>
-                  Mon – Sun : 9:00 AM – 8:00 PM
+                  {HOURS}
                 </li>
               </ul>
             </div>
@@ -238,7 +234,7 @@ export default function Footer() {
             <div>
               <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-1.5">Important Information</h4>
               <p className="text-gray-400 text-xs sm:text-[13px] leading-relaxed">
-                Prices and availability may vary by property, travel dates and occupancy. Lonavala Gateway, operated by Vidhi Tour & Travel, is an independent travel agency. Final property availability with our best assistance.
+                Prices and availability may vary by property, travel dates and occupancy. {BRAND_NAME}, operated by Vidhi Tour & Travel, is an independent travel agency. Final property availability with our best assistance.
               </p>
             </div>
           </div>
@@ -255,7 +251,7 @@ export default function Footer() {
             <div>
               <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-1.5">Disclaimer</h4>
               <p className="text-gray-400 text-xs sm:text-[13px] leading-relaxed">
-                Lonavala Gateway is operated by Vidhi Tour &amp; Travel, an independent travel agency. We are not
+                {BRAND_NAME} is operated by Vidhi Tour &amp; Travel, an independent travel agency. We are not
                 affiliated with, endorsed by or sponsored by any hotel, resort, villa or other service provider. All
                 brand names, logos and trademarks belong to their respective owners.
               </p>
@@ -267,7 +263,7 @@ export default function Footer() {
       {/* ── Copyright ── */}
       <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 pt-4 pb-32 lg:pb-8 text-center">
         <p className="text-gray-500 text-[11px] sm:text-xs">
-          © {currentYear} {BRAND_OPERATOR}. All Rights Reserved. | GST No: 27AACPS1497B1ZQ
+          © {currentYear} {BRAND_OPERATOR}. All Rights Reserved. | GST No: {GST_NO}
         </p>
       </div>
     </footer>

@@ -284,9 +284,9 @@ export default function AdminDashboard() {
 
   const handleClearCache = () => {
     if (typeof window !== 'undefined') {
-      localStorage.removeItem('lonavala_hotels_v2');
-      localStorage.removeItem('lonavala_villas_v2');
-      localStorage.removeItem('lonavala_tours_v2');
+      localStorage.removeItem('rajasthan_hotels_v1');
+      localStorage.removeItem('rajasthan_villas_v1');
+      localStorage.removeItem('rajasthan_tours_v1');
       showAlert('Website cache cleared successfully. Refreshing...', 'success');
       loadAllData();
     }
@@ -317,7 +317,7 @@ export default function AdminDashboard() {
     setFormData({
       id: `${activeTab}-${Date.now()}`,
       name: '',
-      location: activeTab === 'tour' ? 'Lonavala' : '',
+      location: activeTab === 'tour' ? 'Jaipur' : '',
       rating: 4.5,
       reviews: '100+',
       image: '',
@@ -341,9 +341,9 @@ export default function AdminDashboard() {
       propertyType: activeTab === 'hotel' ? 'Resort' : 'Private Villa', 
       suitableFor: 'Families, Couples, Groups', 
       accommodationType: activeTab === 'hotel' ? 'Multiple Room Categories' : 'Multiple Bedrooms', 
-      setting: 'Hill / Nature Surroundings',
+      setting: 'Heritage / Nature Surroundings',
       locationText: '',
-      areaText: 'Lonavala'
+      areaText: 'Rajasthan'
     });
     setAccommodationRooms(
       activeTab === 'hotel' 
@@ -385,8 +385,8 @@ export default function AdminDashboard() {
 
     if (activeTab === 'tour') {
       setOptionsList([
-        { name: '09:00 AM — Pickup', description: 'Pickup from your hotel in Lonavala.' },
-        { name: '01:00 PM — Drop', description: 'Drop off at your preferred location.' },
+        { name: '09:00 AM — Pickup', description: 'Pickup from your hotel in Jaipur / Udaipur.' },
+        { name: '06:00 PM — Drop', description: 'Drop off at your preferred location.' },
       ]);
     } else {
       setOptionsList([
@@ -435,9 +435,9 @@ export default function AdminDashboard() {
       propertyType: cat === 'hotel' ? 'Resort' : 'Private Villa', 
       suitableFor: 'Families, Couples, Groups', 
       accommodationType: cat === 'hotel' ? 'Multiple Room Categories' : 'Multiple Bedrooms', 
-      setting: 'Hill / Nature Surroundings',
+      setting: 'Heritage / Nature Surroundings',
       locationText: '',
-      areaText: 'Lonavala'
+      areaText: 'Rajasthan'
     });
     setAccommodationRooms(fl.accommodationRooms || (item.rooms && item.rooms.length > 0 ? item.rooms.map((r: any) => ({ name: r.name, features: [r.description] })) : (
       cat === 'hotel' 
@@ -846,7 +846,7 @@ export default function AdminDashboard() {
             <div className="inline-flex w-12 h-12 bg-white/10 rounded-2xl items-center justify-center mb-3">
               <Lock size={24} />
             </div>
-            <h1 className="text-lg font-black tracking-wider uppercase">LONAVALA GATEWAY</h1>
+            <h1 className="text-lg font-black tracking-wider uppercase">RAJASTHAN GATEWAY</h1>
             <p className="text-green-200 text-xs mt-1">Admin Access Console</p>
           </div>
 
@@ -976,7 +976,7 @@ export default function AdminDashboard() {
       <header className="bg-[#075B3A] text-white shadow-md">
         <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 py-5 flex items-center justify-between">
           <div>
-            <h1 className="text-xl sm:text-2xl font-black tracking-wide">LONAVALA GATEWAY</h1>
+            <h1 className="text-xl sm:text-2xl font-black tracking-wide">RAJASTHAN GATEWAY</h1>
             <p className="text-green-200 text-xs sm:text-sm font-medium">
               Vidhi Tour &amp; Travel · Admin Console ({user?.email})
             </p>
@@ -1164,7 +1164,7 @@ export default function AdminDashboard() {
                         </td>
                         <td className="px-4 py-3 text-gray-600">{h.location}</td>
                         <td className="px-4 py-3">
-                          <span className="font-bold text-[#075B3A]">{h.rating}★</span> ({h.reviews})
+                          <span className="font-semibold text-gray-500">Active</span>
                         </td>
                         <td className="px-4 py-3 text-right space-x-1.5">
                           <Link href={`/hotels/${h.slug}`} target="_blank" className="inline-flex p-1.5 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-600 transition-colors" title="View details page">
@@ -1218,7 +1218,7 @@ export default function AdminDashboard() {
                           <div className="font-bold text-[#17211D]">{t.name}</div>
                           <div className="text-[#66716C] text-[10px] mt-0.5">{t.slug}</div>
                         </td>
-                        <td className="px-4 py-3 text-gray-600">Lonavala</td>
+                        <td className="px-4 py-3 text-gray-600">{t.location || 'Rajasthan'}</td>
                         <td className="px-4 py-3 font-semibold text-gray-700">{t.duration}</td>
                         <td className="px-4 py-3 text-right space-x-1.5">
                           <Link href={`/tours/${t.slug}`} target="_blank" className="inline-flex p-1.5 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-600 transition-colors" title="View details page">
@@ -1329,7 +1329,7 @@ export default function AdminDashboard() {
                     required
                     value={formData.location}
                     onChange={handleInputChange}
-                    placeholder="e.g. Lonavala"
+                    placeholder="e.g. Jaipur"
                     className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent"
                   />
                 </div>
@@ -1420,7 +1420,7 @@ export default function AdminDashboard() {
                     </div>
                     <div>
                       <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Location Text</label>
-                      <input type="text" value={quickInfo.locationText || ''} onChange={e => setQuickInfo({...quickInfo, locationText: e.target.value})} placeholder="e.g. Khandala, Maharashtra (leave blank for default)" className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A]" />
+                      <input type="text" value={quickInfo.locationText || ''} onChange={e => setQuickInfo({...quickInfo, locationText: e.target.value})} placeholder="e.g. Bani Park, Jaipur (leave blank for default)" className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A]" />
                     </div>
                     <div>
                       <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Suitable For</label>
@@ -1436,7 +1436,7 @@ export default function AdminDashboard() {
                     </div>
                     <div>
                       <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Area Text</label>
-                      <input type="text" value={quickInfo.areaText || ''} onChange={e => setQuickInfo({...quickInfo, areaText: e.target.value})} placeholder="e.g. Lonavala" className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A]" />
+                      <input type="text" value={quickInfo.areaText || ''} onChange={e => setQuickInfo({...quickInfo, areaText: e.target.value})} placeholder="e.g. Rajasthan" className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#075B3A]" />
                     </div>
                   </div>
                 </div>

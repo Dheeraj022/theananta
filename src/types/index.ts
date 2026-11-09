@@ -30,8 +30,8 @@ export interface Hotel {
   id: string;
   name: string;
   location: string;
-  rating: number;
-  reviews: string;
+  rating?: number;
+  reviews?: string;
   image: string;
   slug: string;
   description: string;
@@ -39,6 +39,11 @@ export interface Hotel {
   images: string[];
   amenities: Amenity[];
   rooms: RoomOption[];
+  address?: string;
+  gettingThere?: string;
+  highlights?: string[];
+  dining?: string[];
+  quickFacts?: { label: string; value: string }[];
   frontend_layout?: FrontendLayout;
 }
 
@@ -46,7 +51,10 @@ export interface Villa {
   id: string;
   name: string;
   location: string;
-  bedrooms: number;
+  bedrooms?: number | string;
+  propertyType?: string;
+  setting?: string;
+  hasPool?: boolean;
   image: string;
   slug: string;
   description: string;
@@ -61,13 +69,16 @@ export interface Tour {
   id: string;
   name: string;
   duration: string;
+  location?: string;
   image: string;
   slug: string;
   description: string;
   about: string;
   images: string[];
   amenities: Amenity[];
-  itinerary: RoomOption[]; // Reusing name/description structure for itinerary points
+  itinerary: RoomOption[];
+  stops?: string[];
+  exclusions?: string[];
 }
 
 export interface NavItem {

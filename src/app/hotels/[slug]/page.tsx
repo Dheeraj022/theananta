@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { getHotels } from '@/lib/db';
 import HotelDetailLayout from '@/components/HotelDetailLayout';
 import Footer from '@/components/Footer';
+import { BRAND_NAME } from '@/lib/constants';
 
 export const revalidate = 0;
 
@@ -20,9 +21,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const list = await getHotels();
   const hotel = list.find((h) => h.slug === slug);
   if (!hotel) return {};
+  const city = hotel.location.includes(',') ? hotel.location.split(',')[1].trim() : hotel.location;
   return {
-    title: `${hotel.name} – Lonavala Hotel | Lonavala Gateway`,
-    description: `Book ${hotel.name} in Lonavala. Rated ${hotel.rating}★ by ${hotel.reviews} guests. Contact Lonavala Gateway for booking assistance.`,
+    title: `${hotel.name} – ${city} Hotel | ${BRAND_NAME}`,
+    description: `Information on ${hotel.name} in ${city}: location, facilities and nearby places. ${BRAND_NAME} is an independent travel agency offering enquiry assistance.`,
   };
 }
 

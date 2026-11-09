@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { saveEnquiry } from './storage';
 import { Enquiry } from '@/types';
+import { BRAND_NAME } from '@/lib/constants';
 
 export async function POST(req: Request) {
   try {
@@ -53,7 +54,7 @@ export async function POST(req: Request) {
     const mailOptions = {
       from: process.env.SMTP_EMAIL || 'info@lonavalagateway.com',
       to: 'info@lonavalagateway.com',
-      subject: `New Enquiry from ${name} - Lonavala Gateway`,
+      subject: `New Enquiry from ${name} - ${BRAND_NAME}`,
       html: emailHtml,
       replyTo: email || undefined,
     };

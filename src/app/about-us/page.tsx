@@ -2,16 +2,16 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
-import { PHONE_NUMBER } from '@/lib/constants';
+import { PHONE_NUMBER, BRAND_NAME, LEGAL_ENTITY, GST_NO, EMAIL, HOURS } from '@/lib/constants';
 import {
   Handshake, Info, Headset, Map, ShieldCheck,
   Target, Eye, MessageCircle, MapPin, Bell,
-  Users, Gem, XCircle, Building2, Briefcase, ClipboardList, User, Phone, Mail, Globe, FileText, Clock
+  Users, Gem, XCircle, Building2, Briefcase, ClipboardList, Phone, Mail, Globe, FileText, Clock
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About Us | Lonavala Gateway',
-  description: 'Learn about Lonavala Gateway, your independent travel agency providing genuine travel information and local assistance.',
+  title: `About Us | ${BRAND_NAME}`,
+  description: `Learn about ${BRAND_NAME}, an independent travel agency providing genuine travel information and local assistance.`,
 };
 
 export default function AboutUsPage() {
@@ -32,17 +32,17 @@ export default function AboutUsPage() {
         <div className="bg-white rounded-3xl overflow-hidden shadow-sm mb-6 flex flex-col md:flex-row relative">
           <div className="p-8 md:p-12 lg:p-16 flex-1 z-10 relative">
             <h1 className="text-4xl md:text-5xl font-extrabold text-[#075B3A] mb-2">ABOUT US</h1>
-            <h2 className="text-lg md:text-xl font-bold text-[#17211D] mb-1">LONAVALA GATEWAY</h2>
-            <h3 className="text-sm md:text-base font-bold text-[#17211D] mb-6">operated by VIDHI TOUR & TRAVEL</h3>
+            <h2 className="text-lg md:text-xl font-bold text-[#17211D] mb-1">{BRAND_NAME.toUpperCase()}</h2>
+            <h3 className="text-sm md:text-base font-bold text-[#17211D] mb-6">operated by {LEGAL_ENTITY.toUpperCase()}</h3>
             <p className="text-[#17211D] text-sm md:text-base leading-relaxed max-w-xl font-medium">
-              Lonavala Gateway is your independent travel agency providing genuine travel information, local assistance and enquiry support for hotels, villas, local tours, camping, cabs and experiences in and around Lonavala.
+              {BRAND_NAME} is your independent travel agency providing genuine travel information, local assistance and enquiry support for hotels, resorts, villas, havelis, local tours, camping, cabs and experiences across Rajasthan.
             </p>
           </div>
           <div className="hidden md:block w-1/2 absolute right-0 top-0 bottom-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
             <Image
-              src="/images/hero/lonavala-hero.jpg"
-              alt="Lonavala Landscape"
+              src="/images/hero/rajasthan-hero.jpg"
+              alt="Rajasthan Landscape"
               fill
               className="object-cover object-right"
               priority
@@ -70,11 +70,11 @@ export default function AboutUsPage() {
           <div className="bg-white p-6 rounded-2xl border border-[#DCE4DF] shadow-sm flex flex-col items-center text-center">
             <Map size={32} className="text-[#075B3A] mb-3" />
             <h4 className="font-bold text-[#17211D] text-sm mb-2">Local Expertise</h4>
-            <p className="text-[11px] text-[#66716C] leading-relaxed">Deep knowledge of Lonavala and nearby areas.</p>
+            <p className="text-[11px] text-[#66716C] leading-relaxed">Deep knowledge of Rajasthan&apos;s cities and circuits.</p>
           </div>
           <div className="bg-white p-6 rounded-2xl border border-[#DCE4DF] shadow-sm flex flex-col items-center text-center">
             <ShieldCheck size={32} className="text-[#075B3A] mb-3" />
-            <h4 className="font-bold text-[#17211D] text-sm mb-2">Transparent & Honest</h4>
+            <h4 className="font-bold text-[#17211D] text-sm mb-2">Transparent &amp; Honest</h4>
             <p className="text-[11px] text-[#66716C] leading-relaxed">We believe in clarity, honesty and transparency.</p>
           </div>
         </div>
@@ -86,7 +86,7 @@ export default function AboutUsPage() {
             <div>
               <h3 className="text-lg font-bold text-[#17211D] mb-3 uppercase">OUR MISSION</h3>
               <p className="text-[#17211D] text-sm leading-relaxed">
-                To provide reliable travel information, honest guidance and enquiry assistance to travellers planning their trip to Lonavala and nearby destinations.
+                To provide reliable travel information, honest guidance and enquiry assistance to travellers planning their trip to Rajasthan.
               </p>
             </div>
           </div>
@@ -141,14 +141,14 @@ export default function AboutUsPage() {
             <div className="flex items-start gap-4">
               <Bell size={32} className="text-[#075B3A] shrink-0" />
               <div>
-                <h4 className="font-bold text-[#17211D] text-sm mb-2">Updates & Suggestions</h4>
+                <h4 className="font-bold text-[#17211D] text-sm mb-2">Updates &amp; Suggestions</h4>
                 <p className="text-[12px] text-[#66716C] leading-relaxed">We share travel updates, seasonal information and helpful travel suggestions.</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <Users size={32} className="text-[#075B3A] shrink-0" />
               <div>
-                <h4 className="font-bold text-[#17211D] text-sm mb-2">Connect & Coordinate</h4>
+                <h4 className="font-bold text-[#17211D] text-sm mb-2">Connect &amp; Coordinate</h4>
                 <p className="text-[12px] text-[#66716C] leading-relaxed">We help connect travellers with service providers where applicable.</p>
               </div>
             </div>
@@ -190,9 +190,9 @@ export default function AboutUsPage() {
           <div className="bg-[#EAF5EF] p-8 rounded-2xl border border-[#BCE3CF] shadow-sm flex items-start gap-5">
             <Users size={40} className="text-[#075B3A] shrink-0" />
             <div>
-              <h3 className="text-lg font-bold text-[#17211D] mb-3 uppercase">OUR ROLE & INDEPENDENCE</h3>
+              <h3 className="text-lg font-bold text-[#17211D] mb-3 uppercase">OUR ROLE &amp; INDEPENDENCE</h3>
               <p className="text-[13px] text-[#17211D] leading-relaxed mb-4">
-                Lonavala Gateway is operated by Vidhi Tour & Travel, an independent travel agency. We provide general travel information, guidance, local tour assistance and enquiry support.
+                {BRAND_NAME} is operated by {LEGAL_ENTITY}, an independent travel agency. We provide general travel information, guidance, local tour assistance and enquiry support.
               </p>
               <p className="text-[13px] text-[#17211D] font-bold leading-relaxed">
                 We are not the owner, operator or official representative of any hotel, villa, resort, attraction, transport service or activity provider unless specifically stated.
@@ -202,7 +202,7 @@ export default function AboutUsPage() {
           <div className="bg-[#FFF5F5] p-8 rounded-2xl border border-[#FFEAEA] shadow-sm flex items-start gap-5">
             <XCircle size={40} className="text-[#D32F2F] shrink-0" />
             <div>
-              <h3 className="text-lg font-bold text-[#17211D] mb-4 uppercase">WHAT WE DON'T DO</h3>
+              <h3 className="text-lg font-bold text-[#17211D] mb-4 uppercase">WHAT WE DON&apos;T DO</h3>
               <ul className="space-y-2.5">
                 {[
                   'We are not the owner or operator of hotels, villas, resorts or attractions.',
@@ -235,7 +235,7 @@ export default function AboutUsPage() {
                 </div>
                 <div>
                   <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Business Name</h4>
-                  <p className="text-[14px] text-[#66716C]">Vidhi Tour & Travel</p>
+                  <p className="text-[14px] text-[#66716C]">{LEGAL_ENTITY}</p>
                 </div>
               </div>
 
@@ -245,7 +245,7 @@ export default function AboutUsPage() {
                 </div>
                 <div>
                   <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Brand / Website</h4>
-                  <p className="text-[14px] text-[#66716C]">Lonavala Gateway</p>
+                  <p className="text-[14px] text-[#66716C]">{BRAND_NAME}</p>
                 </div>
               </div>
 
@@ -265,19 +265,17 @@ export default function AboutUsPage() {
                 </div>
                 <div>
                   <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Nature of Business</h4>
-                  <p className="text-[14px] text-[#66716C]">Travel Information, Enquiry Assistance<br className="hidden sm:block" /> & Travel Related Services</p>
+                  <p className="text-[14px] text-[#66716C]">Travel Information, Enquiry Assistance<br className="hidden sm:block" /> &amp; Travel Related Services</p>
                 </div>
               </div>
-
-
 
               <div className="flex items-start gap-5">
                 <div className="w-12 h-12 bg-[#EAF5EF] rounded-xl flex items-center justify-center shrink-0 border border-[#DCE4DF]">
                   <MapPin size={24} className="text-[#06472F]" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Address</h4>
-                  <p className="text-[14px] text-[#66716C]">Shop No. 3, Near Lonavala Bus Stand,<br />Lonavala, Taluka Maval,<br />Pune, Maharashtra - 410401, India</p>
+                  <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Office Address</h4>
+                  <p className="text-[14px] text-[#66716C]">Blue Tulip CHS Ltd, Shop No - 17,<br />Blue Empire Complex, Off Link Road,<br />Mahavir Nagar, Kandiwali W, Mumbai,<br />Mumbai Suburban, Maharashtra, 400067</p>
                 </div>
               </div>
 
@@ -297,7 +295,7 @@ export default function AboutUsPage() {
                 </div>
                 <div>
                   <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Email</h4>
-                  <p className="text-[14px] text-[#66716C]">info@lonavalagateway.com</p>
+                  <p className="text-[14px] text-[#66716C]">{EMAIL}</p>
                 </div>
               </div>
 
@@ -317,7 +315,7 @@ export default function AboutUsPage() {
                 </div>
                 <div>
                   <h4 className="font-bold text-[#17211D] text-[15px] mb-1">GSTIN</h4>
-                  <p className="text-[14px] text-[#66716C]">27AACPS1497B1ZQ</p>
+                  <p className="text-[14px] text-[#66716C]">{GST_NO}</p>
                 </div>
               </div>
 
@@ -329,8 +327,7 @@ export default function AboutUsPage() {
             <Clock size={36} strokeWidth={1.5} className="text-white shrink-0 mb-2 sm:mb-0" />
             <div>
               <h3 className="text-[15px] font-bold text-white mb-2 uppercase tracking-wider">BUSINESS HOURS</h3>
-              <p className="text-[15px] font-medium text-white mb-0.5">Monday - Sunday</p>
-              <p className="text-[15px] font-bold text-white mb-2">8:00 AM - 8:00 PM</p>
+              <p className="text-[15px] font-medium text-white mb-0.5">{HOURS}</p>
               <p className="text-[12px] text-emerald-200">(We are available all days)</p>
             </div>
           </div>

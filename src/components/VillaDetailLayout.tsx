@@ -42,14 +42,15 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
     }
   };
 
+  const city = villa.location.includes('Udaipur') ? 'Udaipur' : villa.location.includes('Jaipur') ? 'Jaipur' : 'Rajasthan';
   const layout = villa.frontend_layout || {};
   const quickInfo = layout.quickInfo || {
-    propertyType: 'Private Villa',
+    propertyType: villa.propertyType || 'Private Villa',
     suitableFor: 'Families, Couples, Groups',
     accommodationType: 'Multiple Bedrooms',
-    setting: 'Hill / Nature Surroundings',
-    locationText: '',
-    areaText: 'Lonavala'
+    setting: villa.setting || 'City / Scenic Surroundings',
+    locationText: villa.location,
+    areaText: city
   };
 
   const accommodationRooms = layout.accommodationRooms || (villa.rooms && villa.rooms.length > 0 ? villa.rooms.map((r: any) => ({ name: r.name, features: [r.description] })) : [
@@ -153,7 +154,7 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
 
   // Fallback map pin handler
   const handleMapClick = () => {
-    window.open(`https://maps.google.com/?q=${villa.location}, Lonavala`, '_blank');
+    window.open(`https://maps.google.com/?q=${encodeURIComponent(villa.name + ', ' + villa.location + ', Rajasthan')}`, '_blank');
   };
 
   return (
@@ -208,14 +209,14 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
             </h1>
             <div className="flex items-center gap-1.5 text-sm font-semibold text-[#66716C] mb-4">
               <MapPin size={18} />
-              <span>{villa.location}, Maharashtra</span>
+              <span>{villa.location}</span>
             </div>
             <p className="text-[#17211D] text-sm sm:text-base leading-relaxed mb-6 max-w-4xl">
-              {villa.description} Perfect for families, friends and corporate getaways with modern amenities and complete privacy.
+              {villa.description}
             </p>
 
             <div className="flex flex-wrap gap-2">
-              {['Private Villa', 'Hill View', 'Family Friendly', 'Private Pool', 'Peaceful Location'].map((badge, idx) => (
+              {['Private Villa', 'Rajasthan', 'Family Friendly', ...(villa.hasPool ? ['Private Pool'] : []), 'Peaceful Location'].map((badge, idx) => (
                 <span key={idx} className="bg-[#F7F9F7] border border-[#DCE4DF] text-[#17211D] text-xs font-bold px-4 py-1.5 rounded-full">
                   {badge}
                 </span>
@@ -229,11 +230,11 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4">
               {[
                 { icon: Home, label: 'Property Type', val: quickInfo.propertyType },
-                { icon: MapPin, label: 'Location', val: quickInfo.locationText || `${villa.location}, Maharashtra` },
+                { icon: MapPin, label: 'Location', val: quickInfo.locationText || villa.location },
                 { icon: Users, label: 'Suitable For', val: quickInfo.suitableFor },
                 { icon: BedDouble, label: 'Accommodation', val: quickInfo.accommodationType },
-                { icon: Mountain, label: 'Setting', val: quickInfo.setting },
-                { icon: Map, label: 'Area', val: quickInfo.areaText || 'Lonavala' },
+                { icon: Mountain, label: 'Setting', val: villa.setting || quickInfo.setting },
+                { icon: Map, label: 'Area', val: quickInfo.areaText || city },
               ].map((item, idx) => {
                 const Icon = item.icon;
                 return (
@@ -253,7 +254,7 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
           <section className="border border-[#DCE4DF] rounded-2xl p-6 sm:p-8">
             <h2 className="text-lg font-bold text-[#17211D] mb-4">About The Villa</h2>
             <p className="text-[#66716C] text-sm leading-relaxed mb-4 whitespace-pre-line">
-              {villa.about || `${villa.name} offers a perfect blend of luxury, comfort and nature. The villa features spacious rooms, elegant interiors, a private pool and beautiful outdoor spaces.\n\nIt is an ideal choice for those looking for a peaceful stay in Lonavala with complete privacy and modern amenities.`}
+              {villa.about || `${villa.name} is situated in ${villa.location}. Accommodation options, facilities, policies and other property details may vary. Visitors are advised to verify the applicable information for their selected travel dates before proceeding.`}
             </p>
           </section>
 
@@ -337,11 +338,11 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
 
             <section className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-sm h-full flex flex-col">
               <h2 className="text-sm font-bold text-[#17211D] mb-1">Location</h2>
-              <p className="text-[#66716C] text-[11px] font-medium mb-4">{villa.name}, {villa.location}, Maharashtra</p>
+              <p className="text-[#66716C] text-[11px] font-medium mb-4">{villa.name}, {villa.location}</p>
 
               <div className="relative w-full flex-grow min-h-[200px] sm:min-h-[150px] bg-[#EAF5EF] rounded-xl overflow-hidden shadow-inner">
                 <iframe
-                  src={`https://maps.google.com/maps?q=${encodeURIComponent(villa.name + ', ' + villa.location + ', Lonavala')}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(villa.name + ', ' + villa.location)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -357,17 +358,17 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
             </section>
           </div>
 
-          {/* Things To Do Around Lonavala */}
+          {/* Things To Do Around {City} */}
           <section>
-            <h2 className="text-lg font-bold text-[#17211D] mb-4">Things To Do Around Lonavala</h2>
+            <h2 className="text-lg font-bold text-[#17211D] mb-4">Things To Do Around {city}</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
               {[
-                { title: 'Sightseeing', sub: 'Explore scenic views & viewpoints', img: '/images/tours/sightseeing.jpg' },
-                { title: 'Nature Walks', sub: 'Enjoy nature trails & fresh air', img: '/images/camping/forest_camping.jpg' },
-                { title: 'Waterfalls', sub: 'Visit beautiful waterfalls nearby', img: '/images/tours/waterfall.jpg' },
-                { title: 'Adventure Activities', sub: 'Trekking, camping & more', img: '/images/camping/adventure_camping.jpg' },
-                { title: 'Caves & Heritage', sub: 'Explore historic caves & forts', img: '/images/tours/caves.jpg' },
-                { title: 'Lakes & Boating', sub: 'Enjoy boating & peaceful lakes', img: '/images/camping/lakeside_camping.jpg' },
+                { title: 'Sightseeing', sub: 'Explore royal landmarks & viewpoints', img: '/images/tours/sightseeing.jpg' },
+                { title: 'Heritage Havelis', sub: 'Historic courtyards & architecture', img: '/images/tours/caves.jpg' },
+                { title: 'Lakes & Ghats', sub: 'Waterfront sunset viewpoints', img: '/images/tours/waterfall.jpg' },
+                { title: 'Desert Experiences', sub: 'Camel safaris & dunes', img: '/images/tours/tiger-point.jpg' },
+                { title: 'Local Bazaars', sub: 'Handicrafts, textiles & arts', img: '/images/camping/adventure_camping.jpg' },
+                { title: 'Fort Trails', sub: 'Majestic forts & panoramic views', img: '/images/camping/lakeside_camping.jpg' },
               ].map((item, idx) => (
                 <div key={idx} className="bg-white border border-[#DCE4DF] rounded-xl overflow-hidden shadow-sm flex flex-col">
                   <div className="relative w-full h-24">
@@ -399,7 +400,7 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
                   'Villa details, amenities and policies may vary.',
                   'Early check-in / late check-out is subject to availability.',
                   'Advance enquiry recommended for long weekends and holidays.',
-                  'We are an independent travel agency providing villa information & assistance in Lonavala.',
+                  'We are an independent travel agency providing villa information & assistance in Rajasthan.',
                   'We are not affiliated with any villa owner or service provider.',
                 ].map((text, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-[11px] text-[#66716C] leading-relaxed">
@@ -540,7 +541,7 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
 
             {/* What We Don't Do */}
             <div className="bg-[#FFF5F5] border border-[#FFEAEA] rounded-2xl p-6 shadow-sm">
-              <h3 className="font-bold text-[#17211D] mb-4 text-sm">What We Don't Do</h3>
+              <h3 className="font-bold text-[#17211D] mb-4 text-sm">What We Don&apos;t Do</h3>
               <ul className="space-y-3">
                 {[
                   'We are not the villa owner or operator.',
@@ -562,7 +563,7 @@ export default function VillaDetailLayout({ villa }: VillaDetailLayoutProps) {
               <h3 className="font-bold text-[#17211D] mb-4 text-sm">Popular Villa Locations</h3>
               <ul className="space-y-3">
                 {[
-                  'Pawna Lake', 'Tungarli', 'Khandala', 'Aamby Valley City', 'Bhushi', 'And Many More'
+                  'Jaipur', 'Udaipur', 'Jodhpur', 'Jaisalmer', 'Mount Abu', 'Pushkar', 'And Many More'
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-center gap-2 text-xs text-[#17211D]">
                     <MapPin size={14} className="text-[#66716C] shrink-0" />

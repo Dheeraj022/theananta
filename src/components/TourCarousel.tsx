@@ -4,13 +4,16 @@ import { getTours } from '@/lib/db';
 import TourCard from './TourCard';
 
 export default async function TourCarousel() {
-  const tours = await getTours();
+  const allTours = await getTours();
+  // Show tours 1–4
+  const featuredTours = allTours.slice(0, 4);
+
   return (
     <section className="mx-auto w-full max-w-[1200px] px-3 sm:px-5 lg:px-6 mt-6 sm:mt-8">
       {/* Section Header */}
       <div className="flex items-center justify-between mb-3 sm:mb-4">
         <h2 className="text-[#17211D] font-bold text-sm sm:text-base uppercase tracking-wide">
-          Explore Lonavala with Local Tours
+          Explore Rajasthan with Local Tours
         </h2>
         <Link
           href="/tours"
@@ -22,7 +25,7 @@ export default async function TourCarousel() {
 
       {/* Horizontal scroll on mobile, grid on desktop */}
       <div className="flex gap-3 overflow-x-auto no-scrollbar snap-x-mandatory pb-2 lg:grid lg:grid-cols-4 lg:overflow-visible">
-        {tours.map((tour) => (
+        {featuredTours.map((tour) => (
           <div key={tour.id} className="snap-start">
             <TourCard tour={tour} />
           </div>

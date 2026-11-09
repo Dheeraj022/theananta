@@ -15,7 +15,7 @@ export default function HotelCard({ hotel }: HotelCardProps) {
         <div className="relative h-[120px] sm:h-[130px] overflow-hidden">
           <Image
             src={hotel.image}
-            alt={`${hotel.name} in Lonavala`}
+            alt={`${hotel.name} in ${hotel.location}`}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
             sizes="(max-width: 640px) 175px, (max-width: 1024px) 200px, 25vw"

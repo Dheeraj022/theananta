@@ -10,8 +10,8 @@ export default function AgencyNotice() {
           </div>
         </div>
         <p className="text-[#17211D] text-xs sm:text-[13px] leading-relaxed">
-          <span className="font-semibold">We are an independent travel agency</span> providing hotel, villa and tour booking
-          assistance in Lonavala. We are not affiliated with any hotel, resort or service provider.
+          <span className="font-semibold">We are an independent travel agency</span> providing hotel, villa and tour enquiry
+          assistance in Rajasthan. We are not affiliated with any hotel, resort or service provider.
         </p>
       </div>
     </section>

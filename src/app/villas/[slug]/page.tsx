@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { getVillas } from '@/lib/db';
 import VillaDetailLayout from '@/components/VillaDetailLayout';
 import Footer from '@/components/Footer';
+import { BRAND_NAME } from '@/lib/constants';
 
 export const revalidate = 0;
 
@@ -20,9 +21,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const list = await getVillas();
   const villa = list.find((v) => v.slug === slug);
   if (!villa) return {};
+  const city = villa.location.includes('Udaipur') ? 'Udaipur' : villa.location.includes('Jaipur') ? 'Jaipur' : 'Rajasthan';
   return {
-    title: `${villa.name} – Lonavala Villa | Lonavala Gateway`,
-    description: `Book the ${villa.name} in Lonavala. Features ${villa.bedrooms} bedrooms, private pool and more. Contact Lonavala Gateway.`,
+    title: `${villa.name} – ${city} Villa | ${BRAND_NAME}`,
+    description: `Information on ${villa.name} in ${city}. Contact ${BRAND_NAME} for enquiry assistance.`,
   };
 }
 

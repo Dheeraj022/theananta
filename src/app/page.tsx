@@ -1,7 +1,7 @@
 import HeroSection from '@/components/HeroSection';
 import BookingSearch from '@/components/BookingSearch';
 import TrustFeatures from '@/components/TrustFeatures';
-import ExploreLonavala from '@/components/ExploreLonavala';
+import ExploreRajasthan from '@/components/ExploreRajasthan';
 import HotelCarousel from '@/components/HotelCarousel';
 import TourCarousel from '@/components/TourCarousel';
 import ExploreMore from '@/components/ExploreMore';
@@ -18,7 +18,7 @@ export default function HomePage() {
       <HeroSection />
       <BookingSearch />
       <TrustFeatures />
-      <ExploreLonavala />
+      <ExploreRajasthan />
       <HotelCarousel />
       <TourCarousel />
       <ExploreMore />

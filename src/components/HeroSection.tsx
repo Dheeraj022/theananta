@@ -17,8 +17,8 @@ export default function HeroSection() {
     <section className="relative overflow-hidden min-h-[500px] lg:min-h-[600px] flex items-center">
       {/* Background Image */}
       <Image
-        src="/images/hero/lonavala-hero.jpg"
-        alt="Lonavala mountains and valley"
+        src="/images/hero/rajasthan-hero.jpg"
+        alt="Rajasthan fort and Aravalli hills"
         fill
         priority
         className="object-cover object-center"
@@ -35,13 +35,13 @@ export default function HeroSection() {
           {/* Hero Copy */}
           <div className="w-full max-w-3xl text-center">
             <p className="text-white font-bold uppercase tracking-wider mb-2 text-sm sm:text-base">
-              EXPLORE LONAVALA
+              EXPLORE RAJASTHAN
             </p>
             <h1 className="text-white font-extrabold text-4xl sm:text-5xl lg:text-[56px] leading-[1.1] mb-6">
               Your Guide to Stays, Tours &amp; Experiences
             </h1>
             <p className="text-white/90 text-sm sm:text-base lg:text-lg font-medium leading-relaxed mb-2">
-              Get information about hotels, villas, local tours, camping and more in Lonavala.
+              Get information about hotels, villas, local tours, desert camping and more across Rajasthan.
             </p>
             <p className="text-white/90 text-sm sm:text-base lg:text-lg font-medium leading-relaxed mb-8">
               We are here to assist you with your travel plans.

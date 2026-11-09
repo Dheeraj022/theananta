@@ -77,9 +77,15 @@ export default function ThingsToDoEnquiryForm() {
         </label>
         <select name="preferredLocation" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
           <option value="">Select location / area</option>
-          <option value="Lonavala">Lonavala</option>
-          <option value="Khandala">Khandala</option>
-          <option value="Pawna Lake">Pawna Lake</option>
+          <option value="Jaipur">Jaipur</option>
+          <option value="Udaipur">Udaipur</option>
+          <option value="Jodhpur">Jodhpur</option>
+          <option value="Jaisalmer">Jaisalmer</option>
+          <option value="Pushkar">Pushkar</option>
+          <option value="Ajabgarh / Sariska">Ajabgarh / Sariska</option>
+          <option value="Ranthambore">Ranthambore</option>
+          <option value="Mount Abu">Mount Abu</option>
+          <option value="Bikaner">Bikaner</option>
         </select>
       </div>
       <div>

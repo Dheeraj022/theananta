@@ -1,5 +1,5 @@
 import { ShieldCheck, Phone, MessageCircle } from 'lucide-react';
-import { CALL_URL, PHONE_NUMBER, WHATSAPP_URL } from '@/lib/constants';
+import { CALL_URL, PHONE_NUMBER, WHATSAPP_URL, GST_NO } from '@/lib/constants';
 
 export default function TopBar() {
   return (
@@ -14,7 +14,7 @@ export default function TopBar() {
 
           {/* Center: GST No */}
           <div className="hidden sm:block text-xs font-medium text-green-100 tracking-wide">
-            GST NO: 27AACPS1497B1ZQ
+            GST NO: {GST_NO}
           </div>
 
           {/* Right: Contact */}

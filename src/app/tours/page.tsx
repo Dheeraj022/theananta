@@ -6,16 +6,17 @@ import {
   ChevronRight, MapPin, CheckCircle, Send, 
   Car, Trees, Castle, Navigation, 
   Camera, Waves, Map, Users, HeartHandshake,
-  Store, Check, Info, XCircle, Mountain, Clock3
+  Store, Check, Info, XCircle, Mountain, Clock3, Compass, Footprints
 } from 'lucide-react';
 import Footer from '@/components/Footer';
 import { getTours } from '@/lib/db';
+import { BRAND_NAME } from '@/lib/constants';
 
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Local Tours in Lonavala | Lonavala Gateway',
-  description: 'Explore Lonavala with curated local tours. Tiger Point, Sightseeing, Waterfall and Caves tours.',
+  title: `Local Tours in Rajasthan | ${BRAND_NAME}`,
+  description: 'Explore Rajasthan with local sightseeing tours in Jaipur, Udaipur, Jodhpur, Jaisalmer and Pushkar, plus Sariska and Ranthambore outings.',
 };
 
 export default async function ToursPage() {
@@ -46,18 +47,17 @@ export default async function ToursPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-auto lg:h-[400px]">
                   <div className="flex flex-col justify-center">
                     <h1 className="text-3xl sm:text-[34px] font-extrabold text-[#17211D] leading-tight mb-4">
-                      Local Tours<br/>in Lonavala
+                      Local Tours<br/>in Rajasthan
                     </h1>
                     <p className="text-[#66716C] text-sm leading-relaxed mb-8 max-w-[400px]">
-                      Explore Lonavala's scenic viewpoints, waterfalls, forts, caves, lakes and nearby attractions with local tour information and travel assistance.
+                      Explore Rajasthan&apos;s forts, palaces, lakes, old-city lanes, temples and desert landscapes with local tour information and travel assistance.
                     </p>
-
                   </div>
                   
                   {/* Hero Gallery */}
                   <div className="relative w-full h-[300px] lg:h-full flex flex-col gap-2">
                     <div className="relative w-full flex-grow rounded-2xl overflow-hidden cursor-pointer group shadow-sm">
-                      <Image src="/images/tours/tiger-point.jpg" alt="Lonavala Tour" fill className="object-cover transition-transform duration-700 group-hover:scale-105" priority />
+                      <Image src="/images/tours/sightseeing.jpg" alt="Rajasthan Tour" fill className="object-cover transition-transform duration-700 group-hover:scale-105" priority />
                     </div>
                   </div>
                 </div>
@@ -65,15 +65,15 @@ export default async function ToursPage() {
 
               {/* About Local Tours */}
               <section className="bg-white border border-[#DCE4DF] rounded-2xl p-6 sm:p-8 shadow-sm">
-                <h2 className="text-lg font-bold text-[#17211D] mb-4">About Local Tours in Lonavala</h2>
+                <h2 className="text-lg font-bold text-[#17211D] mb-4">About Local Tours in Rajasthan</h2>
                 <p className="text-[#66716C] text-[13px] leading-relaxed mb-4">
-                  Lonavala is a beautiful hill station known for its breathtaking landscapes, pleasant weather and diverse attractions. From scenic viewpoints and waterfalls to historic forts, ancient caves and serene lakes, Lonavala offers something for every traveller.
+                  Rajasthan is India&apos;s largest state and each city has its own character: the pink walls of Jaipur, the lakes of Udaipur, the blue lanes of Jodhpur and the golden sandstone of Jaisalmer. There is something here for every traveller.
                 </p>
                 <p className="text-[#66716C] text-[13px] leading-relaxed mb-6">
                   Our local tours are suitable for families, couples, friends and solo travellers. We provide local tour information, guidance and assistance to help you plan a smooth and memorable experience.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {['Scenic Beauty', 'Waterfalls & Lakes', 'Forts & Caves', 'Local Attractions', 'Nearby Experiences'].map((badge, idx) => (
+                  {['Forts & Palaces', 'Lakes & Ghats', 'Old City Walks', 'Desert Landscapes', 'Wildlife Nearby'].map((badge, idx) => (
                     <span key={idx} className="bg-[#F7F9F7] border border-[#DCE4DF] text-[#66716C] font-semibold text-xs px-4 py-1.5 rounded-full">
                       {badge}
                     </span>
@@ -86,12 +86,12 @@ export default async function ToursPage() {
                 <h2 className="text-lg font-bold text-[#17211D] mb-6">Local Tour Categories</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   {[
-                    { icon: Camera, title: 'Lonavala Sightseeing', desc: 'Popular viewpoints and attractions.' },
-                    { icon: Trees, title: 'Nature & Waterfalls', desc: 'Waterfalls, greenery and scenic landscapes.' },
-                    { icon: Castle, title: 'Forts & Heritage', desc: 'Historic forts and heritage locations.' },
-                    { icon: Map, title: 'Caves & Historical Places', desc: 'Karla, Bhaja and other historical sites.' },
-                    { icon: Waves, title: 'Lakes & Scenic Spots', desc: 'Lakes, valleys and beautiful scenic areas.' },
-                    { icon: Mountain, title: 'Adventure & Outdoor', desc: 'Trekking, hiking and outdoor experiences.' },
+                    { icon: Castle, title: 'Jaipur Sightseeing', desc: 'Forts, palaces and the Pink City.' },
+                    { icon: Waves, title: 'Udaipur Lakes & Palaces', desc: 'Lake Pichola, City Palace and gardens.' },
+                    { icon: Castle, title: 'Forts & Heritage', desc: 'Mehrangarh, Jaisalmer Fort, Amer and more.' },
+                    { icon: Map, title: 'Temples & Pilgrimage', desc: 'Pushkar, Ajmer and historic temples.' },
+                    { icon: Mountain, title: 'Desert & Dunes', desc: 'Sam dunes, camel rides and sunsets.' },
+                    { icon: Trees, title: 'Wildlife & Nature', desc: 'Sariska and Ranthambore outings.' },
                     { icon: Users, title: 'Family & Leisure', desc: 'Relaxed experiences suitable for families and groups.' },
                     { icon: HeartHandshake, title: 'Custom Local Tours', desc: 'Tour information based on your preferences.' },
                   ].map((cat, idx) => {
@@ -127,7 +127,7 @@ export default async function ToursPage() {
                       <div className="relative h-[140px] sm:h-[180px]">
                         <Image
                           src={tour.image}
-                          alt={`${tour.name} in Lonavala`}
+                          alt={`${tour.name} in Rajasthan`}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
@@ -156,15 +156,15 @@ export default async function ToursPage() {
                 <h2 className="text-lg font-bold text-[#17211D] mb-6">Popular Places Covered</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-[repeat(9,minmax(0,1fr))] gap-3 mb-6">
                   {[
-                    { name: 'Tiger Point', img: '/images/tours/tiger-point.jpg' },
-                    { name: "Lion's Point", img: '/images/tours/sightseeing.jpg' },
-                    { name: 'Bhushi Dam', img: '/images/tours/waterfall.jpg' },
-                    { name: 'Lonavala Lake', img: '/images/camping/lakeside_camping.jpg' },
-                    { name: 'Pawna Lake', img: '/images/camping/group_camping.jpg' },
-                    { name: 'Rajmachi Fort', img: '/images/camping/adventure_camping.jpg' },
-                    { name: 'Tikona Fort', img: '/images/camping/forest_camping.jpg' },
-                    { name: 'Bhaja Caves', img: '/images/tours/caves.jpg' },
-                    { name: 'Lohagad Fort', img: '/images/camping/valley_view_camping.jpg' },
+                    { name: 'Amber Palace', img: '/images/tours/sightseeing.jpg' },
+                    { name: 'Hawa Mahal', img: '/images/tours/caves.jpg' },
+                    { name: 'City Palace Jaipur', img: '/images/hotels/hotel-4.jpg' },
+                    { name: 'Jal Mahal', img: '/images/tours/waterfall.jpg' },
+                    { name: 'Lake Pichola', img: '/images/hotels/hotel-1.jpg' },
+                    { name: 'Mehrangarh Fort', img: '/images/tours/tiger-point.jpg' },
+                    { name: 'Jaisalmer Fort', img: '/images/hotels/hotel-2.jpg' },
+                    { name: 'Pushkar Lake', img: '/images/hotels/hotel-3.jpg' },
+                    { name: 'Bhangarh Fort', img: '/images/camping/adventure_camping.jpg' },
                   ].map((place, idx) => (
                     <div key={idx} className="flex flex-col items-center group cursor-pointer">
                       <div className="relative w-full aspect-square rounded-xl overflow-hidden mb-2 shadow-sm">
@@ -185,18 +185,19 @@ export default async function ToursPage() {
                 </div>
               </section>
 
-              {/* Sample Local Sightseeing Route */}
+              {/* Sample Jaipur Sightseeing Route */}
               <section className="bg-white border border-[#DCE4DF] rounded-2xl p-6 sm:p-8 shadow-sm">
-                <h2 className="text-lg font-bold text-[#17211D] mb-6">Sample Local Sightseeing Route <span className="font-normal text-[#66716C]">(For Reference)</span></h2>
+                <h2 className="text-lg font-bold text-[#17211D] mb-6">Sample Jaipur Sightseeing Route <span className="font-normal text-[#66716C]">(For Reference)</span></h2>
                 
                 <div className="flex flex-wrap md:flex-nowrap items-center justify-between gap-y-4 mb-8 w-full">
                   {[
                     { icon: Car, label: 'Start', sub: 'Preferred pickup\npoint' },
-                    { icon: MapPin, label: 'Tiger Point', arrow: true },
-                    { icon: MapPin, label: "Lion's Point", arrow: true },
-                    { icon: Waves, label: 'Bhushi Dam', arrow: true },
-                    { icon: MapPin, label: 'Lonavala Lake', arrow: true },
-                    { icon: Store, label: 'Local Market /\nNearby Attraction', arrow: true },
+                    { icon: MapPin, label: 'Amber Palace', arrow: true },
+                    { icon: MapPin, label: 'Jaigarh Fort', arrow: true },
+                    { icon: Waves, label: 'Jal Mahal\n(photo stop)', arrow: true },
+                    { icon: Castle, label: 'City Palace', arrow: true },
+                    { icon: Compass, label: 'Jantar Mantar', arrow: true },
+                    { icon: Store, label: 'Hawa Mahal /\nLocal Market', arrow: true },
                     { icon: Car, label: 'Return' },
                   ].map((step, idx) => (
                     <div key={idx} className="flex items-center">
@@ -283,7 +284,7 @@ export default async function ToursPage() {
                 <div id="enquiry-form" className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-lg shadow-black/5 scroll-mt-24">
                   <div className="mb-6">
                     <h2 className="text-lg font-bold text-[#17211D] mb-2">Plan Your Local Tour</h2>
-                    <p className="text-[#66716C] text-xs leading-relaxed">Tell us what you would like to explore and we'll assist you with relevant local tour information.</p>
+                    <p className="text-[#66716C] text-xs leading-relaxed">Tell us what you would like to explore and we&apos;ll assist you with relevant local tour information.</p>
                   </div>
 
                   <TourEnquiryForm tours={tours} />
@@ -291,9 +292,9 @@ export default async function ToursPage() {
 
                 {/* Our Role & Independence */}
                 <div className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-sm">
-                  <h3 className="font-bold text-[#17211D] mb-3 text-sm">Our Role & Independence</h3>
+                  <h3 className="font-bold text-[#17211D] mb-3 text-sm">Our Role &amp; Independence</h3>
                   <p className="text-[#17211D] text-[11px] leading-relaxed mb-3">
-                    Lonavala Gateway is operated by Vidhi Tour & Travel, an independent travel agency providing general travel information, local tour guidance and enquiry assistance.
+                    {BRAND_NAME} is operated by Vidhi Tour &amp; Travel, an independent travel agency providing general travel information, local tour guidance and enquiry assistance.
                   </p>
                   <p className="text-[#17211D] text-[11px] leading-relaxed">
                     We are not the owner, operator or official representative of any attraction, tour operator or service provider unless specifically stated.
@@ -322,7 +323,7 @@ export default async function ToursPage() {
 
                 {/* What We Don't Do */}
                 <div className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-sm">
-                  <h3 className="font-bold text-[#17211D] mb-4 text-sm">What We Don't Do</h3>
+                  <h3 className="font-bold text-[#17211D] mb-4 text-sm">What We Don&apos;t Do</h3>
                   <ul className="space-y-3">
                     {[
                       'We are not the owner or operator of attractions.',

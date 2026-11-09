@@ -3,10 +3,11 @@
 import { useState } from 'react';
 import { Building2, House, Map, CalendarDays, Users, MapPin, Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { RAJASTHAN_LOCATIONS } from '@/lib/constants';
 
 const tabs = [
   { id: 'hotels', label: 'Hotels & Resorts', icon: Building2, href: '/hotels' },
-  { id: 'villas', label: 'Villas', icon: House, href: '/villas' },
+  { id: 'villas', label: 'Villas & Havelis', icon: House, href: '/villas' },
   { id: 'tours', label: 'Local Tours', icon: Map, href: '/tours' },
 ];
 
@@ -18,7 +19,7 @@ export default function BookingSearch() {
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [guests, setGuests] = useState('2 Adults');
-  const [location] = useState('Lonavala');
+  const [location, setLocation] = useState('Jaipur');
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const today = new Date().toISOString().split('T')[0];
@@ -142,18 +143,21 @@ export default function BookingSearch() {
 
             {/* Location */}
             <div className="space-y-1">
-              <label htmlFor="location-input" className="flex items-center gap-1 text-[11px] font-semibold text-[#66716C] uppercase tracking-wide">
+              <label htmlFor="location-select" className="flex items-center gap-1 text-[11px] font-semibold text-[#66716C] uppercase tracking-wide">
                 <MapPin size={11} strokeWidth={2} />
                 Location
               </label>
-              <input
-                id="location-input"
-                type="text"
+              <select
+                id="location-select"
                 value={location}
-                readOnly
-                className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2.5 text-sm text-[#17211D] bg-[#F7F9F7] cursor-default"
-                aria-label="Location: Lonavala"
-              />
+                onChange={(e) => setLocation(e.target.value)}
+                className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2.5 text-sm text-[#17211D] focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent transition-all bg-white"
+                aria-label="Location in Rajasthan"
+              >
+                {RAJASTHAN_LOCATIONS.map((loc) => (
+                  <option key={loc} value={loc}>{loc}</option>
+                ))}
+              </select>
             </div>
           </div>
 

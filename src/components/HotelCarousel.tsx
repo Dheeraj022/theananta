@@ -4,13 +4,16 @@ import { getHotels } from '@/lib/db';
 import HotelCard from './HotelCard';
 
 export default async function HotelCarousel() {
-  const hotels = await getHotels();
+  const allHotels = await getHotels();
+  // Show the four Ananta properties in order
+  const featuredHotels = allHotels.slice(0, 4);
+
   return (
     <section className="mx-auto w-full max-w-[1200px] px-3 sm:px-5 lg:px-6 mt-6 sm:mt-8">
       {/* Section Header */}
       <div className="flex items-center justify-between mb-3 sm:mb-4">
         <h2 className="text-[#17211D] font-bold text-sm sm:text-base uppercase tracking-wide">
-          Popular Hotels &amp; Resorts in Lonavala
+          Popular Hotels &amp; Resorts in Rajasthan
         </h2>
         <Link
           href="/hotels"
@@ -22,7 +25,7 @@ export default async function HotelCarousel() {
 
       {/* Horizontal scroll on mobile, grid on desktop */}
       <div className="flex gap-3 overflow-x-auto no-scrollbar snap-x-mandatory pb-2 lg:grid lg:grid-cols-4 lg:overflow-visible">
-        {hotels.map((hotel) => (
+        {featuredHotels.map((hotel) => (
           <div key={hotel.id} className="snap-start">
             <HotelCard hotel={hotel} />
           </div>

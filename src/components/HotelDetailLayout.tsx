@@ -9,6 +9,7 @@ import {
   Home, Users, Mountain, Map, Check, Tv, Bath, Wind, Sofa, CupSoda, MapPinned, X, CalendarDays, Phone, User
 } from 'lucide-react';
 import { Hotel } from '@/types';
+import { BRAND_NAME } from '@/lib/constants';
 
 interface HotelDetailLayoutProps {
   hotel: Hotel;
@@ -32,14 +33,15 @@ const getIcon = (iconName: string) => {
 export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
   const [activeImage, setActiveImage] = useState(hotel.images[0] || hotel.image);
 
+  const city = hotel.location.includes(',') ? hotel.location.split(',')[1].trim() : hotel.location;
   const layout = hotel.frontend_layout || {};
   const quickInfo = layout.quickInfo || {
     propertyType: 'Resort',
     suitableFor: 'Couples, Families, Groups',
     accommodationType: 'Multiple Room Categories',
-    setting: 'Hill / Nature Surroundings',
-    locationText: '',
-    areaText: 'Lonavala'
+    setting: 'Aravalli Valley / Scenic',
+    locationText: `${hotel.location}, Rajasthan`,
+    areaText: city || 'Rajasthan'
   };
 
   const accommodationRooms = layout.accommodationRooms || (hotel.rooms && hotel.rooms.length > 0 ? hotel.rooms.map((r: any) => ({ name: r.name, features: [r.description] })) : [
@@ -207,13 +209,13 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
             </h1>
             <div className="flex items-center gap-1.5 text-sm font-semibold text-[#075B3A] mb-4">
               <MapPin size={16} />
-              <span>{hotel.location}, Maharashtra</span>
+              <span>{hotel.location}, Rajasthan</span>
             </div>
             <p className="text-[#66716C] text-xs sm:text-sm leading-relaxed mb-4">
               General property information, accommodation details and travel enquiry assistance.
             </p>
             <div className="flex flex-wrap gap-2">
-              {['Resort', 'Lonavala', 'Accommodation', 'Leisure Stay'].map((badge) => (
+              {['Resort', city || 'Rajasthan', 'Accommodation', 'Leisure Stay'].map((badge) => (
                 <span key={badge} className="px-3 py-1.5 bg-[#F7F9F7] border border-[#DCE4DF] text-[#66716C] text-xs font-bold rounded-lg shadow-sm">
                   {badge}
                 </span>
@@ -238,7 +240,7 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
                 <MapPin size={18} className="text-[#075B3A] shrink-0 mt-0.5" />
                 <div>
                   <div className="text-[10px] font-bold text-[#17211D] mb-0.5">Location</div>
-                  <div className="text-[11px] text-[#66716C]">{quickInfo.locationText || `${hotel.location}, Maharashtra`}</div>
+                  <div className="text-[11px] text-[#66716C]">{quickInfo.locationText || `${hotel.location}, Rajasthan`}</div>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3">
@@ -266,7 +268,7 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
                 <Map size={18} className="text-[#075B3A] shrink-0 mt-0.5" />
                 <div>
                   <div className="text-[10px] font-bold text-[#17211D] mb-0.5">Area</div>
-                  <div className="text-[11px] text-[#66716C]">{quickInfo.areaText || 'Lonavala'}</div>
+                  <div className="text-[11px] text-[#66716C]">{quickInfo.areaText || city}</div>
                 </div>
               </div>
             </div>
@@ -276,15 +278,15 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
           <div className="border border-[#DCE4DF] rounded-2xl bg-white shadow-sm p-5 sm:p-6">
             <h3 className="font-bold text-[#17211D] text-[15px] mb-3">About the Property</h3>
             <div className="space-y-3 text-[13px] text-[#66716C] leading-relaxed">
-              <p>
-                {hotel.name} is a resort property located in Lonavala, Maharashtra. The property offers accommodation and leisure facilities for visitors planning a stay in the Lonavala region.
-              </p>
-              <p>
-                The surrounding area is known for its hills, greenery, viewpoints and seasonal attractions. Travellers can consider the property&apos;s location while planning sightseeing and other activities around Lonavala.
-              </p>
-              <p>
-                {hotel.about} Accommodation options, facilities, policies and other property details may vary. Visitors are advised to verify the applicable information for their selected travel dates before proceeding.
-              </p>
+              {hotel.about ? (
+                hotel.about.split('\n\n').map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))
+              ) : (
+                <p>
+                  {hotel.name} is situated in {hotel.location}, Rajasthan. Accommodation options, facilities, policies and other property details may vary. Visitors are advised to verify the applicable information for their selected travel dates before proceeding.
+                </p>
+              )}
             </div>
           </div>
 
@@ -370,10 +372,10 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
             {/* Location */}
             <div className="border border-[#DCE4DF] rounded-2xl bg-white shadow-sm p-5">
               <h3 className="font-bold text-[#17211D] text-[14px] mb-2">Location</h3>
-              <p className="text-[11px] text-[#66716C] font-semibold mb-3">{hotel.name}, {hotel.location}, Maharashtra</p>
+              <p className="text-[11px] text-[#66716C] font-semibold mb-3">{hotel.address || `${hotel.name}, ${hotel.location}, Rajasthan`}</p>
               <div className="relative w-full h-[150px] rounded-xl bg-gray-100 border border-[#DCE4DF] overflow-hidden flex items-center justify-center">
                 <iframe
-                  src={`https://maps.google.com/maps?q=${encodeURIComponent(hotel.name + ' Lonavala')}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(hotel.name + ' ' + hotel.location + ' Rajasthan')}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -386,68 +388,42 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
             </div>
           </div>
 
-          {/* Side-by-side: Nearby Places & Things To Do */}
+          {/* Side-by-side: Highlights & Things To Do */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            {/* Nearby Places */}
+            {/* Highlights / Getting There */}
             <div className="border border-[#DCE4DF] rounded-2xl bg-white shadow-sm p-5">
-              <h3 className="font-bold text-[#17211D] text-[14px] mb-4">Nearby Places</h3>
-              <div className="grid grid-cols-2 gap-y-4 gap-x-2">
-                <div className="flex items-start gap-2">
-                  <MapPin size={16} className="text-[#66716C] shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-[11px] font-bold text-[#17211D]">Lonavala Market</div>
-                    <div className="text-[9px] text-[#66716C]">Approx. 2 km*</div>
-                  </div>
+              <h3 className="font-bold text-[#17211D] text-[14px] mb-4">Connectivity &amp; Highlights</h3>
+              {hotel.gettingThere && (
+                <div className="mb-3 p-2.5 bg-[#F7F9F7] rounded-xl border border-[#DCE4DF]">
+                  <div className="text-[10px] font-bold text-[#17211D] uppercase tracking-wider mb-1">Getting There</div>
+                  <p className="text-[11px] text-[#66716C] leading-snug">{hotel.gettingThere}</p>
                 </div>
-                <div className="flex items-start gap-2">
-                  <MapPin size={16} className="text-[#66716C] shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-[11px] font-bold text-[#17211D]">Khandala</div>
-                    <div className="text-[9px] text-[#66716C]">Approx. 5 km*</div>
+              )}
+              <div className="space-y-2">
+                {(hotel.highlights && hotel.highlights.length > 0 ? hotel.highlights : [
+                  'Hill and valley outlooks from property premises',
+                  'Dedicated wellness and recreational amenities',
+                  'Convenient driving access to key regional sights',
+                  'Multi-cuisine dining and regional specialties',
+                ]).map((hl, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <CheckCircle size={14} className="text-[#075B3A] shrink-0 mt-0.5" />
+                    <span className="text-[11px] font-medium text-[#17211D]">{hl}</span>
                   </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <MapPin size={16} className="text-[#66716C] shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-[11px] font-bold text-[#17211D]">Lonavala Railway Station</div>
-                    <div className="text-[9px] text-[#66716C]">Approx. 3 km*</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <MapPin size={16} className="text-[#66716C] shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-[11px] font-bold text-[#17211D]">Kune Falls</div>
-                    <div className="text-[9px] text-[#66716C]">Approx. 6 km*</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <MapPin size={16} className="text-[#66716C] shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-[11px] font-bold text-[#17211D]">Della Adventure</div>
-                    <div className="text-[9px] text-[#66716C]">Approx. 8 km*</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <MapPin size={16} className="text-[#66716C] shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-[11px] font-bold text-[#17211D]">Karla Caves</div>
-                    <div className="text-[9px] text-[#66716C]">Approx. 11 km*</div>
-                  </div>
-                </div>
+                ))}
               </div>
-              <p className="text-[9px] text-right text-[#66716C] mt-3 italic">*Distances are approximate and may vary by route and traffic.</p>
             </div>
 
             {/* Things To Do */}
             <div className="border border-[#DCE4DF] rounded-2xl bg-white shadow-sm p-5">
-              <h3 className="font-bold text-[#17211D] text-[14px] mb-4">Things To Do Around Lonavala</h3>
+              <h3 className="font-bold text-[#17211D] text-[14px] mb-4">Things To Do Around {city || 'Rajasthan'}</h3>
               <div className="grid grid-cols-4 gap-2 mb-4">
                 {[
-                  { name: 'Sightseeing', desc: 'Viewpoints & scenic landscapes', img: '/images/tours/tiger-point.jpg' },
-                  { name: 'Nature & Waterfalls', desc: 'Explore seasonal waterfalls', img: '/images/tours/waterfall.jpg' },
-                  { name: 'Forts & Heritage', desc: 'Historical forts and trails', img: '/images/tours/sightseeing.jpg' },
-                  { name: 'Caves', desc: 'Karla & Bhaja Caves', img: '/images/tours/caves.jpg' },
+                  { name: 'Sightseeing', desc: 'Forts & palace circuits', img: '/images/tours/sightseeing.jpg' },
+                  { name: 'Lakes & Ghats', desc: 'Waterfront viewpoints', img: '/images/tours/waterfall.jpg' },
+                  { name: 'Heritage Walks', desc: 'Old-city lanes & havelis', img: '/images/tours/caves.jpg' },
+                  { name: 'Desert & Nature', desc: 'Dunes & wildlife safaris', img: '/images/tours/tiger-point.jpg' },
                 ].map((item, i) => (
                   <div key={i} className="flex flex-col items-center border border-[#DCE4DF] rounded-xl overflow-hidden pb-1 bg-white">
                     <div className="relative w-full h-[50px] mb-1">
@@ -629,7 +605,7 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
               </div>
               <div className="space-y-3 text-[11px] text-[#66716C] leading-relaxed">
                 <p>
-                  Valley City Stay Hub is operated by Vidhi Tour & Travel, an independent travel agency.
+                  {BRAND_NAME} is operated by Vidhi Tour &amp; Travel, an independent travel agency.
                 </p>
                 <p>
                   We provide general travel information and enquiry assistance for hotels, resorts, villas and local travel experiences.

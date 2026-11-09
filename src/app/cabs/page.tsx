@@ -6,13 +6,13 @@ import {
   ShieldCheck, Clock, Sparkles, Headset, 
   Car, UserCheck, ShieldPlus, BadgeCheck, Clock4,
   Info, MapPin, Timer, ThumbsUp, CheckSquare, Map,
-  Calendar, Users, Send, Lock, CheckCircle
+  CheckCircle
 } from 'lucide-react';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Cabs & Transfers in Lonavala',
-  description: 'Reliable, comfortable and on-time cab services for local sightseeing, airport transfers and outstation trips in Lonavala.',
+  title: 'Cabs & Transfers in Rajasthan',
+  description: 'Cab services for local sightseeing, airport transfers and intercity trips across Rajasthan, including Jaipur, Udaipur, Jodhpur and Jaisalmer.',
 };
 
 export default function CabsPage() {
@@ -24,7 +24,7 @@ export default function CabsPage() {
         <section className="relative w-full h-[60vh] min-h-[600px] md:min-h-[450px] flex flex-col justify-end bg-[#17211D] overflow-hidden">
           <Image
             src="/images/cabs/cab_hero.jpg"
-            alt="Cabs & Transfers in Lonavala"
+            alt="Cabs & Transfers in Rajasthan"
             fill
             className="object-cover opacity-70"
             priority
@@ -33,10 +33,10 @@ export default function CabsPage() {
           
           <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 lg:px-8 pb-56 md:pb-32">
             <h1 className="text-white font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight mb-4 tracking-tight drop-shadow-lg">
-              Cabs & Transfers<br />in Lonavala
+              Cabs &amp; Transfers<br />in Rajasthan
             </h1>
             <p className="text-white/90 text-sm sm:text-base lg:text-lg max-w-[500px] font-medium leading-relaxed drop-shadow-md">
-              Reliable, comfortable and on-time cab services for local sightseeing, airport transfers and outstation trips.
+              Reliable, comfortable and on-time cab services for local sightseeing, airport transfers and intercity trips across Rajasthan.
             </p>
           </div>
 
@@ -73,10 +73,10 @@ export default function CabsPage() {
           <section className="bg-white rounded-2xl p-6 sm:p-10 border border-[#DCE4DF] shadow-sm">
             <div className="flex items-center gap-2 mb-4">
               <Car size={24} className="text-[#075B3A]" />
-              <h2 className="text-xl sm:text-2xl font-bold text-[#17211D]">About Our Cab & Transfer Services</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-[#17211D]">About Our Cab &amp; Transfer Services</h2>
             </div>
             <p className="text-[#66716C] text-sm leading-relaxed mb-10 max-w-[900px]">
-              We offer a wide range of cab and transfer services in Lonavala and beyond. Whether you need a local cab for sightseeing, an airport transfer, or an outstation trip, we ensure a safe, comfortable and hassle-free journey with well-maintained vehicles and professional drivers.
+              We offer a wide range of cab and transfer services across Rajasthan. Whether you need a local cab for sightseeing, an airport transfer, or an outstation trip, we ensure a safe, comfortable and hassle-free journey with well-maintained vehicles and professional drivers.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
@@ -136,17 +136,17 @@ export default function CabsPage() {
 
           {/* Popular Routes */}
           <section>
-            <h2 className="text-xl sm:text-2xl font-bold text-[#17211D] mb-6">Popular Cab & Transfer Routes</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-[#17211D] mb-6">Popular Cab &amp; Transfer Routes</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
               {[
-                { title: 'Lonavala Local Sightseeing', desc: 'Explore top attractions in Lonavala in a comfortable cab.' },
-                { title: 'Mumbai Airport Transfer', desc: 'Hassle-free pick-up & drop from/to Mumbai Airport.' },
-                { title: 'Pune Airport Transfer', desc: 'On-time transfers to/from Pune Airport.' },
-                { title: 'Lonavala to Shirdi', desc: 'Comfortable one way or round trip.' },
-                { title: 'Lonavala to Mahabaleshwar', desc: 'Scenic drive to the queen of hill stations.' },
-                { title: 'Lonavala to Alibaug', desc: 'Enjoy a smooth journey to the beaches.' },
-                { title: 'Lonavala to Mumbai', desc: 'One way or round trip options available.' },
-                { title: 'Outstation Trips', desc: 'Custom outstation trips as per your plan.' },
+                { title: 'Jaipur Local Sightseeing', desc: 'Explore the forts and the Pink City in a comfortable cab.' },
+                { title: 'Jaipur Airport Transfer', desc: 'Pick-up and drop from/to Jaipur International Airport.' },
+                { title: 'Udaipur Airport Transfer', desc: 'On-time transfers to/from Maharana Pratap Airport.' },
+                { title: 'Jaipur to Pushkar & Ajmer', desc: 'Comfortable one way or round trip.' },
+                { title: 'Jaipur to Udaipur', desc: 'Intercity drive with optional stops on the way.' },
+                { title: 'Jodhpur to Jaisalmer', desc: 'A desert highway drive to the Golden City.' },
+                { title: 'Jaipur to Ajabgarh & Sariska', desc: 'Transfers to the Sariska valley and Bhangarh.' },
+                { title: 'Outstation Trips', desc: 'Custom multi-city Rajasthan circuits as per your plan.' },
               ].map((route, idx) => (
                 <div key={idx} className="bg-white border border-[#DCE4DF] rounded-xl p-5 shadow-sm flex items-start gap-3">
                   <MapPin size={20} className="text-[#075B3A] shrink-0 mt-0.5" />
@@ -210,7 +210,7 @@ export default function CabsPage() {
                 <div id="cab-enquiry-form" className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-lg shadow-black/5 scroll-mt-24">
                   <div className="mb-6 text-center">
                     <h2 className="text-lg font-bold text-[#17211D] mb-2">Book Your Cab / Transfer</h2>
-                    <p className="text-[#66716C] text-xs leading-relaxed">Share your trip details and we'll assist you with the best options.</p>
+                    <p className="text-[#66716C] text-xs leading-relaxed">Share your trip details and we&apos;ll assist you with the best options.</p>
                   </div>
                   <CabEnquiryForm />
                 </div>
@@ -240,15 +240,15 @@ export default function CabsPage() {
                   <h3 className="text-sm font-bold text-[#17211D] mb-4">Popular Destinations</h3>
                   <ul className="space-y-3">
                     {[
-                      'Pawna Lake',
-                      'Khandala',
-                      'Tikona Fort',
-                      'Bhira Dam',
-                      'Lohagad Fort',
-                      'Karlo Caves',
-                      'Mumbai',
-                      'Pune',
-                      'Mahabaleshwar',
+                      'Jaipur',
+                      'Udaipur',
+                      'Jodhpur',
+                      'Jaisalmer',
+                      'Pushkar',
+                      'Sariska & Alwar',
+                      'Ranthambore',
+                      'Mount Abu',
+                      'Bikaner',
                       'And Many More'
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-center gap-2">

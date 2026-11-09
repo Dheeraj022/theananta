@@ -28,7 +28,7 @@ export default function Header() {
               </button>
 
               {/* Logo Icon */}
-              <Link href="/" aria-label="Lonavala Gateway Home" className="shrink-0">
+              <Link href="/" aria-label={`${BRAND_NAME} Home`} className="shrink-0">
                 <div className="w-12 h-12 lg:w-[52px] lg:h-[52px] bg-[#06472F] rounded-xl flex items-center justify-center shadow-sm">
                   <Mountain size={28} strokeWidth={1.5} className="text-white" />
                 </div>
@@ -40,7 +40,7 @@ export default function Header() {
                 <div className="text-[#075B3A] text-xs lg:text-[14px] font-bold leading-none mb-1.5">{BRAND_OPERATOR}</div>
                 <div className="text-[#66716C] text-[9.5px] lg:text-[11px] font-medium">
                   <span className="lg:hidden">Independent Travel Agency</span>
-                  <span className="hidden lg:inline">Independent Travel Agency | Travel Information & Enquiry Assistance in Lonavala</span>
+                  <span className="hidden lg:inline">Independent Travel Agency | Travel Information & Enquiry Assistance in Rajasthan</span>
                 </div>
               </Link>
             </div>
@@ -83,9 +83,9 @@ export default function Header() {
               {[
                 { label: 'Home', href: '/' },
                 { label: 'Hotels & Resorts', href: '/hotels' },
-                { label: 'Villas', href: '/villas' },
+                { label: 'Villas & Havelis', href: '/villas' },
                 { label: 'Local Tours', href: '/tours' },
-                { label: 'Camping', href: '/camping' },
+                { label: 'Desert Camping', href: '/camping' },
                 { label: 'Cabs & Transfers', href: '/cabs' },
                 { label: 'Things To Do', href: '/things-to-do' },
                 { label: 'About Us', href: '/about-us' },

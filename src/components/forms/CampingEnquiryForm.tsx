@@ -96,10 +96,11 @@ export default function CampingEnquiryForm() {
         <label className="block text-xs font-bold text-[#17211D] mb-1.5">Interests / Activities</label>
         <select name="interests" className="w-full text-sm border border-[#DCE4DF] rounded-lg px-3 py-2.5 outline-none focus:border-[#075B3A] transition-colors appearance-none bg-white">
           <option value="">Select your interests</option>
-          <option value="Lakeside Camping">Lakeside Camping</option>
-          <option value="Forest Camping">Forest Camping</option>
-          <option value="Adventure & Trekking">Adventure & Trekking</option>
-          <option value="Star Gazing & Music">Star Gazing & Music</option>
+          <option value="Desert Dune Camps (Sam & Khuri)">Desert Dune Camps (Sam &amp; Khuri)</option>
+          <option value="Luxury Tented Stays (Pushkar)">Luxury Tented Stays (Pushkar)</option>
+          <option value="Jungle Camps (Ranthambore)">Jungle Camps (Ranthambore)</option>
+          <option value="Hill & Lake Camps (Mount Abu)">Hill &amp; Lake Camps (Mount Abu)</option>
+          <option value="Star Gazing & Folk Music">Star Gazing &amp; Folk Music</option>
         </select>
       </div>
       <div>

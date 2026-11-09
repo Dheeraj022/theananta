@@ -1,15 +1,16 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MapPin, Star } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { getHotels } from '@/lib/db';
 import Footer from '@/components/Footer';
+import { BRAND_NAME } from '@/lib/constants';
 
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Hotels & Resorts in Lonavala | Lonavala Gateway',
-  description: 'Browse popular hotels and resorts in Lonavala. Get booking assistance from Lonavala Gateway – your trusted local travel agency.',
+  title: `Hotels & Resorts in Rajasthan | ${BRAND_NAME}`,
+  description: `Browse popular hotels and resorts in Udaipur, Jaipur, Pushkar, Jodhpur and Jaisalmer. Get enquiry assistance from ${BRAND_NAME}, an independent travel agency.`,
 };
 
 export default async function HotelsPage() {
@@ -19,8 +20,8 @@ export default async function HotelsPage() {
       <div className="mx-auto w-full max-w-[1200px] px-3 sm:px-5 lg:px-6 py-6 sm:py-8">
         {/* Page Header */}
         <div className="mb-6">
-          <h1 className="text-2xl sm:text-3xl font-bold text-[#17211D] mb-1">Hotels &amp; Resorts in Lonavala</h1>
-          <p className="text-[#66716C] text-sm">Curated selection of the best stays</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#17211D] mb-1">Hotels &amp; Resorts in Rajasthan</h1>
+          <p className="text-[#66716C] text-sm">Information on stays across Rajasthan</p>
         </div>
 
         {/* Hotels Grid */}
@@ -33,7 +34,7 @@ export default async function HotelsPage() {
               <div className="relative h-[200px] sm:h-[240px]">
                 <Image
                   src={hotel.image}
-                  alt={`${hotel.name} resort in Lonavala`}
+                  alt={`${hotel.name} in ${hotel.location}`}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                   sizes="(max-width: 640px) 100vw, 50vw"

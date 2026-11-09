@@ -4,9 +4,9 @@ import { ChevronRight } from 'lucide-react';
 
 const EXPLORE_ITEMS = [
   { title: 'Hotels &\nResorts', image: '/images/hotels/hotel-1.jpg', href: '/hotels' },
-  { title: 'Villas &\nHomestays', image: '/images/hotels/hotel-2.jpg', href: '/villas' },
-  { title: 'Local Tours &\nSightseeing', image: '/images/tours/tiger-point.jpg', href: '/tours' },
-  { title: 'Camping &\nOutdoor Experiences', image: '/images/hero/lonavala-hero.jpg', href: '/tours' },
+  { title: 'Villas &\nHavelis', image: '/images/hotels/hotel-2.jpg', href: '/villas' },
+  { title: 'Local Tours &\nSightseeing', image: '/images/tours/sightseeing.jpg', href: '/tours' },
+  { title: 'Desert Camping &\nOutdoor Experiences', image: '/images/hero/rajasthan-hero.jpg', href: '/camping' },
 ];
 
 export default function ExploreMore() {

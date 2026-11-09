@@ -7,7 +7,7 @@ export default function HelpCard() {
       <div className="mb-1">
         <h3 className="text-[#17211D] font-bold text-sm leading-snug">Need Help? Call Us</h3>
         <p className="text-[#66716C] text-[11px] mt-1 leading-relaxed">
-          For Best Deals, Availability &amp; Booking Assistance
+          For Information, Availability &amp; Enquiry Assistance
         </p>
       </div>
 
