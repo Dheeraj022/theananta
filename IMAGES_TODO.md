@@ -119,3 +119,4 @@ This file catalogs all image slots across the Rajasthan Gateway platform that cu
 ## 8. License Requirements
 - All replacement images must have commercial reuse licensing (e.g., Unsplash License, Pexels, Creative Commons CC0 / CC-BY with attribution, or direct commissioned photography).
 - Ensure images are saved in modern WebP or optimized JPG format (target file size under 250 KB per card image, under 600 KB per full-bleed hero banner) for optimal loading performance.
+
