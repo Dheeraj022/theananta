@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { saveEnquiry } from './storage';
 import { Enquiry } from '@/types';
-import { BRAND_NAME } from '@/lib/constants';
+import { BRAND_NAME, EMAIL } from '@/lib/constants';
 
 export async function POST(req: Request) {
   try {
@@ -44,7 +44,7 @@ export async function POST(req: Request) {
       port: Number(process.env.SMTP_PORT) || 465,
       secure: true, // Use SSL (true for 465, false for 587)
       auth: {
-        user: process.env.SMTP_EMAIL || 'info@lonavalagateway.com',
+        user: process.env.SMTP_EMAIL || EMAIL,
         pass: process.env.SMTP_PASSWORD,
       },
       connectionTimeout: 5000,
@@ -52,8 +52,8 @@ export async function POST(req: Request) {
     });
 
     const mailOptions = {
-      from: process.env.SMTP_EMAIL || 'info@lonavalagateway.com',
-      to: 'info@lonavalagateway.com',
+      from: process.env.SMTP_EMAIL || EMAIL,
+      to: EMAIL,
       subject: `New Enquiry from ${name} - ${BRAND_NAME}`,
       html: emailHtml,
       replyTo: email || undefined,
