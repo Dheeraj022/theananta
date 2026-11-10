@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
-import BottomNavigation from '@/components/BottomNavigation';
 import { BRAND_NAME, LEGAL_ENTITY, PHONE_RAW, EMAIL, OFFICE_ADDRESS } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -76,7 +75,6 @@ export default function RootLayout({
         <main id="main-content">
           {children}
         </main>
-        <BottomNavigation />
       </body>
     </html>
   );

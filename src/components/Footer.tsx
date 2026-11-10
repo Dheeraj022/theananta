@@ -260,7 +260,7 @@ export default function Footer() {
       </div>
 
       {/* ── Copyright ── */}
-      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 pt-4 pb-32 lg:pb-8 text-center">
+      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 pt-4 pb-8 text-center">
         <p className="text-gray-500 text-[11px] sm:text-xs">
           © {currentYear} {BRAND_OPERATOR}. All Rights Reserved. | GST No: {GST_NO}
         </p>
