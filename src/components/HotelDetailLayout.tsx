@@ -9,7 +9,7 @@ import {
   Home, Users, Mountain, Map, Check, Tv, Bath, Wind, Sofa, CupSoda, MapPinned, X, CalendarDays, Phone, User
 } from 'lucide-react';
 import { Hotel } from '@/types';
-import { BRAND_NAME } from '@/lib/constants';
+import { BRAND_NAME, LEGAL_ENTITY } from '@/lib/constants';
 
 interface HotelDetailLayoutProps {
   hotel: Hotel;
@@ -605,7 +605,7 @@ export default function HotelDetailLayout({ hotel }: HotelDetailLayoutProps) {
               </div>
               <div className="space-y-3 text-[11px] text-[#66716C] leading-relaxed">
                 <p>
-                  {BRAND_NAME} is operated by Vidhi Tour &amp; Travel, an independent travel agency.
+                  {BRAND_NAME} is operated by {LEGAL_ENTITY}, an independent travel agency.
                 </p>
                 <p>
                   We provide general travel information and enquiry assistance for hotels, resorts, villas and local travel experiences.

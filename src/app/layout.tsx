@@ -3,7 +3,7 @@ import './globals.css';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
 import BottomNavigation from '@/components/BottomNavigation';
-import { BRAND_NAME, PHONE_RAW, EMAIL, OFFICE_ADDRESS } from '@/lib/constants';
+import { BRAND_NAME, LEGAL_ENTITY, PHONE_RAW, EMAIL, OFFICE_ADDRESS } from '@/lib/constants';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://lonavalagateway.com'),
@@ -39,7 +39,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TravelAgency',
   name: BRAND_NAME,
-  legalName: 'Vidhi Tour & Travel',
+  legalName: LEGAL_ENTITY,
   description: `${BRAND_NAME} is an independent travel agency offering information and enquiry assistance for hotels, resorts, villas, desert camps and local tours across Rajasthan.`,
   areaServed: {
     '@type': 'AdministrativeArea',
@@ -47,10 +47,10 @@ const jsonLd = {
   },
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Mahavir Nagar, Kandiwali W',
-    addressLocality: 'Mumbai',
-    addressRegion: 'Maharashtra',
-    postalCode: '400067',
+    streetAddress: 'BASEMENT, 159-C, New Friends Colony, Sarai Jullena',
+    addressLocality: 'New Delhi',
+    addressRegion: 'Delhi',
+    postalCode: '110025',
     addressCountry: 'IN',
   },
   telephone: PHONE_RAW,

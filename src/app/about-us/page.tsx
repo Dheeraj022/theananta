@@ -275,7 +275,11 @@ export default function AboutUsPage() {
                 </div>
                 <div>
                   <h4 className="font-bold text-[#17211D] text-[15px] mb-1">Office Address</h4>
-                  <p className="text-[14px] text-[#66716C]">Blue Tulip CHS Ltd, Shop No - 17,<br />Blue Empire Complex, Off Link Road,<br />Mahavir Nagar, Kandiwali W, Mumbai,<br />Mumbai Suburban, Maharashtra, 400067</p>
+                  <p className="text-[14px] text-[#66716C]">
+                    BASEMENT, 159-C, New Friends Colony,<br />
+                    Sarai Jullena, New Delhi,<br />
+                    South East Delhi, Delhi, 110025
+                  </p>
                 </div>
               </div>
 

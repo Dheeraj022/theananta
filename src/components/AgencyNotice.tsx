@@ -1,4 +1,5 @@
 import { Info } from 'lucide-react';
+import { BRAND_NAME, LEGAL_ENTITY } from '@/lib/constants';
 
 export default function AgencyNotice() {
   return (
@@ -10,7 +11,7 @@ export default function AgencyNotice() {
           </div>
         </div>
         <p className="text-[#17211D] text-xs sm:text-[13px] leading-relaxed">
-          <span className="font-semibold">We are an independent travel agency</span> providing hotel, villa and tour enquiry
+          <span className="font-semibold">{BRAND_NAME} is an independent travel agency</span> operated by {LEGAL_ENTITY}, providing hotel, villa and tour enquiry
           assistance in Rajasthan. We are not affiliated with any hotel, resort or service provider.
         </p>
       </div>

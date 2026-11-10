@@ -3,7 +3,7 @@ import {
   Phone, MessageCircle, Mail, MapPin, Clock, ChevronRight,
   Mountain, Building2, House, Map, Car, Package, ShieldCheck, PlayCircle,
 } from 'lucide-react';
-import { BRAND_NAME, BRAND_OPERATOR, CALL_URL, PHONE_NUMBER, WHATSAPP_URL, EMAIL, GST_NO, HOURS } from '@/lib/constants';
+import { BRAND_NAME, BRAND_OPERATOR, LEGAL_ENTITY, CALL_URL, PHONE_NUMBER, WHATSAPP_URL, EMAIL, GST_NO, HOURS } from '@/lib/constants';
 
 const currentYear = new Date().getFullYear();
 
@@ -213,10 +213,9 @@ export default function Footer() {
                 </div>
                 <address className="not-italic text-gray-400 text-sm leading-relaxed">
                   <strong className="text-white font-semibold block mb-1">Office Address</strong>
-                  Blue Tulip CHS Ltd, Shop No - 17,<br />
-                  Blue Empire Complex, Off Link Road,<br />
-                  Mahavir Nagar, Kandiwali W, Mumbai,<br />
-                  Mumbai Suburban, Maharashtra, 400067
+                  BASEMENT, 159-C, New Friends Colony,<br />
+                  Sarai Jullena, New Delhi,<br />
+                  South East Delhi, Delhi, 110025
                 </address>
               </div>
             </div>
@@ -234,7 +233,7 @@ export default function Footer() {
             <div>
               <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-1.5">Important Information</h4>
               <p className="text-gray-400 text-xs sm:text-[13px] leading-relaxed">
-                Prices and availability may vary by property, travel dates and occupancy. {BRAND_NAME}, operated by Vidhi Tour & Travel, is an independent travel agency. Final property availability with our best assistance.
+                Prices and availability may vary by property, travel dates and occupancy. {BRAND_NAME}, operated by {LEGAL_ENTITY}, is an independent travel agency. Final property availability with our best assistance.
               </p>
             </div>
           </div>
@@ -251,7 +250,7 @@ export default function Footer() {
             <div>
               <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-1.5">Disclaimer</h4>
               <p className="text-gray-400 text-xs sm:text-[13px] leading-relaxed">
-                {BRAND_NAME} is operated by Vidhi Tour &amp; Travel, an independent travel agency. We are not
+                {BRAND_NAME} is operated by {LEGAL_ENTITY}, an independent travel agency. We are not
                 affiliated with, endorsed by or sponsored by any hotel, resort, villa or other service provider. All
                 brand names, logos and trademarks belong to their respective owners.
               </p>

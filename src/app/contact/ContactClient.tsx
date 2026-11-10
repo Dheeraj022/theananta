@@ -71,10 +71,9 @@ export default function ContactClient() {
                   </div>
                   <span className="font-semibold text-[11px] sm:text-xs leading-snug mt-1 text-[#66716C]">
                     <span className="font-bold text-[#17211D] text-xs sm:text-[13px] block mb-0.5">Office Address</span>
-                    Blue Tulip CHS Ltd, Shop No - 17,<br />
-                    Blue Empire Complex, Off Link Road,<br />
-                    Mahavir Nagar, Kandiwali W, Mumbai,<br />
-                    Mumbai Suburban, Maharashtra, 400067
+                    BASEMENT, 159-C, New Friends Colony,<br />
+                    Sarai Jullena, New Delhi,<br />
+                    South East Delhi, Delhi, 110025
                   </span>
                 </div>
               </div>

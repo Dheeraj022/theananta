@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import Footer from '@/components/Footer';
 import { getTours } from '@/lib/db';
-import { BRAND_NAME } from '@/lib/constants';
+import { BRAND_NAME, LEGAL_ENTITY } from '@/lib/constants';
 
 export const dynamic = 'force-dynamic';
 
@@ -294,7 +294,7 @@ export default async function ToursPage() {
                 <div className="bg-white border border-[#DCE4DF] rounded-2xl p-6 shadow-sm">
                   <h3 className="font-bold text-[#17211D] mb-3 text-sm">Our Role &amp; Independence</h3>
                   <p className="text-[#17211D] text-[11px] leading-relaxed mb-3">
-                    {BRAND_NAME} is operated by Vidhi Tour &amp; Travel, an independent travel agency providing general travel information, local tour guidance and enquiry assistance.
+                    {BRAND_NAME} is operated by {LEGAL_ENTITY}, an independent travel agency providing general travel information, local tour guidance and enquiry assistance.
                   </p>
                   <p className="text-[#17211D] text-[11px] leading-relaxed">
                     We are not the owner, operator or official representative of any attraction, tour operator or service provider unless specifically stated.

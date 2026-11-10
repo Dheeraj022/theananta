@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { AlertCircle, FileWarning } from 'lucide-react';
-import { BRAND_NAME } from '@/lib/constants';
+import { BRAND_NAME, LEGAL_ENTITY } from '@/lib/constants';
 
 export default function InformationCards() {
   const [infoExpanded, setInfoExpanded] = useState(false);
@@ -44,7 +44,7 @@ export default function InformationCards() {
             <h3 className="text-[#17211D] font-bold text-xs sm:text-sm uppercase tracking-wide">Disclaimer</h3>
           </div>
           <p className={`text-[#66716C] text-xs sm:text-[13px] leading-relaxed ${!disclaimerExpanded ? 'line-clamp-3' : ''}`}>
-            {BRAND_NAME} is operated by Vidhi Tour &amp; Travel, an independent travel agency. We are not
+            {BRAND_NAME} is operated by {LEGAL_ENTITY}, an independent travel agency. We are not
             affiliated with, endorsed by or sponsored by any hotel, resort, villa or other service provider. All brand
             names and logos are property of their respective owners.
           </p>

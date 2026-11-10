@@ -14,6 +14,7 @@ import {
 } from '@/lib/db';
 import { Hotel, Villa, Tour, Amenity, RoomOption, Enquiry } from '@/types';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
+import { BRAND_NAME, LEGAL_ENTITY } from '@/lib/constants';
 
 type Category = 'hotel' | 'villa' | 'tour';
 
@@ -976,9 +977,9 @@ export default function AdminDashboard() {
       <header className="bg-[#075B3A] text-white shadow-md">
         <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 py-5 flex items-center justify-between">
           <div>
-            <h1 className="text-xl sm:text-2xl font-black tracking-wide">RAJASTHAN GATEWAY</h1>
+            <h1 className="text-xl sm:text-2xl font-black tracking-wide uppercase">{BRAND_NAME}</h1>
             <p className="text-green-200 text-xs sm:text-sm font-medium">
-              Vidhi Tour &amp; Travel · Admin Console ({user?.email})
+              {LEGAL_ENTITY} · Admin Console ({user?.email})
             </p>
           </div>
           <div className="flex items-center gap-2">
