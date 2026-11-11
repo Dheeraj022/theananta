@@ -85,7 +85,7 @@ export default function EnquiryClient() {
                   <div>
                     <label htmlFor="enq-phone" className="block text-xs font-semibold text-[#66716C] uppercase tracking-wide mb-1.5">Phone Number *</label>
                     <input id="enq-phone" name="phone" type="tel" required value={form.phone} onChange={handleChange}
-                      className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent" placeholder="+91 88937 97155" />
+                      className="w-full border border-[#DCE4DF] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#075B3A] focus:border-transparent" placeholder="+91 92790 22649" />
                   </div>
                 </div>
 
